@@ -1,5 +1,5 @@
 /*
-2018年7月3日 修复更新
+2018年10月8日 修复更新
 更新：修复部分不能播放问题
 by：iPhone 8、小良
 http://ae85.cn/
@@ -8,7 +8,7 @@ http://ae85.cn/
 
 $ui.render({
   props: {
-    title: "赛事直播"
+    title: "赛事直播1.1"
   },
   views: [{
     type: "list",
@@ -102,13 +102,7 @@ $ui.render({
     layout: $layout.fill,
     events: {
       didSelect: function(sender, indexPath, data) {
-        var url = data.url
-        if (url.indexOf("/qie/") !== -1) {
-          getbofy(data.url, data.sais.text)
-        } else {
-          getzl(url, data.sais.text)
-        }
-
+          getzl(data.url, data.sais.text)
       }
     }
   }]
@@ -151,10 +145,10 @@ function play(url, mc) {
   })
 }
 
-function getlb(url) {
+function getlb() {
   $ui.loading(true)
   $http.get({
-    url: url,
+    url: urlt + "/d/js/js/1461842166.js?_t=6",
     handler: function(resp) {
       $ui.loading(false)
       var html = resp.data
@@ -174,9 +168,9 @@ function getlb(url) {
             lt1: { src: "http://ae85.cn/wf/xl.png" },
             lt2: { src: "http://ae85.cn/wf/xiaoliang.png" },
             sais: { text: "小良 - 更新器" },
-            rq: { text: "哪个更好用？" },
-            zd1: { text: "脚本1.3版" },
-            zd2: { text: "规则2.5版" },
+            rq: { text: "带你打开ios新世纪" },
+            zd1: { text: "脚本2.3版" },
+            zd2: { text: "规则3.2版" },
             url: "http://ae85.cn/"
           })
         } else {
@@ -202,138 +196,5 @@ function getlb(url) {
   })
 }
 
-getlb(urlt + "/d/js/js/1461842166.js?_t=6")
+getlb()
 
-var js = []
-
-function getbofy(url, mc) {
-  $ui.loading(true)
-  $http.request({
-    method: "GET",
-    url: urlt + "/qie/w2/w.html",
-    header: {
-      "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13G34 Safari/601.1",
-      "Referer": url
-    },
-    handler: function(resp) {
-      $ui.loading(false)
-      var html = resp.data
-      var t = html.match(/href=\"(\S.*?)<\/a>/g)
-      for (i in t) {
-        x = t[i]
-        js.push({
-          bt: {
-            text: x.match(/_btn3\">(\S.*?)<\/a>/)[1]
-          },
-          url: x.match(/href=\"(\S.*?)\"/)[1]
-
-        })
-      }
-      setxq("http://ae85.cn/", mc, js)
-      getpy(js[0].url)
-    }
-  })
-}
-
-function setxq(playurl, pm, js) {
-  $ui.push({
-    props: {
-      title: pm
-    },
-    views: [{
-      type: "web",
-      props: {
-        id: "bof",
-        url: playurl,
-        radius: 7,
-      },
-      layout: function(make, view) {
-        make.right.left.top.inset(0)
-        make.height.equalTo(196)
-      }
-
-    }, {
-      type: "label",
-      props: {
-        id: "bqxj",
-        text: "🔵 切换播放源：",
-        font: $font(21),
-      },
-      layout(make, view) {
-        make.top.equalTo($("bof").bottom).inset(15)
-        make.left.inset(5)
-        make.size.equalTo($size(300, 30))
-
-      }
-    }, {
-      type: "matrix",
-      props: {
-        id: "jslb",
-        data: js,
-        columns: 2,
-        itemHeight: 50,
-        spacing: 5,
-        selectable: true,
-        template: [{
-          type: "label",
-          props: {
-            id: "bt",
-            bgcolor: $color("#F8F8F8"),
-            borderColor: $color("#f0f0f0"),
-            borderWidth: 1,
-            align: $align.center,
-          },
-          layout(make, view) {
-            make.top.left.right.bottom.inset(0)
-          }
-
-        }]
-      },
-      layout(make, view) {
-        make.top.equalTo($("bqxj").bottom).inset(5)
-        make.left.right.inset(5)
-        make.bottom.inset(0)
-
-      },
-      events: {
-        didSelect: function(sender, indexPath, data) {
-          var id = $cache.get("playid")
-          $("jslb").cell(indexPath).add({
-            type: "label",
-            props: {
-              text: data.bt.text,
-              bgcolor: $color("#F8F8F8"),
-              borderColor: $color("#f01232"),
-              borderWidth: 1,
-              align: $align.center,
-            },
-            layout(make, view) {
-              make.top.left.right.bottom.inset(0)
-            }
-          })
-          getpy(data.url)
-        }
-      }
-    }, ]
-  })
-}
-
-function getpy(url) {
-  $ui.loading(true)
-  $http.request({
-    method: "GET",
-    url: urlt + url,
-    header: {
-      "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13G34 Safari/601.1",
-      "Referer": urlt + "/qie/w2/w.html"
-    },
-    handler: function(resp) {
-      $ui.loading(false)
-      var html = resp.data.replace(/\n|\s|\r/g, "")
-      var j = html.match(/player\"(\S*?)<\/div>/)[1]
-      var u = j.match(/src=\"(\S*?)\"/)[1]
-      $("bof").url = u
-      $clipboard.text = u
-    }
-  })
-}
