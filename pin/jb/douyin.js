@@ -1,207 +1,242 @@
 /*
-更新：新增下载功能以及复制链接功能。
-点击下载图标即可下载当前播放视频。
-长按下载图标可复制视频链接到剪贴板。
+2018年10月16日、修复更新
+更新：更换服务器资源（抛弃某社区资源的调用）
+改变界面布局（尽量的接近短视频播放界面）
+支持下载，复制链接。
+上滑下拉可切换视频。
+
 by：iPhone 8、小良
 http://ae85.cn/
 */
-
-$cache.set("page", 1)
-$ui.render({
-  props: {
-    title: "抖阴-js版 1.2"
-  },
-  views: [{
-    type: "matrix",
-    props: {
-      columns: 2,
-      itemHeight: 288,
-      spacing: 1,
-      template: [{
-        type: "image",
-        props: {
-          id: "bj",
-        },
-        layout: $layout.fill
-      }, {
-        type: "image",
-        props: {
-          id: "tx",
-          radius: 15
-        },
-        layout: function(make, view) {
-          make.bottom.left.inset(5)
-          make.width.height.equalTo(30)
-
-        }
-      }, {
-        type: "label",
-        props: {
-          id: "mc",
-          textColor: $color("#e5e5e5"),
-        },
-        layout(make, view) {
-          make.bottom.inset(5)
-          make.left.equalTo($("tx").right).inset(5)
-          make.height.equalTo(30)
-        }
-      }, {
-        type: "label",
-        props: {
-          id: "sm",
-          textColor: $color("#ffffff"),
-        },
-        layout(make, view) {
-          make.bottom.equalTo($("mc").top).inset(1)
-          make.left.right.inset(5)
-          make.height.equalTo(30)
-        }
-      }, ]
-    },
-    layout: function(make) {
-      make.top.left.bottom.right.equalTo(0)
-    },
-    events: {
-      didSelect: function(sender, indexPath, obj) {
-        web(obj.url)
-      },
-      didReachBottom: function(sender) {
-
-        var page = $cache.get("page") + 1
-        $cache.set("page", page)
-        sender.endFetchingMore()
-        $console.info(page)
-        getlist()
+var itemHeight = $device.info.screen.height
+const base64 = "aHR0cHM6Ly9naXRlZS5jblzveWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyL2RvdXlpbi5qc29u"
+$ui.loading(true)
+$http.get({
+  url: $text.base64Decode(base64.replace(/lz/, "20")),
+  handler: function(resp) {
+    $ui.loading(false)
+    if (resp.response.statusCode == "200") {
+      var info = resp.data;
+      if (info.bb != "2.0") {
+        $ui.alert({
+          title: "温馨提示",
+          message: info.gxsm,
+          actions: [{
+            title: "进入官网",
+            handler: function() {
+              $app.openURL(info.gw)
+            }
+          }, {
+            title: "关注公众号",
+            handler: function() {
+              $ui.alert({
+                title: "温馨提示",
+                message: "跳转微信会自动复制公众号ID\n请跳转到微信-搜索-公用号-粘贴-关注",
+                actions: [{
+                  title: "跳转微信",
+                  handler: function() {
+                    $clipboard.text = "ae85-cn"
+                    $app.openURL("weixin://")
+                  }
+                }, {
+                  title: "取消"
+                }]
+              })
+            }
+          }]
+        })
+      } else {
+        $cache.set("info", info)
+        getdata()
       }
 
+    } else {
+      $ui.alert("加载失败")
     }
-  }, {
-    type: "button",
-    props: {
-      id: "hb_img",
-      src: "http://ae85.cn/wf/hb.jpg",
-      radius: 30
-    },
-    events: {
-      tapped: function(sender) {
-        $app.openURL("alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fqr.alipay.com%2Fc1x08786tiy5qigyhnjd2db%3F_s%3Dweb-other")
-      }
-    },
-    layout: function(make, view) {
-      make.bottom.inset(66)
-      make.width.height.equalTo(60)
-      make.right.inset(15)
-    }
-  }, ]
+  }
 })
 
-function getlist() {
-  $ui.loading(true)
-  var page = $cache.get("page")
-  $http.request({
-    method: "POST",
-    url: "http://www.avyubjdh.com//app/article/video/list",
-    header: {
-      "User-Agent": "TomatoClub/1.0.5 (iPhone; iOS 9.3.3; Scale/2.00)",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "deviceNo": "45676372d3002bb6cff712794d43698b"
-    },
-    body: {
-      "memberId": "8933",
-      "pageSize": "10",
-      "pageNo": page,
-
-    },
-    handler: function(resp) {
-      $ui.loading(false)
-      var json = resp.data.data
-      var img = "http://imgdown.avyubjdh.com/img//"
-      if (page == 1) {
-        var data = []
-      } else {
-        var data = $("matrix").data
-      }
-      for (i in json) {
-        var li = json[i]
-        data.push({
-          bj: {
-            src: img + li.videoCover
-          },
-          tx: {
-            src: img + li.avatar
-          },
-          mc: {
-            text: li.name
-          },
-          sm: {
-            text: li.description
-          },
-          url: "http://videodown.avyubjdh.com/video//" + li.videoUrl
-
-        })
-      }
-      $("matrix").data = data
-      $("matrix").endRefreshing()
-    }
-  })
-}
-
-getlist()
-
-function web(url) {
-  $ui.push({
+var timg = "https://gitee.com/yao07/update_device/raw/master/sucai/"
+$ui.render({
     props: {
-      title: "抖阴-js版 1.1"
+        id: "mView",
+        statusBarStyle: 0,
+        navBarHidden: true,
+        statusBarHidden: true,
+        bgcolor: $color("black")
     },
     views: [{
-        type: "web",
+        type: "matrix",
         props: {
-          url: url,
+            id: "Video",
+            bgcolor: $color("black"),
+            itemHeight: itemHeight,
+            columns: 1,
+            spacing: 0,
+            waterfall: false,
+            template: [{
+                type: "video",
+                props: {
+                    id: "video",
+                },
+                layout: function (make, view) {
+                    make.left.right.top.bottom.inset(-3)
+                }
+            }]
         },
-        layout: $layout.fill,
-
-      },
-      {
-        type: "button",
-        props: {
-          id: "bt2",
-          src: "http://ae85.cn/jsbox/img/xiazai.png",
-          font: $font(20)
-        },
-        layout: function(make) {
-          make.right.inset(10)
-          make.top.inset(15)
-          make.height.width.equalTo(50)
+        layout: function (make) {
+            make.bottom.left.right.top.inset(0)
         },
         events: {
-          tapped: function(sender) {
-            download(url)
-          },
-          longPressed: function(sender) {
-            $clipboard.text = url
-            $ui.alert("已复制：\n" + url)
-          }
+            didSelect: function (sender, indexPath, data) {
+                $("video").toggle()
+            },
+            didReachBottom: function (sender) {
+                sender.endFetchingMore()
+                cldata()
+            },
+            pulled: function (sender) {
+                sender.endRefreshing()
+                xldata()
+
+            }
         }
-      },
-    ]
-  })
+    },
+    {
+        type: "button",
+        props: {
+            id: "x_img",
+            src: timg + "x.png"
+        },
+        events: {
+            tapped: function (sender) {
+                $app.close()
+            }
+        },
+        layout: function (make, view) {
+            make.top.left.inset(5);
+            make.width.height.equalTo(50);
+        }
+    }, {
+        type: "button",
+        props: {
+            id: "xia_img",
+            src: timg + "xia.png"
+        },
+        events: {
+            tapped: function (sender) {
+                download($("video").src)
+            }
+        },
+        layout: function (make, view) {
+            make.top.inset(2);
+            make.left.equalTo($("x_img").right).inset(15);
+            make.width.height.equalTo(58);
+        }
+    }, {
+        type: "button",
+        props: {
+            id: "fuzhi_img",
+            src: timg + "fuzhi.png"
+        },
+        events: {
+            tapped: function (sender) {
+                $clipboard.text = $("video").src
+                $ui.toast("已复制");
+            }
+        },
+        layout: function (make, view) {
+            make.top.inset(5);
+            make.left.equalTo($("xia_img").right).inset(15);
+            make.width.height.equalTo(50);
+        }
+    }, {
+        type: "button",
+        props: {
+            id: "hb_img",
+            src: timg + "hongbao.png"
+        },
+        events: {
+            tapped: function (sender) {
+                $app.openURL(
+                    "alipays://platformapi/startapp?appId=20000067&__open_alipay__=YES&url=https%3A%2F%2Frender.alipay.com%2Fp%2Ff%2Ffd-j6lzqrgm%2Fguiderofmklvtvw.html%3Fchannel%3DqrCode%26shareId%3D2088202699097532%26sign%3DAFml1OwpzCQC4IVlQHEDQ0LKkXiaDFyESl0GCk43ahU%253D%26scene%3DofflinePaymentNewSns%26campStr%3Dp1j%252BdzkZl018zOczaHT4Z5CLdPVCgrEXq89JsWOx1gdt05SIDMPg3PTxZbdPw9dL%26token%3Dc1x08164vrc0u6jhg7oslac"
+                );
+            }
+        },
+        layout: function (make, view) {
+            make.top.inset(2);
+            make.left.equalTo($("fuzhi_img").right).inset(15);
+            make.width.height.equalTo(55);
+        }
+    }],
+})
+
+$cache.set("py", 1);
+function getdata(url) {
+    $http.post({
+        url: $cache.get("info").turl + $cache.get("py"),
+        header: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "iphoneLive/1.1 (iPhone; iOS 12.0; Scale/2.00)"
+        },
+        handler: function (resp) {
+            var data = resp.data.data.info;
+            $cache.set("vdata", data);
+            $cache.set("dqshu", 1);
+            cldata()
+        }
+    });
+}
+
+function cldata() {
+    var dqshu = $cache.get("dqshu");
+    var vdata = $cache.get("vdata");
+    if (vdata.length == 0) {
+        $ui.toast("数据正在加载中...");
+    } else if (vdata.length != dqshu) {
+        var arr = vdata[dqshu - 1]
+        $("Video").data = [{ video: { src: arr.href, poster: arr.thumb_s } }]
+        $cache.set("dqshu", dqshu + 1);
+        $delay(1, function () {
+            $("video").toggle()
+        })
+    } else {
+        var py = $cache.get("py") + 1;
+        $cache.set("py", py);
+        getdata()
+    }
+}
+function xldata() {
+    var dqshu = $cache.get("dqshu");
+    var vdata = $cache.get("vdata");
+    if (vdata.length == 0) {
+        $ui.toast("数据正在加载中...");
+    } else if (dqshu > 1) {
+        var arr = vdata[dqshu]
+        $("Video").data = [{ video: { src: arr.href, poster: arr.thumb_s } }]
+        $cache.set("dqshu", dqshu - 1);
+        $delay(1, function () {
+            $("video").toggle()
+        })
+    } else {
+        var arr = vdata[0]
+        $("Video").data = [{ video: { src: arr.href, poster: arr.thumb_s } }]
+    }
 }
 
 function download(url) {
-  $ui.toast("正在下载中 ...")
-  $ui.loading(true)
-  $http.download({
-    url: url,
-    handler: function(resp) {
-      $ui.loading(false)
-      if (resp.response.statusCode == "200") {
-        $share.sheet([
-          "download.mp4",
-          resp.data
-        ])
-      } else {
-        $ui.alert("下载失败")
-      }
-    }
-  })
+    $ui.toast("正在下载中 ...");
+    $ui.loading(true);
+    $http.download({
+        url: url,
+        handler: function (resp) {
+            $ui.loading(false);
+            if (resp.response.statusCode == "200") {
+                $share.sheet(["download.mp4", resp.data]);
+            } else {
+                $ui.alert("下载失败");
+            }
+        }
+    });
 }
+
