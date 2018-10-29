@@ -1,1 +1,1 @@
-javascript:window.location='ucbrowser://http://www.yydy8.com/Common/?url='+escape(window.location)
+javascript:window.location='ucbrowser://https://yun.odflv.com/?url='+escape(window.location)
