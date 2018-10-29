@@ -1,1 +1,1 @@
-javascript:window.location='mttbrowserextension://url=http://www.yydy8.com/Common/?url='+escape(window.location)
+javascript:window.location='mttbrowserextension://url=https://yun.odflv.com/?url='+escape(window.location)
