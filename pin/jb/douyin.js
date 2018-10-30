@@ -1,13 +1,16 @@
 /*
-2018年10月16日、修复更新
-更新：更换服务器资源（抛弃某社区资源的调用）
-改变界面布局（尽量的接近短视频播放界面）
+2018年10月30日、修复更新
+该脚本不支持Pin！请使用JSBox
 支持下载，复制链接。
 上滑下拉可切换视频。
 
 by：iPhone 8、小良
 http://ae85.cn/
 */
+if($app.info.bundleID == "app.cyan.pin"){
+    $ui.alert("该脚本不支持Pin！\n请使用JSBox");
+    return;
+}
 var itemHeight = $device.info.screen.height
 const base64 = "aHR0cHM6Ly9naXRlZS5jblzveWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyL2RvdXlpbi5qc29u"
 $ui.loading(true)
@@ -17,7 +20,7 @@ $http.get({
     $ui.loading(false)
     if (resp.response.statusCode == "200") {
       var info = resp.data;
-      if (info.bb != "2.0") {
+      if (info.bb != "2.1") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,

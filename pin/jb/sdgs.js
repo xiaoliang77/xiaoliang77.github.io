@@ -1,3 +1,9 @@
+/*
+狩都高速 1.1
+2018.10.30 修复更新
+ by：iPhone 8、小良
+ http://ae85.cn/
+*/
 var me = [
   { "name": "最新资源", "id": "/new/1.html?new=1" },
   { "name": "人气热门", "id": "/hot/1.html?hot=1" },
@@ -5,7 +11,7 @@ var me = [
 ];
 $ui.render({
   props: {
-    title: "狩都高速"
+    title: "狩都高速 1.1"
   },
   views: [{
     type: "menu",
@@ -83,7 +89,7 @@ function csh() {
         var info = resp.data;
         console.log(info.gg)
         $cache.set("info", info);
-        if (info.bb != "1.0") {
+        if (info.bb != "1.1") {
           $ui.alert({
             title: "温馨提示",
             message: info.gxsm,
@@ -139,7 +145,6 @@ function getdata() {
     handler: function (resp) {
       $ui.loading(false);
       var arr = resp.data;
-//      console.log(arr)
       var html = arr.replace(/\n|\s|\r/g, "");
       var te = html.match(/<ulid=\"works\"[\s\S]*?<\/ul>/)[0];
       var li = te.match(/<li><ahref=\S*?<\/a>/g);
@@ -183,13 +188,14 @@ function geturl(id) {
 function urljs(tk,ac,fg2) {
   var aa = function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}(fg2,ac,ac,tk,0,{});
   var url = aa.match(/url:\\\'(\S*?)\\\'/)[1];
+  url =url.replace(/\'/g, "");
   play(url)
 }
 
 function play(url) {
   $ui.push({
     props: {
-      title: "狩都高速"
+      title: "狩都高速 1.1"
     },
     views: [{
       type: "web",
