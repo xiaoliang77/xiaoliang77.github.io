@@ -59,7 +59,7 @@
 		
 }
 .con h1{font-size:0.36rem;text-align:center;line-height:0.48rem;margin-bottom:0.5rem;}
-.con p{line-height:0.36rem;font-size:0.24rem;margin-bottom:0.30rem;text-align:justify;word-wrap:break-word;}
+.con p{line-height:0.36rem;font-size:0.24rem;margin-bottom:0.30rem;text-align:justify;word-wrap:break-word;text-align:center;COLOR:#ff0000;}
 
 .swipers a.jion,.swipers a.tijiao{height:0.88rem;width:100%;box-sizing:border-box;line-height:0.88rem;text-align:center;border-radius:0.1rem;border:1px solid #cdd4d8;display:block;font-size:0.28rem;color:#637d96;margin:0.35rem 0 0.55rem 0;background:#f2f4f3;}
 
