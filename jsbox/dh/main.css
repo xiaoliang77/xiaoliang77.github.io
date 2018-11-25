@@ -1,0 +1,96 @@
+html {
+	height: 100%;
+}
+
+body {
+	background-color: #f0f0f0;
+	font-family: "Î¢ÈíÑÅºÚ";
+	position: relative;
+	min-height: 100%;
+	padding-bottom: 4.5rem;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.nav {
+	margin-top: .33rem;
+}
+
+.nav_header {
+	height: 1.83rem;
+	background-color: #fff;
+	padding-left: .5rem;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.nav_header .daily {
+	font-size: .7rem;
+	line-height: 1.83rem;
+	color: #B9282F;
+	font-weight: bold;
+}
+
+.nav_header .longxuan-search {
+	font-size: .7rem;
+	line-height: 1.83rem;
+	color: #B9282F;
+	font-weight: bold;
+	position: absolute;
+	top: 0;
+	right: .5rem;
+}
+
+.nav_con a {
+	display: block;
+	width: 5.98rem;
+	height: 4.2rem;
+	font-size: 0.62rem;
+	color: #666;
+	text-align: center;
+	padding-top: 2.6rem;
+	box-sizing: border-box;
+	float: left;
+	margin: .03rem .03rem 0 0;
+}
+
+.nav_con a:nth-of-type(3n) {
+	margin-right: 0;
+}
+
+.nav_con a:nth-of-type(1) {
+	background: #fff url(../dh/Google.png) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+
+.nav_con a:nth-of-type(2) {
+	background: #fff url(../dh/Wikipedia.png) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+
+.nav_con a:nth-of-type(3) {
+	background: #fff url(../dh/youtube.jpg) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+
+.nav_con a:nth-of-type(4) {
+	background: #fff url(../dh/dongtaiwang.jpg) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+
+.nav_con a:nth-of-type(5) {
+	background: #fff url(../dh/doubi.png) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+.nav_con a:nth-of-type(6) {
+	background: #fff url(../dh/tumblr.png) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+.nav_con a:nth-of-type(7) {
+	background: #fff url(../dh/VPN_1.png) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+.nav_con a:nth-of-type(8) {
+	background: #fff url(../dh/ssrdy.png) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
