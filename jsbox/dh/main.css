@@ -123,3 +123,15 @@ body {
 	background: #fff url(../dh/fanqangwang.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
+.nav_con a:nth-of-type(10) {
+	background: #fff url(../dh/heimao.jpg) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+.nav_con a:nth-of-type(11) {
+	background: #fff url(../dh/Google+.jpg) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+.nav_con a:nth-of-type(12) {
+	background: #fff url(../dh/ss.jpg) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
