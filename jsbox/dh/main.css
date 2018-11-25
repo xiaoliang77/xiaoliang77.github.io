@@ -89,7 +89,7 @@ body {
 }
 
 .nav_con a:nth-of-type(2) {
-	background: #fff url(../dh/Wikipedia.png) no-repeat center .86rem;
+	background: #fff url(../dh/facebook.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
 
@@ -117,5 +117,9 @@ body {
 }
 .nav_con a:nth-of-type(8) {
 	background: #fff url(../dh/ssrdy.png) no-repeat center .86rem;
+	background-size: 1.3rem 1.3rem;
+}
+.nav_con a:nth-of-type(9) {
+	background: #fff url(../dh/fanqangwang.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
