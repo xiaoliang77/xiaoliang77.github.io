@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size: 60px;">
+<html>
 
 <head>
     <meta charset="utf-8" />
@@ -10,10 +10,14 @@
         iScale = iScale / window.devicePixelRatio;
         document.write('<meta name="viewport" content="width=device-width,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + ',user-scalable=no" />')
         var iWidth = document.documentElement.clientWidth;
-        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 18.3 + 'px';
+        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 18 + 'px';
     </script>
     <meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=0.5,maximum-scale=0.5,user-scalable=no">
-
+    <style>
+			.layui-m-layercont{
+				line-height: 80px !important;
+			}
+		</style>
 </head>
 
 <body>
