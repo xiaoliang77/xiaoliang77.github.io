@@ -87,7 +87,7 @@ body {
 	background: #fff url(../dh/Google.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-
+/* 
 .nav_con a:nth-of-type(2) {
 	background: #fff url(../dh/facebook.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
@@ -101,37 +101,37 @@ body {
 .nav_con a:nth-of-type(4) {
 	background: #fff url(../dh/dongtaiwang.jpg) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
-}
+} */
 
-.nav_con a:nth-of-type(5) {
+.nav_con a:nth-of-type(2) {
 	background: #fff url(../dh/doubi.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-.nav_con a:nth-of-type(6) {
+.nav_con a:nth-of-type(3) {
 	background: #fff url(../dh/tumblr.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-.nav_con a:nth-of-type(7) {
+.nav_con a:nth-of-type(4) {
 	background: #fff url(../dh/VPN_1.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-.nav_con a:nth-of-type(8) {
+.nav_con a:nth-of-type(5) {
 	background: #fff url(../dh/ssrdy.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-.nav_con a:nth-of-type(9) {
+.nav_con a:nth-of-type(6) {
 	background: #fff url(../dh/fanqangwang.png) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-.nav_con a:nth-of-type(10) {
+.nav_con a:nth-of-type(7) {
 	background: #fff url(../dh/heimao.jpg) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-.nav_con a:nth-of-type(11) {
+.nav_con a:nth-of-type(8) {
 	background: #fff url(../dh/Google+.jpg) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
-.nav_con a:nth-of-type(12) {
+.nav_con a:nth-of-type(9) {
 	background: #fff url(../dh/ss.jpg) no-repeat center .86rem;
 	background-size: 1.3rem 1.3rem;
 }
