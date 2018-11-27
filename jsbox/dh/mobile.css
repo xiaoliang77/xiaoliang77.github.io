@@ -1,0 +1,48 @@
+.site-list {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 0 8px;
+    margin-top: -10px;
+  }
+.site-list .list-item {
+      display: block;
+      float: left;
+      width: 32.99%;
+      height: 90px;
+      position: relative;
+      color: #4A4A4A;
+      margin-top: 20px;
+  }
+.site-list .list-item:hover, .site-list .list-item:active {
+        color: #4A4A4A;
+  }
+.site-list .list-item .icon {
+        width: 48px;
+        height: 48px;
+        left: 50%;
+        margin-left: -24px;
+        top: 5px;
+        display: block;
+        position: absolute;
+        background: center/contain no-repeat;
+  }
+.site-list .list-item .title {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        font-size: 12px;
+        text-align: center;
+        height: 20px;
+  }
+
+.mod {
+    background: white;
+    min-height: 50px;
+    position: relative; }
+.mod + .mod {
+      margin-top: 10px; }
+.mod.sites {
+      padding: 15px 0; }
+
