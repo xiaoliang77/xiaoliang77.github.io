@@ -1,14 +1,8 @@
-/*
-12月13日更新，更换域名
-服务器资源被墙了，翻墙可正常使用
-*/
-
 var me = [{ "name": "国产", "id": "/v1" }, { "name": "日本", "id": "/v2" }, { "name": "欧美", "id": "/v3" }, { "name": "香港", "id": "/v5" }, { "name": "韩国", "id": "/v6" }, ]
-
 
 $ui.render({
   props: {
-    title: "无限资源 1.4"
+    title: "无限资源"
   },
   views: [{
     type: "menu",
@@ -112,8 +106,7 @@ $ui.render({
   }]
 })
 
-var urlt = "http://shen119.com/"
-//  http://wxav0.com
+var urlt = "http://xiaobishua.com"
 
 function getdata() {
   var type = $cache.get("type")
@@ -139,7 +132,6 @@ function getdata() {
         })
       }
       $("Video").data = data
-      $("Video").endRefreshing()
     }
   })
 }
@@ -152,7 +144,7 @@ function geturl(url, pm) {
       $ui.loading(false)
       var arr = resp.data
       var html = arr.replace(/\n|\s|\r/g, "")
-      var playurl = html.match(/<videosrc=\"(\S*?)\"/)[1]
+      var playurl = html.match(/http:\/\/vod.anxiyun.com.*?(?=\")/)[0]
       play(playurl, pm)
     }
   })

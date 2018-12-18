@@ -1,220 +1,153 @@
 /*
-2018年10月30日 修复更新
-更新：修复部分不能播放问题
+2018年12月18日 修复更新
+更新：更换直播源
+原先的资源已经停止更新了
 by：iPhone 8、小良
 http://ae85.cn/
-
 */
 
 $ui.render({
+  props: {
+    title: "赛事直播 1.3"
+  },
+  views: [{
+    type: "label",
     props: {
-        title: "赛事直播1.2"
+      id: "rq",
+      text: "加载中……",
+      textColor: $color("#008062"),
+      align: $align.center
     },
-    views: [{
-        type: "list",
-        props: {
-            rowHeight: 80,
-            template: [{
-                type: "image",
-                props: {
-                    id: "lt1",
-                    radius: 7,
-                    bgcolor: $color("white")
-                },
-                layout: function (make, view) {
-                    make.top.inset(10)
-                    make.left.inset(30)
-                    make.size.equalTo(40, 40)
-
-                }
-            }, {
-                type: "image",
-                props: {
-                    id: "lt2",
-                    radius: 7,
-                    bgcolor: $color("white")
-                },
-                layout: function (make, view) {
-                    make.top.inset(10)
-                    make.right.inset(30)
-                    make.size.equalTo(40, 40)
-                }
-            },
-            {
-                type: "label",
-                props: {
-                    id: "sais",
-                    font: $font("bold", 17),
-                    align: $align.center
-                },
-                layout: function (make, view) {
-                    make.centerX.equalTo(view.center)
-                    make.top.inset(21)
-                    make.width.equalTo(200)
-
-                }
-            }, {
-                type: "label",
-                props: {
-                    id: "rq",
-                    font: $font(15),
-                    textColor: $color("red"),
-                    align: $align.center
-                },
-                layout: function (make, view) {
-                    make.centerX.equalTo(view.center)
-                    make.top.equalTo($("sais").bottom).inset(10)
-
-                }
-
-            },
-            {
-                type: "label",
-                props: {
-                    id: "zd1",
-                    font: $font(15),
-                    textColor: $color("gray"),
-                    align: $align.center
-                },
-                layout: function (make) {
-                    make.left.equalTo(0)
-                    make.top.equalTo($("lt1").bottom).inset(5)
-                    make.width.equalTo(100)
-                }
-            },
-            {
-                type: "label",
-                props: {
-                    id: "zd2",
-                    font: $font(15),
-                    textColor: $color("gray"),
-                    align: $align.center
-                },
-                layout: function (make) {
-                    make.right.equalTo(0)
-                    make.top.equalTo($("lt2").bottom).inset(5)
-                    make.width.equalTo(100)
-                }
-            }
-
-            ]
+    layout(make, view) {
+      make.top.inset(5)
+      make.right.left.inset(0)
+      make.height.equalTo(30)
+    }
+  },{
+    type: "list",
+    props: {
+      rowHeight: 50,
+      template: [
+        {
+          type: "label",
+          props: {
+            id: "mc",
+            font: $font("bold", 17),
+          },
+          layout: $layout.fill
         },
-        layout: $layout.fill,
-        events: {
-            didSelect: function (sender, indexPath, data) {
-                getzl(data.url, data.sais.text)
-            }
-        }
-    }]
+      ]
+    },
+    layout(make, view) {
+      make.top.equalTo($("rq").bottom).inset(5)
+      make.right.left.bottom.inset(0)
+    },
+    events: {
+      didSelect: function (sender, indexPath, data) {
+        setxq(data.menu[0].url, data.mc.text, data.menu)
+      }
+    }
+  }]
 
 })
-var urlt = "http://m.didiaokan.com"
 
-function getzl(url, mc) {
-    if (url.indexOf("ae85.cn") !== -1) {
-        play(url, "iPhone 8、小良 - 官网")
-    } else if (url.indexOf(".php?url=") !== -1) {
-        $ui.loading(true)
-        $http.get({
-            url: url,
-            handler: function (resp) {
-                $ui.loading(false)
-                var html = resp.data
-                if(html.indexOf("<video src=") !== -1){
-                var jsurl = html.match(/<video src=\"(\S*?)\"/)[1]
-                play(jsurl, mc)
-            } else {
-                var jsurl = html.match(/<iframe[\s\S]*?<\/iframe>/)[0]
-                jsurl=jsurl.match(/src=\"(\S*?)\"/)[1]
-                play(jsurl, mc)
-            }
-                
-            }
-        })
-    } else {
-        var lsurl = url.split("?")[0] + "/p.html"
-        $ui.loading(true)
-        $http.get({
-            url: lsurl ,
-            handler: function (resp) {
-                $ui.loading(false)
-                var html = resp.data.replace(/\n|\s|\r/g, "");
-                var jsurl = html.match(/<ahref=\"(\S*?)\"/)[1]
-                play(jsurl, mc)
-            }
-        })
-
-    }
-}
-
-
-
-function play(url, mc) {
-
-    $ui.push({
-        props: {
-            title: mc
-        },
-        views: [{
-            type: "web",
-            props: {
-                id: "bo",
-                url: url,
-            },
-            layout: $layout.fill
-        }]
-    })
-}
+var urlt = "http://m.360zhibo.com"
 
 function getlb() {
-    $ui.loading(true)
-    $http.get({
-        url: urlt + "/d/js/js/1461842166.js?_t=6",
-        handler: function (resp) {
-            $ui.loading(false)
-            var html = resp.data
-            var t1 = html.match(/<a data-action=\\\".*?<\/a>/g)
-            var data = []
-            for (i in t1) {
-                d = t1[i].replace(/\\/g, "")
-                var url = d.match(/href=\"(\S*?)\"/)[1]
-                var img = d.match(/<img src=\"(\S.*?)\"/g)
-                var zd = d.replace(/<font color=\"red\">|<\/font>/g, "").match(/<span>(\S.*?)<\/span>/g)
-                var xx = []
-                for (i in zd) {
-                    xx.push(zd[i].replace(/<span>|<\/span>/g, ""))
-                }
-                if (d.indexOf("备用") !== -1) {
-                    data.push({
-                        lt1: { src: "http://ae85.cn/wf/xl.png" },
-                        lt2: { src: "http://ae85.cn/wf/xiaoliang.png" },
-                        sais: { text: "小良 - 更新器" },
-                        rq: { text: "带你打开ios新世纪" },
-                        zd1: { text: "脚本2.4版" },
-                        zd2: { text: "规则3.3版" },
-                        url: "http://ae85.cn/"
-                    })
-                } else {
-                    data.push({
-                        lt1: {
-                            src: img[0].replace(/<img src=|\"|\\/g, "")
-                        },
-                        lt2: {
-                            src: img[1].replace(/<img src=|\"|\\/g, "")
-                        },
-                        sais: { text: xx[1] },
-                        rq: { text: xx[2] },
-                        zd1: { text: xx[0] },
-                        zd2: { text: xx[3] },
-                        url: url
-
-                    })
-                }
-            }
-            $("list").data = data
-
+  $ui.loading(true)
+  $http.get({
+    url: urlt,
+    handler: function (resp) {
+      $ui.loading(false)
+      var html = resp.data.replace(/\n|\s|\r/g, "")
+      var li = html.split('<divclass="col_02">')[2]
+      var t1 = li.match(/<liondblclick=.*?<\/li>/g)
+      var biao = li.match(/<divclass=\"title1\">(\S*?)<\/div>/)[1]
+      var data = []
+      for (i in t1) {
+        var text = t1[i].match(/<spanclass=(\S*?)<\/div>/)[1]
+        text = text.replace(/\"time\">|\"imp\">|<\/span>|<span>|<ahref=\"\/cat\/cba\/\">|<\/a>/g, " ")
+        var href = t1[i].match(/<ahref=\".*?<\/a>/g)
+        var menu = []
+        for (n in href) {
+          var name = href[n].match(/\">(\S*?)<\/a>/)[1]
+          var url = href[n].match(/href=\"(\S*?)\"/)[1]
+          menu.push({
+            name: name.replace(/\(.*?\)/g, ''),
+            url: url
+          })
         }
-    })
+        data.push({
+          mc: { text: text },
+          menu: menu
+        })
+      }
+      $("rq").text = biao
+      $("list").data = data
+    }
+  })
 }
 getlb()
 
+function setxq(url, pm, meun) {
+  $ui.push({
+    props: {
+      title: pm
+    },
+    views: [{
+      type: "menu",
+      props: {
+        id: "meun",
+        items: meun.map(function (item) {
+          return item.name
+        }),
+      },
+      layout: function (make) {
+        make.left.top.right.equalTo(0)
+        make.height.equalTo(50)
+
+      },
+      events: {
+        changed: function (sender) {
+          getpy(meun[sender.index].url)
+        }
+      }
+    }, {
+      type: "web",
+      props: {
+        id: "bof"
+      },
+      layout: function (make, view) {
+        make.right.left.bottom.inset(0)
+        make.top.equalTo($("meun").bottom).inset(5)
+      }
+    },]
+  })
+  getpy(url)
+}
+
+function getpy(url) {
+  if (url.indexOf('http') == -1) {
+    $ui.loading(true)
+    $http.request({
+      method: "GET",
+      url: urlt + url,
+      header: {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_3_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13G34 Safari/601.1",
+        "Referer": urlt
+      },
+      handler: function (resp) {
+        $ui.loading(false)
+        var html = resp.data.replace(/\n|\s|\r/g, "")
+        if (html.indexOf('dw(') == -1) {
+          alert("未找到该直播源地址")
+        } else {
+          var u = html.match(/dw\(\'(\S*?)\'\)/)[1]
+          $("bof").url = $detector.link(u)[0];
+        }
+      }
+    })
+  } else {
+    $("bof").url = $detector.link(url)[0];
+  }
+}
