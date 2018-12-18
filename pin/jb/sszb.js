@@ -67,7 +67,7 @@ function getlb() {
       var data = []
       for (i in t1) {
         var text = t1[i].match(/<spanclass=(\S*?)<\/div>/)[1]
-        text = text.replace(/\"time\">|\"imp\">|<\/span>|<span>|<ahref=\"\/cat\/|cba\/\">|lanqiu\/\">|<\/a>/g, " ")
+        text = text.replace(/\"time\">|\"imp\">|<\/span>|<span>|<ahref=\"\/cat\/cba\/\">|<ahref=\"\/cat\/lanqiu\/\">|<\/a>/g, " ")
         var href = t1[i].match(/<ahref=\".*?<\/a>/g)
         var menu = []
         for (n in href) {
