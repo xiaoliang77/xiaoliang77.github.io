@@ -4,6 +4,7 @@
 原先的资源已经停止更新了
 by：iPhone 8、小良
 http://ae85.cn/
+
 */
 
 $ui.render({
@@ -66,7 +67,7 @@ function getlb() {
       var data = []
       for (i in t1) {
         var text = t1[i].match(/<spanclass=(\S*?)<\/div>/)[1]
-        text = text.replace(/\"time\">|\"imp\">|<\/span>|<span>|<ahref=\"\/cat\/cba\/\">|<\/a>/g, " ")
+        text = text.replace(/\"time\">|\"imp\">|<\/span>|<span>|<ahref=\"\/cat\/|cba\/\">|lanqiu\/\">|<\/a>/g, " ")
         var href = t1[i].match(/<ahref=\".*?<\/a>/g)
         var menu = []
         for (n in href) {
