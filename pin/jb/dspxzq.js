@@ -1,6 +1,8 @@
 /*
-短视频下载器 2.0
-12月23日  全新改版 支持 jsbox 同时也支持 pin 
+短视频下载器 2.1
+12月27日 更新
+修复：解析失败报错问题。
+新增：长按提取按钮,自动提取剪贴板链接中的视频。
 
 支持：皮皮虾、抖音、快手、火山、今日头条、西瓜视频、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频。
 部分支持去水印下载，如：抖音，快手等！
@@ -19,7 +21,7 @@ $http.get({
     if (resp.response.statusCode == "200") {
       var info = resp.data;
       $cache.set("info", info)
-      if (info.bb != "2.0") {
+      if (info.bb != "2.1") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,
@@ -113,7 +115,7 @@ function getclipboard() {
 function cshyz() {
   $ui.render({
     props: {
-      title: "短视频下载器 2.0"
+      title: "短视频下载器 2.1"
     },
     views: [
       {
@@ -197,10 +199,11 @@ function cshyz() {
 }
 
 var timer;
+var count;
 function zjm() {
   $ui.render({
     props: {
-      title: "短视频下载 2.0"
+      title: "短视频下载 2.1"
     },
     views: [{
       type: "button",
@@ -216,9 +219,12 @@ function zjm() {
       },
       events: {
         tapped: function (sender) {
-          $('vediobtn').hidden = true;
-          $('webxia').hidden = false;
           tmenu($('bjk').text);
+        },
+        longPressed:function(info){
+          $('bjk').text = $clipboard.link;
+          
+          tmenu($clipboard.link)
         }
       }
     }, {
@@ -339,8 +345,15 @@ function zhur() {
   webView.eval({
     script: `var URL = document.getElementsByClassName("btn btn-success")[0].href; window.name = URL`,
     handler: function (result, error) {
-      if (result.indexOf('http') !== -1) {
-        $cache.set("url", result);
+      if (result.code == 4) {
+        if(count == 4){
+           alert("解析失败\n请检查链接是否有问题")
+           timer.invalidate()
+        }
+       count++;
+        
+      }else{
+                $cache.set("url", result);
         $('vediobtn').hidden = false;
         $('webxia').hidden = true;
         $('videobof').src = result;
@@ -371,6 +384,9 @@ function tmenu(text) {
     $ui.alert("请先输入链接");
   } else {
     $ui.toast("处理中，请稍后···")
+    $('vediobtn').hidden = true;
+    $('webxia').hidden = false;
+    count=1
     var turl = $cache.get("info").turl
     $('web').url = $text.base64Decode(turl) + url;
     timer = $timer.schedule({
