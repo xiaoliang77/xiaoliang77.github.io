@@ -8,7 +8,7 @@ http://ae85.cn/
 
 $cache.set("id", "7")
 $cache.set("pg", 1)
-var urlt = "http://n2.lufi99.club/"
+var urlt = "http://5.91jinwandalaohu.xyz/"
 var data = [{ "name": "激情", "id": "1" }, { "name": "家庭", "id": "2" }, { "name": "校园", "id": "3" }, { "name": "武侠", "id": "4" }, { "name": "明星", "id": "5" }, { "name": "人妻", "id": "6" },]
 
 $ui.render({
