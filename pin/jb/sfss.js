@@ -55,7 +55,7 @@ $ui.render({
           var zt = data[i].split("\n")[1]
           ss = ss + zt
         }
-        $app.openURL(ss)
+        $app.openURL("shadowrocket://add/" + ss)
       }
     }
   }, {
@@ -122,7 +122,7 @@ function xiang(obj) {
       {
         title: "添加至小火箭",
         handler: function() {
-          $app.openURL(text[1])
+          $app.openURL("shadowrocket://add/" + text[1])
         }
       },
       {
