@@ -289,7 +289,7 @@ function getzk(id) {
                 ycq = quan.quan_url.replace(/http:\/\/|https:\/\//, "taobao://")
                 $('quanBt').title = "领取隐藏优惠券：" + quan.quan_remark
             } else {
-                $ui.error("未找到该商品隐藏优惠券")
+                $ui.toast("未找到该商品隐藏优惠券")
                 $('quanBt').title = "未找到隐藏优惠券 - 直接购买"
             }
         }
