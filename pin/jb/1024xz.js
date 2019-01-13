@@ -8,7 +8,7 @@ http://ae85.cn/
 
 $cache.set("id", "5")
 $cache.set("pg", 1)
-var urlt = "http://5.91jinwandalaohu.xyz/"
+var urlt = "http://w2.hj97zhx837.pw/"
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 
 $ui.render({
