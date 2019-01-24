@@ -1,9 +1,13 @@
+
 /*
 免费ss
+2019-1-24 更新：
+修复算法出错问题！
+
 by：iPhone 8、小良
 http://ae85.cn/
-博客
-http://87xl.cn/
+
+博客：87xl.cn
 */
 
 var timer, count = 1;
@@ -12,7 +16,7 @@ $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvc3MvcmF3L21hc3Rlci8=") + "free-ss.json",
     handler: function (resp) {
         $ui.loading(false);
-        if (resp.data.bb != "3.0") {
+        if (resp.data.bb != "3.1") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -275,14 +279,16 @@ function zhur() {
                             add.unshift("10/10/10/10")
                         }
                         var f = add[3]
-                        if (f.indexOf('aes-') || f.indexOf('rc4') || f.indexOf('table') || f.indexOf('salsa20') || f.indexOf('chacha20') || f.indexOf('-cfb') || f.indexOf('camellia')) {
-                            var s = add[3]
-                            var m = add[4]
+                        var fy = f.match(/none|table|rc4|salsa20|chacha20|xchacha20|aes-|bf-cfb|camellia-|-cbf|-gcm/)
+                        var s, m
+                        if (fy) {
+                            s = add[3]
+                            m = add[4]
                         } else {
-                            var s = add[4]
-                            var m = add[3]
+                            s = add[4]
+                            m = add[3]
                         }
-                        var ms = Math.floor(Math.random() * (310 - 81 + 51)) + 81;
+                        var ms = Math.floor(Math.random() * (80 - 2 + 1)) + 2;
                         data.push({
                             lt: { src: `${$text.base64Decode(info.img)}${gj[add[6]]}_flag.png` },
                             mc: { text: add[1] },
