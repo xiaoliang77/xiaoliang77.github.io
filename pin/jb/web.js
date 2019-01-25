@@ -4,6 +4,7 @@
  *  关注公众号带你打开ios的另一扇门
  *  by：iPhone 8、小良
  *  http://ae85.cn/
+ *  博客：87xl.cn
  */
 
 $ui.loading(true);
@@ -11,7 +12,7 @@ $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "web.json",
     handler: function (resp) {
         $ui.loading(false);
-        if (resp.data.bb != "1.0") {
+        if (resp.data.bb != "1.1") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -75,7 +76,7 @@ function csh() {
     var urlt = $text.base64Decode(info.turl)
     $ui.render({
         props: {
-            title: "轻量级web浏览器"
+            title: "轻量级web浏览器 1.1"
         },
         views: [{
             type: "input",
@@ -99,6 +100,13 @@ function csh() {
                 id: "web",
                 url: info.dhurl,
                 toolbar: true,
+                script: function () {
+                    var a = document.getElementsByTagName("a")
+                    for (var i = 0; i < a.length; ++i) {
+                        var doc = a[i]
+                        doc.target = "_self"
+                    }
+                }
             },
             layout: function (make, view) {
                 make.top.equalTo($("bjk").bottom).inset(5);
