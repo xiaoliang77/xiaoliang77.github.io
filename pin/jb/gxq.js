@@ -1,19 +1,21 @@
 /*
-小良 - 更新器 2.4
- 2018.10.12
-·修复jsbox不能安装脚本问题。
-·修复workflow规则安装问题。
+小良 - 更新器 2.5
+ 2019.1.26 修复更新
+· 去除红包图标
+· 主界面去除日期显示
 
 by：iPhone 8、小良
 http://ae85.cn/
+
+博客：87xl.cn
 */
 
 const pz = {
-    title: "小良 - 更新器 2.4",
+    title: "小良 - 更新器 2.5",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm:
-        "- 感谢支持 - ae85.cn -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2018"
+        "- 感谢支持 - ae85.cn -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2019"
 };
 
 const menu = {
@@ -54,26 +56,7 @@ const fgx = {
         make.width.equalTo($device.info.screen.width);
     }
 };
-const mrhb = {
-    type: "button",
-    props: {
-        id: "hb_img",
-        radius: 30,
-        src: "http://ae85.cn/wf/hb.jpg"
-    },
-    events: {
-        tapped: function (sender) {
-            $app.openURL(
-                "alipays://platformapi/startapp?appId=20000067&__open_alipay__=YES&url=https%3A%2F%2Frender.alipay.com%2Fp%2Ff%2Ffd-j6lzqrgm%2Fguiderofmklvtvw.html%3Fchannel%3DqrCode%26shareId%3D2088202699097532%26sign%3DAFml1OwpzCQC4IVlQHEDQ0LKkXiaDFyESl0GCk43ahU%253D%26scene%3DofflinePaymentNewSns%26campStr%3Dp1j%252BdzkZl018zOczaHT4Z5CLdPVCgrEXq89JsWOx1gdt05SIDMPg3PTxZbdPw9dL%26token%3Dc1x08164vrc0u6jhg7oslac"
-            );
-        }
-    },
-    layout: function (make, view) {
-        make.bottom.inset(66);
-        make.width.height.equalTo(60);
-        make.right.inset(15);
-    }
-};
+
 const vlist = {
     type: "list",
     props: {
@@ -84,12 +67,12 @@ const vlist = {
                 type: "label",
                 props: {
                     id: "lmc",
-                    font: $font("bold", 21),
+                    font: $font("bold", 23),
                     lines: 0
                 },
                 layout: function (make, view) {
                     make.left.right.inset(10);
-                    make.top.inset(5);
+                    make.top.inset(8);
                 }
             },
             {
@@ -98,7 +81,7 @@ const vlist = {
                     id: "xsqb",
                     text: "显示全部 〉",
                     font: $font(16),
-                    textColor: $color("#848484")
+                    textColor: $color("blue")
                 },
                 layout: function (make) {
                     make.top.inset(5);
@@ -140,24 +123,10 @@ const vlist = {
                                 make.right.left.inset(5);
                             }
                         },
-                        {
-                            type: "label",
-                            props: {
-                                id: "rq",
-                                align: $align.center,
-                                lines: 1,
-                                textColor: $color("#848484"),
-                                font: $font("bold", 12)
-                            },
-                            layout: function (make, view) {
-                                make.top.equalTo($("pm").bottom).offset(5);
-                                make.right.left.inset(5);
-                            }
-                        }
                     ]
                 },
                 layout: function (make) {
-                    make.top.equalTo($("lmc").bottom).inset(10);
+                    make.top.equalTo($("lmc").bottom).inset(15);
                     make.left.right.inset(0);
                     make.height.equalTo(155);
                 },
@@ -194,7 +163,7 @@ function refetch() {
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            if (data.version != "2.4") {
+            if (data.version != "2.5") {
                 $ui.alert({
                     title: "发现新版本",
                     message: resp.data.hant,
@@ -467,7 +436,6 @@ function csh() {
                     }
                 ]
             },
-            mrhb
         ]
     });
 }
@@ -616,7 +584,6 @@ function listjm(bt, ant) {
                     }
                 }
             },
-            mrhb
         ]
     });
 }
@@ -782,7 +749,6 @@ function xqym(data) {
                     make.bottom.equalTo($("fy").top).inset(1);
                 }
             },
-            mrhb
         ]
     });
 }
@@ -805,7 +771,6 @@ function web(url, mc) {
                     make.bottom.equalTo($("fy").top).inset(1);
                 }
             },
-            mrhb
         ]
     });
 }
