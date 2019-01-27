@@ -3,7 +3,7 @@
 更新时间：2018年9月27日
 更新内容：修复无法签到问题。支持多账号签到。增加添加BDUSS功能，添加管理账号，切换账号签到。
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 */
 
 const mrhb = {
@@ -11,7 +11,7 @@ const mrhb = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "http://ae85.cn/wf/hb.jpg"
+    src: "https://ae85.cn/wf/hb.jpg"
   },
   events: {
     tapped: function(sender) {
@@ -54,7 +54,7 @@ function tianjiaui() {
         type: "button",
         props: {
           id: "dr_img",
-          src: "http://ae85.cn/jsbox/img/drlogo.png",
+          src: "https://ae85.cn/jsbox/img/drlogo.png",
           radius: 40
         },
         layout: function(make, view) {
@@ -180,7 +180,7 @@ function tianjiaui() {
         },
         events: {
           tapped: function(sender) {
-            $app.openURL("http://ae85.cn/");
+            $app.openURL("https://ae85.cn/");
           }
         }
       },
@@ -202,7 +202,7 @@ function tianjiaui() {
         },
         events: {
           tapped: function(sender) {
-            $app.openURL("http://ae85.cn/lxfs.html");
+            $app.openURL("https://ae85.cn/lxfs.html");
           }
         }
       },

@@ -4,7 +4,7 @@
 更新：提高房间刷新频率，优化脚本代码。
 内容不可描述
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 
 */
 
@@ -38,7 +38,7 @@ const mrhb = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "http://ae85.cn/wf/hb.jpg",
+    src: "https://ae85.cn/wf/hb.jpg",
   },
   events: {
     tapped: function(sender) {
@@ -56,7 +56,7 @@ var szan = {
   type: "button",
   props: {
     id: "hb_img",
-    src: "http://ae85.cn/wf/xl.png",
+    src: "https://ae85.cn/wf/xl.png",
   },
   events: {
     tapped: function(sender) {
@@ -320,7 +320,7 @@ function sz() {
           props: {
             height: 100,
             lines: 0,
-            text: "by：iPhone 8、小良\nhttp://ae85.cn/",
+            text: "by：iPhone 8、小良\nhttps://ae85.cn/",
             textColor: $color("#198567"),
             align: $align.center,
             font: $font(16)
@@ -337,9 +337,9 @@ function sz() {
           } else if (data == " nPlayer -  跳转App Store商店下载") {
             $app.openURL(urls[2].store)
           } else if (data == "作者官网") {
-            web("http://ae85.cn/", "iPhone 8、小良")
+            web("https://ae85.cn/", "iPhone 8、小良")
           } else if (data == "微信公众号") {
-            web("http://ae85.cn/lxfs.html", "微信公众号-小良Ge")
+            web("https://ae85.cn/lxfs.html", "微信公众号-小良Ge")
           } else if (data == "关于脚本") {
             $ui.alert("关于脚本\n版本：v1.3\n脚本由小良编写\n如有问题欢迎反馈")
           }

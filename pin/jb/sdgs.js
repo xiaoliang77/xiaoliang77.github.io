@@ -2,7 +2,7 @@
 狩都高速 1.1
 2018.10.30 修复更新
  by：iPhone 8、小良
- http://ae85.cn/
+ https://ae85.cn/
 */
 var me = [
   { "name": "最新资源", "id": "/new/1.html?new=1" },

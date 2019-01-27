@@ -4,7 +4,7 @@
 支持：淘宝、京东、舒宁、亚马逊、等各大网商商品历史价格查询。
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 */
 var ycq;
 $ui.render({

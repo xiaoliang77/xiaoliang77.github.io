@@ -3,7 +3,7 @@
 更新：2018年9月16日
 针对1.2版本数据超时就行修复更新
 by：iPhone 8、小良
-更多js脚本： http://ae85.cn/
+更多js脚本： https://ae85.cn/
 
 */
 
@@ -71,7 +71,7 @@ function geturl(url) {
     }
   })
 }
-var html = `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>在快手客户端复制你要下载的视频链接，粘贴到上面并按下获取按钮。<br>首次运行会自动识别并提取无水印视频</h2><br><h1><a href="http://t.cn/EvcoK0y">点击观看</a> 视频教程</h1> <br><h1><a href="http://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><br><h1><a href="http://ae85.cn/lxfs.html">关注公众号</a> VIP视频解析</h1><br><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ae85.cn/">http://ae85.cn/</a> </h2></span></body>`
+var html = `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>在快手客户端复制你要下载的视频链接，粘贴到上面并按下获取按钮。<br>首次运行会自动识别并提取无水印视频</h2><br><h1><a href="http://t.cn/EvcoK0y">点击观看</a> 视频教程</h1> <br><h1><a href="https://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><br><h1><a href="https://ae85.cn/lxfs.html">关注公众号</a> VIP视频解析</h1><br><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
 
 $ui.render({
   props: {
@@ -120,7 +120,7 @@ $ui.render({
       props: {
         id: "bt1",
         radius: 25,
-        src: "http://ae85.cn/wf/hb.jpg",
+        src: "https://ae85.cn/wf/hb.jpg",
         font: $font(20)
       },
       layout: function(make) {
@@ -141,7 +141,7 @@ $ui.render({
       type: "button",
       props: {
         id: "bt2",
-        src: "http://ae85.cn/jsbox/img/xiazai.png",
+        src: "https://ae85.cn/jsbox/img/xiazai.png",
         font: $font(20)
       },
       layout: function(make) {

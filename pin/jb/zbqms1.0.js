@@ -2,7 +2,7 @@
 直播 - 秋名山见
 内容不可描述
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 
 */
 
@@ -37,7 +37,7 @@ var szan = {
   type: "button",
   props: {
     id: "hb_img",
-    src: "http://ae85.cn/wf/xl.png",
+    src: "https://ae85.cn/wf/xl.png",
   },
   events: {
     tapped: function(sender) {
@@ -151,7 +151,7 @@ function getpt(info) {
       var arr = json.match(/<liid=.*?<\/li>/g)
       var data = [{
         tx: {
-          src: "http://ae85.cn/wf/hb.jpg"
+          src: "https://ae85.cn/wf/hb.jpg"
         },
         mc: {
           text: "福利(200)"
@@ -197,7 +197,7 @@ function getlist(id, mc) {
       var arr = json.match(/<li.*?<\/li>/g)
       var data = [{
         tx: {
-          src: "http://ae85.cn/wf/hb.jpg"
+          src: "https://ae85.cn/wf/hb.jpg"
         },
         mc: {
           text: "每日福利"
@@ -311,7 +311,7 @@ function sz() {
           props: {
             height: 100,
             lines: 0,
-            text: "by：iPhone 8、小良\nhttp://ae85.cn/",
+            text: "by：iPhone 8、小良\nhttps://ae85.cn/",
             textColor: $color("#198567"),
             align: $align.center,
             font: $font(16)
@@ -328,7 +328,7 @@ function sz() {
           } else if (data == "nPlayer -  跳转App Store商店下载") {
             $app.openURL(urls[2].store)
           } else if (data == "作者官网") {
-            web("http://ae85.cn/","iPhone 8、小良")
+            web("https://ae85.cn/","iPhone 8、小良")
           } else if (data == "作者微博") {
             web("https://weibo.com/u/2934241775","小良Ge")
           } else if (data == "关于脚本") {

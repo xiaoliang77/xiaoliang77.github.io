@@ -4,7 +4,7 @@
 点击下载图标即可下载当前播放视频。
 长按下载图标可复制视频链接到剪贴板。
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 */
 
 const base64 = "aHR0cHM6Ly9naXRlZS5jblzveWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyL2RvdXlpbi5qc29u"
@@ -132,7 +132,7 @@ $ui.render({
     type: "button",
     props: {
       id: "hb_img",
-      src: "http://ae85.cn/wf/hb.jpg",
+      src: "https://ae85.cn/wf/hb.jpg",
       radius: 30
     },
     events: {
@@ -221,7 +221,7 @@ function web(url) {
         type: "button",
         props: {
           id: "bt2",
-          src: "http://ae85.cn/jsbox/img/xiazai.png",
+          src: "https://ae85.cn/jsbox/img/xiazai.png",
           font: $font(20)
         },
         layout: function(make) {

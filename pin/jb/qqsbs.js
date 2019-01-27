@@ -1,7 +1,7 @@
 /*
 QQ刷步数
 by: iPhone 8、小良
-个人网站：http://ae85.cn/
+个人网站：https://ae85.cn/
 演示视频：http://t.cn/REzq9hu
 
 */
@@ -187,7 +187,7 @@ editable: false,
          },
          events: {
            tapped: function(sender) {
-             $app.openURL("http://ae85.cn/")
+             $app.openURL("https://ae85.cn/")
            }
 
          }

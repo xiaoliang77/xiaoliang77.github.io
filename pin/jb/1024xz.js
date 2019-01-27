@@ -2,7 +2,7 @@
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 */
 
 
@@ -118,7 +118,7 @@ function geting(id, mc) {
                     type: "button",
                     props: {
                         id: "hb_img",
-                        src: "http://ae85.cn/jsbox/img/xun.jpg",
+                        src: "https://ae85.cn/jsbox/img/xun.jpg",
                         radius: 30
                     },
                     events: {
@@ -157,7 +157,7 @@ function geturl(url, dian) {
                         actions: [{
                             title: "跳转安装",
                             handler: function () {
-                                $app.openURL("http://ae85.cn/yy.html");
+                                $app.openURL("https://ae85.cn/yy.html");
                             }
                         },
                         {

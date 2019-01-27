@@ -3,7 +3,7 @@
  *  视频教程: http://t.cn/EGtlxQ5
 
  *  by：iPhone 8、小良
- *  http://ae85.cn/
+ *  https://ae85.cn/
 */
 var rce = ["netease", "tencent", "xiami", "kugou", "baidu"]
 $cache.set("srce", 0);

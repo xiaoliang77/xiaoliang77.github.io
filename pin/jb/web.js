@@ -3,7 +3,7 @@
  *  ID：ae85-cn
  *  关注公众号带你打开ios的另一扇门
  *  by：iPhone 8、小良
- *  http://ae85.cn/
+ *  https://ae85.cn/
  *  博客：87xl.cn
  */
 

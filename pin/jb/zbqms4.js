@@ -4,7 +4,7 @@
 更新：修复不能用问题。
 内容不可描述
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 
 */
 
@@ -38,7 +38,7 @@ const mrhb = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "http://ae85.cn/wf/hb.jpg",
+    src: "https://ae85.cn/wf/hb.jpg",
   },
   events: {
     tapped: function(sender) {
@@ -56,7 +56,7 @@ var szan = {
   type: "button",
   props: {
     id: "hb_img",
-    src: "http://ae85.cn/wf/xl.png",
+    src: "https://ae85.cn/wf/xl.png",
   },
   events: {
     tapped: function(sender) {
@@ -235,7 +235,7 @@ function cshyz() {
           type: "web",
           props: {
             id: "webyz",
-            html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><h1>使用说明：</h1><h2>为了防止脚本恶意传播，密码将会定期修改，失效后重新到公众号获取即可。</h2><h1>密码获取：</h1><h2>前往公众号【VIP视频解析】在聊天窗口中回复〖903〗即可获取。<br></h2><br><h1><a href="http://t.cn/E7LC0v4">点击观看</a> 视频教程</h1> <h1><a href="http://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><h1><a href="http://ae85.cn/lxfs.html">关注公众号</a> VIP视频解析</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ae85.cn/">http://ae85.cn/</a> </h2></span></body>`
+            html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><h1>使用说明：</h1><h2>为了防止脚本恶意传播，密码将会定期修改，失效后重新到公众号获取即可。</h2><h1>密码获取：</h1><h2>前往公众号【VIP视频解析】在聊天窗口中回复〖903〗即可获取。<br></h2><br><h1><a href="http://t.cn/E7LC0v4">点击观看</a> 视频教程</h1> <h1><a href="https://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><h1><a href="https://ae85.cn/lxfs.html">关注公众号</a> VIP视频解析</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
           },
           layout: function(make) {
             make.top.equalTo($("wd").bottom).inset(10);
@@ -426,7 +426,7 @@ function sz() {
           props: {
             height: 100,
             lines: 0,
-            text: "by：iPhone 8、小良\nhttp://ae85.cn/",
+            text: "by：iPhone 8、小良\nhttps://ae85.cn/",
             textColor: $color("#198567"),
             align: $align.center,
             font: $font(16)
@@ -443,9 +443,9 @@ function sz() {
           } else if (data == " nPlayer -  跳转App Store商店下载") {
             $app.openURL(urls[2].store)
           } else if (data == "作者官网") {
-            web("http://ae85.cn/", "iPhone 8、小良")
+            web("https://ae85.cn/", "iPhone 8、小良")
           } else if (data == "微信公众号") {
-            web("http://ae85.cn/lxfs.html", "微信公众号-小良Ge")
+            web("https://ae85.cn/lxfs.html", "微信公众号-小良Ge")
           } else if (data == "关于脚本") {
             $ui.alert("关于脚本\n版本：v1.4\n脚本由小良编写\n如有问题欢迎反馈")
           }

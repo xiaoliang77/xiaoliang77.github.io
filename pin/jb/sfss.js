@@ -2,7 +2,7 @@
 脚本数据来自另一个App收费节点。节点可以添加到小火箭或其他App中使用。
 
 by：iPhone 8、小良
-更多脚本：http://ae85.cn/
+更多脚本：https://ae85.cn/
 */
 
 
@@ -61,7 +61,7 @@ $ui.render({
   }, {
     type: "text",
     props: {
-      text: "注：\n脚本数据来自另一个App收费节点。\n节点可以添加到小火箭或其他App中使用。\n\n使用方法：\n1).可一键添加至小火箭中。\n2).可点击节点查看详情手动添加至vpn软件中。\n3).可向左滑动生成二维码以二维码方式添加到vpn软件中。\n\nby：iPhone 8、小良\n更多脚本：http://ae85.cn/",
+      text: "注：\n脚本数据来自另一个App收费节点。\n节点可以添加到小火箭或其他App中使用。\n\n使用方法：\n1).可一键添加至小火箭中。\n2).可点击节点查看详情手动添加至vpn软件中。\n3).可向左滑动生成二维码以二维码方式添加到vpn软件中。\n\nby：iPhone 8、小良\n更多脚本：https://ae85.cn/",
       editable: false,
       textColor: $color("#FF4040")
     },

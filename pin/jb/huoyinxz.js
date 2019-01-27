@@ -2,7 +2,7 @@
 火萤m3u8转指尖浏览器下载
 by：iPhone 8、小良
 更多规则：添加 小良-更新器 或
-http://ae85.cn/
+https://ae85.cn/
 第n个版本
 
 */
@@ -295,7 +295,7 @@ function download(title, url) {
 
           },
           longPressed: function(sender) {
-            $app.openURL("http://ae85.cn/")
+            $app.openURL("https://ae85.cn/")
           }
 
         }
@@ -363,7 +363,7 @@ function sz() {
           props: {
             height: 100,
             lines: 0,
-            text: "by：iPhone 8、小良\n\nhttp://ae85.cn/",
+            text: "by：iPhone 8、小良\n\nhttps://ae85.cn/",
             textColor: $color("#198567"),
             align: $align.center,
             font: $font(16)
@@ -381,7 +381,7 @@ function sz() {
           } else if (data == "3.3旧版 - 在线安装 (部分系统不支持)") {
             $app.openURL("itms-services://?action=download-manifest&url=https%3A%2F%2Fdafuvip.com%2Fshow%2Fplist%2F37336%3F1514395051")
           } else if (data == "联系作者") {
-            $app.openURL("http://ae85.cn/")
+            $app.openURL("https://ae85.cn/")
           } else if (data == "使用教程") {
             $ui.push({
               props: {
@@ -390,7 +390,7 @@ function sz() {
               views: [{
                   type: "web",
                   props: {
-                    url: "http://ae85.cn/"
+                    url: "https://ae85.cn/"
                   },
                   layout: function(make, view) {
                     make.left.right.inset(0)

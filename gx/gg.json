@@ -1,12 +1,12 @@
 {
   "version": "1.3",
   "hant": "2018年3月13日 - 更新\n\n更新内容：\n本次更新支持JSBox脚本安装！\n更新后将会自动识别是在pin还是在JSBox上运行！\n\n 注：由于新版pin不支持脚本导入，可复制代码后新建脚本粘贴即可使用！\n\n如果无法更新请前往小良微博或或者直接联系小良！",
-  "bburl": "http://ae85.cn/pin/jb/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%201.3",
+  "bburl": "https://ae85.cn/pin/jb/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%201.3",
   "workflow": {
     "bb": "3.0",
     "sm": "更新说明：\n取消支持宝红包活动\n新增无图列表",
-    "gg": "欢迎使用【小良-更新器】\n此规则只用于更新小良个人作品\n未经允许请勿转载，谢谢！\nhttp://ae85.cn\n----------------------------\n全新改版只为更好体验",
-    "url": "http://ae85.cn/"
+    "gg": "欢迎使用【小良-更新器】\n此规则只用于更新小良个人作品\n未经允许请勿转载，谢谢！\nhttps://ae85.cn\n----------------------------\n全新改版只为更好体验",
+    "url": "https://ae85.cn/"
   },
   "data": {
     "gz": [
@@ -288,7 +288,7 @@
         "rq": "更新：2018年5月15日",
         "details": "更新：向右滑动可插看节点详情和生成二维码。\n新增一键获取所有节点\n需要先安装好小火箭(Shadowrocket)这个app",
         "jsurl": "http://t.cn/RR9HIyg",
-        "url": "http://ae85.cn/pin/jb/ss1j.js&name=SS%E8%8A%82%E7%82%B9%E4%B8%80%E9%94%AE%E8%8E%B7%E5%8F%96%201.1",
+        "url": "https://ae85.cn/pin/jb/ss1j.js&name=SS%E8%8A%82%E7%82%B9%E4%B8%80%E9%94%AE%E8%8E%B7%E5%8F%96%201.1",
         "button": "添加 - js脚本 (长按复制代码)"
       },
       {
@@ -297,7 +297,7 @@
         "rq": "更新：2018年4月11日",
         "details": "由于js版要比Workflow版界面好，所以小良花了点时间做了个js版的，极速影院",
         "jsurl": "http://t.cn/RmosA7Y",
-        "url": "http://ae85.cn/pin/jb/yingyuan.js&name=%E6%9E%81%E9%80%9F%E5%BD%B1%E9%99%A2",
+        "url": "https://ae85.cn/pin/jb/yingyuan.js&name=%E6%9E%81%E9%80%9F%E5%BD%B1%E9%99%A2",
         "button": "添加 - js脚本 (长按复制代码)"
       },
       {
@@ -306,7 +306,7 @@
         "rq": "更新：2018年3月1日",
         "details": "更新新增记住账号密码功能\n刷的步数可以领取现金红包\n注: 不要刷太高，有封号危险",
         "jsurl": "http://t.cn/REzq9hu",
-        "url": "http://ae85.cn/pin/jb/qqsbs1.js&name=QQ%E5%88%B7%E8%BF%90%E5%8A%A8%E6%AD%A5%E6%95%B0%201.1",
+        "url": "https://ae85.cn/pin/jb/qqsbs1.js&name=QQ%E5%88%B7%E8%BF%90%E5%8A%A8%E6%AD%A5%E6%95%B0%201.1",
         "button": "添加 - js脚本 (长按复制代码)"
       },
       {
@@ -315,7 +315,7 @@
         "rq": "js脚本版",
         "details": "下载需要配合指尖浏览器使用\n可以设置根据你安装的指尖版本选择使用\n\n如果不会使用点击下方的查看教程",
         "jsurl": "http://t.cn/RHYPXsV",
-        "url": "http://ae85.cn/pin/jb/huoyinxz.js&name=%E7%81%AB%E8%90%A4%E8%A7%86%E9%A2%91%E6%97%A0%E6%B0%B4%E5%8D%B0%E4%B8%8B%E8%BD%BD",
+        "url": "https://ae85.cn/pin/jb/huoyinxz.js&name=%E7%81%AB%E8%90%A4%E8%A7%86%E9%A2%91%E6%97%A0%E6%B0%B4%E5%8D%B0%E4%B8%8B%E8%BD%BD",
         "button": "添加 - js脚本 (长按复制代码)"
       },
       {
@@ -324,7 +324,7 @@
         "rq": "更新：2017年11月17日",
         "details": "更新了解析接口\n支持：爱奇艺、腾讯、优酷、芒果、等Vip视频\n\n如果不会使用点击下方的查看教程",
         "jsurl": "http://t.cn/RNTHBSq",
-        "url": "http://ae85.cn/pin/jb/Vip-jx.js&name=Vip%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90",
+        "url": "https://ae85.cn/pin/jb/Vip-jx.js&name=Vip%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90",
         "button": "添加 - js脚本 (长按复制代码)"
       },
       {
@@ -333,7 +333,7 @@
         "rq": "更新：2017年11月17日",
         "details": "快速启动下载工具并将剪切板内容传递给下载工具，前提是下载工具需要支持URL schemes数据接收。\n\n例：迅雷、完美下载器、等下载工具是支持URL schemes数据接收的",
         "jsurl": "http://www.yixia.com/u/paike_agjgihl1hv",
-        "url": "http://ae85.cn/pin/jb/xiazaijihe.js&name=%E4%B8%8B%E8%BD%BD%E9%9B%86%E5%90%88",
+        "url": "https://ae85.cn/pin/jb/xiazaijihe.js&name=%E4%B8%8B%E8%BD%BD%E9%9B%86%E5%90%88",
         "button": "添加 - js脚本 (长按复制代码)"
       },
       {
@@ -342,7 +342,7 @@
         "rq": "更新：2017年9月12日",
         "details": "由于服务器问题导致规则无法使用汉字命名，添加脚本后自行改名\n\n如果不会使用点击下方的查看教程",
         "jsurl": "http://t.cn/RpCY4TN",
-        "url": "http://ae85.cn/pin/jb/kuaishou.js&name=%E5%BF%AB%E6%89%8B%E5%8E%BB%E6%B0%B4%E5%8D%B0%E4%B8%8B%E8%BD%BD",
+        "url": "https://ae85.cn/pin/jb/kuaishou.js&name=%E5%BF%AB%E6%89%8B%E5%8E%BB%E6%B0%B4%E5%8D%B0%E4%B8%8B%E8%BD%BD",
         "button": "添加 - js脚本 (长按复制代码)"
       },
       {
@@ -351,7 +351,7 @@
         "rq": "更新：2017年9月1日",
         "details": "启动项必须要在Workflow里有这个规则\n\n可自己行修改名称动作",
         "jsurl": "",
-        "url": "http://ae85.cn/pin/jb/Workflow.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8",
+        "url": "https://ae85.cn/pin/jb/Workflow.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8",
         "button": "添加 - js脚本 (长按复制代码)"
       }
     ],
@@ -370,7 +370,7 @@
         "image": "appcss/Youtube.jpg",
         "rq": "更新：2018年3月9日",
         "details": "1080p下载、去视频广告等功能\n⚡️️ v12.44.16      💾76.4MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://tbsq.tongbu.com/XEpkdsSqRwdvz6BeOtivveMmEYlUZOPG_plus_7Sll8Yhh0FKpesh9dFLa0UNvzXJ6lwvPjjZxy2LJ_plus__tab_h4hiX8UL44Kt_tab_2rfwOTczUND_plus_Vz1_plus_L1KWSfqu_plus_91d_plus_IIuFzasVKb_plus_UnSq9ourO01YfTWX6PWWYdlrWnH54fOOAFPx4F2Nb4vTugbIit_plus_E7t0HUIk_plus_K_tab__tab_vSKahnjALRxPsVTOCbT3qFssUA0QLC5p3Q4fizSw_tab_rUSTb8nzhwfMpw_@_3d_@_3d.plist",
         "button": "点击 - 安装"
       },
@@ -379,7 +379,7 @@
         "image": "appcss/filza.png",
         "rq": "更新：2018年3月9日",
         "details": "ios11~11.1.2 可查系统文件\n改字体、美化主题、游戏破解、等",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://tbsq.tongbu.com/XEpkdsSqRwdvz6BeOtivveMmEYlUZOPG_plus_7Sll8Yhh0FKpesh9dFLa0UNvzXJ6lwv_tab_awENC_plus__tab_cp3ieBABINYa_tab_eFd6s_plus_jWckxLi167TOKGpk7EfqoEhjz5PNp0AKdNwg_tab_NF8C7qTW_plus_DlwZm_tab_7Abjv_plus_cl0MnmS7mY8f_plus_B_plus_le8WRqDpmkCT_tab_XLLhPR7n9EwCVXp9YnB3G5nv_plus_hHkePKcjV9FBSNFl2RxmL9sGBp2_plus_BHTiN73GCf42HEeFqHiiOixz5b.plist",
         "button": "点击 - 进入"
       },
@@ -388,7 +388,7 @@
         "image": "appcss/Twitter.jpg",
         "rq": "更新：2018年3月9日",
         "details": "可本地保存图片、视频等功能\n⚡️️ v7.11      💾82.3MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://tbsq.tongbu.com/XEpkdsSqRwdvz6BeOtivvT2j1GTgjjv0EyL1NxTQ1B87tYJ6cvDQ_plus_ALy1jXNYyqs2MlyaMLbMq0Mc64wVnqERUubyQlwZVj2VywHKum53UeKXZ1cqJ0IXP3vAjqIPdBO1yQDeuA_tab_D5VhcQe8d_tab_umR38PCAjhtB792PYZLIWGyhOwzzJWMN0SbuCwbZuGLSJYckg0501PHhGeavdldX_tab__plus_bm_plus_RQ_plus_QLQBaGqOmNE459TLGicGqxWm9xLw_@_3d_@_3d.plist",
         "button": "点击 - 安装"
       },
@@ -397,7 +397,7 @@
         "image": "appcss/CoolPixel.jpg",
         "rq": "更新：2018年3月9日",
         "details": "支持内录\n⚡️️ v1.5.1      💾47.9MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://tbsq.tongbu.com/XEpkdsSqRwdvz6BeOtivvQhbKe04wKgWpHcutXJ9YXzUh_plus_kAJNkHZlegWGGQdiHaGRmEVFPVS3OP16uXbdytFLQ_tab_Jm8mROv339NYbtPfE1_plus_fuKnOyTPXSwvy0oZRkth5MQ1sOIYhMiwjy0KC5SuLSgqUWT_plus_PjWqJ9a4jKP7DQIQmECxV_tab_BJ5KQ89MYMbocSMBE4srHEwc6JZQ_tab_edfCfC5al_plus_PK3m9GXzz9sod4Ut20czvI2m0DpMVsG7Z74hZ6bD.plist",
         "button": "点击 - 安装"
       },
@@ -406,7 +406,7 @@
         "image": "appcss/AirShou.jpg",
         "rq": "更新：2018年3月9日",
         "details": "支持高清录屏，同时也有直播功能\n⚡️️ v0.6.0      💾17.6MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://tbsq.tongbu.com/XEpkdsSqRwdvz6BeOtivveMmEYlUZOPG_plus_7Sll8Yhh0FKpesh9dFLa0UNvzXJ6lwvhy4kK678xHRjNtRIPRwxLaNrOIbAtklBDv_tab_zXTreeGosYuiMZMYB_tab_l_plus_Xr8Cdni8qGWxcSe8fjFc3fyhscCt2jbDwF4Zz8W_tab_8_plus_FlfMNjZS0wmMeBq8xpdnPPMv8t_plus_EnHFQgq7a3DevLHziCdgojGdCsAOWvlNPfGLj57aGYNMr5Y_@_3d.plist",
         "button": "点击 - 安装"
       },
@@ -415,7 +415,7 @@
         "image": "appcss/xunlei.png",
         "rq": "更新：2018年2月3日",
         "details": "更新支持 ios 11 系统\n⚡️️ v5.3      💾未知",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fithunder-ota.a.88cdn.com%2FMobileThunder%2Fapple%2F5.30.1.3057%2Fbf1d7aaee231ea5b5667b36049df6402%2Ff457c545a9ded88f18ecee47145a72c0.plist%3Ft%3D1506940701709",
         "button": "点击 - 安装"
       },
@@ -424,7 +424,7 @@
         "image": "appcss/yemaoys.png",
         "rq": "更新：2018年1月11日",
         "details": "全程视频无广告，海量高清资源\n⚡️️ v1.0.5      💾未知",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://lastwarm.leus.cc/yemootv/ymys.plist",
         "button": "点击 - 安装"
       },
@@ -442,7 +442,7 @@
         "image": "appcss/weixin.jpg",
         "rq": "三方微信有封号危险",
         "details": "微信多开，带抢红包插件功能",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://tbsq.tongbu.com/plist/zb/20171212/1618_10013544_121505.plist",
         "button": "点击 - 安装"
       },
@@ -451,7 +451,7 @@
         "image": "appcss/phico.png",
         "rq": "三方应用商店",
         "details": "免费下载收费应用或游戏的平台，无需越狱、无需Apple ID",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://tbsq.tongbu.com/plist/kkzs/20171124/882__iPhone_v1.0.1_202019.plist",
         "button": "点击 - 安装"
       },
@@ -460,7 +460,7 @@
         "image": "appcss/zhijian.jpg",
         "rq": "新版",
         "details": "支持m3u8转mp4格式下载的浏览器\n⚡️️ v1.1      💾45.88MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "https://itunes.apple.com/cn/app/%E6%8C%87%E5%B0%96%E6%B5%8F%E8%A7%88%E5%99%A8-%E5%AE%89%E5%85%A8%E5%BF%AB%E9%80%9F%E7%9A%84%E4%B8%8A%E7%BD%91%E6%B5%8F%E8%A7%88%E5%99%A8/id1279128759?mt=8",
         "button": "点击 - 安装"
       },
@@ -469,7 +469,7 @@
         "image": "appcss/Vidiyu.jpg",
         "rq": "证书过期",
         "details": "支持内录\n⚡️️ v2.5      💾1.9MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tj3rWTiqVzpN1im8bbncini5iwltWrYazj0r2pm2WupMc,%2Ftitle%2FVidiyu",
         "button": "点击 - 安装"
       },
@@ -478,7 +478,7 @@
         "image": "appcss/EveryCord.jpg",
         "rq": "证书过期",
         "details": "功能没试过，具体自己测试\n⚡️️ v1.1.5      💾19.1MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tj3rWTiqVzpN1im8bbncini5iwltWrYZvw08apaaa3mJScorc,%2Ftitle%2FEveryCord",
         "button": "点击 - 安装"
       },
@@ -487,7 +487,7 @@
         "image": "appcss/Instagram.jpg",
         "rq": "证书过期",
         "details": "全屏查看媒体、下载等功能\n⚡️️ v24.00      💾69.5MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Td0sKZlphzpN1im8bbncini5iwmcpie8Tt4rWXmJiyX5Fhm8bb%2Ftitle%2FInstagram%252B%252B",
         "button": "点击 - 安装"
       },
@@ -496,7 +496,7 @@
         "image": "appcss/Cute CUT Pro.jpg",
         "rq": "证书过期",
         "details": "Appstore收费￥40，这里免费提供\n⚡️️ v1.8.5      💾未知",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tj3rWTiqVzpN1im8bbnbWglqq5o9iYYZnv4rlzm6uVptVhm8bb%2Ftitle%2FCute%2520Cut%2520Pro",
         "button": "点击 - 安装"
       },
@@ -505,7 +505,7 @@
         "image": "appcss/yalu102.jpg",
         "rq": "证书过期",
         "details": "方便快捷ios10越狱工具\n⚡️️ v(ios10.2)      💾8MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tj3rWTiqVzpN1im8bbncini5iwltWrYa_b2slhVmmPdpScorc,%2Ftitle%2FJailbreak%2520Yalu102%2520b7",
         "button": "点击 - 安装"
       },
@@ -514,7 +514,7 @@
         "image": "appcss/pangu.jpg",
         "rq": "证书过期",
         "details": "可越狱ios 9.2-9.3.3\n⚡️️ v1.1      💾22.4MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tj3rWTiqVzpN1im8bbncini5iwltWrYabb3LulV2iPdpScorc,%2Ftitle%2FJailbreak%2520Pangu%25201.1",
         "button": "点击 - 安装"
       },
@@ -523,7 +523,7 @@
         "image": "appcss/dyjl.png",
         "rq": "证书过期",
         "details": "创作出属于您自己的微电影\n⚡️️ 未知      💾未知",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://dl.i4.cn/plistfile/2017/08/17/08/z1502929488431_474002.plist",
         "button": "点击 - 安装"
       },
@@ -532,7 +532,7 @@
         "image": "appcss/Downloader.jpg",
         "rq": "不支持10.2以上系统",
         "details": "支持urlschemes数据的下载工具\n⚡️️ v1.8      💾7.3MB",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://dl.i4.cn/plistfile/2014/03/02/15/c1393745130154_229910.plist",
         "button": "点击 - 安装"
       },
@@ -541,7 +541,7 @@
         "image": "appcss/Shadowrocket.jpg",
         "rq": "不支持10.2以上系统",
         "details": "一款使用简单的翻墙工具\n⚡️️ v未知      💾未知",
-        "jsurl": "http://ae85.cn/appcss/appts.png",
+        "jsurl": "https://ae85.cn/appcss/appts.png",
         "url": "itms-services://?action=download-manifest&url=https://dl.i4.cn/plistfile/2017/07/02/05/z1498943535353_545494.plist",
         "button": "点击 - 安装"
       }
@@ -712,7 +712,7 @@
       {
         "title": "更多视频教程",
         "image": "wf/mp.jpg",
-        "rq": "http://ae85.cn/",
+        "rq": "https://ae85.cn/",
         "details": "有新教程第一时间发这里\n演示视频、视频教程、等",
         "jsurl": "http://www.yixia.com/u/paike_agjgihl1hv",
         "url": "http://www.yixia.com/u/paike_agjgihl1hv",
@@ -734,8 +734,8 @@
         "image": "wf/zxdm.png",
         "rq": "查看详情",
         "details": "最后更新：2017年11月17日",
-        "jsurl": "http://ae85.cn/jxdm.html",
-        "url": "http://ae85.cn/jxdm.html",
+        "jsurl": "https://ae85.cn/jxdm.html",
+        "url": "https://ae85.cn/jxdm.html",
         "button": "点击进入查看最新-解析代码",
         
       },
@@ -744,8 +744,8 @@
         "image": "wf/zxjk.png",
         "rq": "查看详情",
         "details": "最后更新：2017年11月17日",
-        "jsurl": "http://ae85.cn/jxjk.html",
-        "url": "http://ae85.cn/jxjk.html",
+        "jsurl": "https://ae85.cn/jxjk.html",
+        "url": "https://ae85.cn/jxjk.html",
         "button": "点击进入查看最新-解析接口",
         
       },
@@ -754,8 +754,8 @@
         "image": "wf/128.png",
         "rq": "查看详情",
         "details": "支持：ios、os、Android、Windows",
-        "jsurl": "http://ae85.cn/zx.html",
-        "url": "http://ae85.cn/zx.html",
+        "jsurl": "https://ae85.cn/zx.html",
+        "url": "https://ae85.cn/zx.html",
         "button": "点击进入-使用在线解析",
         
       },
@@ -764,8 +764,8 @@
         "image": "wf/Safari.png",
         "rq": "查看详情",
         "details": "免越狱、无需下载任何工具，软件",
-        "jsurl": "http://ae85.cn/s.html",
-        "url": "http://ae85.cn/s.html",
+        "jsurl": "https://ae85.cn/s.html",
+        "url": "https://ae85.cn/s.html",
         "button": "点击进入-查看教程",
         
       },
@@ -774,8 +774,8 @@
         "image": "wf/Pin.png",
         "rq": "查看详情",
         "details": "免越狱、需要下载Pin软件\n\n用pin动作就可以了",
-        "jsurl": "http://ae85.cn/sj.html",
-        "url": "http://ae85.cn/sj.html",
+        "jsurl": "https://ae85.cn/sj.html",
+        "url": "https://ae85.cn/sj.html",
         "button": "点击进入-查看教程",
         
       },
@@ -784,8 +784,8 @@
         "image": "wf/dn.png",
         "rq": "查看详情",
         "details": "支持：UC、谷歌、360、等浏览器",
-        "jsurl": "http://ae85.cn/cj.html",
-        "url": "http://ae85.cn/cj.html",
+        "jsurl": "https://ae85.cn/cj.html",
+        "url": "https://ae85.cn/cj.html",
         "button": "点击进入-查看教程",
         
       }
@@ -805,7 +805,7 @@
         "image": "wf/zfb.png",
         "rq": "谢谢打赏！",
         "details": "您的支持是我最大的动力！",
-        "jsurl": "http://ae85.cn/wf/skrwm3.png",
+        "jsurl": "https://ae85.cn/wf/skrwm3.png",
         "url": "HTTPS://QR.ALIPAY.COM/FKX07038XP8DFXMTZPR64A",
         "button": "点击 - 支付宝 - 打赏",
         
@@ -824,17 +824,17 @@
         "image": "wf/qq.png",
         "rq": "进QQ交流群-点这里",
         "details": "有什么问题可以微博私信给我！\n\n也可以扫描下面二维码加入QQ群一起聊天！",
-        "jsurl": "http://ae85.cn/wf/qqqun.png",
+        "jsurl": "https://ae85.cn/wf/qqqun.png",
         "url": "http://wpa.qq.com/msgrd?v=3&uin=84088289&site=qq&menu=yes",
         "button": "点击 - 与小良聊天"
       },
       {
-        "title": "小良个人网站：http://ae85.cn",
+        "title": "小良个人网站：https://ae85.cn",
         "image": "wf/xl.png",
         "rq": "收藏下吧！",
         "details": "一个简单而不一般的网站！\n\n你值得拥有，哈哈！",
-        "jsurl": "http://ae85.cn/qt.html",
-        "url": "http://ae85.cn/",
+        "jsurl": "https://ae85.cn/qt.html",
+        "url": "https://ae85.cn/",
         "button": "点击 - 立即访问"
       }
     ]

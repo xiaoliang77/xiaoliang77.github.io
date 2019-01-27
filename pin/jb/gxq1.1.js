@@ -81,7 +81,7 @@ $ui.render({
     }
   ]
 })
-var dnaem = "http://ae85.cn/"
+var dnaem = "https://ae85.cn/"
 var version = "1.1"
 $ui.loading(true)
 

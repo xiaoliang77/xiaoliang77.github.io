@@ -5,7 +5,7 @@
 可查看更多作品进行下载
 
 by：iPhone 8、小良
-更多js脚本： http://ae85.cn/
+更多js脚本： https://ae85.cn/
 
 */
 $ui.render({
@@ -43,7 +43,7 @@ $ui.render({
       type: "web",
       props: {
         id: "web",
-        html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>在快手客户端复制你要下载的视频链接，粘贴到上面并按下获取按钮。<br>首次运行会自动识别并提取无水印视频</h2><br><h1><a href="http://t.cn/RrLlW7b">点击观看</a> 视频教程</h1> <br><h1><a href="http://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><br><br><br><br><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ae85.cn/">http://ae85.cn/</a> </h2></span></body>`
+        html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>在快手客户端复制你要下载的视频链接，粘贴到上面并按下获取按钮。<br>首次运行会自动识别并提取无水印视频</h2><br><h1><a href="http://t.cn/RrLlW7b">点击观看</a> 视频教程</h1> <br><h1><a href="https://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><br><br><br><br><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
       },
       layout: function(make) {
         make.top.equalTo($("button").bottom).inset(10)
@@ -126,7 +126,7 @@ function shes(url) {
         type: "button",
         props: {
           id: "bt1",
-          src: "http://ae85.cn/jsbox/img/gengduo.png",
+          src: "https://ae85.cn/jsbox/img/gengduo.png",
           font: $font(20)
         },
         layout: function(make) {
@@ -148,7 +148,7 @@ function shes(url) {
         type: "button",
         props: {
           id: "bt2",
-          src: "http://ae85.cn/jsbox/img/xiazai.png",
+          src: "https://ae85.cn/jsbox/img/xiazai.png",
           font: $font(20)
         },
         layout: function(make) {

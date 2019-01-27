@@ -5,7 +5,7 @@
 上滑下拉可切换视频。
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 */
 if($app.info.bundleID == "app.cyan.pin"){
     $ui.alert("该脚本不支持Pin！\n请使用JSBox");

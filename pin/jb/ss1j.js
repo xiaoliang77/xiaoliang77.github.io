@@ -3,7 +3,7 @@
 更新(2018.5.15)：向右滑动可插看节点详情和生成二维码。
 前提是要先安装好小火箭(Shadowrocket)这个app
 by：iPhone8、小良
-http://ae85.cn/
+https://ae85.cn/
 
 演示视频：
 http://t.cn/R8rDfQD
@@ -50,7 +50,7 @@ $ui.render({
 
         },
         longPressed: function(sender) {
-          $app.openURL("http://ae85.cn/")
+          $app.openURL("https://ae85.cn/")
         }
 
       }
@@ -127,7 +127,7 @@ var ssz = ""
 
 function ss() {
   $http.get({
-    url: "http://ae85.cn/ssm.json",
+    url: "https://ae85.cn/ssm.json",
     handler(resp) {
       var arr = resp.data
       bbyz(arr.bb)
@@ -155,7 +155,7 @@ function bbyz(bb) {
       actions: [{
         title: "访问小良网站",
         handler: function() {
-          $app.openBrowser({ url: "http://ae85.cn/" })
+          $app.openBrowser({ url: "https://ae85.cn/" })
         }
       }, {
         title: "关注小良微博",
