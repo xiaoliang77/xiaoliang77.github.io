@@ -1,9 +1,8 @@
 /*
-小良 - 更新器 2.5
- 2019.1.26 修复更新
-· 去除红包图标
-· 主界面去除日期显示
-
+小良 - 更新器 2.6
+ 2019.1.27 修复更新
+· http更改为https
+. 提搞域名安全性
 by：iPhone 8、小良
 https://ae85.cn/
 
@@ -11,7 +10,7 @@ https://ae85.cn/
 */
 
 const pz = {
-    title: "小良 - 更新器 2.5",
+    title: "小良 - 更新器 2.6",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm:
@@ -151,8 +150,6 @@ const vlist = {
     }
 };
 
-var urlt = "https://ae85.cn/";
-
 function refetch() {
     $ui.loading(true);
     $http.get({
@@ -163,7 +160,7 @@ function refetch() {
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            if (data.version != "2.5") {
+            if (data.version != "2.6") {
                 $ui.alert({
                     title: "发现新版本",
                     message: resp.data.hant,
@@ -177,7 +174,7 @@ function refetch() {
                         {
                             title: "访问官网",
                             handler: function () {
-                                $app.openURL(urlt);
+                                $app.openURL("https://ae85.cn/");
                             }
                         }
                     ]
@@ -247,11 +244,12 @@ var gdggn = [dt(0), dt(1), dt(2), dt(3), dt(4)];
 
 function dt(a) {
     var data = $cache.get("stories").js.zygd;
+    var gw= $cache.get("stories").gw
     var gd = data[a];
     var tad = {
         type: "button",
         props: {
-            src: urlt + gd.src
+            src: gw + gd.src
         },
         events: {
             tapped: function (sender) {
@@ -370,11 +368,12 @@ function render() {
 }
 
 function clzyli(json, mc, idx) {
+    var gw= $cache.get("stories").gw
     var data = [];
     for (i in json) {
         if (i < 4) {
             data.push({
-                img: { src: urlt + json[i].image },
+                img: { src: gw + json[i].image },
                 pm: { text: json[i].title },
                 rq: { text: json[i].rq },
                 data: json[i]
@@ -441,12 +440,13 @@ function csh() {
 }
 
 function getlist(json) {
+    var gw= $cache.get("stories").gw
     var data = [];
     for (var idx in json) {
         var story = json[idx];
         data.push({
             lt: {
-                src: urlt + story.image
+                src: gw + story.image
             },
             mc: {
                 text: story.title
@@ -589,6 +589,7 @@ function listjm(bt, ant) {
 }
 
 function xqym(data) {
+    var gw= $cache.get("stories").gw
     $ui.push({
         props: {
             title: pz.title
@@ -600,7 +601,7 @@ function xqym(data) {
                 type: "image",
                 props: {
                     id: "icon",
-                    src: urlt + data.image,
+                    src: gw + data.image,
                     radius: 7,
                     bgcolor: $color("white")
                 },
