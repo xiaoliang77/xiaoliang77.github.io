@@ -1,4 +1,4 @@
-/*抖音无水印音视频下载*/
+/*kuaishou无水印音视频下载*/
 
 function getMusicUrl () {
 	var douyinUrl = "http://service.shipin.totootool.com/shipin";
