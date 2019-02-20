@@ -8,7 +8,7 @@ https://ae85.cn/
 
 $cache.set("id", "14")
 $cache.set("pg", 1)
-var urlt = "http://w2.hj97zhx837.pw/"
+var urlt = "http://w1.97xzjpzz.info/"
 var data = [{ "name": "写真", "id": "14" }, { "name": "自拍", "id": "15" }, { "name": "露出", "id": "16" }, { "name": "街拍", "id": "49" }, { "name": "丝袜", "id": "21" }, { "name": "欧美", "id": "114" },]
 
 $ui.render({
