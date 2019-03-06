@@ -61,14 +61,8 @@ const conView = {
         tapped: sender => {
           if ($file.exists("yunbd.plist")) {
             var xml = $file.read("yunbd.plist").string;
-            var qtou = xml.replace(
-              /<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/,
-              ""
-            );
-            var qwei = qtou.replace(
-              /\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/,
-              ""
-            );
+            var qtou = xml.replace(/<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/, "");
+            var qwei = qtou.replace(/\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/, "");
             var yunarr = qwei.split(`</dict>\n\t\t<dict>`);
             data = [];
             for (i in yunarr) {
@@ -77,9 +71,7 @@ const conView = {
               qhh = qhh.replace(/\r/g, "");
               var t = qhh.match(/<key>name<\/key>.*?<\/string>/)[0];
               var mc = t.match(/<string>(.*?)<\/string>/)[1];
-              var smt = qhh.match(
-                /<key>cloudDescription<\/key>.*?<\/string>/
-              )[0];
+              var smt = qhh.match(/<key>cloudDescription<\/key>.*?<\/string>/)[0];
               var sm = smt.match(/<string>(.*?)<\/string>/)[1];
               sm = sm.replace(/♀/g, "\n");
               data.push(mc + "\n\n" + sm);
@@ -167,10 +159,7 @@ const conView = {
                         didSelect: (sender, indexPath, data) => {
                           var feng = yunarr[indexPath.item];
                           arr = arr.concat(feng);
-
                           listsa(arr);
-
-                          //                         console.info(feng)
                           $ui.toast("已添加", 0.6);
                         }
                       }
@@ -356,7 +345,6 @@ $ui.render({
                 handler: function (sender, indexPath) {
                   var name = sender.views[0].views[0].views[0].text;
                   name = name.split("\n")[0];
-
                   var plist = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -446,10 +434,7 @@ $ui.render({
 });
 
 function cltouq(xml) {
-  var qtou = xml.replace(
-    /<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/,
-    ""
-  );
+  var qtou = xml.replace(/<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/, "");
   var qwei = qtou.replace(/\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/, "");
   var feng = qwei.split(`</dict>\n\t\t<dict>`);
   arr = arr.concat(feng);
@@ -541,9 +526,7 @@ if ($file.exists("patches.plist")) {
 
 $http.get({
   url:
-    $text.base64Decode(
-      "aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw=="
-    ) + "flex3.json",
+    $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "flex3.json",
   handler: resp => {
     if (resp.data.bb != "1.1") {
       $ui.alert({
