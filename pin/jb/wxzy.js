@@ -1,5 +1,5 @@
 /*
-12月13日更新，更换域名
+2019年3月6日更新，更换域名
 服务器资源被墙了，翻墙可正常使用
 */
 
@@ -8,7 +8,7 @@ var me = [{ "name": "国产", "id": "/v1" }, { "name": "日本", "id": "/v2" }, 
 
 $ui.render({
   props: {
-    title: "无限资源 1.4"
+    title: "无限资源 1.5"
   },
   views: [{
     type: "menu",
@@ -112,8 +112,8 @@ $ui.render({
   }]
 })
 
-var urlt = "http://shen119.com/"
-//  http://wxav0.com
+var urlt = "http://hijuu.net"
+//  http://qipaz.com
 
 function getdata() {
   var type = $cache.get("type")
