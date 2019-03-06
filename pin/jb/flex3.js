@@ -169,6 +169,8 @@ const conView = {
                           arr = arr.concat(feng);
 
                           listsa(arr);
+
+                          //                         console.info(feng)
                           $ui.toast("已添加", 0.6);
                         }
                       }
@@ -320,7 +322,7 @@ $ui.render({
                   actions: [
                     {
                       title: "确定",
-                      handler: function() {
+                      handler: function () {
                         arr = [];
                         $("list").data = [];
                         $file.delete("patches.plist");
@@ -351,7 +353,7 @@ $ui.render({
               {
                 title: "分享",
                 color: $color("tint"),
-                handler: function(sender, indexPath) {
+                handler: function (sender, indexPath) {
                   var name = sender.views[0].views[0].views[0].text;
                   name = name.split("\n")[0];
 
@@ -473,17 +475,21 @@ function listsa(arr) {
 function daoc() {
   var data;
   if (arr.length) {
-    for (i in arr) {
-      var tou = `<dict>${arr[i]}`,
-        wei = `</dict>\n\t\t`;
-      if (i == 0) {
-        data = tou + wei;
-      } else if (i == arr.length - 1) {
-        data = data + tou;
-      } else {
-        data = data + tou + wei;
+    if (arr.length == 1) {
+      data = `<dict>${arr[0]}`
+    } else {
+      for (i in arr) {
+        var tou = `<dict>${arr[i]}`,
+          wei = `</dict>\n\t\t`;
+        if (i == 0) {
+          data = tou + wei;
+        } else if (i == arr.length - 1) {
+          data = data + tou;
+        } else {
+          data = data + tou + wei;
+        }
       }
-    }
+    };
     var plist = `<?xml version="1.0" encoding="UTF-8"?>
   <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
   <plist version="1.0">
