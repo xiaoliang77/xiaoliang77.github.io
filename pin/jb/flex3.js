@@ -1,10 +1,8 @@
 /*
-Flex 3补丁管理 1.1
+Flex 3补丁管理 1.2
 
-2019年3月4日 更新：
-新增：单个补丁分享功能。
-新增：查看补丁详细功能。
-修复：清空补丁后重新运行插件还有的问题。
+2019年3月11日 更新：
+新增：云端补丁搜索功能。
 
 ---------
 可合成flex多个patches.plist文件
@@ -60,22 +58,6 @@ const conView = {
       events: {
         tapped: sender => {
           if ($file.exists("yunbd.plist")) {
-            var xml = $file.read("yunbd.plist").string;
-            var qtou = xml.replace(/<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/, "");
-            var qwei = qtou.replace(/\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/, "");
-            var yunarr = qwei.split(`</dict>\n\t\t<dict>`);
-            data = [];
-            for (i in yunarr) {
-              var a = yunarr[i];
-              var qhh = a.replace(/\n/g, "♀");
-              qhh = qhh.replace(/\r/g, "");
-              var t = qhh.match(/<key>name<\/key>.*?<\/string>/)[0];
-              var mc = t.match(/<string>(.*?)<\/string>/)[1];
-              var smt = qhh.match(/<key>cloudDescription<\/key>.*?<\/string>/)[0];
-              var sm = smt.match(/<string>(.*?)<\/string>/)[1];
-              sm = sm.replace(/♀/g, "\n");
-              data.push(mc + "\n\n" + sm);
-            }
 
             $("zhuView").add({
               type: "view",
@@ -134,6 +116,25 @@ const conView = {
                         make.left.right.inset(10);
                         make.top.inset(10);
                       }
+                    }, {
+                      type: "input",
+                      props: {
+                        id: "bjk",
+                        placeholder: " 输入关键字进行搜索..."
+                      },
+                      layout: function (make) {
+                        make.top.equalTo($("yunbq").bottom).inset(10)
+                        make.left.right.inset(10);
+                        make.height.equalTo(35);
+                      },
+                      events: {
+                        returned: function (sender) {
+                          $("bjk").blur()
+                        },
+                        changed: function(sender) {
+                          sousuo(sender.text)
+                        }
+                      }
                     },
                     {
                       type: "list",
@@ -149,17 +150,16 @@ const conView = {
                             }
                           }
                         ],
-                        data: data
                       },
                       layout: make => {
                         make.right.left.bottom.inset(2);
-                        make.top.equalTo($("yunbq").bottom).offset(10);
+                        make.top.equalTo($("bjk").bottom).offset(10);
                       },
                       events: {
                         didSelect: (sender, indexPath, data) => {
                           var feng = yunarr[indexPath.item];
                           arr = arr.concat(feng);
-                          listsa(arr);
+                          $("list").data = listsa(arr)
                           $ui.toast("已添加", 0.6);
                         }
                       }
@@ -168,6 +168,11 @@ const conView = {
                 }
               ]
             });
+
+            var xml = $file.read("yunbd.plist").string;
+            yunarr = cltouq(xml)
+            var yundata = listsa(yunarr)
+            $("yunlist").data = yundata
           } else {
             alert("云端数据处理中请稍候···");
           }
@@ -336,7 +341,8 @@ $ui.render({
                 title: "delete",
                 handler: (sender, indexPath) => {
                   arr.splice(indexPath.item, 1);
-                  listsa(arr);
+                  var data = listsa(arr);
+                  $("list").data = data
                 }
               },
               {
@@ -369,7 +375,6 @@ $ui.render({
           },
           events: {
             didSelect: (sender, indexPath, data) => {
-              // 点击
               alert(data);
             }
           }
@@ -437,8 +442,7 @@ function cltouq(xml) {
   var qtou = xml.replace(/<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/, "");
   var qwei = qtou.replace(/\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/, "");
   var feng = qwei.split(`</dict>\n\t\t<dict>`);
-  arr = arr.concat(feng);
-  listsa(arr);
+  return feng;
 }
 
 function listsa(arr) {
@@ -454,7 +458,14 @@ function listsa(arr) {
     sm = sm.replace(/♀/g, "\n");
     data.push(mc + "\n\n" + sm);
   }
-  $("list").data = data;
+  return data;
+}
+
+function zhulist(xml) {
+  var feng = cltouq(xml);
+  arr = arr.concat(feng);
+  var data = listsa(arr)
+  $("list").data = data
 }
 
 function daoc() {
@@ -503,14 +514,14 @@ function tianj() {
           if (text.indexOf("<?xml") == -1) {
             $ui.alert("未能识别剪贴板中的补丁");
           } else {
-            cltouq(text);
+            zhulist(text)
           }
           break;
         case 1:
           $drive.open({
             handler: data => {
-              var data = data.string;
-              cltouq(data);
+              var plist = data.string;
+              zhulist(plist)
             }
           });
           break;
@@ -521,14 +532,14 @@ function tianj() {
 
 if ($file.exists("patches.plist")) {
   var file = $file.read("patches.plist").string;
-  cltouq(file);
+  zhulist(file)
 }
 
 $http.get({
   url:
     $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "flex3.json",
   handler: resp => {
-    if (resp.data.bb != "1.1") {
+    if (resp.data.bb != "1.2") {
       $ui.alert({
         title: "温馨提示：",
         message: resp.data.gxsm,
@@ -601,4 +612,19 @@ function pdxia(nr) {
     data: $data({ string: nr }),
     path: "ybb.txt"
   });
+}
+
+function sousuo(text) {
+  var xml = $file.read("yunbd.plist").string;
+  yunarr = cltouq(xml)
+  var data = []
+  var listd = listsa(yunarr)
+  for (i in listd) {
+    var arr = listd[i]
+    if (arr.indexOf(text) != -1) {
+      data = data.concat(yunarr[i]);
+    }
+  }
+  yunarr = data
+  $("yunlist").data = listsa(yunarr)
 }
