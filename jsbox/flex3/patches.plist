@@ -6,6 +6,219 @@
 	  <array>
 		  <dict>
 			<key>UUID</key>
+			<string>B382D748-5D77-4878-AB49-98E877887170</string>
+			<key>apiVersion</key>
+			<integer>3</integer>
+			<key>appIdentifier</key>
+			<string>com.chengdu.mahuayingshi</string>
+			<key>appVersion</key>
+			<string>1.1.8</string>
+			<key>author</key>
+			<string>酱爆</string>
+			<key>cloudDescription</key>
+			<string>破解VIP
+基于苹果商店版麻花影视V1.1.8
+VX:seraph333</string>
+			<key>name</key>
+			<string>麻花影视 破解VIP1.1</string>
+			<key>switchedOn</key>
+			<true/>
+			<key>units</key>
+			<array>
+				<dict>
+					<key>methodObjc</key>
+					<dict>
+						<key>className</key>
+						<string>UserInfo</string>
+						<key>displayName</key>
+						<string>-(bool) isvip</string>
+						<key>prefix</key>
+						<string>-</string>
+						<key>selector</key>
+						<string>isvip</string>
+						<key>typeEncoding</key>
+						<string>B16@0:8</string>
+					</dict>
+					<key>name</key>
+					<string>开启VIP</string>
+					<key>overrides</key>
+					<array>
+						<dict>
+							<key>argument</key>
+							<integer>0</integer>
+							<key>type</key>
+							<dict>
+								<key>subtype</key>
+								<integer>0</integer>
+								<key>type</key>
+								<integer>6</integer>
+							</dict>
+							<key>value</key>
+							<dict>
+								<key>type</key>
+								<integer>6</integer>
+								<key>value</key>
+								<true/>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>methodObjc</key>
+					<dict>
+						<key>className</key>
+						<string>UserInfo</string>
+						<key>displayName</key>
+						<string>-(void) setVip_expire:(id)</string>
+						<key>prefix</key>
+						<string>-</string>
+						<key>selector</key>
+						<string>setVip_expire:</string>
+						<key>typeEncoding</key>
+						<string>v24@0:8@16</string>
+					</dict>
+					<key>name</key>
+					<string>VIP过期时间</string>
+					<key>overrides</key>
+					<array>
+						<dict>
+							<key>argument</key>
+							<integer>1</integer>
+							<key>type</key>
+							<dict>
+								<key>subtype</key>
+								<integer>1</integer>
+								<key>type</key>
+								<integer>1</integer>
+							</dict>
+							<key>value</key>
+							<dict>
+								<key>type</key>
+								<integer>1</integer>
+								<key>value</key>
+								<string>9999-12-31</string>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>methodObjc</key>
+					<dict>
+						<key>className</key>
+						<string>UpgradeInfo</string>
+						<key>displayName</key>
+						<string>-(bool) force</string>
+						<key>prefix</key>
+						<string>-</string>
+						<key>selector</key>
+						<string>force</string>
+						<key>typeEncoding</key>
+						<string>B16@0:8</string>
+					</dict>
+					<key>name</key>
+					<string>取消强制升级</string>
+					<key>overrides</key>
+					<array>
+						<dict>
+							<key>argument</key>
+							<integer>0</integer>
+							<key>type</key>
+							<dict>
+								<key>subtype</key>
+								<integer>0</integer>
+								<key>type</key>
+								<integer>6</integer>
+							</dict>
+							<key>value</key>
+							<dict>
+								<key>type</key>
+								<integer>6</integer>
+								<key>value</key>
+								<false/>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>methodObjc</key>
+					<dict>
+						<key>className</key>
+						<string>UserInfo</string>
+						<key>displayName</key>
+						<string>-(bool) vipIsExpire</string>
+						<key>prefix</key>
+						<string>-</string>
+						<key>selector</key>
+						<string>vipIsExpire</string>
+						<key>typeEncoding</key>
+						<string>B16@0:8</string>
+					</dict>
+					<key>name</key>
+					<string>Unit for -(bool) vipIsExpire</string>
+					<key>overrides</key>
+					<array>
+						<dict>
+							<key>argument</key>
+							<integer>0</integer>
+							<key>type</key>
+							<dict>
+								<key>subtype</key>
+								<integer>0</integer>
+								<key>type</key>
+								<integer>6</integer>
+							</dict>
+							<key>value</key>
+							<dict>
+								<key>type</key>
+								<integer>6</integer>
+								<key>value</key>
+								<false/>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>methodObjc</key>
+					<dict>
+						<key>className</key>
+						<string>UserInfo</string>
+						<key>displayName</key>
+						<string>-(id) vip_expire</string>
+						<key>prefix</key>
+						<string>-</string>
+						<key>selector</key>
+						<string>vip_expire</string>
+						<key>typeEncoding</key>
+						<string>@16@0:8</string>
+					</dict>
+					<key>name</key>
+					<string>Unit for -(id) vip_expire</string>
+					<key>overrides</key>
+					<array>
+						<dict>
+							<key>argument</key>
+							<integer>0</integer>
+							<key>type</key>
+							<dict>
+								<key>subtype</key>
+								<integer>1</integer>
+								<key>type</key>
+								<integer>1</integer>
+							</dict>
+							<key>value</key>
+							<dict>
+								<key>type</key>
+								<integer>1</integer>
+								<key>value</key>
+								<string>9999-12-31</string>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+			</array>
+</dict>
+		<dict>
+			<key>UUID</key>
 			<string>96F2A285-408C-47E0-87AD-B32B86706DD3</string>
 			<key>apiVersion</key>
 			<integer>3</integer>
@@ -14887,11 +15100,7 @@ Tested with an iP6+ 9.0.2(12-18-15)
 					<array/>
 				</dict>
 			</array>
-
-		  </dict>
-	  </array>
-  </dict>
-  </plist></dict>
+        </dict>
 		<dict>
 			<key>UUID</key>
 			<string>B07DEB78-39D4-4810-91C5-FD4DE9F45760</string>
@@ -42341,15 +42550,7 @@ QQ:638221 阿亮
 					</array>
 				</dict>
 			</array>
-
-		  </dict>
-	  </array>
-  </dict>
-  </plist>
-		  </dict>
-	  </array>
-  </dict>
-  </plist></dict>
+		</dict>
 		<dict>
 			<key>UUID</key>
 			<string>772117E7-BD73-42A2-ADBF-A13D6B1DFE1D</string>
@@ -48385,7 +48586,7 @@ v1.9版</string>
 					</array>
 				</dict>
 			</array>
-		  </dict>
+		</dict>
 	</array>
 </dict>
 </plist>
