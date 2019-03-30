@@ -564,8 +564,8 @@ function weixin_gzh(url) {
         url: url,
         handler: function (resp) {
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var id = text.match(/<iframeclass=\"video_iframe\".*?<\/iframe>/)[0]
-            var vid = id.match(/vid=(\S*?)\"/)[1];
+            // var id = text.match(/<iframeclass=\"video_iframe\".*?<\/iframe>/)[0]
+            var vid = text.match(/;vid=(\S*?)\"/)[1];
             $http.get({
                 url: $text.base64Decode($cache.get("info").weixin_gzh) + vid + "&defaultfmt=auto&&_qv_rmt=nvMLwa66A15612J60=&_qv_rmt2=DebxrcTN15187164w=&sdtfrom=v3010&callback=tvp_request_getinfo_callback_45248",
                 handler: function (resp) {
