@@ -474,7 +474,9 @@ function tmenu(text) {
             weixin_gzh(url);
         } else if (url.search(/xiaohongshu.com/) != -1) {
             xiaohongshu(url);
-        } else if (url.search(/vigovideo.|gifshow.|kuaishou.|kwai.|kw.|yxixy.|chenzhongtech.|miaopai.|xiaokaxiu.|yixia.|weibo.|weico.|meipai.|musical.|musemuse.|muscdn.|xiaoying.|vivavideo.|immomo.|momocdn.|inke.|flipagram.|163.|weishi.qq|qzone.qq|kg4.qq|kg3.qq|kg2.qq|kg1.qq|kg.qq|instagram.|hao222.|haokan.baidu|quduopai.|nuoruien./) != -1) {
+        } else if (url.search(/gifshow.|kuaishou.|kwai.|kw./) != -1) {
+            kuaishou(url);
+        } else if (url.search(/vigovideo.|yxixy.|chenzhongtech.|miaopai.|xiaokaxiu.|yixia.|weibo.|weico.|meipai.|musical.|musemuse.|muscdn.|xiaoying.|vivavideo.|immomo.|momocdn.|inke.|flipagram.|163.|weishi.qq|qzone.qq|kg4.qq|kg3.qq|kg2.qq|kg1.qq|kg.qq|instagram.|hao222.|haokan.baidu|quduopai.|nuoruien./) != -1) {
             count = 1
             var turl = $cache.get("info").turl
             $('web').url = $text.base64Decode(turl) + url;
@@ -593,6 +595,26 @@ function xiaohongshu(url) {
                 $ui.toast("解析失败！")
                 $('spinner').loading = false;
             }
+        }
+    });
+}
+
+function kuaishou(url) {
+    $http.lengthen({
+        url: url,
+        handler: function (url) {
+            var id = url.match(/photoId=(\S*?)\&/)[1]
+            $http.get({
+                url: $text.base64Decode($cache.get("info").kuaishou) + id,
+                handler: function (resp) {
+                    if (resp.data.result == 1) {
+                        cgjm(resp.data.photo.mainUrl)
+                    } else {
+                        $ui.toast("解析失败！")
+                        $('spinner').loading = false;
+                    }
+                }
+            });
         }
     });
 }
