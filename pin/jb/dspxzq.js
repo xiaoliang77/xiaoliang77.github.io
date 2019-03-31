@@ -1,7 +1,7 @@
 /*
 短视频下载器 2.3
-2019年3月30日 更新
-修复：修复部分解析失败报错问题。
+2019年3月31日 更新
+修复：修复微信公众号视频解析失败问题。
 支持：长按【解析】按钮,自动提取剪贴板链接中的视频。
 
 支持：微信公众号视频、小红书去水印、快手短视频无水印、全民小视频无水印、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。
@@ -566,18 +566,26 @@ function weixin_gzh(url) {
         url: url,
         handler: function (resp) {
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            // var id = text.match(/<iframeclass=\"video_iframe\".*?<\/iframe>/)[0]
             var vid = text.match(/;vid=(\S*?)\"/)[1];
-            $http.get({
-                url: $text.base64Decode($cache.get("info").weixin_gzh) + vid + "&defaultfmt=auto&&_qv_rmt=nvMLwa66A15612J60=&_qv_rmt2=DebxrcTN15187164w=&sdtfrom=v3010&callback=tvp_request_getinfo_callback_45248",
-                handler: function (resp) {
-                    var text = resp.data.replace(/\n|\s|\r/g, "")
-                    var fn = text.match(/\"fn\":\"(\S*?)\"/)[1]
-                    var fvkey = text.match(/\"fvkey\":\"(\S*?)\"/)[1]
-                    var urlt = text.match(/\"url\":\"(\S*?)\"/)[1]
-                    cgjm(urlt + fn + "?vkey=" + fvkey)
-                }
-            });
+            if (vid.search(/wxv_/) != -1) {
+                $http.get({
+                    url: $text.base64Decode($cache.get("info").weixin_gz) + vid + "&&uin=&key=&pass_ticket=&wxtoken=&appmsg_token=&x5=0&f=json",
+                    handler: function (resp) {
+                        cgjm(resp.data.url_info[0].url)
+                    }
+                });
+            } else {
+                $http.get({
+                    url: $text.base64Decode($cache.get("info").weixin_gzh) + vid + "&defaultfmt=auto&&_qv_rmt=nvMLwa66A15612J60=&_qv_rmt2=DebxrcTN15187164w=&sdtfrom=v3010&callback=tvp_request_getinfo_callback_45248",
+                    handler: function (resp) {
+                        var text = resp.data.replace(/\n|\s|\r/g, "")
+                        var fn = text.match(/\"fn\":\"(\S*?)\"/)[1]
+                        var fvkey = text.match(/\"fvkey\":\"(\S*?)\"/)[1]
+                        var urlt = text.match(/\"url\":\"(\S*?)\"/)[1]
+                        cgjm(urlt + fn + "?vkey=" + fvkey)
+                    }
+                });
+            }
         }
     });
 }
