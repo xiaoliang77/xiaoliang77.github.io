@@ -1,8 +1,8 @@
 /*
-短视频下载器 2.3
-2019年3月31日 更新
-修复：修复微信公众号视频解析失败问题。
-支持：长按【解析】按钮,自动提取剪贴板链接中的视频。
+短视频下载器 2.4
+2019年4月9日 更新
+修复：小红书视频解析失败问题。
+新增：微信公众号文章多个视频选择下载功能。
 
 支持：微信公众号视频、小红书去水印、快手短视频无水印、全民小视频无水印、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。
 
@@ -21,7 +21,7 @@ $http.get({
         if (resp.response.statusCode == "200") {
             var info = resp.data;
             $cache.set("info", info)
-            if (info.bb != "2.3") {
+            if (info.bb != "2.4") {
                 $ui.alert({
                     title: "温馨提示",
                     message: info.gxsm,
@@ -123,7 +123,7 @@ function getclipboard() {
 function cshyz() {
     $ui.render({
         props: {
-            title: "短视频下载器 2.3"
+            title: "短视频下载器 2.4"
         },
         views: [
             {
@@ -213,7 +213,7 @@ const by = {
         text: "iPhone 8、小良 (https://ae85.cn)",
         textColor: $color("#bbb")
     },
-    layout: (make, view) => {
+    layout: function (make, view) {
         make.bottom.inset(2);
         make.left.right.inset(0);
         make.height.equalTo(30);
@@ -225,7 +225,7 @@ var count;
 function zjm() {
     $ui.render({
         props: {
-            title: "短视频下载 2.3",
+            title: "短视频下载 2.4",
             bgcolor: $color("#e6e6e6"),
             navButtons: [
                 {
@@ -518,22 +518,15 @@ function tiktok(url) {
         },
         handler: function (resp) {
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var id = text.match(/<td><input(\S*?)<\/td>/g)[1]
-            if (id.search("video/") != -1) {
-                id = id.match(/\/video\/(\S*?)\//)[1]
-            } else {
-                id = id.match(/\/v\/(\S*?)\.html/)[1]
-            }
+            var iid = text.match(/<td><input(\S*?)<\/td>/g)[1]
+            var id = iid.match(/value=\"(\S*?)\"/)[1]
 
-            $http.post({
-                url: $text.base64Decode(tiktok.jxurl) + "?aweme_ids=[" + id + "]&carrier_region=JP&is_my_cn=1&language=en&version_code=9.2.0&pass-region=1&app_name=musical_ly",
-                header: {
-                    "User-Agent": "TikTok/9.2.0 (iPhone; iOS 12.1; Scale/2.00)"
-                },
-                body: {
-                },
+            $http.get({
+                url: "https://node-aliyun-sg.jsproxy.tk/http?accept=text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&cache-control=max-age=0&origin=&referer=&url__=" + $text.URLEncode(id),
                 handler: function (resp) {
-                    cgjm(resp.data.aweme_details[0].video.play_addr.url_list[0])
+                    var video = resp.data.match(/video_id=(\S*?)\"/)[1]
+                    var vid = video.replace(/\\u0026/g, "&")
+                    cgjm($text.base64Decode(tiktok.jxurl) + vid)
                 }
             });
         }
@@ -562,27 +555,28 @@ function toutiao(url) {
 }
 
 function weixin_gzh(url) {
-    $http.get({
-        url: url,
+    $http.post({
+        url: $text.base64Decode($cache.get("info").weixin_gzh),
+        header: {
+            "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: {
+            url: url
+        },
         handler: function (resp) {
-            var text = resp.data.replace(/\n|\s|\r/g, "")
-            var vid = text.match(/;vid=(\S*?)\"/)[1];
-            if (vid.search(/wxv_/) != -1) {
-                $http.get({
-                    url: $text.base64Decode($cache.get("info").weixin_gz) + vid + "&&uin=&key=&pass_ticket=&wxtoken=&appmsg_token=&x5=0&f=json",
-                    handler: function (resp) {
-                        cgjm(resp.data.url_info[0].url)
-                    }
-                });
+            var arr = resp.data.data;
+            if (arr.length == 1) {
+                cgjm(arr[0].url)
             } else {
-                $http.get({
-                    url: $text.base64Decode($cache.get("info").weixin_gzh) + vid + "&defaultfmt=auto&&_qv_rmt=nvMLwa66A15612J60=&_qv_rmt2=DebxrcTN15187164w=&sdtfrom=v3010&callback=tvp_request_getinfo_callback_45248",
-                    handler: function (resp) {
-                        var text = resp.data.replace(/\n|\s|\r/g, "")
-                        var fn = text.match(/\"fn\":\"(\S*?)\"/)[1]
-                        var fvkey = text.match(/\"fvkey\":\"(\S*?)\"/)[1]
-                        var urlt = text.match(/\"url\":\"(\S*?)\"/)[1]
-                        cgjm(urlt + fn + "?vkey=" + fvkey)
+                $ui.menu({
+                    items: arr.map(function (item) {
+                        return item.title;
+                    }),
+                    handler(title, idx) {
+                        cgjm(arr[idx].url)
                     }
                 });
             }
@@ -591,18 +585,16 @@ function weixin_gzh(url) {
 }
 
 function xiaohongshu(url) {
-    $http.get({
-        url: $text.base64Decode($cache.get("info").xiaohongshu) + $text.URLEncode(url),
+    $http.post({
+        url: $text.base64Decode($cache.get("info").xiaohongshu),
         header: {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN"
+        },
+        body: {
+            url: url
         },
         handler: function (resp) {
-            if (resp.data.errno == "0") {
-                cgjm(resp.data.data.video)
-            } else {
-                $ui.toast("解析失败！")
-                $('spinner').loading = false;
-            }
+            cgjm(resp.data.data.info.url)
         }
     });
 }
@@ -626,3 +618,4 @@ function kuaishou(url) {
         }
     });
 }
+
