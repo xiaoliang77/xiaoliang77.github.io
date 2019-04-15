@@ -507,28 +507,22 @@ function douyin(url) {
 
 function tiktok(url) {
     tiktok = $cache.get("info").tiktok
+    shijian = Date.parse(new Date()) / 1000
     $http.post({
-        url: $text.base64Decode(tiktok.durl),
+        url: $text.base64Decode(tiktok.jxurl),
         header: {
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1",
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+            "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Mobile Safari/537.36",
+            "Content-Type": "application/json;charset=UTF-8",
+            "origin": "https://video.app886.cn",
+            "referer": "https://video.app886.cn/action/free/",
+            "cookie": `Hm_lpvt_cd1a265f5fd452012276047a93ff19fb=${shijian}; Hm_lvt_cd1a265f5fd452012276047a93ff19fb=${shijian}`
+
         },
         body: {
             url: url
         },
         handler: function (resp) {
-            var text = resp.data.replace(/\n|\s|\r/g, "")
-            var iid = text.match(/<td><input(\S*?)<\/td>/g)[1]
-            var id = iid.match(/value=\"(\S*?)\"/)[1]
-
-            $http.get({
-                url: "https://node-aliyun-sg.jsproxy.tk/http?accept=text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&cache-control=max-age=0&origin=&referer=&url__=" + $text.URLEncode(id),
-                handler: function (resp) {
-                    var video = resp.data.match(/video_id=(\S*?)\"/)[1]
-                    var vid = video.replace(/\\u0026/g, "&")
-                    cgjm($text.base64Decode(tiktok.jxurl) + vid)
-                }
-            });
+            cgjm(resp.data.data.dlLink)
         }
     });
 }
