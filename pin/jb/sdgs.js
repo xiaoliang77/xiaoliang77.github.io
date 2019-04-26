@@ -1,6 +1,6 @@
 /*
-狩都高速 1.2
-2019.3.10 修复更新
+狩都高速 1.3
+2019.4.26 修复更新
  by：iPhone 8、小良
  http://ae85.cn/
 */
@@ -27,9 +27,9 @@ $ui.render({
     },
     events: {
       changed: function (sender) {
-          $cache.set("type", me[sender.index].id);
-          $cache.set("page", 1);
-          getdata();
+        $cache.set("type", me[sender.index].id);
+        $cache.set("page", 1);
+        getdata();
       }
     }
   },
@@ -78,12 +78,11 @@ function csh() {
     url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyL3NkZ3MuanNvbg=="),
     handler: function (resp) {
       $ui.loading(false);
-      $console.info(resp.data);
       if (resp.response.statusCode == "200") {
         var info = resp.data;
         console.log(info.gg)
         $cache.set("info", info);
-        if (info.bb != "1.2") {
+        if (info.bb != "1.3") {
           $ui.alert({
             title: "温馨提示",
             message: info.gxsm,
@@ -148,10 +147,11 @@ function getdata() {
         var data = $("Video").data;
       }
       for (i in li) {
-        dli = li[i];
+        var dli = li[i];
+        var img = turl + dli.match(/<imgsrc=\"(\S*?)\"/)[1]
         data.push({
           img: {
-            src: dli.match(/<imgsrc=\"(\S*?)\"/)[1]
+            src: img
           },
           url: dli.match(/detail\/id\/(\S*?).htm/)[1]
         });
