@@ -11,7 +11,7 @@ var me = [
 ];
 $ui.render({
   props: {
-    title: "狩都高速 1.2"
+    title: "狩都高速 1.3"
   },
   views: [{
     type: "menu",
@@ -189,7 +189,7 @@ function urljs(tk, ac, fg2) {
 function play(url) {
   $ui.push({
     props: {
-      title: "狩都高速 1.2"
+      title: "狩都高速 1.3"
     },
     views: [{
       type: "web",
