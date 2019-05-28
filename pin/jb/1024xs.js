@@ -1,4 +1,5 @@
 /*
+2019年5月28日 更新
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -65,7 +66,7 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "pw/thread-htm-fid-17-type-" + id + "-page-" + pg + ".html",
+        url: urlt + "pw/thread.php?fid=17&type=" + id + "&page=" + pg,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
