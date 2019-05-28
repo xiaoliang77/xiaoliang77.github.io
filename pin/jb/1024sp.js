@@ -65,7 +65,7 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "pw/thread-htm-fid-" + id + "-page-" + pg + ".html",
+        url: urlt + "pw/thread.php?fid=" + id + "&page=" + pg,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
