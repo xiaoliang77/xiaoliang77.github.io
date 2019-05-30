@@ -1,8 +1,7 @@
 /*
-短视频下载器 2.4
-2019年4月9日 更新
-修复：小红书视频解析失败问题。
-新增：微信公众号文章多个视频选择下载功能。
+短视频下载器 2.5
+2019年5月30日 更新
+修复：抖音视频解析失败问题。
 
 支持：微信公众号视频、小红书去水印、快手短视频无水印、全民小视频无水印、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。
 
@@ -21,7 +20,7 @@ $http.get({
         if (resp.response.statusCode == "200") {
             var info = resp.data;
             $cache.set("info", info)
-            if (info.bb != "2.4") {
+            if (info.bb != "2.5") {
                 $ui.alert({
                     title: "温馨提示",
                     message: info.gxsm,
@@ -123,7 +122,7 @@ function getclipboard() {
 function cshyz() {
     $ui.render({
         props: {
-            title: "短视频下载器 2.4"
+            title: "短视频下载器 2.5"
         },
         views: [
             {
@@ -225,7 +224,7 @@ var count;
 function zjm() {
     $ui.render({
         props: {
-            title: "短视频下载 2.4",
+            title: "短视频下载 2.5",
             bgcolor: $color("#e6e6e6"),
             navButtons: [
                 {
@@ -494,15 +493,25 @@ function tmenu(text) {
 }
 
 function douyin(url) {
-    $http.get({
+    $http.lengthen({
         url: url,
-        handler: function (resp) {
-            var text = resp.data.replace(/\n|\s|\r/g, "")
-            var t = text.replace(/\\u0026/g, '"')
-            var burl = t.match(/video_id=(\S*?)\"/)[1]
-            cgjm($text.base64Decode($cache.get("info").douyin) + burl)
+        handler: function(yurl) {
+            var id = yurl.match(/video\/(\S*?)\//)[1]
+            $http.post({
+                url: $text.base64Decode($cache.get("info").douyin),
+                header: {
+                    "User-Agent": "Aweme 4.3.1 rv:43104 (iPhone; iOS 12.0; zh_CN) Cronet",
+                    "Content-Type": "application/x-www-form-urlencoded"        
+                },
+                body: {
+                    aweme_id: id
+                },
+                handler: function (resp) {
+                    cgjm(resp.data.aweme_detail.video.play_addr.url_list[0])
+                }
+            });
         }
-    });
+      })
 }
 
 function tiktok(url) {
