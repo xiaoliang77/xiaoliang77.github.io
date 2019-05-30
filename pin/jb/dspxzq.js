@@ -34,7 +34,7 @@ $http.get({
                         handler: function () {
                             $ui.alert({
                                 title: "温馨提示",
-                                message: "跳转微信会自动复制公众号ID\n请跳转到微信-搜索-公用号-粘贴-关注",
+                                message: "跳转微信会自动复制公众号ID\n请跳转到微信-搜索-公众号-粘贴-关注",
                                 actions: [{
                                     title: "跳转微信",
                                     handler: function () {
