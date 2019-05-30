@@ -2,6 +2,7 @@
 短视频下载器 2.5
 2019年5月30日 更新
 修复：抖音视频解析失败问题。
+修复：新版皮皮虾不能下载问题。
 
 支持：微信公众号视频、小红书去水印、快手短视频无水印、全民小视频无水印、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。
 
@@ -34,7 +35,7 @@ $http.get({
                         handler: function () {
                             $ui.alert({
                                 title: "温馨提示",
-                                message: "跳转微信会自动复制公众号ID\n请跳转到微信-搜索-公众号-粘贴-关注",
+                                message: "跳转微信会自动复制公众号ID\n请跳转到微信-搜索-公用号-粘贴-关注",
                                 actions: [{
                                     title: "跳转微信",
                                     handler: function () {
@@ -495,13 +496,13 @@ function tmenu(text) {
 function douyin(url) {
     $http.lengthen({
         url: url,
-        handler: function(yurl) {
+        handler: function (yurl) {
             var id = yurl.match(/video\/(\S*?)\//)[1]
             $http.post({
                 url: $text.base64Decode($cache.get("info").douyin),
                 header: {
                     "User-Agent": "Aweme 4.3.1 rv:43104 (iPhone; iOS 12.0; zh_CN) Cronet",
-                    "Content-Type": "application/x-www-form-urlencoded"        
+                    "Content-Type": "application/x-www-form-urlencoded"
                 },
                 body: {
                     aweme_id: id
@@ -511,7 +512,7 @@ function douyin(url) {
                 }
             });
         }
-      })
+    })
 }
 
 function tiktok(url) {
@@ -537,13 +538,19 @@ function tiktok(url) {
 }
 
 function pipix(url) {
-    var id = url.match(/item\/([0-9]+)/)[1]
-    $http.get({
-        url: $text.base64Decode($cache.get("info").pipix) + id,
-        handler: function (resp) {
-            cgjm(resp.data.data.item.origin_video_download.url_list[0].url)
+    $http.lengthen({
+        url: url,
+        handler: function (yurl) {
+            var id = yurl.match(/item\/([0-9]+)/)[1];
+			
+            $http.get({
+                url: $text.base64Decode($cache.get("info").pipix) + id,
+                handler: function (resp) {
+                    cgjm(resp.data.data.item.origin_video_download.url_list[0].url);
+                }
+            });
         }
-    });
+    })
 }
 
 function toutiao(url) {
@@ -555,6 +562,7 @@ function toutiao(url) {
             cgjm($text.base64Decode($cache.get("info").toutiao) + id)
         }
     });
+
 }
 
 function weixin_gzh(url) {
