@@ -1,8 +1,10 @@
+
 /*
-短视频下载器 2.5
-2019年5月30日 更新
+短视频下载器 2.5.1
+2019年6月1日 更新
 修复：抖音视频解析失败问题。
 修复：新版皮皮虾不能下载问题。
+修复：火山下载失败问题。
 
 支持：微信公众号视频、小红书去水印、快手短视频无水印、全民小视频无水印、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。
 
@@ -123,7 +125,7 @@ function getclipboard() {
 function cshyz() {
     $ui.render({
         props: {
-            title: "短视频下载器 2.5"
+            title: "短视频下载器 2.5.1"
         },
         views: [
             {
@@ -225,7 +227,7 @@ var count;
 function zjm() {
     $ui.render({
         props: {
-            title: "短视频下载 2.5",
+            title: "短视频下载 2.5.1",
             bgcolor: $color("#e6e6e6"),
             navButtons: [
                 {
@@ -462,12 +464,14 @@ function tmenu(text) {
     } else {
         $ui.toast("处理中，请稍后···")
         $('spinner').loading = true;
-        if (url.search(/douyinshortvideo.|amemv.|iesdouyin.|douyin.com|huoshan.com|huoshan.|huoshanzhibo.|hotsoonzb.|smzhuhe.|woaidazhe./) != -1) {
+        if (url.search(/douyinshortvideo.|amemv.|iesdouyin.|douyin.com/) != -1) {
             douyin(url);
         } else if (url.search(/tiktok.com|tiktokcdn.|tiktokv./) != -1) {
             tiktok(url);
         } else if (url.search(/pipix.com|hulushequ.|pipixia./) != -1) {
             pipix(url);
+        } else if (url.search(/huoshan.com|huoshan.|huoshanzhibo.|hotsoonzb.|smzhuhe.|woaidazhe./) != -1) {
+            huoshan(url);
         } else if (url.search(/toutiaoimg.cn|365yg.com|ixigua.|xiguaapp.|xiguavideo.|xiguashipin.|pstatp.|zijiecdn.|toutiaocdn.|toutiaoimg.|toutiao12.|toutiao11.|neihanshequ./) != -1) {
             toutiao(url);
         } else if (url.search(/weixin.qq.com/) != -1) {
@@ -542,11 +546,27 @@ function pipix(url) {
         url: url,
         handler: function (yurl) {
             var id = yurl.match(/item\/([0-9]+)/)[1];
-			
+
             $http.get({
                 url: $text.base64Decode($cache.get("info").pipix) + id,
                 handler: function (resp) {
                     cgjm(resp.data.data.item.origin_video_download.url_list[0].url);
+                }
+            });
+        }
+    })
+}
+
+function huoshan(url) {
+    $http.lengthen({
+        url: url,
+        handler: function (yurl) {
+            var id = yurl.match(/item\/([0-9]+)/)[1];
+            $http.get({
+                url: $text.base64Decode($cache.get("info").huoshan) + id + "/?iid=66430143096&ac=4G&os_api=18&app_name=live_stream&channel=App%20Store&idfa=BA311C5F-C5F1-4E78-A71E-F636CF779EA8&device_platform=iphone&live_sdk_version=5.7.3&vid=C2CAA6A9-54F4-4853-80EB-09AD37FC7F57&openudid=c72471ef1607585229f08fef72081bb06e2b8605&device_type=iPhone10,3&mccmnc=51502&update_version_code=5734&version_code=5.7.3&os_version=12.0&screen_width=1125&aid=1112&device_id=60115234121&mas=007037d9d82d218ba64996b995edb93b9e0909ae35f38e1b0ed4e8&as=a2a51d0ffe479c25f19258",
+                handler: function (resp) {
+                    cgjm(resp.data.data.video.url_list[0]);
+
                 }
             });
         }
