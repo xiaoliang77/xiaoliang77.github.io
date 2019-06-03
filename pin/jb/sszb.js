@@ -58,7 +58,7 @@ $http.get({
                         toolbar:1,
                         url: $text.base64Decode(resp.data.turl),
                         script: function () {
-                            document.getElementsByClassName("logo")[0].style.display = "none";
+                            document.getElementById("logo").style.display = "none";
                             var a = document.getElementsByTagName("a")
                             for (var i = 0; i < a.length; ++i) {
                                 var doc = a[i]
