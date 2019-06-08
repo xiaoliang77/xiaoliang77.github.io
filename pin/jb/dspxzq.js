@@ -1,10 +1,8 @@
 
 /*
-短视频下载器 2.5.1
-2019年6月1日 更新
-修复：抖音视频解析失败问题。
-修复：新版皮皮虾不能下载问题。
-修复：火山下载失败问题。
+短视频下载器 2.5.2
+2019年6月8日 更新
+修复：头条视频下载失败问题。
 
 支持：微信公众号视频、小红书去水印、快手短视频无水印、全民小视频无水印、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。
 
@@ -574,15 +572,19 @@ function huoshan(url) {
 }
 
 function toutiao(url) {
-    $http.get({
+    $http.lengthen({
         url: url,
-        handler: function (resp) {
-            var text = resp.data.replace(/\n|\s|\r/g, "")
-            var id = text.match(/videoId:\'(\S*?)\'/)[1]
-            cgjm($text.base64Decode($cache.get("info").toutiao) + id)
+        handler: function (yurl) {
+            var id = yurl.match(/i([0-9]+)/)[1];
+            $http.get({
+                url: "https://m.toutiaoimg.com/i" + id + "/info/",
+                handler: function (resp) {
+                    var video_id = resp.data.data.video_id
+                    cgjm($text.base64Decode($cache.get("info").toutiao) + video_id)
+                }
+            });
         }
-    });
-
+    })
 }
 
 function weixin_gzh(url) {
