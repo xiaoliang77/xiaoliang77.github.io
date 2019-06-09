@@ -141,7 +141,7 @@ function getdata() {
   var type = $cache.get("type");
   $ui.loading(true);
   $http.get({
-    url: turl + "/portal/index/search" + type + "page=" + page,
+    url: turl + "/portal/index/search" + type + "&page=" + page,
     handler: function(resp) {
       $ui.loading(false);
       var arr = resp.data;
