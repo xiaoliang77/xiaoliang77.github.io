@@ -476,7 +476,7 @@ function tmenu(text) {
             weixin_gzh(url);
         } else if (url.search(/xiaohongshu.com/) != -1) {
             xiaohongshu(url);
-        } else if (url.search(/gifshow.|kuaishou.|kwai.|kw./) != -1) {
+        } else if (url.search(/gifshow.|kuaishou.|kwai.|kw.|chenzhongtech./) != -1) {
             kuaishou(url);
         } else if (url.search(/vigovideo.|yxixy.|chenzhongtech.|miaopai.|xiaokaxiu.|yixia.|weibo.|weico.|meipai.|musical.|musemuse.|muscdn.|xiaoying.|vivavideo.|immomo.|momocdn.|inke.|flipagram.|163.|weishi.qq|qzone.qq|kg4.qq|kg3.qq|kg2.qq|kg1.qq|kg.qq|instagram.|hao222.|haokan.baidu|quduopai.|nuoruien./) != -1) {
             count = 1
