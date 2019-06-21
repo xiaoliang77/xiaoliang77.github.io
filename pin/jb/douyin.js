@@ -1,5 +1,5 @@
 /*
-2019年6月3日、修复更新
+2019年6月21日、修复更新
 该脚本不支持Pin！请使用JSBox
 支持下载，复制链接。
 上滑下拉可切换视频。
@@ -30,11 +30,10 @@ const gzgzh = {
   }
 }
 var itemHeight = $device.info.screen.height;
-const base64 = "aHR0cDovL3d3dy5tdXNvdWNhdC5jbjoyMDE4L2pzblzvZG91eWluLmpzb24=";
-console.info($text.base64Decode(base64.replace(/lz/, "24")));
+const base64 = "aHR0cHM6Ly8naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS8yYXcvbWFzdGVyL2RvdXlpbi5qc28u";
 $ui.loading(true);
 $http.get({
-  url: $text.base64Decode(base64.replace(/lz/, "24")),
+  url: $text.base64Decode(base64.replace(/8/g, "9")),
   handler: function (resp) {
     $ui.loading(false);
     if (resp.response.statusCode == "200") {
