@@ -1,5 +1,5 @@
 /*
-2019年6月3日、修复更新
+2019年6月21日、修复更新
 该脚本不支持Pin！请使用JSBox
 支持下载，复制链接。
 上滑下拉可切换视频。
@@ -38,7 +38,7 @@ $http.get({
     $ui.loading(false);
     if (resp.response.statusCode == "200") {
       var info = resp.data;
-      if (info.bb != "2.2") {
+      if (info.bb != "2.3") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,
@@ -139,7 +139,6 @@ $ui.render({
     id: "mView",
     navBarHidden: 1,
     homeIndicatorHidden: 1,
-    //        statusBarHidden: true,
     bgcolor: $color("black")
   },
   views: [
@@ -263,7 +262,7 @@ $ui.render({
       layout: function (make, view) {
         make.bottom.inset(100)
         make.left.inset(10)
-        make.widthm.equalTo(300)
+        make.width.equalTo(300)
         make.height.equalTo(80)
 
       }
@@ -275,13 +274,13 @@ $ui.render({
 $cache.set("py", 1);
 function getdata(url) {
   $http.post({
-    url: $cache.get("info").turl + $cache.get("py"),
+    url:$text.base64Decode($cache.get("info").turl) + $cache.get("py"),
     header: {
-      http_app_version: "1.0.6",
-      "User-Agent": "iphoneLive/1.1 (iPhone; iOS 12.0; Scale/2.00)"
+      "http_app_version": "1.1.1",
+      "User-Agent": "iphoneLive/1.1.1 (iPhone; iOS 12.0; Scale/3.00)",
+      "Content-Type": "application/x-www-form-urlencoded"
     },
     handler: function (resp) {
-      console.info(resp.data);
       var data = resp.data.data.info;
       $cache.set("vdata", data);
       $cache.set("dqshu", 1);
