@@ -85,7 +85,7 @@ function csh() {
         var info = resp.data;
         console.log(info.gg);
         $cache.set("info", info);
-        if (info.bb != "1.4") {
+        if (info.bb != "1.5") {
           $ui.alert({
             title: "温馨提示",
             message: info.gxsm,
