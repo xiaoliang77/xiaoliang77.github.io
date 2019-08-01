@@ -1,17 +1,16 @@
 /*
-狩都高速 1.4
-2019.6.9 修复更新
+狩都高速 1.5
+2019.7.11 修复更新
  by：iPhone 8、小良
  http://ae85.cn/
 */
 var me = [
   { name: "推荐资源", id: "/recom/1.html?recom=1" },
-  { name: "人气热门", id: "/hot/1.html?hot=1" },
-  { name: "中文字幕", id: "/zimu_id/35.html?zimu_id=35" }
+  { name: "人气热门", id: "/hot/1.html?hot=1" }
 ];
 $ui.render({
   props: {
-    title: "狩都高速 1.4"
+    title: "狩都高速 1.5"
   },
   views: [
     {
@@ -133,7 +132,6 @@ function csh() {
     }
   });
 }
-//var turl
 csh();
 
 function getdata() {
@@ -149,7 +147,6 @@ function getdata() {
       var te = html.match(/<ulid=\"works\"[\s\S]*?<\/ul>/)[0];
 
       var li = te.match(/<li><ahref=\S*?<\/a>/g);
-
       if (page == 1) {
         var data = [];
       } else {
@@ -163,7 +160,7 @@ function getdata() {
             img: {
               src: img
             },
-            url: dli.match(/detail\/id\/(\S*?).htm/)[1]
+            url: dli.match(/detail\/identification\/(\S*?).htm/)[1]
           });
         } //过滤会员片
       }
@@ -176,7 +173,7 @@ function getdata() {
 function geturl(id) {
   $ui.loading(true);
   $http.get({
-    url: turl + "/portal/index/ajax_get_js.html?id=" + id,
+    url: turl + "/portal/index/ajax_get_js.html?identification=" + id,
     handler: function(resp) {
       $ui.loading(false);
       var arr = resp.data;
@@ -227,7 +224,7 @@ function urljs(tk, ac, fg2) {
 function play(url) {
   $ui.push({
     props: {
-      title: "狩都高速 1.4"
+      title: "狩都高速 1.5"
     },
     views: [
       {
