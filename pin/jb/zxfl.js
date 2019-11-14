@@ -7,12 +7,27 @@ https://ae85.cn/
 
 $cache.set("id", "1")
 $cache.set("pg", 1)
-var urlt = "http://801zy.com"
+var urlt = "http://800zy14.com"
 var data = [{ "name": "首页", "id": "1" }, { "name": "偷拍", "id": "2" }, { "name": "三级", "id": "3" }, { "name": "无码", "id": "4" }, { "name": "有码", "id": "5" }, { "name": "欧美", "id": "6" }, { "name": "另类", "id": "7" }, { "name": "卡通", "id": "8" }, { "name": "中文", "id": "9" }, { "name": "巨乳", "id": "10" }, { "name": "制服", "id": "11" }, { "name": "乱伦", "id": "12" }, { "name": "国产", "id": "13" }, { "name": "人妻", "id": "14" }, { "name": "学生", "id": "15" }, { "name": "日韩", "id": "16" }]
 
 $ui.render({
     props: {
-        title: "在线福利"
+        title: "在线福利",
+        navButtons: [
+            {
+                title: "Title",
+                icon: "023",
+                handler: function () {
+                    $input.text({
+                        type: 0,
+                        placeholder: "搜索",
+                        handler: function (text) {
+                            sous(text)
+                        }
+                    })
+                }
+            }
+        ]
     },
     views: [{
         type: "menu",
@@ -24,7 +39,7 @@ $ui.render({
         },
         layout: function (make) {
             make.left.top.right.equalTo(0)
-            make.height.equalTo(50)
+            make.height.equalTo(40)
 
         },
         events: {
@@ -59,25 +74,27 @@ $ui.render({
 
 })
 
-$http.get({
-    url: urlt,
-    handler: function (resp) {
-        var cookie = resp.data.match(/cookie=\'(\S*?)\'/)[1];
-        $cache.set("cookie", cookie)
-        getdata()
-    }
-});
+// $http.get({
+//     url: urlt,
+//     handler: function (resp) {
+//         // var cookie = resp.data.match(/cookie=\'(\S*?)\'/)[1];
+//         $console.info(resp.data);
+//         return;
+//         $cache.set("cookie", cookie)
+//         getdata()
+//     }
+// });
 
 function getdata(cookie) {
     var id = $cache.get("id")
     var pg = $cache.get("pg")
-    var cookie = $cache.get("cookie")
+    // var cookie = $cache.get("cookie")
     $ui.loading(true)
     $http.get({
         url: urlt + "/list-" + id + "-" + pg + ".html",
         header: {
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1",
-            "Cookie": cookie
+            // "Cookie": cookie
         },
         handler: function (resp) {
             $ui.loading(false)
@@ -128,3 +145,31 @@ function geting(id, mc) {
         }
     })
 }
+
+function sous(key) {
+    $ui.loading(true)
+    $http.post({
+        url: urlt + "/index.php?m=vod-search",
+        header: {
+        },
+        body: {
+            wd: key
+        },
+        handler: function (resp) {
+            $ui.loading(false)
+            var text = resp.data.replace(/\n|\s|\r/g, "")
+            var shu = text.match(/\"videoName\"(\S*?)<\/li>/g)
+            var data = []
+            for (i in shu) {
+                var a = shu[i]
+                var mc = a.match(/\/>(\S*?)<\/a>/)[1]
+                var id = a.match(/href=\"(\S*?)\"/)[1]
+                data.push(mc + "\n" + id)
+            }
+            $("list").data = data
+            $("list").endFetchingMore()
+        }
+    });
+}
+
+getdata()
