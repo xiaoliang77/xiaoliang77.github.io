@@ -543,7 +543,7 @@ $http.get({
   url:
     $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "flex3.json",
   handler: resp => {
-    if (resp.data.bb != "1.2") {
+    if (resp.data.bb != "1.3") {
       $ui.alert({
         title: "温馨提示：",
         message: resp.data.gxsm,
