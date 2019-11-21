@@ -1,7 +1,7 @@
 /*
-Flex 3补丁管理 1.2
+Flex 3补丁管理 1.3
 
-2019年3月11日 更新：
+2019年11月21日 更新：
 新增：云端补丁搜索功能。
 
 ---------
@@ -131,7 +131,7 @@ const conView = {
                         returned: function (sender) {
                           $("bjk").blur()
                         },
-                        changed: function(sender) {
+                        changed: function (sender) {
                           sousuo(sender.text)
                         }
                       }
@@ -439,7 +439,11 @@ $ui.render({
 });
 
 function cltouq(xml) {
-  var qtou = xml.replace(/<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/, "");
+  var qtous = xml.split(`<key>patches</key>\n\t<array>\n\t\t<dict>`);
+  var qtou = qtous[1];
+  if (!qtou) {
+    qtou = xml.replace(/<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/, "");
+  }
   var qwei = qtou.replace(/\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/, "");
   var feng = qwei.split(`</dict>\n\t\t<dict>`);
   return feng;
@@ -450,10 +454,10 @@ function listsa(arr) {
   for (i in arr) {
     var a = arr[i];
     var qhh = a.replace(/\n/g, "♀");
-    qhh = qhh.replace(/\r/g, "");
+    qhh = qhh.replace(/\r|/g, "");
     var t = qhh.match(/<key>name<\/key>.*?<\/string>/)[0];
     var mc = t.match(/<string>(.*?)<\/string>/)[1];
-    var smt = qhh.match(/<key>cloudDescription<\/key>.*?<\/string>/)[0];
+    var smt = qhh.match(/<key>cloudDescription<\/key>([\s\S]*)<\/string>/)[0];
     var sm = smt.match(/<string>(.*?)<\/string>/)[1];
     sm = sm.replace(/♀/g, "\n");
     data.push(mc + "\n\n" + sm);
