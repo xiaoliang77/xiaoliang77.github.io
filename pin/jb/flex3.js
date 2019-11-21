@@ -174,7 +174,7 @@ const conView = {
             var yundata = listsa(yunarr)
             $("yunlist").data = yundata
           } else {
-            alert("云端数据处理中请稍候···");
+            alert("云端下载中请稍候···");
           }
         }
       }
