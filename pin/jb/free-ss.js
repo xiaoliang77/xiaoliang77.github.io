@@ -1,7 +1,7 @@
 
 /*
-免费ss 1.1
-2019-2-23 更新：
+免费ss 1.2
+2019-11-22 更新：
 修复加载无响应问题！
 
 by：iPhone 8、小良
@@ -16,7 +16,7 @@ $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvc3MvcmF3L21hc3Rlci8=") + "free-ss.json",
     handler: function (resp) {
         $ui.loading(false);
-        if (resp.data.bb != "3.2") {
+        if (resp.data.bb != "3.3") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -50,25 +50,16 @@ $http.get({
         } else {
             $cache.set("info", resp.data);
             csh();
-            $('web').url = $text.base64Decode(resp.data.ssurl)
-            xhrw()
+            zhur()
         }
     }
 });
 
-function xhrw() {
-    timer = $timer.schedule({
-        interval: 1,
-        handler: function () {
-            zhur()
-        }
-    });
-}
 
 function csh() {
     $ui.render({
         props: {
-            title: "ss 1.1",
+            title: "ss 1.2",
             id: "ssjm"
         },
         views: [{
@@ -162,23 +153,9 @@ function csh() {
                 textColor: $color("#E42A00")
             },
             layout: $layout.fill
-        },
-        {
-            type: "web",
-            props: {
-                id: "web",
-            },
-            layout: function (make, view) {
-                make.top.equalTo(0)
-                make.right.left.inset(0)
-                make.height.equalTo(1)
-            }
-        },
+        }
         ]
     })
-
-
-
 }
 var tcjm = {
     type: "view",
@@ -250,59 +227,47 @@ var tcjm = {
 
 function zhur() {
     var info = $cache.get("info")
-    var webView = $("web")
     var gj = info.gj
-    webView.eval({
-        script: `var html = document.getElementsByTagName("tbody")[1].innerHTML; window.name = html`,
-        handler: function (result, error) {
-            $console.info(result);
-            if (count == 3) {
-                $("web").url = $text.base64Decode(info.ssurl)
-            }
-            count++;
-            if (result.code == 4) {
-                //alert("请求超时\n确定重新加载！")
-                //timer.invalidate()
-            } else {
-                if (result.indexOf("data") == -1) {
-                    timer.invalidate()
-                    var text = result.replace(/\n|\s|\r/g, "")
-                    var shu = text.match(/<trrole=\"row\"(\S*?)<\/tr>/g);
-                    var data = []
-                    for (i in shu) {
-                        var add = shu[i].match(/<td>(\S*?)<\/td>/g);
-                        for (i in add) {
-                            add[i] = add[i].replace(/<td>|<\/td>/g, "")
-                        }
-                        if (add[0].indexOf("/") == -1) {
-                            add.unshift("10/10/10/10")
-                        }
-                        var f = add[3]
-                        var fy = f.match(/none|table|rc4|salsa20|chacha20|xchacha20|aes-|bf-cfb|camellia-|-cbf|-gcm/)
-                        var s, m
-                        if (fy) {
-                            s = add[3]
-                            m = add[4]
-                        } else {
-                            s = add[4]
-                            m = add[3]
-                        }
-                        var ms = Math.floor(Math.random() * (80 - 2 + 1)) + 2;
-                        data.push({
-                            lt: { src: `${$text.base64Decode(info.img)}${gj[add[6]]}_flag.png` },
-                            mc: { text: add[1] },
-                            rq: { text: add[5] },
-                            ms: { text: ms + "ms" },
-                            url: "ss://" + $text.base64Encode(`${s}:${m}@${add[1]}:${add[2]}`)
-                        })
-                    }
-                    $("list").data = data
-                    $("list").endFetchingMore()
-                    $('jzz').hidden = true
+    $http.get({
+        url: $text.base64Decode(info.ssurl),
+        handler: function (resp) {
+            var data = resp.data;
+            var text = data.replace(/\n|\s|\r/g, "")
+            var shu = text.match(/<trrole=\"row\"class(\S*?)<\/tr>/g);
+            var data = []
+            for (i in shu) {
+                if (i > 1) {
+                var add = shu[i].match(/<td>(\S*?)<\/td>/g);
+                for (i in add) {
+                    add[i] = add[i].replace(/<td>|<\/td>/g, "")
                 }
-            }
+                if (add[0].indexOf("/") == -1) {
+                    add.unshift("10/10/10/10")
+                }
+                var f = add[3]
+                var fy = f.match(/none|table|rc4|salsa20|chacha20|xchacha20|aes-|bf-cfb|camellia-|-cbf|-gcm/)
+                var s, m
+                if (fy) {
+                    s = add[3]
+                    m = add[4]
+                } else {
+                    s = add[4]
+                    m = add[3]
+                }
+                var ms = Math.floor(Math.random() * (80 - 2 + 1)) + 2;
+                data.push({
+                    lt: { src: `${$text.base64Decode(info.img)}${gj[add[6]]}_flag.png` },
+                    mc: { text: add[1] },
+                    rq: { text: add[5] },
+                    ms: { text: ms + "ms" },
+                    url: "ss://" + $text.base64Encode(`${s}:${m}@${add[1]}:${add[2]}`)
+                })
+            }}
+            $("list").data = data
+            $("list").endFetchingMore()
+            $('jzz').hidden = true
         }
-    })
+    });
 }
 
 function xzmune() {
