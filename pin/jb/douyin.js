@@ -1,8 +1,6 @@
 /*
-2019年6月21日、修复更新
+2019年11月23日、修复更新
 该脚本不支持Pin！请使用JSBox
-支持下载，复制链接。
-上滑下拉可切换视频。
 
 by：iPhone 8、小良
 http://ae85.cn/
@@ -276,8 +274,8 @@ function getdata(url) {
   $http.post({
     url:$text.base64Decode($cache.get("info").turl) + $cache.get("py"),
     header: {
-      "http_app_version": "1.1.1",
-      "User-Agent": "iphoneLive/1.1.1 (iPhone; iOS 12.0; Scale/3.00)",
+      "http_app_version": "1.2.1",
+      "User-Agent": "iphoneLive/1.2.1 (iPhone; iOS 12.0; Scale/3.00)",
       "Content-Type": "application/x-www-form-urlencoded"
     },
     handler: function (resp) {
