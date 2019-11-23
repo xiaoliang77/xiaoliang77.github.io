@@ -36,7 +36,7 @@ $http.get({
     $ui.loading(false);
     if (resp.response.statusCode == "200") {
       var info = resp.data;
-      if (info.bb != "2.3") {
+      if (info.bb != "2.4") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,
