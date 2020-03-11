@@ -1,0 +1,71 @@
+// lei=1   规则
+// lei=2   脚本
+// lei=3   应用
+// lei=4   其他
+var color = 104;
+function co_sj() {
+    if (color == 112) {
+        color = 101;
+    } else {
+        color++;
+    }
+}
+var data_jb = [{"title":"小良 - 更新器 v2.6 Js版","image":"img/xl.png","rq":"更新：2019年1月27日","details":"js脚本是运行在pin或jsbox上的程序, 可以方便快捷的更新小良作品","jsurl":"https://ae85.cn/jb.html","url":"gxq","button":"安装脚本"},{"title":"🔥抖阴 2.4","image":"img/douyin.png","rq":"更新：2019年11月23日","details":"修复更新\n\n上滑下拉可切换视频。","jsurl":"https://ae85.cn/jb.html","url":"douyin","button":"安装脚本"},{"title":"🔥微信零钱生成器","image":"img/wxlq.png","rq":"更新：2019年11月23日","details":"仅供娱乐","jsurl":"https://ae85.cn/jb.html","url":"wxlq","button":"安装脚本"},{"title":"🔥Flex 3补丁管理 1.3","image":"img/flex3.png","rq":"2019年11月21日","details":"更新内容：\n修复部分补丁无法合成问题\n更新：云端补丁搜索\n\n可合成flex多个patches.plist文件。\n\n内置云端补丁，可以从云端添加。","jsurl":"https://87xl.cn/js-flex3.html","url":"flex3","button":"安装脚本"},{"title":"🔥在线福利","image":"img/zxfl.jpg","rq":"发布：2019年11月21日","details":"资源多，速度快！","jsurl":"https://87xl.cn/gz-zxfl.html","url":"zxfl","button":"安装脚本"},{"title":"狩都高速1.5","image":"img/sdgs.png","rq":"更新：2019年8月1日","details":"修复更新","jsurl":"https://ae85.cn/jb.html","url":"sdgs","button":"安装脚本"},{"title":"ignition","image":"img/ignition.png","rq":"发布：2019年6月12日","details":"企业证书App\njs可提取ipa文件包，在线安装，过滤广告，在线搜索等功能。","jsurl":"https://ae85.cn/jb.html","url":"ignition","button":"安装脚本"},{"title":"短视频下载器 2.5.1","image":"img/dsp.png","rq":"更新：2019年6月1日","details":"支持：微信公众号视频、小红书去水印、快手短视频无水印、全民小视频无水印、微博、秒拍、陌陌","jsurl":"http://t.cn/E49YWj6","url":"dspxzq","button":"安装脚本"},{"title":"1024视频","image":"img/1024sp.png","rq":"更新：2019年5月28日","details":"在线视频","jsurl":"http://qq.cn.hn/gBq","url":"1024sp","button":"安装脚本"},{"title":"1024下载","image":"img/1024xz.png","rq":"更新：2019年5月28日","details":"配合迅雷使用","jsurl":"http://qq.cn.hn/gBq","url":"1024xz","button":"安装脚本"},{"title":"1024小说","image":"img/1024xs.png","rq":"更新：2019年5月28日","details":"在线小说","jsurl":"http://qq.cn.hn/gBq","url":"1024xs","button":"安装脚本"},{"title":"1024图库","image":"img/1024tp.png","rq":"更新：2019年5月28日","details":"在线图库","jsurl":"http://qq.cn.hn/gBq","url":"1024tk","button":"安装脚本"},{"title":"视频评论","image":"img/sppl.png","rq":"发布：2019年4月11日","details":"微信朋友圈、QQ空间- 视频评论 - 高逼格-超好玩","jsurl":"http://t.cn/E6nhSYp","url":"sppl","button":"安装脚本"},{"title":"网购历史价格查询1.2","image":"img/lsjgcx.jpg","rq":"更新：2019年4月10日","details":"历史价格走势图\n支持：淘宝、京东、亚马逊等","jsurl":"http://t.cn/Ebed6dC","url":"wglsjg","button":"安装脚本"},{"title":"图片评论","image":"img/tppl.png","rq":"发布：2019年4月5日","details":"微信朋友圈、QQ空间- 图片评论 - 高逼格-超好玩","jsurl":"http://t.cn/EiduHaI","url":"tppl","button":"安装脚本"},{"title":"语音评论","image":"img/yypl.png","rq":"发布：2019年4月4日","details":"微信朋友圈、QQ空间- 语音评论 - 高逼格-超好玩","jsurl":"https://mp.weixin.qq.com/s/1zTW7r33H_y1FFt9ofS-7A","url":"yypl","button":"安装脚本"},{"title":"BTbtt-下载","image":"img/btbtt.jpg","rq":"发布：2019年4月3日","details":"支持:影片搜索\n查看影片详情，复制磁力链接。","jsurl":"http://87xl.cn/js-btbtt.html","url":"btbtt","button":"安装脚本"},{"title":"规则文件提取","image":"img/gzwjtq.png","rq":"发布：2019年4月1日","details":"支持:workflow形式链接\n规则文件提取，图标下载。","jsurl":"http://87xl.cn/gz-js-wjtq.html","url":"gzwjtq","button":"安装脚本"},{"title":"直播-秋名山见2.0","image":"img/qmsj.jpg","rq":"2019年3月10日","details":"破解直播平台聚合，目前平台约有100个，低调使用！","jsurl":"http://t.cn/E7LC0v4","url":"zbqms","button":"安装脚本"},{"title":"无限资源 1.5","image":"img/wxzy.png","rq":"更新:2019.3.6","details":"修复更新\n服务器被墙了，需要翻墙才能观看\n内容不可描述","jsurl":"https://ae85.cn/jb.html","url":"wxzy","button":"安装脚本"},{"title":"轻量级web浏览器1.1","image":"img/web.jpg","rq":"更新：2019年1月25日","details":"不用梯子也能浏览被墙网站\n密码到博客中查看\n\nhttps://87xl.cn","jsurl":"https://87xl.cn/js-web.html","url":"https://87xl.cn/js-web.html","button":"前往博客"},{"title":"赛事直播 1.5","image":"img/sszb.jpg","rq":"2019年1月24日","details":"脚本起初是为方便看世界杯而写。\n\n近日不少朋友说想看NBA球赛，于是就修复下脚本。","jsurl":"http://t.cn/RB8zDhs","url":"sszb","button":"获取安装"},{"title":"音乐下载","image":"img/music.jpg","rq":"发布：2019年1月15日","details":"音乐下载\n支持：网易云音乐、QQ音乐、虾米音乐、酷狗音乐、百度音乐","jsurl":"http://t.cn/EGtlxQ5","url":"music","button":"安装脚本"},{"title":"电视直播","image":"img/tv-live.png","rq":"更新：2019年1月1日","details":"国内电视直播","jsurl":"http://t.cn/Ebm9Ggf","url":"tv-live","button":"安装脚本"},{"title":"Pin-x","image":"img/Pin.png","rq":"发布：2018年12月17日","details":"一个可以取代pin软件的小组件脚本\n不支持pin，只支持jsbox","jsurl":"http://qq.cn.hn/gAW","url":"jsbox://import?url=Pin-x.box&name=Pin-x","button":"安装脚本"},{"title":"JSBox脚本安装器","image":"img/jsbxo.png","rq":"发布：2018年11月23日","details":"轻松解决iOS12脚本导入不了问题\n不会使用的看教程","jsurl":"http://qq.cn.hn/g43","url":"jbazq","button":"安装脚本"},{"title":"狼视频破解","image":"img/langsp.png","rq":"发布：2018年10月16日","details":"这个脚本也写了有一段时间了\n经过小良长时间的检验觉得不错\n决定分享给广大狼友。","jsurl":"https://ae85.cn/jb.html","url":"langshipin","button":"安装脚本"},{"title":"贴吧签到 1.3","image":"img/qiandao.jpg","rq":"更新：2018年9月27日","details":"修复更新无法签到问题\n支持多账号签到\n支持添加BDUSS功能，添加管理账号，切换账号签到。\n\n如果不会使用点击下方的查看教程","jsurl":"http://t.cn/RrCFKeW","url":"tieba3","button":"安装脚本"},{"title":"极速影院","image":"img/128.png","rq":"更新：2018年4月11日","details":"由于js版要比Workflow版界面好，所以小良花了点时间做了个js版的，极速影院","jsurl":"http://t.cn/RmosA7Y","url":"yingyuan","button":"安装脚本"},{"title":"Vip视频解析","image":"img/vip.jpg","rq":"更新：2017年11月17日","details":"更新了解析接口\n支持：爱奇艺、腾讯、优酷、芒果、等Vip视频\n\n如果不会使用点击下方的查看教程","jsurl":"http://t.cn/RNTHBSq","url":"Vip-jx","button":"安装脚本"},{"title":"下载集合","image":"img/xzjh.jpg","rq":"更新：2017年11月17日","details":"快速启动下载工具并将剪切板内容传递给下载工具，前提是下载工具需要支持URL schemes数据接收","jsurl":"http://www.yixia.com/u/paike_agjgihl1hv","url":"xiazaijihe","button":"安装脚本"},{"title":" Workflow - 启动器 (Workflow)","image":"img/wf.jpg","rq":"更新：2017年9月1日","details":"启动项必须要在Workflow里有这个规则\n\n可自己行修改名称动作","jsurl":"","url":"Workflow","button":"安装脚本"}]
+
+
+function kap_cj(data){
+    var txt1 = "";
+    for (var i = 0; i < data.length; i++) {
+        co_sj()
+        var arr = data[i]
+        txt1 = txt1 + `<div class="col-md-4" onclick="install('${arr.url}')">
+        <div class="kap s${color}">
+            <img src="./${arr.image}">
+            <div class="title">
+                <h4>${arr.title}</h4>
+                <p class="ri">${arr.rq}</p>
+            </div>
+            <div class="sm">
+                <p>${arr.details}</p>
+            </div>
+        </div>
+        </div>`
+    }
+    return txt1;
+}
+$("#jb").html(kap_cj(data_jb));
+
+
+function install(id) {
+    var url = "https://ae85.cn/jsbox/" + id + ".html";
+    if (isios()) {
+        window.open(url);
+    } else {
+        $("#qrcode").empty();
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 230,
+            height: 230,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        
+        qrcode.makeCode(url);
+        $(".ma_tac").show();
+    }
+}
+
+function isios() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["iPhone", "iPad", "iPod"];
+    var flag = false;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = true;
+            break;
+        }
+    }
+    return flag;
+}
+
+
