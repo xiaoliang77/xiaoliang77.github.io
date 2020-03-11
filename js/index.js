@@ -56,6 +56,9 @@ function install(id, lei) {
     if (isios()) {
         if (lei == 1) {
             url = gz_url;
+            if(gz_url.indexOf("workflow://") != -1){
+                url = id;
+            }
         } else if (lei == 2) {
             url = jb_url;
         } else if (lei == 3) {
