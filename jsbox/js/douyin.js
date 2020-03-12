@@ -235,7 +235,7 @@ $ui.render({
       type: "button",
       props: {
         id: "logo",
-        src: "https://ae85.cn/wf/xl.png"
+        src: "https://ae85.cn/img/xl.png"
       },
       events: {
         tapped: function (sender) {

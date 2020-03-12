@@ -37,7 +37,7 @@ var szan = {
   type: "button",
   props: {
     id: "hb_img",
-    src: "https://ae85.cn/wf/xl.png",
+    src: "https://ae85.cn/img/xl.png",
   },
   events: {
     tapped: function(sender) {
@@ -151,7 +151,7 @@ function getpt(info) {
       var arr = json.match(/<liid=.*?<\/li>/g)
       var data = [{
         tx: {
-          src: "https://ae85.cn/wf/hb.jpg"
+          src: "https://ae85.cn/img/hb.jpg"
         },
         mc: {
           text: "福利(200)"
@@ -197,7 +197,7 @@ function getlist(id, mc) {
       var arr = json.match(/<li.*?<\/li>/g)
       var data = [{
         tx: {
-          src: "https://ae85.cn/wf/hb.jpg"
+          src: "https://ae85.cn/img/hb.jpg"
         },
         mc: {
           text: "每日福利"

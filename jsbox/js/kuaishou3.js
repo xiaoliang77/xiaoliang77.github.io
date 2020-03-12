@@ -120,7 +120,7 @@ $ui.render({
       props: {
         id: "bt1",
         radius: 25,
-        src: "https://ae85.cn/wf/hb.jpg",
+        src: "https://ae85.cn/img/hb.jpg",
         font: $font(20)
       },
       layout: function(make) {

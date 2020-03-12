@@ -186,8 +186,8 @@ function getlb() {
                 }
                 if (d.indexOf("备用") !== -1) {
                     data.push({
-                        lt1: { src: "https://ae85.cn/wf/xl.png" },
-                        lt2: { src: "https://ae85.cn/wf/xiaoliang.png" },
+                        lt1: { src: "https://ae85.cn/img/xl.png" },
+                        lt2: { src: "https://ae85.cn/img/xiaoliang.png" },
                         sais: { text: "小良 - 更新器" },
                         rq: { text: "带你打开ios新世纪" },
                         zd1: { text: "脚本2.4版" },

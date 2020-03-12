@@ -4,7 +4,7 @@ const mrhb = {
   type: "button",
   props: {
     id: "hb_img",
-   src: "https://ae85.cn/wf/hb.jpg",
+   src: "https://ae85.cn/img/hb.jpg",
   radius: 30
   },
   events: {

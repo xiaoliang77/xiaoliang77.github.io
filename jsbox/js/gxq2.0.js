@@ -56,7 +56,7 @@ const mrhb = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "https://ae85.cn/wf/hb.jpg",
+    src: "https://ae85.cn/img/hb.jpg",
   },
   events: {
     tapped: function(sender) {

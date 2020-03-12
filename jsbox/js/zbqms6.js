@@ -37,7 +37,7 @@ var szan = {
     type: "button",
     props: {
         id: "hb_img",
-        src: "https://ae85.cn/wf/xl.png",
+        src: "https://ae85.cn/img/xl.png",
     },
     events: {
         tapped: function (sender) {
