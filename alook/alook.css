@@ -1,0 +1,170 @@
+html,body,div,span{
+	padding:0;
+	margin:0;
+	border:none;
+}
+a:hover, a:visited, a:link, a:active {
+    color:inherit;
+    text-decoration:none;
+}
+body{
+	font-size:4vw;
+	color:#6a6b6a;
+	background-color:#f4f4f4;
+}
+#all{
+	padding:0vw 0 15vw 0;
+}
+
+
+/*??1*/
+#page_1{
+	padding-top:14vw;
+	padding-bottom:4vw;
+}
+#topBar{
+	width:100vw;
+	height:14vw;
+	line-height:14vw;
+	background-color:rgba(255,255,255,0.9);
+	color:#fb7ba0;
+	font-size:4vw;
+	text-align:center;
+	letter-spacing:1vw;
+	box-shadow:0px 1px 5px rgba(105,105,105,0.2);
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:999999;
+}
+.swiper{
+	width:96vw;
+	height:40vw;
+	margin:4vw 2vw 6vw 2vw;
+	overflow:hidden;
+	background:url(../img/AD4.jpg) no-repeat center -4vw;
+	background-size:100%;
+	box-shadow:0px 1px 5px rgba(105,105,105,0.4);
+	border-radius:1vw 1vw 0 0;
+	position:relative;
+}
+
+.swiperText{
+	color:#6a6b6a;
+	width:100%;
+	font-size:3.5vw;
+	letter-spacing:1vw;
+	height:9vw;
+	line-height:9vw;
+	padding-left:4vw;
+	background:#fafafa;
+	position:absolute;
+	left:0;
+	bottom:0;
+}
+.al{
+    box-sizing:border-box;
+	margin:4vw 2vw;
+	color:#6a6b6a;
+	width:96vw;
+	height:30vw;
+	background:#fafafa;
+	box-shadow:0px 1px 5px rgba(105,105,105,0.4);
+	position:relative;
+	background-position:0 0;
+	background-repeat: no-repeat;
+	background-size:auto 30vw;
+	border-radius:0 1vw 1vw 0;
+}
+.icon {
+    width: 26vw;
+    height: 26vw;
+    margin-right: 1vw;
+    display: block;
+    margin-top: 2vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+}
+.img{
+    height:100%;
+    width:100%;
+    border-radius:20px
+}
+.theViaApp{
+	box-sizing:border-box;
+	margin:4vw 2vw;
+	color:#6a6b6a;
+	width:96vw;
+	height:30vw;
+	background:#fafafa;
+	box-shadow:0px 1px 5px rgba(105,105,105,0.4);
+	position:relative;
+	background-position:0 0;
+	background-repeat: no-repeat;
+	background-size:auto 30vw;
+	border-radius:0 1vw 1vw 0;
+}
+.theViaAppSummary{
+	box-sizing:border-box;
+	padding:2vw 2vw 2vw 8vw;
+	width:75vw;
+	height:22vw;
+	font-size:3.5vw;
+	overflow:hidden;
+	line-height:6vw;
+	position:absolute;
+	right:0;
+}
+.title,.author{
+	width:100%;
+	height:6vw;
+	line-height:6vw;
+	color:#fb7ba0;
+	font-weight:bold;
+}
+.title span,.author span{
+	font-weight:normal;
+	color:#6a6b6a;
+}
+.summaryText{
+	width:70vw;
+	height:6vw;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.summary{
+	font-weight:bold;
+	color:#fb7ba0;
+}
+.more,.ifInstall{
+	box-sizing:border-box;
+	width:14vw;
+	height:6vw;
+	line-height:6vw;
+	font-size:3.5vw;
+	color:#fb7ba0;
+	text-align:center;
+	border:1px solid #fb7ba0;
+	border-radius:1vw;
+}
+.more{
+	width:18vw;
+	position:absolute;
+	right:44vw;
+	bottom:2vw;
+}
+.ifInstall{
+	position:absolute;
+	right:2vw;
+	bottom:2vw;
+}
+#bottomSwiper{
+	clear:both;
+}
+
+
+
