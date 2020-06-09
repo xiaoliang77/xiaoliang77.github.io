@@ -3,7 +3,8 @@ Flex 3补丁管理 1.5
 
 2020年6月9日 更新：
 修复：列表排序错乱问题。
-修复: ios13系统分享单个补丁名字错乱问题。
+修复：ios13系统分享单个补丁名字错乱问题。
+新增：云端补丁下载进度条。
 
 ---------
 可合成flex多个patches.plist文件
@@ -597,9 +598,13 @@ $http.get({
 });
 
 function pdybb(bb) {
-  if ($file.exists("ybb.txt")) {
-    var file = $file.read("ybb.txt").string;
-    if (file != bb) {
+  if ($file.exists("yunbd.plist")) {
+    if ($file.exists("ybb.txt")) {
+      var file = $file.read("ybb.txt").string;
+      if (file != bb) {
+        await: downloadbd(bb);
+      }
+    } else {
       await: downloadbd(bb);
     }
   } else {
@@ -610,6 +615,12 @@ function pdybb(bb) {
 function downloadbd(bb) {
   $http.download({
     url: $cache.get("info").yunurl,
+    showsProgress: true,
+    backgroundFetch: true,
+    progress: function(bytes, total) {
+      var percentage = (bytes * 1.0) / total;
+      $ui.progress(percentage);
+    },
     handler: resp => {
       if (resp.response.statusCode == "200") {
         $file.write({
