@@ -1,13 +1,13 @@
 /*
-短视频下载器 2.6.1
+短视频下载器 2.7
 2020年6月12日 更新
 修复：快手，小红书，火山，微博，秒拍，美拍，陌陌，小影，全民小视频，映客，等下载。
-暂时取消脚本密码验证。
+新增：bilibili视频下载。
 
 
 支持：小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、火山，微博，秒拍，美拍，陌陌，小影，全民小视频，映客等平台的视频下载。
 
-
+解析后如果预览部分不了请直接点击下载或复制链接到其他下载工具下载。
 
 by：iPhone 8、小良
 更多js脚本： https://ae85.cn/
@@ -23,7 +23,7 @@ $http.get({
     if (resp.response.statusCode == "200") {
       var info = resp.data;
       $cache.set("info", info);
-      if (info.bb != "2.6") {
+      if (info.bb != "2.7") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,
@@ -202,7 +202,7 @@ function zjm() {
         props: {
           id: "tis2",
           text:
-            "目前支持：微信公众号视频、小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、等平台的视频下载。",
+            "目前支持：微信公众号视频、小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、火山，微博，秒拍，美拍，陌陌，小影，全民小视频，映客等平台的视频下载。",
           font: $font(14),
           lines: 0,
           textColor: $color("#aaa"),
@@ -251,7 +251,7 @@ function sysm() {
         props: {
           id: "webxia",
           bgcolor: $color("#e6e6e6"),
-          html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>脚本已支持：微信公众号视频、小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、等平台的视频下载。<br><br>修复更新</h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1> <h1><a href="https://ae85.cn/lxfs.html">关注公众号</a> 小良科技</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
+          html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>脚本已支持：微信公众号视频、小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、火山，微博，秒拍，美拍，陌陌，小影，全民小视频，映客等平台的视频下载。<br><br>修复更新</h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1> <h1><a href="https://ae85.cn/lxfs.html">关注公众号</a> 小良科技</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
         },
         layout: function (make) {
           make.left.right.inset(10);
@@ -410,6 +410,11 @@ function tmenu(text) {
     ) {
       //      kuaishou(url);
       xiaohongshu(url);
+    } else if (
+      url.search(/b23.|bilibili./) != -1
+    ) {
+      bilibili(url)
+
     } else if (
       url.search(
         /vigovideo.|yxixy.|chenzhongtech.|miaopai.|xiaokaxiu.|yixia.|weibo.|weico.|meipai.|musical.|musemuse.|muscdn.|xiaoying.|vivavideo.|immomo.|momocdn.|inke.|flipagram.|163.|weishi.qq|qzone.qq|kg4.qq|kg3.qq|kg2.qq|kg1.qq|kg.qq|instagram.|hao222.|haokan.baidu|quduopai.|nuoruien./
@@ -600,6 +605,25 @@ function kuaishou(url) {
     handler: resp => {
       var data = resp.data;
       cgjm(data.list[0]);
+    }
+  });
+}
+
+function bilibili(url) {
+  $http.lengthen({
+    url: url,
+    handler: function (yurl) {
+      var turl = $cache.get("info").bilibili;
+      $http.get({
+        url: $text.base64Decode(turl) + yurl,
+        handler: function (resp) {
+          console.log(resp.data)
+          var html = resp.data.replace(/\n|\s|\r/g, "")
+          var text = html.match(/url=(\S*?)\"/)[1]
+          var zurl = $text.URLDecode(text).replace(/\\/g, "")
+          cgjm(zurl);
+        }
+      });
     }
   });
 }
