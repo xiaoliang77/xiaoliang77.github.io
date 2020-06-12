@@ -131,7 +131,7 @@ var count;
 function zjm() {
   $ui.render({
     props: {
-      title: "短视频下载 2.6",
+      title: "短视频下载 2.7",
       bgcolor: $color("#e6e6e6"),
       navButtons: [
         {
