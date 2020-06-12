@@ -1,11 +1,11 @@
 /*
-短视频下载器 2.6
-2020年6月5日 更新
-修复：抖音，tiktok，快手等。
+短视频下载器 2.6.1
+2020年6月12日 更新
+修复：快手，小红书，火山，微博，秒拍，美拍，陌陌，小影，全民小视频，映客，等下载。
 暂时取消脚本密码验证。
 
 
-支持：微信公众号视频、小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、等平台的视频下载。
+支持：小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、火山，微博，秒拍，美拍，陌陌，小影，全民小视频，映客等平台的视频下载。
 
 
 
@@ -18,7 +18,7 @@ const base64 =
 $ui.loading(true);
 $http.get({
   url: $text.base64Decode(base64.replace(/LZ/g, "WF")),
-  handler: function(resp) {
+  handler: function (resp) {
     $ui.loading(false);
     if (resp.response.statusCode == "200") {
       var info = resp.data;
@@ -30,13 +30,13 @@ $http.get({
           actions: [
             {
               title: "进入官网",
-              handler: function() {
+              handler: function () {
                 $app.openURL(info.gw);
               }
             },
             {
               title: "关注公众号",
-              handler: function() {
+              handler: function () {
                 $ui.alert({
                   title: "温馨提示",
                   message:
@@ -44,7 +44,7 @@ $http.get({
                   actions: [
                     {
                       title: "跳转微信",
-                      handler: function() {
+                      handler: function () {
                         $clipboard.text = "ae85-cn";
                         $app.openURL("weixin://");
                       }
@@ -97,11 +97,11 @@ function getclipboard() {
       actions: [
         {
           title: "取消",
-          handler: function() {}
+          handler: function () { }
         },
         {
           title: "提取",
-          handler: function() {
+          handler: function () {
             $("bjk").text = url;
             tmenu(url);
           }
@@ -119,7 +119,7 @@ const by = {
     text: "iPhone 8、小良 (https://ae85.cn)",
     textColor: $color("#bbb")
   },
-  layout: function(make, view) {
+  layout: function (make, view) {
     make.bottom.inset(2);
     make.left.right.inset(0);
     make.height.equalTo(30);
@@ -137,7 +137,7 @@ function zjm() {
         {
           title: "Title",
           icon: "008",
-          handler: function() {
+          handler: function () {
             sysm();
           }
         }
@@ -151,7 +151,7 @@ function zjm() {
           text: "请将视频链接粘贴到下方：",
           font: $font(14)
         },
-        layout: function(make, view) {
+        layout: function (make, view) {
           make.left.inset(15);
           make.top.inset(30);
         }
@@ -164,13 +164,13 @@ function zjm() {
           radius: 5,
           placeholder: "输入视频地址… \n或长按【解析】按钮"
         },
-        layout: function(make) {
+        layout: function (make) {
           make.top.equalTo($("tis1").bottom).inset(5);
           make.right.left.inset(15);
           make.height.equalTo(160);
         },
         events: {
-          returned: function(sender) {
+          returned: function (sender) {
             $("bjk").blur();
             tmenu($("bjk").text);
           }
@@ -182,16 +182,16 @@ function zjm() {
           title: "解  析",
           id: "bt1"
         },
-        layout: function(make) {
+        layout: function (make) {
           make.top.equalTo($("bjk").bottom).inset(15);
           make.right.left.inset(15);
           make.height.equalTo(45);
         },
         events: {
-          tapped: function(sender) {
+          tapped: function (sender) {
             tmenu($("bjk").text);
           },
-          longPressed: function(info) {
+          longPressed: function (info) {
             $("bjk").text = $clipboard.link;
             tmenu($clipboard.link);
           }
@@ -208,7 +208,7 @@ function zjm() {
           textColor: $color("#aaa"),
           align: 4
         },
-        layout: function(make, view) {
+        layout: function (make, view) {
           make.top.equalTo($("bt1").bottom).inset(10);
           make.right.left.inset(15);
           make.height.equalTo(100);
@@ -219,7 +219,7 @@ function zjm() {
         props: {
           id: "web"
         },
-        layout: function(make, view) {
+        layout: function (make, view) {
           make.top.equalTo(0);
           make.right.left.inset(0);
           make.height.equalTo(1);
@@ -230,7 +230,7 @@ function zjm() {
         props: {
           loading: false
         },
-        layout: function(make, view) {
+        layout: function (make, view) {
           make.bottom.equalTo($("bjk").bottom).inset(-10);
           make.centerX.equalTo(view.super);
         }
@@ -253,7 +253,7 @@ function sysm() {
           bgcolor: $color("#e6e6e6"),
           html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>脚本已支持：微信公众号视频、小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、等平台的视频下载。<br><br>修复更新</h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1> <h1><a href="https://ae85.cn/lxfs.html">关注公众号</a> 小良科技</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
         },
-        layout: function(make) {
+        layout: function (make) {
           make.left.right.inset(10);
           make.top.bottom.inset(0);
         }
@@ -274,7 +274,7 @@ function cgjm(url) {
         props: {
           id: "vediobtn"
         },
-        layout: function(make, view) {
+        layout: function (make, view) {
           make.left.bottom.right.inset(10);
           make.top.inset(30);
         },
@@ -287,7 +287,7 @@ function cgjm(url) {
               radius: 7,
               bgcolor: $color("#eee")
             },
-            layout: function(make, view) {
+            layout: function (make, view) {
               make.left.right.inset(10);
               make.top.equalTo(20);
               make.height.equalTo(250);
@@ -300,14 +300,14 @@ function cgjm(url) {
               id: "dBtn",
               bgcolor: $color("#409eff")
             },
-            layout: function(make, view) {
+            layout: function (make, view) {
               make.top.equalTo($("videobof").bottom).inset(30);
               make.left.inset(20);
               make.height.equalTo(50);
               make.width.equalTo(130);
             },
             events: {
-              tapped: function(sender) {
+              tapped: function (sender) {
                 download(url);
               }
             }
@@ -319,14 +319,14 @@ function cgjm(url) {
               id: "fBtn",
               bgcolor: $color("#909399")
             },
-            layout: function(make, view) {
+            layout: function (make, view) {
               make.top.equalTo($("videobof").bottom).inset(30);
               make.right.inset(20);
               make.height.equalTo(50);
               make.width.equalTo(130);
             },
             events: {
-              tapped: function(sender) {
+              tapped: function (sender) {
                 $clipboard.text = url;
                 $ui.toast("复制成功!");
               }
@@ -343,7 +343,7 @@ function zhur() {
   var webView = $("web");
   webView.eval({
     script: `var URL = document.getElementById("video_url").href; window.name = URL`,
-    handler: function(result, error) {
+    handler: function (result, error) {
       if (result.code == 4) {
         if (count == 4) {
           $("spinner").loading = false;
@@ -363,7 +363,7 @@ function download(url) {
   $ui.loading(true);
   $http.download({
     url: url,
-    handler: function(resp) {
+    handler: function (resp) {
       $ui.loading(false);
       if (resp.response.statusCode == "200") {
         $share.sheet(["download.mp4", resp.data]);
@@ -393,7 +393,8 @@ function tmenu(text) {
         /huoshan.com|huoshan.|huoshanzhibo.|hotsoonzb.|smzhuhe.|woaidazhe./
       ) != -1
     ) {
-      huoshan(url);
+      //      huoshan(url);
+      xiaohongshu(url);
     } else if (
       url.search(
         /toutiaoimg.cn|365yg.com|ixigua.|xiguaapp.|xiguavideo.|xiguashipin.|pstatp.|zijiecdn.|toutiaocdn.|toutiaoimg.|toutiao12.|toutiao11.|neihanshequ./
@@ -402,27 +403,29 @@ function tmenu(text) {
       toutiao(url);
     } else if (url.search(/weixin.qq.com/) != -1) {
       weixin_gzh(url);
-    } else if (url.search(/xiaohongshu.com/) != -1) {
+    } else if (url.search(/xiaohongshu.com|xhslink./) != -1) {
       xiaohongshu(url);
     } else if (
       url.search(/gifshow.|kuaishou.|kwai.|kw.|chenzhongtech./) != -1
     ) {
-      kuaishou(url);
+      //      kuaishou(url);
+      xiaohongshu(url);
     } else if (
       url.search(
         /vigovideo.|yxixy.|chenzhongtech.|miaopai.|xiaokaxiu.|yixia.|weibo.|weico.|meipai.|musical.|musemuse.|muscdn.|xiaoying.|vivavideo.|immomo.|momocdn.|inke.|flipagram.|163.|weishi.qq|qzone.qq|kg4.qq|kg3.qq|kg2.qq|kg1.qq|kg.qq|instagram.|hao222.|haokan.baidu|quduopai.|nuoruien./
       ) != -1
     ) {
-      count = 1;
-      $ui.alert("暂不支持该链接解析\n请检测链接是否有误？\n或联系作者反馈");
+      xiaohongshu(url);
+      //      count = 1;
+      //      $ui.alert("暂不支持该链接解析\n请检测链接是否有误？\n或联系作者反馈");
       //            var turl = $cache.get("info").turl
       //            $('web').url = $text.base64Decode(turl) + url;
-      timer = $timer.schedule({
-        interval: 3,
-        handler: function() {
-          //                    zhur();
-        }
-      });
+      //      timer = $timer.schedule({
+      //        interval: 3,
+      //        handler: function() {
+      //                    zhur();
+      //        }
+      //      });
     } else {
       $ui.alert("暂不支持该链接解析\n请检测链接是否有误？\n或联系作者反馈");
       $("spinner").loading = false;
@@ -433,11 +436,11 @@ function tmenu(text) {
 function douyin(url) {
   $http.lengthen({
     url: url,
-    handler: function(yurl) {
+    handler: function (yurl) {
       var id = yurl.match(/video\/(\S*?)\//)[1];
       $http.get({
         url: url,
-        handler: function(resp) {
+        handler: function (resp) {
           var data = resp.data.replace(/\n|\s|\r/g, "");
           var dytk = data.match(/dytk\:\"(\S*?)\"/)[1];
 
@@ -464,7 +467,7 @@ function tiktok(url) {
   tiktok = $cache.get("info").tiktok;
   $http.lengthen({
     url: url,
-    handler: function(resp) {
+    handler: function (resp) {
       var id = resp.match(/v\/([0-9]+)/)[1];
 
       $http.get({
@@ -484,12 +487,12 @@ function tiktok(url) {
 function pipix(url) {
   $http.lengthen({
     url: url,
-    handler: function(yurl) {
+    handler: function (yurl) {
       var id = yurl.match(/item\/([0-9]+)/)[1];
 
       $http.get({
         url: $text.base64Decode($cache.get("info").pipix) + id,
-        handler: function(resp) {
+        handler: function (resp) {
           cgjm(resp.data.data.item.origin_video_download.url_list[0].url);
         }
       });
@@ -500,14 +503,14 @@ function pipix(url) {
 function huoshan(url) {
   $http.lengthen({
     url: url,
-    handler: function(yurl) {
+    handler: function (yurl) {
       var id = yurl.match(/item\/([0-9]+)/)[1];
       $http.get({
         url:
           $text.base64Decode($cache.get("info").huoshan) +
           id +
           "/?iid=66430143096&ac=4G&os_api=18&app_name=live_stream&channel=App%20Store&idfa=BA311C5F-C5F1-4E78-A71E-F636CF779EA8&device_platform=iphone&live_sdk_version=5.7.3&vid=C2CAA6A9-54F4-4853-80EB-09AD37FC7F57&openudid=c72471ef1607585229f08fef72081bb06e2b8605&device_type=iPhone10,3&mccmnc=51502&update_version_code=5734&version_code=5.7.3&os_version=12.0&screen_width=1125&aid=1112&device_id=60115234121&mas=007037d9d82d218ba64996b995edb93b9e0909ae35f38e1b0ed4e8&as=a2a51d0ffe479c25f19258",
-        handler: function(resp) {
+        handler: function (resp) {
           cgjm(resp.data.data.video.url_list[0]);
         }
       });
@@ -518,11 +521,11 @@ function huoshan(url) {
 function toutiao(url) {
   $http.lengthen({
     url: url,
-    handler: function(yurl) {
+    handler: function (yurl) {
       var id = yurl.match(/i([0-9]+)/)[1];
       $http.get({
         url: "https://m.toutiaoimg.com/i" + id + "/info/",
-        handler: function(resp) {
+        handler: function (resp) {
           var video_id = resp.data.data.video_id;
           cgjm($text.base64Decode($cache.get("info").toutiao) + video_id);
         }
@@ -545,13 +548,14 @@ function weixin_gzh(url) {
     body: {
       url: url
     },
-    handler: function(resp) {
+    handler: function (resp) {
+      console.log(resp.data)
       var arr = resp.data.data;
       if (arr.length == 1) {
         cgjm(arr[0].url);
       } else {
         $ui.menu({
-          items: arr.map(function(item) {
+          items: arr.map(function (item) {
             return item.title;
           }),
           handler(title, idx) {
@@ -574,7 +578,7 @@ function xiaohongshu(url) {
       source_url: url,
       sign: ""
     },
-    handler: function(resp) {
+    handler: function (resp) {
       cgjm(resp.data.data.data.video);
     }
   });
