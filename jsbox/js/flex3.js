@@ -1,11 +1,17 @@
 /*
-Flex 3补丁管理 1.5
+Flex 3补丁管理 1.6
 
-2020年6月9日 更新：
-修复：列表排序错乱问题。
-修复：ios13系统分享单个补丁名字错乱问题。
-新增：云端补丁下载进度条。
+2020年6月15日 更新：
+修复：分享最后一个补丁节点对齐问题。
+修复：修复原先补丁分割造成补丁无法显示问题。
+新增：文件分享面板添加管理补丁。直接Filza文件内操作，无需借助iCloud云盘。
+新增：补丁数量显示。
+新增：关闭按钮。
+去除：补丁分享名称自动添加"_patches"。
 
+---------
+视频教程①：https://u.nu/udio8
+视频教程②：http://t.cn/EIcPhm3
 ---------
 可合成flex多个patches.plist文件
 内置云端补丁，可以从云端添加。
@@ -17,6 +23,7 @@ https://ae85.cn/
 $app.autoKeyboardEnabled = true;
 var arr = [],
   yunarr = [];
+
 function xrwj() {
   dd = daoc();
   var success = $file.write({
@@ -27,12 +34,46 @@ function xrwj() {
     $ui.toast("已保存到本地");
   }
 }
+
+var out = {
+  type: "image",
+  props: {
+    id: "out",
+    icon: $icon("015", $color("red"))
+  },
+  layout: (make, view) => {
+    make.right.equalTo(view.super).offset(-100);
+    make.height.width.equalTo(25);
+    make.centerY.equalTo(view.center);
+  },
+  events: {
+    tapped: sender => {
+      $app.close();
+    }
+  }
+};
+
+var shu = {
+  type: "label",
+  props: {
+    align: 1,
+    id: "shu",
+    font: $font(14),
+  },
+  layout: (make, view) => {
+    make.right.equalTo($("out").left).inset(5);
+    make.height.equalTo(40);
+    make.width.equalTo(50); make.centerY.equalTo(view.center);
+  }
+};
+
 const conView = {
   type: "view",
   props: {
     id: "conView"
   },
   views: [
+    out,shu,
     {
       type: "label",
       props: {
@@ -162,6 +203,7 @@ const conView = {
                           var feng = yunarr[indexPath.item];
                           arr = arr.concat(feng);
                           $("list").data = listsa(arr);
+                          $("shu").text = arr.length;
                           $ui.toast("已添加", 0.6);
                         }
                       }
@@ -321,6 +363,7 @@ $ui.render({
                       handler: function() {
                         arr = [];
                         $("list").data = [];
+                        $("shu").text=""
                         $file.delete("patches.plist");
                       }
                     },
@@ -345,6 +388,7 @@ $ui.render({
                   arr.splice(indexPath.item, 1);
                   var data = listsa(arr);
                   $("list").data = data;
+                  $("shu").text = arr.length;
                 }
               },
               {
@@ -354,19 +398,20 @@ $ui.render({
                   var name = sender.data[indexPath.row];
                   name = name.split("\n")[0];
                   var plist = `<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>patches</key>
-	<array>
-		<dict>${arr[indexPath.item]}</dict>
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <plist version="1.0">
+  <dict>
+	  <key>patches</key>
+	  <array>
+		<dict>${arr[indexPath.item]}
+		</dict>
 	</array>
 </dict>
 </plist>`;
                   var dd = $data({
                     string: plist
                   });
-                  $share.sheet([name + "_patches.plist", dd]);
+                  $share.sheet([name + ".plist", dd]);
                 }
               }
             ]
@@ -451,10 +496,19 @@ function cltouq(xml) {
   if (!qtou) {
     qtou = xml.replace(
       /<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/,
-      ""
-    );
+      "");
   }
-  var qwei = qtou.replace(/\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/, "");
+  var qwei = qtou.replace(
+    /\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/,
+    ""
+  );
+  var qwei = qwei.replace(
+    `
+		  </dict>
+	  </array>
+  </dict>
+  </plist>`,
+    "");
   var feng = qwei.split(`</dict>\n\t\t<dict>`);
   return feng;
 }
@@ -480,6 +534,7 @@ function zhulist(xml) {
   arr = arr.concat(feng);
   var data = listsa(arr);
   $("list").data = data;
+  $("shu").text = arr.length;
 }
 
 function daoc() {
@@ -507,10 +562,10 @@ function daoc() {
 	  <key>patches</key>
 	  <array>
 		  ${data}
-		  </dict>
-	  </array>
-  </dict>
-  </plist>`;
+		</dict>
+	</array>
+</dict>
+</plist>`;
     var dd = $data({
       string: plist
     });
@@ -555,7 +610,7 @@ $http.get({
       "aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw=="
     ) + "flex3.json",
   handler: resp => {
-    if (resp.data.bb != "1.5") {
+    if (resp.data.bb != "1.6") {
       $ui.alert({
         title: "温馨提示：",
         message: resp.data.gxsm,
@@ -653,4 +708,13 @@ function sousuo(text) {
   }
   yunarr = data;
   $("yunlist").data = listsa(yunarr);
+}
+
+if ($app.env == 4) {
+  var text = $context.data.string;
+  if (text.indexOf("<?xml") == -1) {
+    $ui.alert("未能识别的文件,检查是否是补丁文件");
+  } else {
+    zhulist(text);
+  }
 }
