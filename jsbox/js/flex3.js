@@ -1,7 +1,9 @@
 /*
-Flex 3补丁管理 1.6
+Flex 3补丁管理 1.6.1
 
-2020年6月15日 更新：
+2020年6月18日 更新：
+新增：内部云端补丁功能。
+-------
 修复：分享最后一个补丁节点对齐问题。
 修复：修复原先补丁分割造成补丁无法显示问题。
 新增：文件分享面板添加管理补丁。直接Filza文件内操作，无需借助iCloud云盘。
@@ -22,6 +24,7 @@ https://ae85.cn/
 
 $app.autoKeyboardEnabled = true;
 var arr = [],
+  qunarr = [],
   yunarr = [];
 
 function xrwj() {
@@ -58,12 +61,13 @@ var shu = {
   props: {
     align: 1,
     id: "shu",
-    font: $font(14),
+    font: $font(14)
   },
   layout: (make, view) => {
     make.right.equalTo($("out").left).inset(5);
     make.height.equalTo(40);
-    make.width.equalTo(50); make.centerY.equalTo(view.center);
+    make.width.equalTo(50);
+    make.centerY.equalTo(view.center);
   }
 };
 
@@ -73,7 +77,8 @@ const conView = {
     id: "conView"
   },
   views: [
-    out,shu,
+    out,
+    shu,
     {
       type: "label",
       props: {
@@ -99,6 +104,23 @@ const conView = {
         make.centerY.equalTo(view.center);
       },
       events: {
+        longPressed: sender => {
+          if (qunarr.length) {
+            qunView();
+          } else {
+            $input.text({
+              type: $kbType.search,
+              placeholder: "输入密码,获取内部补丁",
+              handler: text => {
+                var key = $cache.get("info").qunkey;
+                if ($text.base64Decode(key) == text) {
+                  $ui.toast("加载中…");
+                  qunbdlist();
+                } else alert("密码不正确！请重新输入。");
+              }
+            });
+          }
+        },
         tapped: sender => {
           if ($file.exists("yunbd.plist")) {
             $("zhuView").add({
@@ -363,7 +385,7 @@ $ui.render({
                       handler: function() {
                         arr = [];
                         $("list").data = [];
-                        $("shu").text=""
+                        $("shu").text = "";
                         $file.delete("patches.plist");
                       }
                     },
@@ -496,19 +518,18 @@ function cltouq(xml) {
   if (!qtou) {
     qtou = xml.replace(
       /<\?xml[^\♀]+\s+<key>patches<\/key>\n\s+<array>\n\s+<dict>/,
-      "");
+      ""
+    );
   }
-  var qwei = qtou.replace(
-    /\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/,
-    ""
-  );
+  var qwei = qtou.replace(/\s+<\/dict>\n\s+<\/array>\n<\/dict>\n<\/plist>/, "");
   var qwei = qwei.replace(
     `
 		  </dict>
 	  </array>
   </dict>
   </plist>`,
-    "");
+    ""
+  );
   var feng = qwei.split(`</dict>\n\t\t<dict>`);
   return feng;
 }
@@ -717,4 +738,183 @@ if ($app.env == 4) {
   } else {
     zhulist(text);
   }
+}
+
+function qunbdlist() {
+  var info = $cache.get("info");
+  $ui.loading(true);
+  $http.get({
+    url:
+      $text.base64Decode(info.nburl) +
+      "?key=" +
+      $text.base64Decode(info.captcha),
+    handler: resp => {
+      $ui.loading(false);
+      var data = resp.data.data;
+      if (data) {
+        qunarr = [];
+        for (i in data) {
+          var arr = data[i];
+
+          qunarr.push({
+            name: { text: arr.name },
+            author: { text: arr.author },
+            time: { text: arr.time },
+            url: arr.url
+          });
+        }
+        qunView();
+      } else {
+        $ui.toast("获取失败")
+      }
+    }
+  });
+}
+
+function qunView() {
+  $("zhuView").add({
+    type: "view",
+    props: {
+      id: "archivesView",
+      alpha: 1
+    },
+    layout: (make, view) => {
+      make.height.width.equalTo(view.super);
+      make.center.equalTo(view.super);
+    },
+    views: [
+      {
+        type: "blur",
+        props: {
+          style: 2,
+          alpha: 1
+        },
+        layout: $layout.fill,
+        events: {
+          tapped: sender => {
+            $ui.animate({
+              duration: 0.2,
+              animation: () => {
+                $("archivesView").alpha = 0;
+              },
+              completion: () => {
+                sender.super.remove();
+              }
+            });
+          }
+        }
+      },
+      {
+        type: "view",
+        props: {
+          id: "yunView",
+          radius: 10,
+          bgcolor: $color("#FFF")
+        },
+        layout: (make, view) => {
+          make.height.equalTo(view.super).dividedBy(12 / 9);
+          make.width.equalTo(view.super).dividedBy(12 / 11);
+          make.center.equalTo(view.super);
+        },
+        views: [
+          {
+            type: "label",
+            props: {
+              text: "内部云端补丁",
+              id: "yunbq",
+              font: $font("bold", 22),
+              align: $align.center
+            },
+            layout: (make, view) => {
+              make.left.right.inset(10);
+              make.top.inset(10);
+            }
+          },
+          {
+            type: "list",
+            props: {
+              id: "nbylist",
+              data: qunarr,
+              reorder: true,
+              rowHeight: 56,
+              template: [
+                {
+                  type: "label",
+                  props: {
+                    id: "name",
+                    font: $font("bold", 20),
+                    textColor: $color("blue"),
+                    ines: 0
+                  },
+                  layout: function(make, view) {
+                    make.left.right.inset(10);
+                    make.top.inset(5);
+                  }
+                },
+                {
+                  type: "label",
+                  props: {
+                    id: "author",
+                    font: $font(13),
+                    textColor: $color("secondaryText"),
+                    lines: 0
+                  },
+                  layout: function(make, view) {
+                    make.top.equalTo($("name").bottom).offset(5);
+                    make.left.equalTo(10);
+                    make.width.equalTo(180);
+                  }
+                },
+                {
+                  type: "label",
+                  props: {
+                    id: "time",
+                    font: $font(13),
+                    textColor: $color("secondaryText")
+                  },
+                  layout: function(make) {
+                    make.width.equalTo(80);
+                    make.right.inset(10);
+                    make.top.equalTo($("name").bottom).offset(5);
+                  }
+                }
+              ]
+            },
+            layout: make => {
+              make.right.left.bottom.inset(5);
+              make.top.equalTo($("yunbq").bottom).offset(10);
+            },
+            events: {
+              didSelect: (sender, indexPath, data) => {
+                downqunbd(data.url);
+              }
+            }
+          }
+        ]
+      }
+    ]
+  });
+}
+
+function downqunbd(url) {
+  $ui.toast("补丁下载中…");
+  $ui.loading(true);
+  $http.download({
+    url: url,
+    showsProgress: true,
+    backgroundFetch: true,
+    progress: function(bytes, total) {
+      var percentage = (bytes * 1.0) / total;
+      $ui.progress(percentage);
+    },
+    handler: resp => {
+      $ui.loading(false);
+      if (resp.response.statusCode == "200") {
+        zhulist(resp.data.string);
+        $ui.toast("添加成功！");
+      } else {
+        $ui.alert("下载失败");
+      }
+    }
+  });
 }
