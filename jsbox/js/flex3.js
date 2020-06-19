@@ -4,7 +4,6 @@ Flex 3补丁管理 1.6.1
 2020年6月18日 更新：
 新增：内部云端补丁功能。
 -------
-2020年6月15日 更新：
 修复：分享最后一个补丁节点对齐问题。
 修复：修复原先补丁分割造成补丁无法显示问题。
 新增：文件分享面板添加管理补丁。直接Filza文件内操作，无需借助iCloud云盘。
@@ -761,12 +760,13 @@ function qunbdlist() {
             name: { text: arr.name },
             author: { text: arr.author },
             time: { text: arr.time },
-            url: arr.url
+            url: arr.url,
+            id: arr.id
           });
         }
         qunView();
       } else {
-        $ui.toast("获取失败")
+        $ui.toast("获取失败");
       }
     }
   });
@@ -888,6 +888,7 @@ function qunView() {
             events: {
               didSelect: (sender, indexPath, data) => {
                 downqunbd(data.url);
+                downs(data.id);
               }
             }
           }
@@ -916,6 +917,17 @@ function downqunbd(url) {
       } else {
         $ui.alert("下载失败");
       }
+    }
+  });
+}
+
+function downs(id) {
+  var info = $cache.get("info");
+  var url = $text.base64Decode(info.downs) + id;
+  $http.get({
+    url: url,
+    handler: resp => {
+      var data = resp.data;
     }
   });
 }
