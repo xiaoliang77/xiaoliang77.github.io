@@ -8,7 +8,7 @@ https://ae85.cn/
 
 $cache.set("id", "29");
 $cache.set("pg", 1);
-var urlt = "http://w1.97xzjpzz.info/";
+var urlt = "https://k5.7086xz.xyz/";
 var data = [
   { name: "中文字幕", id: "29" },
   { name: "日韩无码", id: "27" },
