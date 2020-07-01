@@ -23,7 +23,7 @@ $http.get({
     if (resp.response.statusCode == "200") {
       var info = resp.data;
       $cache.set("info", info);
-      if (info.bb != "2.7") {
+      if (info.bb != "2.8") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,
