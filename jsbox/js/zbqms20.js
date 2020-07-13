@@ -1,8 +1,8 @@
 /*
-直播 - 秋名山见 2.0
-2019年3月10日
+直播 - 秋名山见 2.0.1
+2020年7月13日
 
-更新：修复房间空白问题。
+新增：接入影音宝播放器
 
 by：iPhone 8、小良
 http://ae85.cn/
@@ -51,6 +51,25 @@ var szan = {
         make.right.inset(15)
     }
 }
+var daocbm = {
+    type: "button",
+    props: {
+        id: "dc_img",
+        radius: 30,
+        src: "https://ae85.cn/img/filza.png",
+    },
+    events: {
+        tapped: function (sender) {
+            daoc()
+        }
+    },
+    layout: function (make, view) {
+        make.bottom.equalTo($('hb_img').top).inset(10)
+        make.width.height.equalTo(60)
+        make.right.inset(15)
+    }
+}
+var m3u_data = [], m3u_name
 if (typeof ($cache.get("acquiescence")) == "undefined") {
     $cache.set("acquiescence", 0)
 }
@@ -68,6 +87,11 @@ var urls = [{
     name: "nPlayer",
     url: "nplayer-",
     store: "https://itunes.apple.com/cn/app/nplayer-lite/id1078835991?mt=8"
+},
+{
+    name: "影音宝",
+    url: "yybx://play?",
+    store: "https://itunes.apple.com/cn/app/nplayer-lite/id1468401388?mt=8"
 }
 ]
 function zjm() {
@@ -209,6 +233,8 @@ function getlist(id, mc) {
                     id: arr.address
                 })
             }
+            m3u_data = data
+            m3u_name = mc
             $ui.push({
                 props: {
                     title: mc + " - 主播列表"
@@ -234,7 +260,7 @@ function getlist(id, mc) {
                             $ui.alert("已复制\n\n" + data.id);
                         }
                     }
-                }, szan]
+                }, szan, daocbm]
             })
         }
     })
@@ -291,7 +317,7 @@ function sz() {
                     }]
                 }, {
                     title: "安装播放器",
-                    rows: [" VLC       -  跳转App Store商店下载", "OPlayer -  跳转App Store商店下载", " nPlayer -  跳转App Store商店下载"]
+                    rows: [" VLC       -  跳转App Store商店下载", "OPlayer -  跳转App Store商店下载", " nPlayer -  跳转App Store商店下载", "影音宝   -  跳转App Store商店下载"]
                 }, {
                     title: "使用帮助",
                     rows: ["作者官网", "作者博客", "微信公众号", "关于脚本"]
@@ -301,7 +327,7 @@ function sz() {
                     props: {
                         height: 100,
                         lines: 0,
-                        text: "by：iPhone 8、小良\nhttp://ae85.cn/",
+                        text: "by：iPhone 8、小良\nhttps://ae85.cn/",
                         textColor: $color("#198567"),
                         align: $align.center,
                         font: $font(16)
@@ -317,12 +343,14 @@ function sz() {
                         $app.openURL(urls[1].store)
                     } else if (data == " nPlayer -  跳转App Store商店下载") {
                         $app.openURL(urls[2].store)
+                    } else if (data == "影音宝   -  跳转App Store商店下载") {
+                        $app.openURL(urls[3].store)
                     } else if (data == "作者官网") {
-                        web("http://ae85.cn/", "iPhone 8、小良")
+                        web("https://ae85.cn/", "iPhone 8、小良")
                     } else if (data == "作者博客") {
-                        web("http://87xl.cn", "小良、Blog")
-                    } else if (data == "微信公众号") {
-                        web("http://ae85.cn/lxfs.html", "微信公众号-小良Ge")
+                        web("https://87xl.cn", "小良、Blog")
+                    } else if (data == "微信公众号：小良科技") {
+                        // web("https://ae85.cn/lxfs.html", "微信公众号-小良Ge")
                     } else if (data == "关于脚本") {
                         web("http://qq.cn.hn/g32", "直播-秋名山见")
                     }
@@ -345,4 +373,24 @@ function web(url, text) {
             layout: $layout.fill
         }]
     })
+}
+
+function daoc() {
+    if (m3u_data) {
+        var data = `#EXTM3U
+`
+        for (i in m3u_data) {
+            var j = m3u_data[i]
+            data = data + `#EXTINF:-1 tvg-logo="${j.tx.src}" group-title="${m3u_name}", ${j.mc.text}
+${j.id}
+
+`
+        }
+        var dd = $data({
+            string: data
+          });
+        $share.sheet([m3u_name + ".m3u", dd]);
+        
+    }
+   
 }
