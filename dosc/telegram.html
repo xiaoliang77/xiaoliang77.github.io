@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Telegram bot 笔记</title>
+    <script src="../js/jquery.min.js"></script>
+    <!-- <script src="../js/marked.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="../css/default.min.css"> -->
+    <!-- <script src="../js/highlight.min.js"></script> -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "get",
+                url: "./markdown/telegram.md",
+                dataType: "html",
+                success: function (res) {
+                    $("#content").append(marked(res));
+                    hljs.initHighlightingOnLoad();
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
