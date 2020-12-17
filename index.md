@@ -39,3 +39,4 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 ### 文档
 
 笔记
+1.[linux](https://github.com/liangziai77/docs/blob/master/linux.md)
