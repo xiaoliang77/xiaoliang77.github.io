@@ -1,3 +1,5 @@
+# Linux 操作指令 [GitHub](https://github.com/liangziai77/liangziai77.github.io/blob/master/dosc/markdown/telegram.md)
+
 ### 文件管理
 命令|用途|例子
 ----|----|----

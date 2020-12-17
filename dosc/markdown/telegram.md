@@ -1,4 +1,4 @@
-# Telegram bot 笔记
+# Telegram bot 笔记  [GitHub](https://github.com/liangziai77/liangziai77.github.io/blob/master/dosc/markdown/telegram.md)
 官方文档：[https://core.telegram.org/bots/api](https://core.telegram.org/bots/api)
 
 机器人申请：[@BotFather](tg://@BotFather)
@@ -11,7 +11,7 @@
 `https://api.telegram.org/bot{机器人token}/sendMessage?chat_id={接受者id}&text={消息内容}`
 
 
-### 示例：
+### 脚本代码：
 ```javascript
 function doPost(e){
   var estringa = JSON.parse(e.postData.contents);
