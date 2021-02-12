@@ -1,13 +1,10 @@
 /*
-2020年7月23日
-支持pin软件
-国内版不支持下载
+2021年2月12日 更新
+祝大家新年快乐,新年第一更！
 
 by：iPhone 8、小良
 http://ae85.cn/
 */
-
-
 const gzgzh = {
   title: "关注公众号",
   handler: function () {
@@ -35,11 +32,14 @@ const base64 =
 $ui.loading(true);
 $http.get({
   url: $text.base64Decode(base64.replace(/8/g, "9")),
+  header: {
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
+  },
   handler: function (resp) {
     $ui.loading(false);
     if (resp.response.statusCode == "200") {
       var info = resp.data.guonei;
-      if (info.bb != "1.1") {
+      if (info.bb != "1.3") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,
@@ -55,7 +55,7 @@ $http.get({
         });
       } else {
         $cache.set("info", info);
-        getdata();
+        Pgetdata();
       }
     } else {
       $ui.alert("加载失败");
@@ -63,227 +63,157 @@ $http.get({
   }
 });
 
-var timg = "https://gitee.com/yao07/update_device/raw/master/sucai/";
-var src = "https://giant.gfycat.com/ComfortableJitteryLacewing.mp4"
-
+$cache.set("pg", 1);
 $ui.render({
   props: {
-    id: "mView",
-    navBarHidden: 1,
-    homeIndicatorHidden: 1,
-    // bgcolor: $color("black")
-    
+    title: "抖yin国内版 1.3",
   },
-  views: [{
-    type: "scroll",
-    layout: $layout.fill,
-    props: {
-      id:"gundong",
-      alwaysBounceHorizontal:false,
-      // scrollEnabled:true
-    },
-    views: [
-      {
-        type: "view",
-        layout: function(make, view) {
-          make.top.left.inset(0)
-          make.width.equalTo(view.super)
-          make.height.equalTo($device.info.screen.height-45)
-        },
-        views:[
-          {
-            type: "web",
-            props: {
-              id: "player",
-              showsProgress: false,
-              inlineMedia: true,
-              style: `body{background:#000000}#player{position:adsolute;width:100%;height:100%;margin-top:-8}`,
-              html: `<video id="player" autoplay oncanplay="canPlay()" src="${src}"></video>`,
-              script: function () {
-                var video = document.getElementById("player");
-                var duration;
-                function play() {
-                  if (video.paused) {
-                    video.play();
-                  } else video.pause();
-                }
-                function getProgress(loop = true) {
-                  var currentTime = video.currentTime;
-                  $notify("setProgress", {
-                    now: currentTime,
-                    total: duration
-                  });
-                  if (loop) {
-                    setTimeout(function () {
-                      getProgress();
-                    }, 1000);
-                  }
-                }
-                function changeProgress(obj) {
-                  video.currentTime = obj.value * duration;
-                }
-                function canPlay() {
-                  duration = video.duration;
-                  if (getCookie("firstPlay") == "") {
-                    document.cookie = "firstPlay=false";
-                    getProgress();
-                  }
-                }
-                function getCookie(cname) {
-                  var name = cname + "=";
-                  var ca = document.cookie.split(";");
-                  for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i].trim();
-                    if (c.indexOf(name) == 0)
-                      return c.substring(name.length, c.length);
-                  }
-                  return "";
-                }
-              }
-            },
-            layout: (make, view) => {
-              make.edges.inset(-8);
-            },
-            events: {
-              setProgress: function (time) {
-                var progress = time.now / time.total;
-                $("progress").value = progress;
-                $("currentTime").text = s_to_hs(time.now)
-                $("duration").text = s_to_hs(time.total)
-                //   console.log((progress * 100).toFixed(1) + "%");
-              }
-            }
-          },
-          {
-            type: "view",
-            layout: $layout.fill,
-            events: {
-              tapped: function () {
-                $("player").notify({
-                  event: "play"
-                });
-              },
-            },
-            views: [
-              {
-                type: "blur",
-                props: {
-                  id: "bottomView",
-                  style: 3
-                },
-                layout: function (make, view) {
-                  make.bottom.right.left.inset(0);
-                  make.height.equalTo(60);
-                },
-                views: [
-                  {
-                    type: "slider",
-                    props: {
-                      id: "progress"
-                    },
-                    layout: (make, view) => {
-                      make.top.inset(0);
-                      make.left.right.inset(40);
-                    },
-                    events: {
-                      changed: function (sender) {
-                        $("player").notify({
-                          event: "changeProgress",
-                          message: {
-                            value: sender.value
-                          }
-                        });
-                      }
-                    }
-                  },
-                  {
-                    type: "label",
-                    props: {
-                      id: "currentTime",
-                      textColor: $color("white"),
-                      font: $font(13)
-                    },
-                    layout: function (make, view) {
-                      make.left.inset(0);
-                      make.top.inset(8);
-                    }
-                  },
-                  {
-                    type: "label",
-                    props: {
-                      id: "duration",
-                      textColor: $color("white"),
-                      font: $font(13)
-                    },
-                    layout: function (make, view) {
-                      make.right.inset(0);
-                      make.top.inset(8);
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-        ]
-      }
-    ],
-    events:{
-      pulled: function(sender) {
-        getdata()
-      }
-    }
-  },
+  views: [
     {
-      type: "button",
+      type: "matrix",
       props: {
-        id: "x_img",
-        src: timg + "x.png"
+        id: "PVideo",
+        itemHeight: 200,
+        columns: 3,
+        spacing: 0,
+        bgcolor: $color("black"),
+        template: [
+          {
+            type: "image",
+            props: {
+              id: "img",
+            },
+            layout: function (make, view) {
+              make.centerX.equalTo(view.super);
+              make.top.bottom.right.left.inset(1);
+            }
+          }
+        ]
+      },
+      layout: function (make) {
+        make.top.bottom.left.right.inset(0);
       },
       events: {
-        tapped: function (sender) {
-          $app.close();
+        didSelect: function (sender, indexPath, data) {
+          getvideo(data.url)
+        },
+        didReachBottom: function (sender) {
+          sender.endFetchingMore();
+          var page = $cache.get("pg") + 1;
+          $cache.set("pg", page);
+          Pgetdata();
         }
-      },
-      layout: function (make, view) {
-        make.right.inset(5);
-        make.bottom.inset(100);
-        make.width.height.equalTo(50);
       }
-    },
-  ],
+    }
+  ]
 });
 
-function getdata() {
+
+function Pgetdata() {
   var info = $cache.get("info");
-  var random = Math.floor(Math.random() * (1680 - 2 + 1)) + 2;
+  var pg = $cache.get("pg");
   $http.get({
-    url: $text.base64Decode(info.turl) + random + ".json",
+    url: info.turl + "/video?page=" + pg,
     header: {
       "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
     },
     handler: resp => {
-      $("gundong").endRefreshing()
-      var data = resp.data.url;
-      $("player").html = `<video id="player" autoplay oncanplay="canPlay()" src="${data}"></video>`
-      
-      $delay(0.3, function() {
-        $("player").notify({
-          event: "play"
+      var text = resp.data.replace(/\n|\r/g, "");
+      var shu = text.match(/<div class=\"box-shadow card\">(\s*.*?\S*)<\/div>/g)
+      var data = $("PVideo").data;
+      for (i in shu) {
+        var li = shu[i];
+        var img = li.match(/src=\"(\s*.*?\S*)\"/)[1]
+        img = $text.URLEncode(img);
+        img = img.replace(/%2F/g, "/");
+        img = img.replace(/%3A/g, ":");
+        var url = li.match(/href=\"(\S*?)\"/)[1]
+        data.push({
+          img: { src: img },
+          url: url
         });
-      })
-
+      }
+      $("PVideo").data = data;
+      $("PVideo").endRefreshing();
+    }
+  });
+}
+function getvideo(url) {
+  var info = $cache.get("info");
+  $http.get({
+    url: info.turl + url,
+    header: {
+      "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
+    },
+    handler: resp => {
+      var text = resp.data.replace(/\n|\r/g, "");
+      var video = text.match(/<source src=\"(\s*.*?\S*)\"/)[1]
+      var playurl = $text.URLEncode(video);
+      playurl = playurl.replace(/%2F/g, "/");
+      playurl = playurl.replace(/%3A/g, ":");
+      playurl = playurl.replace(/%3F/g, "?");
+      playurl = playurl.replace(/%3D/g, "=");
+      playvideo(playurl);
     }
   });
 }
 
-function s_to_hs(s) {
-  var h;
-  h = Math.floor(s / 60);
-  s = s % 60;
-  h += "";
-  s += "";
-  s = Number(s).toFixed(0);
-  h = h.length == 1 ? "0" + h : h;
-  s = s.length == 1 ? "0" + s : s;
-  return h + ":" + s;
+function playvideo(playurl) {
+  const frameworks = ["AVFoundation", "AVKit"];
+  frameworks.forEach(name => {
+    $objc("NSBundle").$bundleWithPath(`/System/Library/Frameworks/${name}.framework`).$load();
+  });
+
+  const gravities = {
+    resize: "AVLayerVideoGravityResize",
+    resizeAspect: "AVLayerVideoGravityResizeAspect",
+    resizeAspectFill: "AVLayerVideoGravityResizeAspectFill",
+  }
+
+  function play(src, {
+    showsPlaybackControls = true,
+    videoGravity = "resizeAspect",
+    allowsPictureInPicturePlayback = true,
+    updatesNowPlayingInfoCenter = true,
+    entersFullScreenWhenPlaybackBegins = false,
+    exitsFullScreenWhenPlaybackEnds = false,
+  } = {}) {
+
+    const url = (() => {
+      if (/^(http|https):\/\//i.test(src)) {
+        return $objc("NSURL").$URLWithString(src);
+      } else {
+        return $objc("NSURL").$fileURLWithPath($file.absolutePath(src));
+      }
+    })();
+
+    const player = $objc("AVPlayer").$playerWithURL(url);
+    player.$play();
+
+    const playerVC = $objc("AVPlayerViewController").$new();
+    playerVC.$setPlayer(player);
+    playerVC.$setShowsPlaybackControls(showsPlaybackControls);
+    playerVC.$setVideoGravity(gravities[videoGravity]);
+    playerVC.$setAllowsPictureInPicturePlayback(allowsPictureInPicturePlayback);
+    playerVC.$setUpdatesNowPlayingInfoCenter(updatesNowPlayingInfoCenter);
+    playerVC.$setEntersFullScreenWhenPlaybackBegins(entersFullScreenWhenPlaybackBegins);
+    playerVC.$setExitsFullScreenWhenPlaybackEnds(exitsFullScreenWhenPlaybackEnds);
+
+    const rootVC = $ui.controller.ocValue();
+    rootVC.$presentViewController_animated_completion(playerVC, true, null);
+  }
+
+  exports.play = play;
+  // Example (http/https, or local path)
+  const src = "";
+  const options = {
+    showsPlaybackControls: true,
+    videoGravity: "resizeAspect", // resize, resizeAspectFill
+    allowsPictureInPicturePlayback: true,
+    updatesNowPlayingInfoCenter: true,
+    entersFullScreenWhenPlaybackBegins: false,
+    exitsFullScreenWhenPlaybackEnds: false,
+  }
+
+  play(playurl, options);
 }
