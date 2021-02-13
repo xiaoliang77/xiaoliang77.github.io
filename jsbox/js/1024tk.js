@@ -1,5 +1,6 @@
 /*
-2020年7月24日 更新
+2021年2月13日 更新
+修复只能加载1张图片问题。
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -103,10 +104,10 @@ function geting(id, mc) {
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var shu = text.match(/<br><br><imgsrc=\"(\S*?)\"/g)
+            var shu = text.match(/<br><imgsrc=\"(\S*?)\"/g)
             var ingz = ""
             for (i in shu) {
-                var ing = shu[i].replace(/<br><br><imgsrc=\"/, "")
+                var ing = shu[i].replace(/<br><imgsrc=\"/, "")
                 var li = "<li><img src=\"" + ing + "\"></li>"
                 ingz = ingz + li
             }

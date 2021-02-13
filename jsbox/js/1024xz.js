@@ -1,5 +1,6 @@
 /*
-2020年7月24日 更新
+2021年2月13日 更新
+修复下载嗅探功能。
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -142,13 +143,14 @@ function geting(id, mc) {
 }
 
 function geturl(url, dian) {
+    var turl=url.match(/(http.?:\/\/.*?)\//)[1]
     $http.get({
         url: url,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
             var url = text.match(/<aclass=\"uk-button\"onclick=\"setpos\(\);\"href=\"(\S*?)\"/)[1]
-            url = url.replace(/amp;/g, "")
+            url = turl+url.replace(/amp;/g, "")
             $clipboard.text = url
             if (dian == 1) {
                 var canOpen = $app.openURL("thunder://" + url);
