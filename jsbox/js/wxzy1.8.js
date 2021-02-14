@@ -1,6 +1,6 @@
 
 var channelList = [
-    { "name": "国产", "id": "/type/1" },{ "name": "日本", "id": "/type/2" },{ "name": "韩国", "id": "/type/3" },{ "name": "欧美", "id": "/type/4" },{ "name": "三级", "id": "/type/5" },{ "name": "动漫", "id": "/type/6" }];
+    { "name": "国产", "id": "/type/1" }, { "name": "日本", "id": "/type/2" }, { "name": "韩国", "id": "/type/3" }, { "name": "欧美", "id": "/type/4" }, { "name": "三级", "id": "/type/5" }, { "name": "动漫", "id": "/type/6" }];
 var myHeaders = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"
 };
@@ -77,7 +77,6 @@ $ui.render({
                     var page = $cache.get("pg") + 1;
                     $cache.set("pg", page);
                     var type = $cache.get("type");
-                    console.log(urlt + type + "-" + page + ".html");
                     $ui.loading(true);
                     $http.get({
                         url: urlt + type + "-" + page + ".html",
@@ -96,7 +95,7 @@ $ui.render({
                                             src: dli.match(/data-original="(\S*?)"/)[1]
                                         },
                                         pm: {
-                                            text: dli.match(/I\(\"(\S*?)\"/)[1]
+                                            text: I(dli.match(/I\(\"(\S*?)\"/)[1])
                                         },
                                         url: dli.match(/href="(\S*?)"/)[1]
                                     }
@@ -132,7 +131,7 @@ function getdata() {
                         src: dli.match(/data-original="(\S*?)"/)[1]
                     },
                     pm: {
-                        text: dli.match(/I\(\"(\S*?)\"/)[1]
+                        text: I(dli.match(/I\(\"(\S*?)\"/)[1])
                     },
                     url: dli.match(/href=\"(\S*?)\"/)[1]
                 })
@@ -178,3 +177,9 @@ function play(url, mc) {
 $cache.set("type", channelList[0].id);
 $cache.set("pg", 1);
 getdata();
+
+function I(r) {
+    var n = "";
+    for (i = 0; i < r.length; ++i) n += String.fromCharCode(128 ^ r.charCodeAt(i));
+    return n
+}
