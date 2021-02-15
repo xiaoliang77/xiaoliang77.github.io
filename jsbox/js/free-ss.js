@@ -235,7 +235,7 @@ function zhur() {
             var shu = text.match(/<trrole=\"row\"class(\S*?)<\/tr>/g);
             var data = []
             for (i in shu) {
-                if (i > 1) {
+                if (i > -1) {
                 var add = shu[i].match(/<td>(\S*?)<\/td>/g);
                 for (i in add) {
                     add[i] = add[i].replace(/<td>|<\/td>/g, "")
