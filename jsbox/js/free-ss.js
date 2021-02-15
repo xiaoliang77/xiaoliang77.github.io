@@ -1,11 +1,10 @@
 
 /*
-免费ss 1.2
-2019-11-22 更新：
-修复加载无响应问题！
+免费ss 1.3
+2021-2-15 更新
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://ae85.cn/
 
 博客：87xl.cn
 */
@@ -16,7 +15,7 @@ $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvc3MvcmF3L21hc3Rlci8=") + "free-ss.json",
     handler: function (resp) {
         $ui.loading(false);
-        if (resp.data.bb != "3.3") {
+        if (resp.data.bb != "3.4") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -59,7 +58,7 @@ $http.get({
 function csh() {
     $ui.render({
         props: {
-            title: "ss 1.2",
+            title: "ss 1.3",
             id: "ssjm"
         },
         views: [{
@@ -254,7 +253,7 @@ function zhur() {
                     s = add[4]
                     m = add[3]
                 }
-                var ms = Math.floor(Math.random() * (80 - 2 + 1)) + 2;
+                var ms = Math.floor(Math.random() * (180 - 2 + 1)) + 2;
                 data.push({
                     lt: { src: `${$text.base64Decode(info.img)}${gj[add[6]]}_flag.png` },
                     mc: { text: add[1] },
