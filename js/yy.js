@@ -10,7 +10,7 @@ function co_sj() {
         color++;
     }
 }
-var data_yy = [ { "title": "🔥Shadowrocket - 小火箭", "image": "img/Shadowrocket.jpg", "rq": "更新：2021年2月17日", "details": "⚡️️ v2.1.2      💾7.25MB<br>科学上网利器", "url": "Shadowrocket" }, { "title": "🔥手机迅雷", "image": "img/xunlei.png", "rq": "更新：2021年2月16日", "details": "⚡️️ v5.3.2      💾62.7MB<br>更新证书", "url": "xunlei" },]
+var data_yy = [ { "title": "🔥Shadowrocket - 小火箭", "image": "img/Shadowrocket.jpg", "rq": "更新：2021年2月17日", "details": "⚡️️ v2.1.2      💾7.25MB<br>科学上网利器", "url": "Shadowrocket" }, { "title": "🔥手机迅雷", "image": "img/xunlei.png", "rq": "更新：2021年2月17日", "details": "⚡️️ v5.3.2      💾62.7MB<br>更新证书", "url": "xunlei" },{ "title": "Pin - 剪贴板扩展", "image": "img/Pin.png", "rq": "⚡️️ v3.8.0      💾7.9MB", "details": "需要手机越狱才能安装", "url": "pin" },]
 
 
 function kap_cj(data) {
