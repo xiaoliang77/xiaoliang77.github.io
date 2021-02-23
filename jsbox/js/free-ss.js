@@ -1,7 +1,7 @@
 
 /*
-免费ss 1.3
-2021-2-15 更新
+免费ss 1.4
+2021-2-24 更新
 
 by：iPhone 8、小良
 https://ae85.cn/
@@ -15,7 +15,7 @@ $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvc3MvcmF3L21hc3Rlci8=") + "free-ss.json",
     handler: function (resp) {
         $ui.loading(false);
-        if (resp.data.bb != "3.4") {
+        if (resp.data.bb != "3.5") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -58,7 +58,7 @@ $http.get({
 function csh() {
     $ui.render({
         props: {
-            title: "ss 1.3",
+            title: "ss 1.4",
             id: "ssjm"
         },
         views: [{
@@ -231,6 +231,7 @@ function zhur() {
         url: $text.base64Decode(info.ssurl),
         handler: function (resp) {
             var data = resp.data;
+            var data = $text.base64Decode($text.base64Decode(data));
             var text = data.replace(/\n|\s|\r/g, "")
             var shu = text.match(/<trrole=\"row\"class(\S*?)<\/tr>/g);
             var data = []
