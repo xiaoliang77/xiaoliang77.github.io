@@ -139,7 +139,7 @@ function Pgetdata() {
                 img = $text.URLEncode(img);
                 img = img.replace(/%2F/g, "/");
                 img = img.replace(/%3A/g, ":");
-                var url = li.match(/\(&quot;(\S*?)&quot;\)/)[1]
+                var url = li.match(/href=\"(\S*?)\"/)[1]
                 data.push({
                     img: { src: img },
                     url: url
@@ -153,7 +153,7 @@ function Pgetdata() {
 function getvideo(url) {
     var info = $cache.get("info");
     $http.get({
-        url: info.turl + "/video/" + url,
+        url: info.turl  + url,
         header: {
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
         },
