@@ -159,7 +159,6 @@ function refetch() {
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            console.log(data);
             if (data.version != "2.7") {
                 $ui.alert({
                     title: "发现新版本",
