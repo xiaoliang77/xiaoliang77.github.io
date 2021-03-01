@@ -1,8 +1,7 @@
 /*
-小良 - 更新器 2.6
- 2019.1.27 修复更新
-· http更改为https
-. 提搞域名安全性
+小良 - 更新器 2.7
+ 2021.3.1 修复更新
+
 by：iPhone 8、小良
 https://ae85.cn/
 
@@ -10,11 +9,11 @@ https://ae85.cn/
 */
 
 const pz = {
-    title: "小良 - 更新器 2.6",
+    title: "小良 - 更新器 2.7",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm:
-        "- 感谢支持 - ae85.cn -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2019"
+        "- 感谢支持 - ae85.cn -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2021"
 };
 
 const menu = {
@@ -160,7 +159,8 @@ function refetch() {
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            if (data.version != "2.6") {
+            console.log(data);
+            if (data.version != "2.7") {
                 $ui.alert({
                     title: "发现新版本",
                     message: resp.data.hant,
@@ -210,7 +210,8 @@ function xrwj(nr) {
 }
 
 function zxgetlist(id) {
-    var json = $cache.get("stories").data;
+    var json = $text.URLDecode($cache.get("stories").data);
+    json =JSON.parse(json);
     if (id == 1) {
         listjm("脚本列表", "⁺ 获取 ");
         $("Menu").index = 1;
@@ -356,7 +357,8 @@ function azjs(jsurl) {
 }
 
 function render() {
-    var json = $cache.get("stories").data;
+    var json = $text.URLDecode($cache.get("stories").data);
+    json =JSON.parse(json);
     $("vlist").data = [
         clzyli(json.jb, "脚本", "1"),
         clzyli(json.gz, "规则", "2"),
