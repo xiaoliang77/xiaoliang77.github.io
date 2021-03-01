@@ -168,7 +168,7 @@ function getvideo(url) {
             if ($app.info.bundleID == "app.cyan.pin") {
                 playweb(playurl);
             } else {
-                if ($app.info.version > "2.0.0") {
+                if ($app.info.version > "2.0.0" && $app.info.version < "2.14.0") {
                     playvideo(playurl);
                 } else {
                     playweb(playurl);
