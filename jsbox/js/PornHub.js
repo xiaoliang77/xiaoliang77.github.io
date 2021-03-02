@@ -272,7 +272,7 @@ function main() {
             },
             events: {
                 didStart: function (sender, navigation) {
-                    var url = $("videoweb").url
+                    var url = sender.url
                     $("down").hidden = url.indexOf('video.php?viewkey=') !== -1 ? false : true
 
                 },
@@ -308,7 +308,23 @@ function main() {
         ]
     })
 }
-main()
+
+function pinview() {
+    $ui.render({
+        props: {
+            title: "PornHub视频下载"
+        },
+        views: [
+            downview, 
+        ]
+    })
+}
+if ($app.info.bundleID=="app.cyan.pin") {
+    pinview()
+}else{
+    main()
+}
+
 
 function getdata(url) {
     $ui.loading(true);
