@@ -259,7 +259,7 @@ const downview = {
 function main() {
     $ui.render({
         props: {
-            title: "PornHub视频"
+            title: "PornHub视频下载"
         },
         views: [{
             type: "web",
