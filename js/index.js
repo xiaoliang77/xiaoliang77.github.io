@@ -50,7 +50,8 @@ $("#qt").html(kap_cj(data_qt,4));
 
 function install(id, lei) {
     // var host = window.location.host;
-    var gz_url = "https://workflow.is/workflows/" + id;
+    // var gz_url = "https://workflow.is/workflows/" + id;
+    var gz_url = "https://www.icloud.com/shortcuts/" + id;
     var jb_url = "https://ae85.cn/jsbox/" + id + ".html";
     var url;
     if (isios()) {

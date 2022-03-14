@@ -38,8 +38,9 @@ $("#gz").html(kap_cj(data_gz));
 
 function install(id) {
     // var host = window.location.host;
-    var url = "https://workflow.is/workflows/" + id;
-
+    // var url = "https://workflow.is/workflows/" + id;
+    var url = "https://www.icloud.com/shortcuts/" + id;
+    
     if (isios()) {
         if (id.indexOf("workflow://") != -1) {
             url = id;
