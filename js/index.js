@@ -10,22 +10,22 @@ function co_sj() {
         color++;
     }
 }
-var data_gz = [{"title":"小良 - 更新器 3.6 (规则)","image":"img/xiaoliang.png","rq":"更新：2021年3月1日","details":"内置：Wf规则、Pin脚本、破解App 等\n此规则只用于更新小良个人规则","url":"2f3a7af6a56744809a5a3d06133d8c24"},{"title":"🔥短视频下载2.9.1","image":"img/dsp.png","rq":"更新：2022年3月14日","details":"支持全平台，可设置调用手机迅雷下载","url":"7b2d1a35a42445fa8b5dd029ec801984"},{"title":"Pornhub视频下载1.2","image":"img/down.png","rq":"更新：2021年2月27日","details":"可以选择视频清晰度品质下载，支持调用手机迅雷下载","url":"9c7cf3f530174777a5569078168e1ffb"}]
+var data_gz = [{ "title": "小良 - 更新器 3.6 (规则)", "image": "img/xiaoliang.png", "rq": "更新：2021年3月1日", "details": "内置：Wf规则、Pin脚本、破解App 等\n此规则只用于更新小良个人规则", "url": "2f3a7af6a56744809a5a3d06133d8c24" }, { "title": "🔥短视频下载2.9.1", "image": "img/dsp.png", "rq": "更新：2022年3月14日", "details": "支持全平台，可设置调用手机迅雷下载", "url": "7b2d1a35a42445fa8b5dd029ec801984" }, { "title": "Pornhub视频下载1.2", "image": "img/down.png", "rq": "更新：2021年2月27日", "details": "可以选择视频清晰度品质下载，支持调用手机迅雷下载", "url": "9c7cf3f530174777a5569078168e1ffb" }]
 
-var data_jb = [{"title":"小良 - 更新器 v2.7 Js版","image":"img/xl.png","rq":"更新：2021年3月1日","details":"js脚本是运行在pin或jsbox上的程序, 可以方便快捷的更新小良作品","url":"gxq"},{"title":"🔥短视频下载器 2.9","image":"img/dsp.png","rq":"更新：2022年3月14日","details":"修复：部分解析失败平台问题","url":"dsp"},{"title":"PornHub视频下载","image":"img/ph.jpg","rq":"发布：2021年3月2日","details":"js版p站视频下载，可以选择视频清晰度品质下载，支持调用手机迅雷下载","url":"ph"}]
+var data_jb = [{ "title": "小良 - 更新器 v2.7 Js版", "image": "img/xl.png", "rq": "更新：2021年3月1日", "details": "js脚本是运行在pin或jsbox上的程序, 可以方便快捷的更新小良作品", "url": "gxq" }, { "title": "🔥短视频下载器 2.9", "image": "img/dsp.png", "rq": "更新：2022年3月14日", "details": "修复：部分解析失败平台问题", "url": "dsp" }, { "title": "PornHub视频下载", "image": "img/ph.jpg", "rq": "发布：2021年3月2日", "details": "js版p站视频下载，可以选择视频清晰度品质下载，支持调用手机迅雷下载", "url": "ph" }]
 
-var data_yy = [ { "title": "Shadowrocket - 小火箭", "image": "img/Shadowrocket.jpg", "rq": "⚡️️ v2.1.2　💾7.25MB", "details": "证书已掉，未越狱的请勿安装<br>科学上网利器", "url": "Shadowrocket" }, { "title": "手机迅雷", "image": "img/xunlei.png", "rq": "⚡️️ v5.3.2　💾62.7MB", "details": "证书已掉，未越狱的请勿安装", "url": "xunlei" },{ "title": "Pin - 剪贴板扩展 (越狱版)", "image": "img/Pin.png", "rq": "⚡️️ v3.2.2　💾13.8MB", "details": "需要手机越狱才能安装", "url": "pin" },{ "title": "JSBox - 越狱版", "image": "img/jsbox.jpg", "rq": "⚡️️ v1.24.0　💾29.8MB", "details": "需要手机越狱才能安装", "url": "jsbox" }]
+var data_yy = [{ "title": "Shadowrocket - 小火箭", "image": "img/Shadowrocket.jpg", "rq": "⚡️️ v2.1.2　💾7.25MB", "details": "证书已掉，未越狱的请勿安装<br>科学上网利器", "url": "Shadowrocket" }, { "title": "手机迅雷", "image": "img/xunlei.png", "rq": "⚡️️ v5.3.2　💾62.7MB", "details": "证书已掉，未越狱的请勿安装", "url": "xunlei" }, { "title": "Pin - 剪贴板扩展 (越狱版)", "image": "img/Pin.png", "rq": "⚡️️ v3.2.2　💾13.8MB", "details": "需要手机越狱才能安装", "url": "pin" }, { "title": "JSBox - 越狱版", "image": "img/jsbox.jpg", "rq": "⚡️️ v1.24.0　💾29.8MB", "details": "需要手机越狱才能安装", "url": "jsbox" }]
 
-var data_qt = [{"title":"Telegram 直连","image":"img/tg_logo.png","rq":"Safari 浏览器中打开","details":"无需科学上网即可使用Telegram","url":"http://3f.ae85.cn:772/api/telegram.php"},{"title":"屏蔽iOS 13.x系统自动更新","image":"img/settings.png","rq":"Safari 浏览器中打开","details":"ios13用户不想系统自动下载更新的可以安装这个描述文件","url":"https://ae85.cn/ios/iOS13.mobileconfig"},{"title":"手机获取百度BDUSS教程","image":"img/bduss.jpg","rq":"视频教程","details":"手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！","url":"http://t.cn/Rkb7u8i",}]
+var data_qt = [{ "title": "Telegram 直连", "image": "img/tg_logo.png", "rq": "Safari 浏览器中打开", "details": "无需科学上网即可使用Telegram", "url": "http://3f.ae85.cn:772/api/telegram.php" }, { "title": "屏蔽iOS 13.x系统自动更新", "image": "img/settings.png", "rq": "Safari 浏览器中打开", "details": "ios13用户不想系统自动下载更新的可以安装这个描述文件", "url": "https://ae85.cn/ios/iOS13.mobileconfig" }, { "title": "手机获取百度BDUSS教程", "image": "img/bduss.jpg", "rq": "视频教程", "details": "手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！", "url": "http://t.cn/Rkb7u8i", }]
 
-function kap_cj(data,lei){
+function kap_cj(data, lei) {
     var txt1 = "";
     for (var i = 0; i < 3; i++) {
         co_sj()
         var arr = data[i]
-        if(lei==4){
-            var an =`window.open('${arr.url}')`
-        }else{
+        if (lei == 4) {
+            var an = `window.open('${arr.url}')`
+        } else {
             var an = `install('${arr.url}',${lei})`
         }
         txt1 = txt1 + `<div class="col-md-4" onclick="${an}">
@@ -43,10 +43,10 @@ function kap_cj(data,lei){
     }
     return txt1;
 }
-$("#gz").html(kap_cj(data_gz,1));
-$("#jb").html(kap_cj(data_jb,2));
-$("#yy").html(kap_cj(data_yy,3));
-$("#qt").html(kap_cj(data_qt,4));
+$("#gz").html(kap_cj(data_gz, 1));
+$("#jb").html(kap_cj(data_jb, 2));
+$("#yy").html(kap_cj(data_yy, 3));
+$("#qt").html(kap_cj(data_qt, 4));
 
 function install(id, lei) {
     // var host = window.location.host;
@@ -57,7 +57,7 @@ function install(id, lei) {
     if (isios()) {
         if (lei == 1) {
             url = gz_url;
-            if(gz_url.indexOf("workflow://") != -1){
+            if (gz_url.indexOf("workflow://") != -1) {
                 url = id;
             }
         } else if (lei == 2) {
@@ -65,10 +65,12 @@ function install(id, lei) {
         } else if (lei == 3) {
             url = "itms-services://?action=download-manifest&url=https://gitee.com/yao07/APP/raw/master/" + id + ".xml"
             if (id.indexOf('http') !== -1) {
-             url = id
-            } 
+                url = id
+            }
         }
-        window.open(url,'_self');
+        // window.open(url,'_self');
+        window.location.href = url
+
 
     } else {
         $("#qrcode").empty();
@@ -81,7 +83,7 @@ function install(id, lei) {
         });
         if (lei == 1) {
             url = gz_url;
-            if(gz_url.indexOf("workflow://") != -1){
+            if (gz_url.indexOf("workflow://") != -1) {
                 url = "https://ae85.cn";
             }
         } else if (lei == 2) {

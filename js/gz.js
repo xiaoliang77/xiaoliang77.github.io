@@ -46,7 +46,8 @@ function install(id) {
             url = id;
         }
 
-        window.open(url,'_self');
+        // window.open(url,'_self');
+        window.location.href = url
 
     } else {
         $("#qrcode").empty();
