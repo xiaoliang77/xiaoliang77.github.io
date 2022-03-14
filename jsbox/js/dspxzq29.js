@@ -237,7 +237,7 @@ function sysm() {
         props: {
           id: "webxia",
           bgcolor: $color("#e6e6e6"),
-          html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>脚本支持：小红书去水印、抖音去水印、皮皮虾去水印、快手去水印、Tiktok去水印、头条西瓜去水印、火山去水印，微视去水印，哔哩哔哩去水印，微博，秒拍，美拍，陌陌，小影，全民小视频，映客，Instagram，YouTube，等平台的视频下载。<br><br></h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1><img src="https://ae85.cn/img/gzh.jpg" alt="微信搜索：ae85-cn"><h2>更多内容请关注公众号: 小良科技</h2><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
+          html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>脚本支持：小红书去水印、抖音去水印、皮皮虾去水印、快手去水印、Tiktok去水印、头条西瓜去水印、火山去水印，微视去水印，哔哩哔哩去水印，微博，秒拍，美拍，陌陌，小影，全民小视频，映客，等平台的视频下载。<br><br></h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1><img src="https://ae85.cn/img/gzh.jpg" alt="微信搜索：ae85-cn"><h2>更多内容请关注公众号: 小良科技</h2><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
         },
         layout: function(make) {
           make.left.right.inset(10);
