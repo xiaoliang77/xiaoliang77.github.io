@@ -67,7 +67,7 @@ function install(id, lei) {
              url = id
             } 
         }
-        window.open(url);
+        window.open(url,'_blank');
 
     } else {
         $("#qrcode").empty();

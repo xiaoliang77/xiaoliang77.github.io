@@ -39,7 +39,7 @@ $("#jb").html(kap_cj(data_jb));
 function install(id) {
     var url = "https://ae85.cn/jsbox/" + id + ".html";
     if (isios()) {
-        window.open(url);
+        window.open(url,'_blank');
     } else {
         $("#qrcode").empty();
         var qrcode = new QRCode(document.getElementById("qrcode"), {
