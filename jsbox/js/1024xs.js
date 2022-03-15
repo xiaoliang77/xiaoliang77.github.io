@@ -7,10 +7,10 @@ https://ae85.cn/
 */
 
 
-$cache.set("id", "7")
+$cache.set("id", "193")
 $cache.set("pg", 1)
 var urlt = "http://z11.bc568590266.rocks/"
-var data = [{ "name": "激情", "id": "1" }, { "name": "家庭", "id": "2" }, { "name": "校园", "id": "3" }, { "name": "武侠", "id": "4" }, { "name": "明星", "id": "5" }, { "name": "人妻", "id": "6" },]
+var data = [{ "name": "激情", "id": "193" }, { "name": "家庭", "id": "196" }, { "name": "校园", "id": "195" }, { "name": "武侠", "id": "197" }, { "name": "另类", "id": "199" }, { "name": "人妻", "id": "194" },]
 
 $ui.render({
     props: {
@@ -66,7 +66,7 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "pw/thread.php?fid=17&type=" + id + "&page=" + pg,
+        url: urlt + "pw/thread.php?fid=" + id + "&page=" + pg,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
