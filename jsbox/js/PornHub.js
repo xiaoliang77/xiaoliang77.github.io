@@ -6,7 +6,7 @@ PornHub视频下载
 ·JS内置下载功能（下载会比较慢）不推荐使用。
 ·启用迅雷下载（需要beta或旧版）才会自动跳转和自动创建下载任务。
 ·提供复制视频真实MP4链接（可用于其他浏览器下载）。
-·跳转苹果自带浏览器Safari下载（需要ios13以上）使用教程：https://mp.weixin.qqtzq77qqw.com/s/LDdYSTNqhcKz2QzNqHbb1g
+·跳转苹果自带浏览器Safari下载（需要ios13以上）使用教程：https://mp.weixin.qq.com/s/LDdYSTNqhcKz2QzNqHbb1g
 
 by：iPhone 8、小良
 更多js脚本： https://ae85.cn/
