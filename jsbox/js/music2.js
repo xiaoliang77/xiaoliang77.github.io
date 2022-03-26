@@ -1,6 +1,6 @@
-/* 音乐下载 1.2
- *  2021年2月19日 更新
- *  支持:网易云音乐,QQ音乐,虾米音乐,酷狗音乐,百度/千千音乐.
+/* 音乐下载 1.3
+ *  2022年3月26日 更新
+ *  更新: 因收到法务函告通知，已删除QQ音乐，酷我音乐，酷狗音乐。
  *  视频教程: http://t.cn/EGtlxQ5
 
  *  by：iPhone 8、小良
@@ -9,15 +9,16 @@
 var rce = ["netease", "tencent", "xiami", "kugou", "baidu"];
 $cache.set("srce", 0);
 $cache.set("pg", 1);
+var turl = $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "yinyue.json"
 $ui.loading(true);
 $http.get({
-  url:
-    $text.base64Decode(
-      "aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw=="
-    ) + "yinyue.json",
+  url: turl,
+  header: {
+    "Referer": turl.replace(/raw/, "blob")
+  },
   handler: function (resp) {
     $ui.loading(false);
-    if (resp.data.bb != "1.1") {
+    if (resp.data.bb != "1.3") {
       $ui.alert({
         title: "温馨提示：",
         message: resp.data.gxsm,
@@ -25,7 +26,7 @@ $http.get({
           {
             title: "访问官网",
             handler: function () {
-              $app.openURL(resp.data.gw);
+              $app.openURL("https://ae85.cn");
             }
           },
           {
@@ -127,25 +128,25 @@ function csh() {
           }
         }
       },
-      {
-        type: "tab",
-        props: {
-          id: "tab_i",
-          items: ["网易云", "QQ音乐", "虾米", "酷狗", "百度"],
-          index: 0
-        },
-        layout: function (make) {
-          make.left.right.inset(10);
-          make.top.equalTo($("bjk").bottom).offset(10);
-          make.height.equalTo(28);
-        },
-        events: {
-          changed: function (sender) {
-            $cache.set("srce", sender.index);
-            $cache.set("pg", 1);
-          }
-        }
-      },
+      // {
+      //   type: "tab",
+      //   props: {
+      //     id: "tab_i",
+      //     items: ["网易云", "QQ音乐", "虾米", "酷狗", "百度"],
+      //     index: 0
+      //   },
+      //   layout: function (make) {
+      //     make.left.right.inset(10);
+      //     make.top.equalTo($("bjk").bottom).offset(10);
+      //     make.height.equalTo(28);
+      //   },
+      //   events: {
+      //     changed: function (sender) {
+      //       $cache.set("srce", sender.index);
+      //       $cache.set("pg", 1);
+      //     }
+      //   }
+      // },
       {
         type: "list",
         props: {
@@ -188,7 +189,7 @@ function csh() {
           ]
         },
         layout: function (make) {
-          make.top.equalTo($("tab_i").bottom).inset(25);
+          make.top.equalTo($("bjk").bottom).inset(25);
           make.right.left.bottom.inset(0);
         },
         events: {
