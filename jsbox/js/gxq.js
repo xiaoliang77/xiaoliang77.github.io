@@ -14,7 +14,7 @@ const pz = {
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm:
-        "- 感谢支持 - ae85.cn -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2021"
+        "- 感谢支持 - ae85.cn -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2022"
 };
 
 const menu = {
