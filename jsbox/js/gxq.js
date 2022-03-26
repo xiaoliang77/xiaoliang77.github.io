@@ -1,6 +1,7 @@
 /*
-小良 - 更新器 2.7
- 2021.3.1 修复更新
+小良 - 更新器 2.8
+ 2022.3.26 修复更新配置文件
+ *快速获取安装小良个人作品
 
 by：iPhone 8、小良
 https://ae85.cn/
@@ -9,7 +10,7 @@ https://ae85.cn/
 */
 
 const pz = {
-    title: "小良 - 更新器 2.7",
+    title: "小良 - 更新器 2.8",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm:
@@ -150,16 +151,17 @@ const vlist = {
 };
 
 function refetch() {
+    var turl = $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "pin.json"
     $ui.loading(true);
     $http.get({
-        url:
-            $text.base64Decode(
-                "aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw=="
-            ) + "pin.json",
+        url: turl,
+        header: {
+            "Referer": turl.replace(/raw/, "blob")
+          },
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            if (data.version != "2.7") {
+            if (data.version != "2.8") {
                 $ui.alert({
                     title: "发现新版本",
                     message: resp.data.hant,
@@ -210,7 +212,7 @@ function xrwj(nr) {
 
 function zxgetlist(id) {
     var json = $text.URLDecode($cache.get("stories").data);
-    json =JSON.parse(json);
+    json = JSON.parse(json);
     if (id == 1) {
         listjm("脚本列表", "⁺ 获取 ");
         $("Menu").index = 1;
@@ -244,7 +246,7 @@ var gdggn = [dt(0), dt(1), dt(2), dt(3), dt(4)];
 
 function dt(a) {
     var data = $cache.get("stories").js.zygd;
-    var gw= $cache.get("stories").gw
+    var gw = $cache.get("stories").gw
     var gd = data[a];
     var tad = {
         type: "button",
@@ -357,7 +359,7 @@ function azjs(jsurl) {
 
 function render() {
     var json = $text.URLDecode($cache.get("stories").data);
-    json =JSON.parse(json);
+    json = JSON.parse(json);
     $("vlist").data = [
         clzyli(json.jb, "脚本", "1"),
         clzyli(json.gz, "规则", "2"),
@@ -369,7 +371,7 @@ function render() {
 }
 
 function clzyli(json, mc, idx) {
-    var gw= $cache.get("stories").gw
+    var gw = $cache.get("stories").gw
     var data = [];
     for (i in json) {
         if (i < 4) {
@@ -441,7 +443,7 @@ function csh() {
 }
 
 function getlist(json) {
-    var gw= $cache.get("stories").gw
+    var gw = $cache.get("stories").gw
     var data = [];
     for (var idx in json) {
         var story = json[idx];
@@ -590,7 +592,7 @@ function listjm(bt, ant) {
 }
 
 function xqym(data) {
-    var gw= $cache.get("stories").gw
+    var gw = $cache.get("stories").gw
     $ui.push({
         props: {
             title: pz.title
