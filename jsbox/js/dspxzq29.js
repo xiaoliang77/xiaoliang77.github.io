@@ -1,7 +1,7 @@
 /*
-短视频下载器 2.9
-2022年3月14日 更新
-修复：修复部分失效平台。
+短视频下载器 2.9.1
+2022年3月27日 更新
+修复：配置文件访问不了问题。
 
 支持：小红书去水印、抖音去水印、皮皮虾去水印、快手短视频无水印、Tiktok视频去水印、头条西瓜视频去水印、火山，微博，秒拍，美拍，陌陌，小影，全民小视频，映客，哔哩哔哩，等平台的视频下载。
 
@@ -11,17 +11,20 @@ by：iPhone 8、小良
 更多js脚本： https://ae85.cn/
 */
 
-const base64 =
-  "aHR0cHM6Ly9naXRlZS5jb20veLZvMDcvdXBkYXRlX2RldmljZS9yYXcvbLZzdGVyL2R1YW5zaGlwaW5nLmpzb24=";
+const base64 = "aHR0cHM6Ly9naXRlZS5jb20veLZvMDcvdXBkYXRlX2RldmljZS9yYXcvbLZzdGVyL2R1YW5zaGlwaW5nLmpzb24=";
+var turl = $text.base64Decode(base64.replace(/LZ/g, "WF"))
 $ui.loading(true);
 $http.get({
-  url: $text.base64Decode(base64.replace(/LZ/g, "WF")),
+  url: turl,
+  header: {
+    "Referer": turl.replace(/raw/, "blob")
+  },
   handler: function(resp) {
     $ui.loading(false);
     if (resp.response.statusCode == "200") {
       var info = resp.data;
       $cache.set("info", info);
-      if (info.bb != "2.9") {
+      if (info.bb != "2.9.1") {
         $ui.alert({
           title: "温馨提示",
           message: info.gxsm,
@@ -128,7 +131,7 @@ var count;
 function zjm() {
   $ui.render({
     props: {
-      title: "短视频下载 2.9",
+      title: "短视频下载 2.9.1",
       bgcolor: $color("#e6e6e6"),
       navButtons: [
         {
