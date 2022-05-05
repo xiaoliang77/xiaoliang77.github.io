@@ -67,5 +67,3 @@ function isios() {
     }
     return flag;
 }
-
-
