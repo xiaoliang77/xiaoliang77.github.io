@@ -1,6 +1,6 @@
 /*
-小良 - 更新器 2.8
- 2022.3.26 修复更新配置文件
+小良 - 更新器 2.9
+ 2022.5.30 修复更新配置文件
  *快速获取安装小良个人作品
 
 by：iPhone 8、小良
@@ -10,7 +10,7 @@ https://ae85.cn/
 */
 
 const pz = {
-    title: "小良 - 更新器 2.8",
+    title: "小良 - 更新器 2.9",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm:
@@ -151,7 +151,7 @@ const vlist = {
 };
 
 function refetch() {
-    var turl = $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "pin.json"
+    var turl = $text.base64Decode("aHR0cHM6Ly9jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy9tYXN0ZXIv") + "pin.json"
     $ui.loading(true);
     $http.get({
         url: turl,
@@ -161,7 +161,7 @@ function refetch() {
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            if (data.version != "2.8") {
+            if (data.version != "2.9") {
                 $ui.alert({
                     title: "发现新版本",
                     message: resp.data.hant,
