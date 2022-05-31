@@ -1,6 +1,6 @@
 /*
-2021年2月24日 修复更新
-更新：改版更新，如果报错，请将你的jsbox升级到2.0以上版本。
+2022年5月31日 修复更新
+更新：修复配置文件，如果报错，请将你的jsbox升级到2.0以上版本。
 
 by：iPhone 8、小良
 https://ae85.cn/
@@ -19,11 +19,11 @@ if (appid == "app.cyan.pin") {
 var gw = "https://ae85.cn/"
 $ui.loading(true);
 $http.get({
-    url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "saishi.json",
+    url: $text.base64Decode("aHR0cHM6Ly9jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy9tYXN0ZXIv") + "saishi.json",
     handler: function (resp) {
         $ui.loading(false);
         var info = resp.data;
-        if (info.bb != "1.6") {
+        if (info.bb != "1.6.1") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -81,7 +81,7 @@ function xrwj(nr) {
 
 $ui.render({
     props: {
-        title: "赛事直播1.6",
+        title: "赛事直播1.6.1",
         //bgcolor: $color("gray")
     },
     views: [{
@@ -285,7 +285,7 @@ $("list").data = [{
     lt1: { src: gw + "img/xl.png" },
     lt2: { src: gw + "img/xiaoliang.png" },
     sais: { text: "数据加载中···" },
-    rq: { text: "2021-2-24 更新" },
+    rq: { text: "2022-5-31 更新" },
     zd1: { text: "JSBox" },
     zd2: { text: "请稍后" },
     url: "https://ae85.cn/",
