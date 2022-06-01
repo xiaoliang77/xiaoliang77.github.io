@@ -1,5 +1,5 @@
-/* 音乐下载 1.3
- *  2022年3月26日 更新
+/* 音乐下载 1.4
+ *  2022年6月1日 修复更新配置文件链接
  *  更新: 因收到法务函告通知，已删除QQ音乐，酷我音乐，酷狗音乐。
  *  视频教程: http://t.cn/EGtlxQ5
 
@@ -9,7 +9,7 @@
 var rce = ["netease", "tencent", "xiami", "kugou", "baidu"];
 $cache.set("srce", 0);
 $cache.set("pg", 1);
-var turl = $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw==") + "yinyue.json"
+var turl = $text.base64Decode("aHR0cHM6Ly9jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy9tYXN0ZXIv") + "yinyue.json"
 $ui.loading(true);
 $http.get({
   url: turl,
@@ -18,7 +18,7 @@ $http.get({
   },
   handler: function (resp) {
     $ui.loading(false);
-    if (resp.data.bb != "1.3") {
+    if (resp.data.bb != "1.4") {
       $ui.alert({
         title: "温馨提示：",
         message: resp.data.gxsm,
