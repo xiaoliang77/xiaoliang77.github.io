@@ -30,7 +30,7 @@ const gzgzh = {
 };
 var itemHeight = $device.info.screen.height - 45;
 const base64 =
-  "aHR0cHM6Ly8naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS8yYXcvbWFzdGVyL2RvdXlpbi5qc28u";
+  "aHR0cHM6Ly8jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy8tYXN0ZXIvZG81eWluLmpzb24=";
 $ui.loading(true);
 $http.get({
   url: $text.base64Decode(base64.replace(/8/g, "9")),
