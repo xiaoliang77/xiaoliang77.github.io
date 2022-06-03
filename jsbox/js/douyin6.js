@@ -29,8 +29,7 @@ const gzgzh = {
   }
 };
 
-const base64 =
-  "aHR0cHM6Ly8jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy8tYXN0ZXIvZG81eWluLmpzb24=";
+const base64 = "aHR0cHM6Ly8hZTg1LmNuL2NvbmZpZy8kb3V5aW4uanNvbg==";
 $ui.loading(true);
 $http.get({
   url: $text.base64Decode(base64.replace(/8/g, "9")),

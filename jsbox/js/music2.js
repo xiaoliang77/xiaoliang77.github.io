@@ -9,7 +9,7 @@
 var rce = ["netease", "tencent", "xiami", "kugou", "baidu"];
 $cache.set("srce", 0);
 $cache.set("pg", 1);
-var turl = $text.base64Decode("aHR0cHM6Ly9jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy9tYXN0ZXIv") + "yinyue.json"
+var turl = $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "yinyue.json"
 $ui.loading(true);
 $http.get({
   url: turl,

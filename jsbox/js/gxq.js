@@ -151,13 +151,10 @@ const vlist = {
 };
 
 function refetch() {
-    var turl = $text.base64Decode("aHR0cHM6Ly9jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy9tYXN0ZXIv") + "pin.json"
+    var turl = $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "pin.json"
     $ui.loading(true);
     $http.get({
         url: turl,
-        header: {
-            "Referer": turl.replace(/raw/, "blob")
-          },
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;

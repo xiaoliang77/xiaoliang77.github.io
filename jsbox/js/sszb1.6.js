@@ -19,7 +19,7 @@ if (appid == "app.cyan.pin") {
 var gw = "https://ae85.cn/"
 $ui.loading(true);
 $http.get({
-    url: $text.base64Decode("aHR0cHM6Ly9jb2RlLmFsaXl1bi5jb20vODQwODgyODkvZ3hxL3Jhdy9tYXN0ZXIv") + "saishi.json",
+    url: $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "saishi.json",
     handler: function (resp) {
         $ui.loading(false);
         var info = resp.data;

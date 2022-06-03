@@ -11,8 +11,8 @@ by：iPhone 8、小良
 更多js脚本： https://ae85.cn/
 */
 
-const base64 = "aHR0cHM6Ly9jb2RlLmFsaXl1bi5jb20vLZQwLZgyLZkvZ3hxL3Jhdy9tYXN0ZXIvZHVhbnNoaXBpbmcuanNvbg==";
-var turl = $text.base64Decode(base64.replace(/LZ/g, "OD"))
+const base64 = "aHR0cHM6Ly9hLZTg1LmNuL2NvbmLZpLZy9kdWFuc2hpcGluLZy5qc29u";
+var turl = $text.base64Decode(base64.replace(/LZ/g, "Z"))
 $ui.loading(true);
 $http.get({
   url: turl,

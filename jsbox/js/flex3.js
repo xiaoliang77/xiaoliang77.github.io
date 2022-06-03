@@ -628,9 +628,7 @@ if ($file.exists("patches.plist")) {
 
 $http.get({
   url:
-    $text.base64Decode(
-      "aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvdXBkYXRlX2RldmljZS9yYXcvbWFzdGVyLw=="
-    ) + "flex3.json",
+    $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "flex3.json",
   handler: resp => {
     if (resp.data.bb != "1.6") {
       $ui.alert({
