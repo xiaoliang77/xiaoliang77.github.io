@@ -208,7 +208,7 @@ function xrwj(nr) {
 }
 
 function zxgetlist(id) {
-    var json = $text.URLDecode($cache.get("stories").data);
+    var json = $cache.get("stories").data;
     json = JSON.parse(json);
     if (id == 1) {
         listjm("脚本列表", "⁺ 获取 ");
