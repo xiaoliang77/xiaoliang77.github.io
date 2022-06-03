@@ -209,7 +209,7 @@ function xrwj(nr) {
 
 function zxgetlist(id) {
     var json = $cache.get("stories").data;
-    json = JSON.parse(json);
+    // json = JSON.parse(json);
     if (id == 1) {
         listjm("脚本列表", "⁺ 获取 ");
         $("Menu").index = 1;
@@ -355,8 +355,8 @@ function azjs(jsurl) {
 }
 
 function render() {
-    var json = $text.URLDecode($cache.get("stories").data);
-    json = JSON.parse(json);
+    var json = $cache.get("stories").data;
+    // json = JSON.parse(json);
     $("vlist").data = [
         clzyli(json.jb, "脚本", "1"),
         clzyli(json.gz, "规则", "2"),
