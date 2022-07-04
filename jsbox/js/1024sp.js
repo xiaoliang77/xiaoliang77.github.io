@@ -1,5 +1,5 @@
 /*
-2022年4月11日 更新
+2022年7月4日 更新
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -9,7 +9,7 @@ https://ae85.cn/
 
 $cache.set("id", "1")
 $cache.set("pg", 1)
-var urlt = $text.base64Decode("aHR0cHM6Ly9nb25nZGlzaGFvbnYxMS54eXo=");
+var urlt = $text.base64Decode("aHR0cHM6Ly9nb25nZGlzaGFvbnYxNC54eXo=");
 var data = [{ "name": "国产", "id": "1" }, { "name": "无码", "id": "13" }, { "name": "欧美", "id": "6" },{ "name": "三级", "id": "4" }, { "name": "动漫", "id": "14" }]
 
 $ui.render({
