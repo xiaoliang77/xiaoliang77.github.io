@@ -10,13 +10,13 @@ function co_sj() {
         color++;
     }
 }
-var data_gz = [{"title":"🔥小良 - 更新器 3.8 (规则)","image":"img/xiaoliang.png","rq":"更新：2022年5月30日","details":"内置：Wf规则、Pin脚本、破解App 等\n此规则只用于更新小良个人规则","url":"a1b1afcfd83c4bd7bbdf9d3710f66a44"},{"title":"🔥YouTube视频下载","image":"img/youtube.png","rq":"发布：2022年3月20日","details":"支持：选择视频品质下载（1080p/720p）","url":"1d826257d89c4af7b5894110cd9c0b4f"},{"title":"🔥Pornhub视频下载1.3","image":"img/down.png","rq":"更新：2022年3月18日","details":"可以选择视频清晰度品质下载，支持调用手机迅雷下载","url":"35e0454b5d614c879426bbb30fd31952"}]
+var data_gz = [{"title":"🔥YouTube视频下载","image":"img/youtube.png","rq":"发布：2022年3月20日","details":"支持：选择视频品质下载（1080p/720p）","url":"1d826257d89c4af7b5894110cd9c0b4f"},{"title":"🔥Pornhub视频下载1.3","image":"img/down.png","rq":"更新：2022年3月18日","details":"可以选择视频清晰度品质下载，支持调用手机迅雷下载","url":"35e0454b5d614c879426bbb30fd31952"},{"title":"🔥App Store 地区切换 2.0","image":"img/appstore.png","rq":"更新：2022年3月17日","details":"一键更换App Store应用商店地区","url":"c9ab7498f3ed4f26b3f1f7c66d55b880"}]
 
-var data_jb = [{"title":"🔥1024视频","image":"img/1024sp.png","rq":"更新：2022年7月4日","details":"在线视频","url":"1024sp"},{"title":"🔥1024小说","image":"img/1024xs.png","rq":"更新：2022年7月4日","details":"在线小说","url":"1024xs"},{"title":"🔥1024图库","image":"img/1024tp.png","rq":"更新：2022年7月4日","details":"在线图库","url":"1024tk"}]
+var data_jb = [{"title":"🔥小良 - 更新器 v3.0 Js版","image":"img/xl.png","rq":"更新：2022年8月8日","details":"js脚本是运行在pin或jsbox上的程序, 可以方便快捷的更新小良作品","url":"gxq"},{"title":"🔥1024视频","image":"img/1024sp.png","rq":"更新：2022年7月4日","details":"在线视频","url":"1024sp"},{"title":"🔥1024图库","image":"img/1024tp.png","rq":"更新：2022年7月4日","details":"在线图库","url":"1024tk"}]
 
 var data_yy = [{ "title": "Shadowrocket - 小火箭", "image": "img/Shadowrocket.jpg", "rq": "⚡️️ v2.1.2　💾7.25MB", "details": "证书已掉，未越狱的请勿安装<br>科学上网利器", "url": "Shadowrocket" }, { "title": "手机迅雷", "image": "img/xunlei.png", "rq": "⚡️️ v5.3.2　💾62.7MB", "details": "证书已掉，未越狱的请勿安装", "url": "xunlei" }, { "title": "Pin - 剪贴板扩展 (越狱版)", "image": "img/Pin.png", "rq": "⚡️️ v3.2.2　💾13.8MB", "details": "需要手机越狱才能安装", "url": "pin" }, { "title": "JSBox - 越狱版", "image": "img/jsbox.jpg", "rq": "⚡️️ v1.24.0　💾29.8MB", "details": "需要手机越狱才能安装", "url": "jsbox" }]
 
-var data_qt = [{ "title": "Telegram 直连", "image": "img/tg_logo.png", "rq": "Safari 浏览器中打开", "details": "无需科学上网即可使用Telegram", "url": "http://3f.ae85.cn:772/api/telegram.php" }, { "title": "屏蔽iOS 13.x系统自动更新", "image": "img/settings.png", "rq": "Safari 浏览器中打开", "details": "ios13用户不想系统自动下载更新的可以安装这个描述文件", "url": "https://ae85.cn/ios/iOS13.mobileconfig" }, { "title": "手机获取百度BDUSS教程", "image": "img/bduss.jpg", "rq": "视频教程", "details": "手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！", "url": "http://t.cn/Rkb7u8i", }]
+var data_qt = [{ "title": "Telegram 直连", "image": "img/tg_logo.png", "rq": "Safari 浏览器中打开", "details": "无需科学上网即可使用Telegram", "url": "http://3f.ae85.cn:772/api/telegram.php" }, { "title": "屏蔽iOS 13.x系统自动更新", "image": "img/settings.png", "rq": "Safari 浏览器中打开", "details": "ios13用户不想系统自动下载更新的可以安装这个描述文件", "url": "https://iphone8.vip//ios/iOS13.mobileconfig" }, { "title": "手机获取百度BDUSS教程", "image": "img/bduss.jpg", "rq": "视频教程", "details": "手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！", "url": "http://t.cn/Rkb7u8i", }]
 
 function kap_cj(data, lei) {
     var txt1 = "";
@@ -52,7 +52,7 @@ function install(id, lei) {
     // var host = window.location.host;
     // var gz_url = "https://workflow.is/workflows/" + id;
     var gz_url = "https://www.icloud.com/shortcuts/" + id;
-    var jb_url = "https://ae85.cn/jsbox/" + id + ".html";
+    var jb_url = "https://iPhone8.vip/jsbox/" + id + ".html";
     var url;
     if (isios()) {
         if (lei == 1) {
@@ -84,12 +84,12 @@ function install(id, lei) {
         if (lei == 1) {
             url = gz_url;
             if (gz_url.indexOf("workflow://") != -1) {
-                url = "https://ae85.cn";
+                url = "https://iphone8.vip/";
             }
         } else if (lei == 2) {
             url = jb_url
         } else if (lei == 3) {
-            url = "https://ae85.cn/yy.html"
+            url = "https://iphone8.vip/yy.html"
         }
         qrcode.makeCode(url);
         $(".ma_tac").show();

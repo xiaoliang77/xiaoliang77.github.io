@@ -1,16 +1,16 @@
 /*
-小良 - 更新器 2.9
- 2022.5.30 修复更新配置文件
+小良 - 更新器 3.0
+ 2022.8.8 修复更新配置文件
  *快速获取安装小良个人作品
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 
 博客：87xl.cn
 */
 
 const pz = {
-    title: "小良 - 更新器 2.9",
+    title: "小良 - 更新器 3.0",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm:
@@ -151,14 +151,14 @@ const vlist = {
 };
 
 function refetch() {
-    var turl = $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "pin.json"
+    var turl = $text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcv") + "pin.json"
     $ui.loading(true);
     $http.get({
         url: turl,
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            if (data.version != "2.9") {
+            if (data.version != "3.0") {
                 $ui.alert({
                     title: "发现新版本",
                     message: resp.data.hant,
@@ -172,7 +172,7 @@ function refetch() {
                         {
                             title: "访问官网",
                             handler: function () {
-                                $app.openURL("https://ae85.cn/");
+                                $app.openURL("https://iphone8.vip/");
                             }
                         }
                     ]

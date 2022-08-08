@@ -54,7 +54,7 @@ function install(id) {
             correctLevel: QRCode.CorrectLevel.H
         });
 
-        qrcode.makeCode("https://ae85.cn/yy.html");
+        qrcode.makeCode("https://iphone8.vip/yy.html");
         $(".ma_tac").show();
     }
 }
