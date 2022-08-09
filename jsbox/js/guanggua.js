@@ -4,7 +4,7 @@
 未满18岁请勿使用该脚本程序
 代码编写比较个性自由，请勿模仿。
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 var urlt = "http://imgup.hgpornhub.com/img//"
 var tu = [{ ing: "/71/ab7c562572aa74075f7bf5e175bb562d.png", ddr: 855 }, { ing: "/83/03690813fbf3c498dab1fe24208e2587.png", ddr: 851 }, { ing: "/93/0dc9355f703f9874b1187256fd48c147.png", ddr: 853 }, { ing: "/7/3a5945597a2ce26a8da7995b2dc9a287.png", ddr: 854 }]
@@ -56,7 +56,7 @@ var ssc = [{
 }, ]
 
 cdu = "http://imgup.fghuj.com/img//"
-var cd = [{ img: { src: cdu + "/78/115629fd07630ea61381359777d8c9d0.png" }, pm: { text: "无码" }, id: "2" }, { img: { src: cdu + "/39/30a637449a45dd4de6ecd4412b304c89.png" }, pm: { text: "人妻熟女" }, id: "7" }, { img: { src: cdu + "/87/89be74acbf2888276e054a80c72ebc14.png" }, pm: { text: "素人" }, id: "8" }, { img: { src: cdu + "/115/c7de6cb8c5076ef9bf115bc50e4147aa.png" }, pm: { text: "帝王温暖" }, id: "21" }, { img: { src: cdu + "/6/2d5fffa092cbfae11628021c5524dbbb.png" }, pm: { text: "辣妹大奶" }, id: "6" }, { img: { src: cdu + "/99/577f543ec0f6ebf463b744b5bb51d9a6.png" }, pm: { text: "制服诱惑" }, id: "10" }, { img: { src: cdu + "/88/b93962b10ea3a7429e336a97ba711862.png" }, pm: { text: "偷拍自拍" }, id: "23" }, { img: { src: "https://ae85.cn/pin/quabut.png" }, pm: { text: "全部" }, id: "1" }, ]
+var cd = [{ img: { src: cdu + "/78/115629fd07630ea61381359777d8c9d0.png" }, pm: { text: "无码" }, id: "2" }, { img: { src: cdu + "/39/30a637449a45dd4de6ecd4412b304c89.png" }, pm: { text: "人妻熟女" }, id: "7" }, { img: { src: cdu + "/87/89be74acbf2888276e054a80c72ebc14.png" }, pm: { text: "素人" }, id: "8" }, { img: { src: cdu + "/115/c7de6cb8c5076ef9bf115bc50e4147aa.png" }, pm: { text: "帝王温暖" }, id: "21" }, { img: { src: cdu + "/6/2d5fffa092cbfae11628021c5524dbbb.png" }, pm: { text: "辣妹大奶" }, id: "6" }, { img: { src: cdu + "/99/577f543ec0f6ebf463b744b5bb51d9a6.png" }, pm: { text: "制服诱惑" }, id: "10" }, { img: { src: cdu + "/88/b93962b10ea3a7429e336a97ba711862.png" }, pm: { text: "偷拍自拍" }, id: "23" }, { img: { src: "https://iphone8.vip/pin/quabut.png" }, pm: { text: "全部" }, id: "1" }, ]
 
 var me = [{ name: "全部", id: "1" }, { name: "无码", id: "2" }, { name: "人妻熟女", id: "7" }, { name: "素人", id: "8" }, { name: "帝王温暖", id: "21" }, { name: "辣妹大奶", id: "6" }, { name: "制服诱惑", id: "23" }, { name: "偷拍自拍", id: "10" }, { name: "各行各业", id: "14" }, { name: "当红女优", id: "3" }, { name: "深夜综艺", id: "24" }, { name: "集体性爱", id: "11" }, { name: "美少女", id: "12" }, { name: "性感内衣", id: "16" }, { name: "重口变态", id: "15" }, { name: "角色扮演", id: "13" }, { name: "不伦乱伦", id: "9" }, { name: "按摩桑拿", id: "17" }, { name: "人气排行", id: "4" }, { name: "第一人称", id: "18" }, { name: "妄想写真", id: "22" }, { name: "青春荡漾", id: "38" }, { name: "欧美AV", id: "5" }, { name: "放浪女孩", id: "39" }, { name: "三级剧情", id: "58" }]
 
@@ -64,7 +64,7 @@ const mrhb = {
   type: "button",
   props: {
     id: "hb_img",
-    src: "https://ae85.cn/img/xl.png",
+    src: "https://iphone8.vip/img/xl.png",
   },
   events: {
     tapped: function(sender) {

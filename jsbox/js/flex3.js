@@ -20,7 +20,7 @@ Flex 3补丁管理 1.6.2
 内置云端补丁，可以从云端添加。
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 
 $app.autoKeyboardEnabled = true;

@@ -4,7 +4,7 @@
 新增下载功能
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://iphone8.vip/
 */
 var timer;
 const gzgzh = {

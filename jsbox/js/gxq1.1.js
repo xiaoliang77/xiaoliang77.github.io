@@ -81,7 +81,7 @@ $ui.render({
     }
   ]
 })
-var dnaem = "https://ae85.cn/"
+var dnaem = "https://iphone8.vip/"
 var version = "1.1"
 $ui.loading(true)
 

@@ -3,7 +3,7 @@
 jsbox脚本安装器使用也很简单，我们只需要复制脚本的分享链接，然后运行这个脚本安装器就可以安装了。非常方便快捷。
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 if ($app.info.bundleID == "app.cyan.pin") {
     $ui.alert("该脚本不支持Pin！\n只支持JSBox \n\npin请使用复制代码方式添加");

@@ -3,7 +3,7 @@
 祝大家新年快乐,新年第一更！
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://iphone8.vip/
 */
 const gzgzh = {
   title: "关注公众号",

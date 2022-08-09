@@ -5,7 +5,7 @@
 新增：接入影音宝播放器
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://iphone8.vip/
 */
 
 var template = [{
@@ -38,7 +38,7 @@ var szan = {
     type: "button",
     props: {
         id: "hb_img",
-        src: "https://ae85.cn/img/xl.png",
+        src: "https://iphone8.vip/img/xl.png",
     },
     events: {
         tapped: function (sender) {
@@ -56,7 +56,7 @@ var daocbm = {
     props: {
         id: "dc_img",
         radius: 30,
-        src: "https://ae85.cn/img/filza.png",
+        src: "https://iphone8.vip/img/filza.png",
     },
     events: {
         tapped: function (sender) {
@@ -327,7 +327,7 @@ function sz() {
                     props: {
                         height: 100,
                         lines: 0,
-                        text: "by：iPhone 8、小良\nhttps://ae85.cn/",
+                        text: "by：iPhone 8、小良\nhttps://iphone8.vip/",
                         textColor: $color("#198567"),
                         align: $align.center,
                         font: $font(16)
@@ -346,11 +346,11 @@ function sz() {
                     } else if (data == "影音宝   -  跳转App Store商店下载") {
                         $app.openURL(urls[3].store)
                     } else if (data == "作者官网") {
-                        web("https://ae85.cn/", "iPhone 8、小良")
+                        web("https://iphone8.vip/", "iPhone 8、小良")
                     } else if (data == "作者博客") {
                         web("https://87xl.cn", "小良、Blog")
                     } else if (data == "微信公众号：小良科技") {
-                        // web("https://ae85.cn/lxfs.html", "微信公众号-小良Ge")
+                        // web("https://iphone8.vip/lxfs.html", "微信公众号-小良Ge")
                     } else if (data == "关于脚本") {
                         web("http://qq.cn.hn/g32", "直播-秋名山见")
                     }

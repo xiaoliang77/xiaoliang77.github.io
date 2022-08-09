@@ -3,7 +3,7 @@
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 
 

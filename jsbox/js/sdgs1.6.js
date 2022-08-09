@@ -2,7 +2,7 @@
 狩都高速 1.6
 2020.6.3 修复更新
  by：iPhone 8、小良
- http://ae85.cn/
+ https://iphone8.vip/
 */
 
 

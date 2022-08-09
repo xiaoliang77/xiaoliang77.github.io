@@ -3,7 +3,7 @@
 更新：修复配置文件，如果报错，请将你的jsbox升级到2.0以上版本。
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 
 博客：87xl.cn
 */
@@ -16,7 +16,7 @@ if (appid == "app.cyan.pin") {
 } else {
     $app.minSDKVer = "2.0.0"
 }
-var gw = "https://ae85.cn/"
+var gw = "https://iphone8.vip/"
 $ui.loading(true);
 $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "saishi.json",
@@ -288,7 +288,7 @@ $("list").data = [{
     rq: { text: "2022-5-31 更新" },
     zd1: { text: "JSBox" },
     zd2: { text: "请稍后" },
-    url: "https://ae85.cn/",
+    url: "https://iphone8.vip/",
     cd: { data: [{ img: { src: gw + "img/xiaoliang.png" }, pm: { text: "如果" }, ztai: { src: gw + "jsbox/img/zbzt_1.png" } }, { img: { src: gw + "img/xiaoliang.png" }, pm: { text: "长时间" }, ztai: { src: gw + "jsbox/img/zbzt_1.png" } }, { img: { src: gw + "img/xiaoliang.png" }, pm: { text: "未加载" }, ztai: { src: gw + "jsbox/img/zbzt_1.png" } }, { img: { src: gw + "img/xiaoliang.png" }, pm: { text: "请反馈" }, ztai: { src: gw + "jsbox/img/zbzt_1.png" } }] }
 }]
 
@@ -314,7 +314,7 @@ function getdata() {
                             zbdata.push({
                                 img: { src: zb.head_pic },
                                 pm: { text: zb.nickname },
-                                ztai: { src: `https://ae85.cn/jsbox/img/zbzt_${zb.a_status}.png` },
+                                ztai: { src: `https://iphone8.vip/jsbox/img/zbzt_${zb.a_status}.png` },
                                 id: zb.room_num
                             })
                         }

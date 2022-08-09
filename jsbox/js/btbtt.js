@@ -2,7 +2,7 @@
 Btbtt,BT电影天堂,BT种子,BT下载,BT电影下载
 脚本支持：影片搜索、查看影片详情、复制影片磁力链接。
 by：iPhone 8、小良
-http://ae85.cn/
+https://iphone8.vip/
 */
 
 
@@ -170,7 +170,7 @@ function geting(id, mc) {
                     type: "button",
                     props: {
                         id: "hb_img",
-                        src: "http://ae85.cn/jsbox/img/xun.jpg",
+                        src: "https://iphone8.vip/jsbox/img/xun.jpg",
                         radius: 30
                     },
                     events: {
@@ -237,7 +237,7 @@ function getwj(id, dian) {
                 actions: [{
                     title: "跳转安装",
                     handler: function () {
-                        $app.openURL("http://ae85.cn/yy.html");
+                        $app.openURL("https://iphone8.vip/yy.html");
                     }
                 },
                 {

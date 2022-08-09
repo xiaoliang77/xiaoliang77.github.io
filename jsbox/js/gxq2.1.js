@@ -2,7 +2,7 @@
 修复新版jsbox不能安装脚本问题
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 
 const pz = {
@@ -57,7 +57,7 @@ const mrhb = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "https://ae85.cn/img/hb.jpg",
+    src: "https://iphone8.vip/img/hb.jpg",
   },
   events: {
     tapped: function(sender) {
@@ -177,7 +177,7 @@ const vlist = {
   }
 }
 
-var urlt = "https://ae85.cn/"
+var urlt = "https://iphone8.vip/"
 var version = "2.1"
 
 function refetch() {

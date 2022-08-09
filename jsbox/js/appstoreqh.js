@@ -5,7 +5,7 @@ App Store 地区切换 2.0
 使用脚本改了地区之后，只能查看修改后的地区的应用信息，并不能直接下载应用！必须使用对应地区ID账号才可以下载APP。
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 
 */
 

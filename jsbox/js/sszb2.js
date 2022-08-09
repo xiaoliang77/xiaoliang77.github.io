@@ -2,7 +2,7 @@
 2018年10月30日 修复更新
 更新：修复部分不能播放问题
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 
 */
 
@@ -186,13 +186,13 @@ function getlb() {
                 }
                 if (d.indexOf("备用") !== -1) {
                     data.push({
-                        lt1: { src: "https://ae85.cn/img/xl.png" },
-                        lt2: { src: "https://ae85.cn/img/xiaoliang.png" },
+                        lt1: { src: "https://iphone8.vip/img/xl.png" },
+                        lt2: { src: "https://iphone8.vip/img/xiaoliang.png" },
                         sais: { text: "小良 - 更新器" },
                         rq: { text: "带你打开ios新世纪" },
                         zd1: { text: "脚本2.4版" },
                         zd2: { text: "规则3.3版" },
-                        url: "https://ae85.cn/"
+                        url: "https://iphone8.vip/"
                     })
                 } else {
                     data.push({

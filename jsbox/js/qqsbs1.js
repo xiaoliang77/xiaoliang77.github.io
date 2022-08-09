@@ -2,7 +2,7 @@
 QQ刷步数 1.1
 更新：新增记住账号密码
 by: iPhone 8、小良
-个人网站：https://ae85.cn/
+个人网站：https://iphone8.vip/
 演示视频：http://t.cn/REzq9hu
 
 */
@@ -254,7 +254,7 @@ function zjm() {
             },
             events: {
               tapped: function(sender) {
-                $app.openURL("https://ae85.cn/")
+                $app.openURL("https://iphone8.vip/")
               }
 
             }

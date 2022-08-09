@@ -9,7 +9,7 @@
 脚本使用密码到在公众号【小良科技】中回复〖285〗即可获取。
 
 by：iPhone 8、小良
-更多js脚本： https://ae85.cn/
+更多js脚本： https://iphone8.vip/
 */
 
 const base64 = "aHR0cHM6Ly9naXRlZS5jb20veLZvMDcvdXBkYXRlX2RldmljZS9yYXcvbLZzdGVyL2R1YW5zaGlwaW5nLmpzb24="
@@ -194,7 +194,7 @@ function cshyz() {
                 props: {
                     id: "webyz",
                     toolbar: true,
-                    html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><h1>使用说明：</h1><h2>为了防止他人恶意调用使脚本和谐速度过快，将为脚本添加了开启密码，并定期更改。请到公众号获取开启密码。</h2><h1>密码获取：</h1><h2>前往公众号【小良科技】在聊天窗口中回复〖285〗即可获取。<br></h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1> <h1><a href="https://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><h1><a href="https://ae85.cn/lxfs.html">关注公众号</a> 小良科技</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
+                    html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><h1>使用说明：</h1><h2>为了防止他人恶意调用使脚本和谐速度过快，将为脚本添加了开启密码，并定期更改。请到公众号获取开启密码。</h2><h1>密码获取：</h1><h2>前往公众号【小良科技】在聊天窗口中回复〖285〗即可获取。<br></h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1> <h1><a href="https://iphone8.vip/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><h1><a href="https://iphone8.vip/lxfs.html">关注公众号</a> 小良科技</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://iphone8.vip/">https://iphone8.vip/</a> </h2></span></body>`
                 },
                 layout: function (make) {
                     make.top.equalTo($("wd").bottom).inset(10);
@@ -337,7 +337,7 @@ function sysm() {
             props: {
                 id: "webxia",
                 bgcolor: $color("#e6e6e6"),
-                html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>脚本已支持：微信公众号、小红书去水印、皮皮虾无水印、抖音无水印、Tik Tok (国际版抖音) 无水印、快手无水印、火山无水印、全民小视频无水印、今日头条、西瓜视频、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。<br><br>修复更新</h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1> <h1><a href="https://ae85.cn/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><h1><a href="https://ae85.cn/lxfs.html">关注公众号</a> 小良科技</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ae85.cn/">https://ae85.cn/</a> </h2></span></body>`
+                html: `<head><meta charset="UTF-8"></head><body><span style="font-size:34px;"><br><h1>使用说明：</h1><h2>脚本已支持：微信公众号、小红书去水印、皮皮虾无水印、抖音无水印、Tik Tok (国际版抖音) 无水印、快手无水印、火山无水印、全民小视频无水印、今日头条、西瓜视频、微博、秒拍、小咖秀、晃咖、微视、美拍、网易云音乐、陌陌、映客、小影 等平台的视频下载。<br><br>修复更新</h2><br><h1><a href="http://t.cn/E49YWj6">点击观看</a> 视频教程</h1> <h1><a href="https://iphone8.vip/fuli/xiaoliang.html">点击领取</a> 支付宝红包</h1><h1><a href="https://iphone8.vip/lxfs.html">关注公众号</a> 小良科技</h1><h2>by：iPhone 8、小良&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://iphone8.vip/">https://iphone8.vip/</a> </h2></span></body>`
             },
             layout: function (make) {
                 make.left.right.inset(10);

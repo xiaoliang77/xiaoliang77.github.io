@@ -3,7 +3,7 @@
  * 支持图标下载
  *
  * by：iPhone 8、小良
- * https://ae85.cn/
+ * https://iphone8.vip/
  */
 
 function get_tiqu(url) {

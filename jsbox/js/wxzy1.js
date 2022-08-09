@@ -4,7 +4,7 @@ const mrhb = {
   type: "button",
   props: {
     id: "hb_img",
-    src: "https://ae85.cn/img/xl.png",
+    src: "https://iphone8.vip/img/xl.png",
   },
   events: {
     tapped: function(sender) {

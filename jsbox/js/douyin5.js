@@ -4,7 +4,7 @@
 新增下载功能
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://iphone8.vip/
 */
 
 const gzgzh = {
@@ -154,7 +154,7 @@ $ui.render({
       type: "button",
       props: {
         id: "logo",
-        src: "https://ae85.cn/img/xl.png"
+        src: "https://iphone8.vip/img/xl.png"
       },
       events: {
         tapped: function(sender) {

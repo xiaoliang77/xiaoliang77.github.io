@@ -3,7 +3,7 @@
 更新：去掉之前版权问题的直播源。
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 
 博客：87xl.cn
 */

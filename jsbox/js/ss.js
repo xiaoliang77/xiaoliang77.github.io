@@ -2,7 +2,7 @@
 小火箭-ss节点免费获取
 前提是要先安装好小火箭(Shadowrocket)这个app
 by：iPhone8、小良
-https://ae85.cn/
+https://iphone8.vip/
 
 演示视频：
 http://t.cn/R8rDfQD
@@ -49,7 +49,7 @@ $ui.render({
 
 function ss() {
   $http.get({
-    url: "https://ae85.cn/ss.json",
+    url: "https://iphone8.vip/ss.json",
     handler(resp) {
       var arr = resp.data
       bbyz(arr.bb)
@@ -77,7 +77,7 @@ function bbyz(bb) {
       actions: [{
         title: "访问小良网站",
         handler: function() {
-          $app.openBrowser({ url: "https://ae85.cn/" })
+          $app.openBrowser({ url: "https://iphone8.vip/" })
         }
 
       }]

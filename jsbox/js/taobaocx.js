@@ -6,7 +6,7 @@
 
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
  
  var data =[{mc:{text:"淘气值"},url:"://market.m.taobao.com/apps/market/m-vip/raise-naughty.html?type=1"},{mc:{text:"给他人的评价"},url:"://rate.taobao.com/user-myrate-UMGNGvCv4MG8T--buyerOrSeller%7C3--receivedOrPosted%7C1.htm#rateList"},{mc:{text:"退款售后"},url:"://refund.m.taobao.com/dispute/wirelessList.htm#/loaded"},{mc:{text:"购买记录"},url:"://h5.m.taobao.com/mlapp/olist.html"},{mc:{text:"账户体检"},url:"://passport.taobao.com/ac/h5/appeal_center.htm?fromSite=0&amp;sourceType=other"},{mc:{text:"浏览足迹"},url:"://market.m.taobao.com/apps/market/footprint/index.html"},{mc:{text:"信誉评级"},url:"://h5.m.taobao.com/alistar/intro.html"},{mc:{text:"收藏记录"},url:"://market.m.taobao.com/apps/market/favorite/index.html"},{mc:{text:"来自卖家评价"},url:"://rate.taobao.com/user-myrate-UMGNGvCv4MG8T--receivedOrPosted%7C0--buyerOrSeller%7C1.htm"},{mc:{text:"性别年龄"},url:"://member1.taobao.com/member/fresh/account_profile.htm"}]

@@ -4,7 +4,7 @@
 更新内容：新增快捷指令方式运行自动签到功能。
 支持多账号
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 
 var nev = $app.env;
@@ -52,7 +52,7 @@ function tianjiaui() {
         type: "button",
         props: {
           id: "dr_img",
-          src: "https://ae85.cn/jsbox/img/drlogo.png",
+          src: "https://iphone8.vip/jsbox/img/drlogo.png",
           radius: 40
         },
         layout: function (make, view) {

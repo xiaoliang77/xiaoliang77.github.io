@@ -627,7 +627,7 @@ const mrhb = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "https://ae85.cn/img/hb.jpg"
+    src: "https://iphone8.vip/img/hb.jpg"
   },
   events: {
     tapped: function(sender) {

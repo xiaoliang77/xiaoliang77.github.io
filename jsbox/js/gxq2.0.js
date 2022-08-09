@@ -2,7 +2,7 @@
 js版本更新器全新改版
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 
 const pz = {
@@ -56,7 +56,7 @@ const mrhb = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "https://ae85.cn/img/hb.jpg",
+    src: "https://iphone8.vip/img/hb.jpg",
   },
   events: {
     tapped: function(sender) {
@@ -176,7 +176,7 @@ const vlist = {
   }
 }
 
-var urlt = "https://ae85.cn/"
+var urlt = "https://iphone8.vip/"
 var version = "2.0"
 
 function refetch() {

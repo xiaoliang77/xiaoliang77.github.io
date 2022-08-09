@@ -9,7 +9,7 @@ PornHub视频下载
 ·跳转苹果自带浏览器Safari下载（需要ios13以上）使用教程：https://mp.weixin.qq.com/s/LDdYSTNqhcKz2QzNqHbb1g
 
 by：iPhone 8、小良
-更多js脚本： https://ae85.cn/
+更多js脚本： https://iphone8.vip/
 */
 
 const menuview = {

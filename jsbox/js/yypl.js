@@ -2,7 +2,7 @@
 语音评论，可用于微信朋友圈、qq空间、等场所评论使用。还挺好玩的。
 
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 */
 var dtext = $clipboard.text;
 if (!$keyboard.hasText) {

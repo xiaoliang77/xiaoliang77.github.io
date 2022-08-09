@@ -3,7 +3,7 @@
 ps：脚本仅供学习参考，视频数据来源于网络，请勿相信视频内广告信息，造成损失与作者无关。
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://iphone8.vip/
 */
 const gzgzh = {
     title: "关注公众号",

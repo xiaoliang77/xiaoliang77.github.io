@@ -2,7 +2,7 @@
 狩都高速 1.5
 2019.8.1 修复更新
  by：iPhone 8、小良
- http://ae85.cn/
+ https://iphone8.vip/
 */
 var me = [
   { name: "推荐资源", id: "/recom/1.html?recom=1" },

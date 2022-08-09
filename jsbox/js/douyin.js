@@ -3,7 +3,7 @@
 该脚本不支持Pin！请使用JSBox
 
 by：iPhone 8、小良
-http://ae85.cn/
+https://iphone8.vip/
 */
 if ($app.info.bundleID == "app.cyan.pin") {
   $ui.alert("该脚本不支持Pin！\n请使用JSBox");
@@ -235,7 +235,7 @@ $ui.render({
       type: "button",
       props: {
         id: "logo",
-        src: "https://ae85.cn/img/xl.png"
+        src: "https://iphone8.vip/img/xl.png"
       },
       events: {
         tapped: function (sender) {

@@ -2,7 +2,7 @@
 直播 - 秋名山见 1.1
 内容不可描述
 by：iPhone 8、小良
-https://ae85.cn/
+https://iphone8.vip/
 
 */
 
@@ -189,7 +189,7 @@ var szan = {
   type: "button",
   props: {
     id: "sz_img",
-    src: "https://ae85.cn/img/xl.png",
+    src: "https://iphone8.vip/img/xl.png",
   },
   events: {
     tapped: function(sender) {
@@ -207,7 +207,7 @@ var hban = {
   props: {
     id: "hb_img",
     radius: 30,
-    src: "https://ae85.cn/img/hb.jpg",
+    src: "https://iphone8.vip/img/hb.jpg",
   },
   events: {
     tapped: function(sender) {
@@ -449,7 +449,7 @@ function sz() {
           props: {
             height: 100,
             lines: 0,
-            text: "by：iPhone 8、小良\nhttps://ae85.cn/",
+            text: "by：iPhone 8、小良\nhttps://iphone8.vip/",
             textColor: $color("#198567"),
             align: $align.center,
             font: $font(16)
@@ -466,7 +466,7 @@ function sz() {
           } else if (data == " nPlayer -  跳转App Store商店下载") {
             $app.openURL(urls[2].store)
           } else if (data == "作者官网") {
-            web("https://ae85.cn/", "iPhone 8、小良")
+            web("https://iphone8.vip/", "iPhone 8、小良")
           } else if (data == "作者微博") {
             web("https://weibo.com/u/2934241775", "小良Ge")
           } else if (data == "关于脚本") {
