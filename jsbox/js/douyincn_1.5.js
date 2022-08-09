@@ -27,7 +27,7 @@ const gzgzh = {
     }
 };
 
-const base64 = "aHR0cHM6Ly8hZTg1LmNuL2NvbmZpZy8kb3V5aW4uanNvbg==";
+const base64 = "aHR0cHM6Ly8pcGhvbmU4LnZpcC8jb25maWcvZG81eWluLmpzb24=";
 $ui.loading(true);
 $http.get({
     url: $text.base64Decode(base64.replace(/8/g, "9")),
@@ -66,7 +66,7 @@ var itemHeight = $device.info.screen.height - 145;
 
 $ui.render({
     props: {
-        title: "抖yin国内版 1.5",
+        title: "抖yin国内版 1.6",
     },
     views: [
         {
@@ -82,7 +82,7 @@ $ui.render({
                     {
                         type: "web",
                         props: {
-                            id: "bof",
+                            id: "web",
                         },
                         layout: $layout.fill
                     }
