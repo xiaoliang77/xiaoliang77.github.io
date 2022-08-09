@@ -9,7 +9,7 @@ https://ae85.cn/
 
 $cache.set("id", "1")
 $cache.set("pg", 1)
-var urlt = $text.base64Decode("aHR0cHM6Ly9nb25nZGlzaGFvbnYxNC54eXo=");
+var urlt = $text.base64Decode("aHR0cHM6Ly9nb25nZGlzaGFvbnYyMzUudG9wLw==");
 var data = [{ "name": "国产", "id": "1" }, { "name": "无码", "id": "13" }, { "name": "欧美", "id": "6" },{ "name": "三级", "id": "4" }, { "name": "动漫", "id": "14" }]
 
 $ui.render({

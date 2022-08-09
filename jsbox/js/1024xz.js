@@ -1,5 +1,5 @@
 /*
-2022年7月4日 更新
+2022年8月9日 更新
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -9,7 +9,7 @@ https://ae85.cn/
 
 $cache.set("id", "5")
 $cache.set("pg", 1)
-var urlt = "https://w11.hlork9.org/"
+var urlt = "https://yj2207.com/"
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 
 $ui.render({

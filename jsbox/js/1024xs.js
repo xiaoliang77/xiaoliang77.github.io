@@ -1,5 +1,5 @@
 /*
-2022年7月4日 更新
+2022年8月9日 更新
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -9,7 +9,7 @@ https://ae85.cn/
 
 $cache.set("id", "193")
 $cache.set("pg", 1)
-var urlt = "https://w11.hlork9.org/"
+var urlt = "https://yj2207.com/"
 var data = [{ "name": "激情", "id": "193" }, { "name": "家庭", "id": "196" }, { "name": "校园", "id": "195" }, { "name": "武侠", "id": "197" }, { "name": "另类", "id": "199" }, { "name": "人妻", "id": "194" },]
 
 $ui.render({
