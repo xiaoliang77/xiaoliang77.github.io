@@ -1,7 +1,9 @@
 /*
-直播 - 秋名山见 2.0.1
-2020年7月13日
+直播 - 秋名山见 2.1
+2022年8月10日
 
+更新：配置文件换新域名
+修复：报错无法使用问题
 新增：接入影音宝播放器
 
 by：iPhone 8、小良
@@ -97,7 +99,7 @@ var urls = [{
 function zjm() {
     $ui.render({
         props: {
-            title: "直播 - 秋名山见 2.0"
+            title: "直播 - 秋名山见 2.1"
         },
         views: [{
             type: "matrix",
@@ -118,16 +120,16 @@ function zjm() {
         }, szan]
     })
 }
-const base64 = "aHR0cHM6Ly9hlzg1LmNuL3Bpbi96YjQuanNvbg=="
+const urlt = "lz7zHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25mlz7zWcvcW1zemIulz7znNvbg=="
 $ui.loading(true)
 $http.get({
-    url: $text.base64Decode(base64.replace(/lz/, "ZT")),
+    url: $text.base64Decode(urlt.replace(/lz7z/g, "a")),
     handler: function (resp) {
         $ui.loading(false)
         if (resp.response.statusCode == "200") {
             var info = resp.data;
             $cache.set("info", info)
-            if (info.version != "2.0") {
+            if (info.version != "2.1") {
                 $ui.alert({
                     title: "温馨提示",
                     message: info.Ucontent,
@@ -320,7 +322,7 @@ function sz() {
                     rows: [" VLC       -  跳转App Store商店下载", "OPlayer -  跳转App Store商店下载", " nPlayer -  跳转App Store商店下载", "影音宝   -  跳转App Store商店下载"]
                 }, {
                     title: "使用帮助",
-                    rows: ["作者官网", "作者博客", "微信公众号", "关于脚本"]
+                    rows: ["作者官网", "作者博客", "微信公众号：小良科技", "关于脚本"]
                 }],
                 footer: {
                     type: "label",
@@ -350,7 +352,7 @@ function sz() {
                     } else if (data == "作者博客") {
                         web("https://87xl.cn", "小良、Blog")
                     } else if (data == "微信公众号：小良科技") {
-                        // web("https://iphone8.vip/lxfs.html", "微信公众号-小良Ge")
+                        web("http://mp.weixin.qq.com/mp/homepage?__biz=MzI0NDM1MDUwOQ==&hid=1&sn=91031d83ec40fffd43d268db23d7de8d&scene=18#wechat_redirect", "微信公众号-小良Ge")
                     } else if (data == "关于脚本") {
                         web("http://qq.cn.hn/g32", "直播-秋名山见")
                     }
