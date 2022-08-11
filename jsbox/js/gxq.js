@@ -13,8 +13,7 @@ const pz = {
     title: "小良 - 更新器 3.0",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
-    banqsm:
-        "- 感谢支持 - ae85.cn -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2022"
+    banqsm: "- 感谢支持 - iPhone8.vip -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2022"
 };
 
 const menu = {
