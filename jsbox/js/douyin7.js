@@ -1,11 +1,12 @@
 /*
 2022年8月14日、修复更新
-更新支持pin软件
+左右滑动记数有问题，需要复制视频链接和下载的朋友先往右边滑一个视频在滑动回来再操作下载和复制。这属于jsbox组件问题。
 
 by：iPhone 8、小良
 https://iphone8.vip/
 */
 var turl
+var video_url
 const gzgzh = {
   title: "关注公众号",
   handler: function () {
@@ -138,6 +139,7 @@ $ui.render({
   props: {
     id: "mView",
     navBarHidden: 1,
+    statusBarStyle:0,
     homeIndicatorHidden: 1,
     bgcolor: $color("black")
   },
@@ -149,18 +151,102 @@ $ui.render({
       },
       views: [
         {
+          type: "label",
+          props: {
+              id: "jzz",
+              font: $font("bold", 40),
+              textColor: $color("#fff"),
+              align: $align.center,
+              text: "加载中···"
+          },
+          layout: function (make, view) {
+              make.centerX.centerY.equalTo(view.center)
+          }
+      },
+        {
           type: "gallery",
           props: {
           },
           layout: function (make, view) {
             make.left.right.inset(-1)
-            make.top.equalTo(0)
+            make.top.inset(0)
             make.bottom.inset(50)
           }
         }
       ],
       layout: $layout.fill,
     },
+    {
+      type: "button",
+      props: {
+        id: "x_img",
+        src: timg + "jsbox/img/x.png"
+      },
+      events: {
+        tapped: function (sender) {
+          $app.close();
+        }
+      },
+      layout: function (make, view) {
+        make.right.inset(5);
+        make.bottom.inset(100)
+        make.width.height.equalTo(50);
+      }
+    },
+    {
+      type: "button",
+      props: {
+        id: "xia_img",
+        src: timg + "jsbox/img/xia.png"
+      },
+      events: {
+        tapped: function (sender) {
+          // $ui.alert("该视频不支持下载，请复制视频地址到指尖浏览器上下载！");
+          download(video_url)
+        }
+      },
+      layout: function (make, view) {
+        make.right.inset(2);
+        make.bottom.equalTo($("x_img").top).inset(15);
+        make.width.height.equalTo(58);
+      }
+    },
+    {
+      type: "button",
+      props: {
+        id: "fuzhi_img",
+        src: timg + "jsbox/img/fuzhi.png"
+      },
+      events: {
+        tapped: function (sender) {
+          $clipboard.text = video_url;
+          $ui.toast("已复制");
+        }
+      },
+      layout: function (make, view) {
+        make.right.inset(5);
+        make.bottom.equalTo($("xia_img").top).inset(15);
+        make.width.height.equalTo(50);
+      }
+    },
+    {
+      type: "button",
+      props: {
+        id: "logo",
+        src: "https://iphone8.vip/img/xl.png"
+      },
+      events: {
+        tapped: function (sender) {
+          $app.openURL("https://iphone8.vip/");
+        }
+      },
+      layout: function (make, view) {
+        make.right.inset(5);
+        make.bottom.equalTo($("fuzhi_img").top).inset(15);
+        make.width.height.equalTo(50);
+      }
+    },
+    
     conView
   ]
 });
@@ -180,6 +266,7 @@ function getdata() {
           }
         })
       }
+      video_url = data[0].videoUrl
       var st = {
         type: "gallery",
         props: {
@@ -190,11 +277,12 @@ function getdata() {
         },
         layout: function (make, view) {
           make.left.right.inset(-1)
-          make.top.equalTo(0)
+          make.top.inset(0)
           make.bottom.inset(50)
         },
         events: {
           changed: function (sender) {
+            video_url = sender.viewWithIndex(sender.page).src;
             if (sender.page == 4) {
               getdata()
             }
@@ -207,7 +295,24 @@ function getdata() {
         }
       }
       $("fenye").add(st)
+
     }
   });
 
+}
+
+function download(url) {
+  $ui.toast("正在下载中 ...");
+  $ui.loading(true);
+  $http.download({
+    url: url,
+    handler: function(resp) {
+      $ui.loading(false);
+      if (resp.response.statusCode == "200") {
+        $share.sheet(["download.mp4", resp.data]);
+      } else {
+        $ui.alert("下载失败");
+      }
+    }
+  });
 }
