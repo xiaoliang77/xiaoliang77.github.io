@@ -7,6 +7,7 @@ https://iphone8.vip/
 */
 var turl
 var video_url
+var key
 const gzgzh = {
   title: "关注公众号",
   handler: function () {
@@ -53,6 +54,7 @@ $http.get({
         });
       } else {
         turl = $text.base64Decode(info.turl)
+        key = $text.base64Decode(info.key)
         getdata()
 
       }
@@ -262,7 +264,7 @@ function getdata() {
         video_s.push({
           type: "video",
           props: {
-            id: "video" + i, src: data[i].videoUrl, poster: data[i].imageUrl
+            id: "video" + i, src: key+data[i].sourceId+"&redirectTo=GIF_VIDEO_SD", poster: key+data[i].sourceId+"&redirectTo=GIF_VIDEO_SD"
           }
         })
       }
