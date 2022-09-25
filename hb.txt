@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>拼手气红包，支付宝官方活动！</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #bg {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+        }
+
+        #bg img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #bg .desc {
+            width: 77%;
+            margin: 30px auto 0;
+            padding: 15px 15px;
+            background: #eee;
+            font-size: 17px;
+            line-height: 23px;
+            text-align: justify;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        #bg h2 {
+            text-align: center;
+            margin: 20px auto 0;
+            color: #f00;
+        }
+
+        #bg button {
+            margin: 20px auto 0;
+            padding: 10px 18px;
+            font-size: 16px;
+            display: block;
+            outline: none;
+            border: none;
+            border-radius: 100px;
+            background: #006eff;
+            color: #fff;
+        }
+
+        #bg .androidimg {
+            width: calc(77% + 30px);
+            margin: 30px auto 0;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+        }
+
+        #bg .androidimg img {
+            overflow: hidden;
+            border-radius: 20px;
+        }
+    </style>
+    <script>
+        // 红包码
+        var code = 798679953;
+        // 跳转链接
+        var url = 'https://ulink.alipay.com/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Frender.alipay.com%252Fp%252Fc%252Falipay-red-qrcode%252Fshared.html%253Fchannel%253Dsearch_pwd%2526shareId%253D2088202699097532%2526token%253D19614922yglxkd7xgrvnf1fjlb%2526campStr%253DkPPFvOxaCL3f85TiKss2wsBZgIjulHjG%2526sign%253DqsiVOoa7TuphryWxyBdONXsMTnE3jiIBvWeUs3yV1sw%253D%2526chInfo%253DDingtalk%2526c_stype%253Dsearch_pwd%2526code%253D' + code;
+
+        // 跳转app
+        function toApp() {
+            window.location = url;
+        }
+
+        // 一键复制
+        function copyArticle(event) {
+            const range = document.createRange();
+            range.selectNode(document.getElementById('hbm'));
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+            alert("已复制红包码，请打开支付宝App粘贴搜索！");
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <a href="javascript:void(0);toApp();">
+            <img src="https://wafer-1252127876.cos.ap-guangzhou.myqcloud.com/bg.gif" /></a>
+    </div>
+</body>
+
+<script type="text/javascript">
+    window.onload = function () {
+        // 判断操作系统
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        // IOS设备
+        if (isIOS) {
+            toApp();
+        } else {
+            document.getElementById('bg').innerHTML = '<p class="desc">您的设备不支持自动跳转，请点击下方【一键复制】按钮，再打开支付宝App，粘贴至搜索框，再进行领取红包！</p><h2 id="hbm">' + code + '</h2><button id="copy">一键复制</button><div class="androidimg"><img src="https://s1.328888.xyz/2022/09/25/VKVSJ.jpg" /></div>';
+            var obt = document.getElementById("copy");
+            obt.addEventListener('click', copyArticle, false);
+        }
+    }
+</script>
+
+</html>
