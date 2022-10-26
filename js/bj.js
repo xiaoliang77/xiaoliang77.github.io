@@ -10,7 +10,7 @@ function co_sj() {
         color++;
     }
 }
-var data_bj = [{"title":"Telegram 机器人","image":"img/tg_logo.png","rq":"笔记","details":"bot申请，配置，代码","url":"dosc/telegram.html"},{"title":"Linux 系统操作","image":"img/linux.png","rq":"笔记","details":"常用命令","url":"dosc/linux.html"}]
+var data_bj = [{"title":"Telegram 机器人","image":"img/tg_logo.png","rq":"笔记","details":"bot申请，配置，代码","url":"dosc/telegram.html"},{"title":"Linux 系统操作","image":"img/linux.png","rq":"笔记","details":"常用命令","url":"dosc/linux.html"},{"title":"VFX视频剪辑","image":"img/videox.png","rq":"笔记","details":"重要知识点","url":"dosc/vfx-video.html"}]
 
 
 function kap_cj(data){
