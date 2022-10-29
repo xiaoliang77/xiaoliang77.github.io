@@ -218,19 +218,6 @@ $ui.render({
 })
 
 
-
-// $("list").data = [{
-//     zbiao: { text: "ID 2" },
-//     zt_t: { textColor: $color("#0f0") },
-//     zt_wz: { text: "可用" },
-//     zh: { text: "账号：13506538140@163.com" },
-//     mi: { text: "密码：Bdu596734" },
-//     btn_z: { src: "13506538140@163.com" },
-//     btn_m: { src: "Bdu596734" },
-//     rq: { text: "2022-10-28 20:09:37 更新" },
-// }]
-
-
 async function get_data() {
     var turl = $cache.get("info").turl;
     var data = []
@@ -240,8 +227,6 @@ async function get_data() {
     }
     $("list").data = await data
 }
-
-
 
 function cl_hd(params) {
     var text = params.data.replace(/\n|\s|\r/g, "")
