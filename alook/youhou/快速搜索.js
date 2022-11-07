@@ -2,7 +2,7 @@
 // @name         快速搜索
 // @namespace    https://iphone8.vip/
 // @version      0.1
-// @description  在系统下拉搜索框输入关键字+需要搜索的内容，即可跳转到对应的网站并搜索内容
+// @description  在系统搜索框输入关键字+需要搜索的内容，即可跳转到对应的网站并搜索内容
 // @author       iPhone8、小良
 // @match        *://m.baidu.com/*word=*
 // @icon         https://iphone8.vip/img/ssgjdq.jpg
