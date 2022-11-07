@@ -333,6 +333,7 @@ function getdata(url) {
     $http.get({
         url: $detector.link(url),
         handler: function (resp) {
+            
             var text = resp.data.match(/\[\'videoUrl\'\] = media_.;(.*?)flashvars_/g)
             var str = text[text.length - 1].match(/\[\'videoUrl\'\] = media_.;(.*?)flashvars_/)[1]
             var title = resp.data.match(/og:title\" content=\"(.*?)\"/)[1]

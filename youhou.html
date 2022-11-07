@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="alook插件,alook浏览器插件,alook插件,alook浏览器,alook,javascript插件,插件,小良-插件,小良,扩展插件">
+    <meta name="description" content="alook插件网提供手机alook浏览器插件，轻便快捷，极速安装。这里只提供小良编写的alook浏览器扩展插件">
+    <title>油猴脚本-iPhone8、小良-第三方插件</title>
+    <link rel="stylesheet" type="text/css" href="alook/alook.css">
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9a216def2d06b5f36dee7bfc61f36368";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+
+<body>
+    <div id="page_1" class="page">
+        <div id="topBar">ios油猴脚本</div>
+        <a
+            href="http://mp.weixin.qq.com/s?__biz=MzI0NDM1MDUwOQ==&mid=100000207&idx=1&sn=6690e255684a75f353a04dd21a455fbe&chksm=695e6a8d5e29e39b2de4c6199ce00bb40cf269c167bd5077ad38d3bc8b2976615ff2c25f40b8#rd">
+            <div class="swiper" style='background:url("img/safariAD.png")no-repeat center;background-size: cover;'>
+                <div class="swiperText">如果你不懂如何使用，请点我查看教程。</div>
+            </div>
+        </a>
+
+
+        <div id="root">
+            <div v-for="(p,index) in list" :key="index">
+                <div class="al"><span class="icon">
+                    <img :src="p.icon" class="img"></span>
+                <div class="theViaAppSummary">
+                    <div class="title">名称：<span>{{p.title}}</span></div>
+                    <div class="author" v-if="p.author">作者：<span>{{p.author}}</span></div>
+                    <div class="author" v-else>更新：<span>{{p.time}}</span></div>
+                    <div class="summaryText"><span class="summary">简介：</span>{{p.summary}}</div>
+                </div>  
+                <div v-if="p.more">
+                    <a :href="p.more" target="_blank"> <div class="more">使用教程</div> </a>
+                </div>  
+                    <div class="ifInstall"><a :href="p.install" target="_blank">安装</a></div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'iphone8、小良',
+                list: [
+                    { icon: 'img/ssgjdq.jpg', title: '快速搜索', time: '2022年11月7日', summary: '系统下拉搜索快速跳转对应内容', more: '', install: './alook/youhou/快速搜索.js',author:'iPhone、小良'},
+                    { icon: 'https://img3.doubanio.com/favicon.ico', title: '移动端豆瓣直接跳转茶杯狐搜索', time: '2022年11月7日', summary: '在豆瓣资源中点图标跳转到茶杯狐', install: './alook/youhou/移动端豆瓣电影直接跳转茶杯狐搜索资源.js',author:'iPhone、小良' },
+                    { icon: 'img/vip.jpg', title: 'VIP视频自动解析pc+移动', time: '2022年11月7日', summary: '支持：爱奇艺、腾讯、优酷、芒果等全网VIP视频', install: 'alook/youhou/VIP视频自动解析-适配PC+移动.js',author:'zhihu' },
+                ]
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>
