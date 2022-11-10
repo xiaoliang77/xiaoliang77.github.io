@@ -1,5 +1,5 @@
 /*
-2022年7月4日 更新
+2022年11月10日 更新
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -7,10 +7,10 @@ https://iphone8.vip/
 */
 
 
-$cache.set("id", "1")
+$cache.set("id", "21")
 $cache.set("pg", 1)
-var urlt = $text.base64Decode("aHR0cHM6Ly9nb25nZGlzaGFvbnYyMzgudG9w");
-var data = [{ "name": "国产", "id": "1" }, { "name": "无码", "id": "13" }, { "name": "欧美", "id": "6" },{ "name": "三级", "id": "4" }, { "name": "动漫", "id": "14" }]
+var urlt = $text.base64Decode("aHR0cHM6Ly9ndWFuZ3hpYmlhb21laTIzOC50b3A=");
+var data = [{ "name": "国产", "id": "21" }, { "name": "日本", "id": "22" }, { "name": "欧美", "id": "3" },{ "name": "三级", "id": "20" }, { "name": "动漫", "id": "14" }]
 
 $ui.render({
     props: {
@@ -67,10 +67,13 @@ function getdata() {
     $ui.loading(true)
     $http.get({
         url: urlt + "/index.php/vod/type/id/" + id + "/page/" + pg + ".html",
+        header: {
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
+        },
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var shu = text.match(/<h2class=\"f-15rows-2mt10\">(\S*?)<\/h2>/g)
+            var shu = text.match(/divclass=\"item\">.*?<\/div>/g)
             if (pg == 1) {
                 var data = []
             } else {
@@ -99,7 +102,7 @@ function geting(id, mc) {
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var video = text.match(/<divclass=\"video-tips\">(\S*?)<\/script>/)[1]
+            var video = text.match(/<divclass=\"player-wrap\"(\S*?)<\/script>/)[1]
             var vurl = video.match(/url\":\"(\S*?)\"/)[1]
             vurl = vurl.replace(/\\/g, "")
             $ui.push({

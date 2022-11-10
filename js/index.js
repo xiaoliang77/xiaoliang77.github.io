@@ -18,7 +18,7 @@ var data_yy = [{ "title": "TrollStore - 巨魔安装教程", "image": "img/Troll
 { "title": "ipa 文件仓库", "image": "img/wjwl.png", "rq": "TrollStore 专区", "details": "仓库内的ipa文件下载后请使用TrollStore 巨魔 安装使用", "url": "https://pan.ae85.cn/TrollStore" },
 { "title": "AppsManager-应用管理器", "image": "img/AppsManager.png", "rq": "请使用巨魔app安装", "details": "管理应用、备份、还原、抹除数据<br>还原订阅账号数据 可免费使用app订阅功能", "url": "https://pan.ae85.cn/d/TrollStore/AppsManager_1.7.0.ipa" },]
 
-var data_qt = [{ "title": "Telegram 直连", "image": "img/tg_logo.png", "rq": "Safari 浏览器中打开", "details": "无需科学上网即可使用Telegram", "url": "http://3f.ae85.cn:772/api/telegram.php" }, { "title": "屏蔽iOS 13.x系统自动更新", "image": "img/settings.png", "rq": "Safari 浏览器中打开", "details": "ios13用户不想系统自动下载更新的可以安装这个描述文件", "url": "https://iphone8.vip//ios/iOS13.mobileconfig" }, { "title": "手机获取百度BDUSS教程", "image": "img/bduss.jpg", "rq": "视频教程", "details": "手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！", "url": "http://t.cn/Rkb7u8i", }]
+var data_qt = [{ "title": "Telegram 直连", "image": "img/tg_logo.png", "rq": "Safari 浏览器中打开", "details": "无需科学上网即可使用Telegram", "url": "http://3v.ae85.cn/api/telegram.php" }, { "title": "屏蔽iOS 13.x系统自动更新", "image": "img/settings.png", "rq": "Safari 浏览器中打开", "details": "ios13用户不想系统自动下载更新的可以安装这个描述文件", "url": "https://iphone8.vip//ios/iOS13.mobileconfig" }, { "title": "手机获取百度BDUSS教程", "image": "img/bduss.jpg", "rq": "视频教程", "details": "手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！", "url": "http://t.cn/Rkb7u8i", }]
 
 function kap_cj(data, lei) {
     var txt1 = "";
