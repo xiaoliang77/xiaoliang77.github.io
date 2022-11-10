@@ -18,7 +18,7 @@ var data_yy = [{ "title": "TrollStore - 巨魔安装教程", "image": "img/Troll
 { "title": "ipa 文件仓库", "image": "img/wjwl.png", "rq": "TrollStore 专区", "details": "仓库内的ipa文件下载后请使用TrollStore 巨魔 安装使用", "url": "https://pan.ae85.cn/TrollStore" },
 { "title": "AppsManager-应用管理器", "image": "img/AppsManager.png", "rq": "请使用巨魔app安装", "details": "管理应用、备份、还原、抹除数据<br>还原订阅账号数据 可免费使用app订阅功能", "url": "https://pan.ae85.cn/d/TrollStore/AppsManager_1.7.0.ipa" },]
 
-var data_qt = [{ "title": "Telegram 直连", "image": "img/tg_logo.png", "rq": "Safari 浏览器中打开", "details": "无需科学上网即可使用Telegram", "url": "http://3v.ae85.cn/api/telegram.php" }, { "title": "屏蔽iOS 13.x系统自动更新", "image": "img/settings.png", "rq": "Safari 浏览器中打开", "details": "ios13用户不想系统自动下载更新的可以安装这个描述文件", "url": "https://iphone8.vip//ios/iOS13.mobileconfig" }, { "title": "手机获取百度BDUSS教程", "image": "img/bduss.jpg", "rq": "视频教程", "details": "手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！", "url": "http://t.cn/Rkb7u8i", }]
+var data_qt = [{"title":"JSBox-破解，免费解锁高级功能 - 无需越狱","image":"img/jsbox.jpg","rq":"支持ios14-ios15.4.1","details":"需要使用巨魔软件，原理就是还原已解锁账号的备份文件","url":"https://mp.weixin.qq.com/s?__biz=MzI0NDM1MDUwOQ==&mid=2247485111&idx=1&sn=feb0948fd1911f3b0f5b26c23a03fd79&chksm=e95e6df5de29e4e35b0331e2c762c285cbfebf481ed24a120ff900230a5876d38f6f69195b96#rd"},{"title":"教你用自带浏览器 Safari 下载MP4视频和其他文件","image":"img/Safari.png","rq":"需要ios13及以上系统","details":"无需越狱，支持多文件同时下载，不用任何第三方工具就能轻松简单的下载文件","url":"https://mp.weixin.qq.com/s/LDdYSTNqhcKz2QzNqHbb1g"},{ "title": "Telegram 直连", "image": "img/tg_logo.png", "rq": "Safari 浏览器中打开", "details": "无需科学上网即可使用Telegram", "url": "http://3v.ae85.cn/api/telegram.php" }]
 
 function kap_cj(data, lei) {
     var txt1 = "";
