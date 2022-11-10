@@ -1,5 +1,6 @@
 /*
-2022年8月9日 更新
+2022年11月10日 更新
+新增自动更新功能
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -9,12 +10,13 @@ https://iphone8.vip/
 
 $cache.set("id", "5")
 $cache.set("pg", 1)
-var urlt = "https://yj2207.com/"
+var js_name = "1024下载"
+var urlt = $text.base64Decode("aHR0cHM6Ly85azEwMjQuY2Mv")
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 
 $ui.render({
     props: {
-        title: "1024下载"
+        title: js_name
     },
     views: [{
         type: "menu",
@@ -102,8 +104,9 @@ function geting(id, mc) {
             $ui.loading(false)
             var text = resp.data.match(/id=\"read_tpc\">.*?<\/div>/)
             text = text[0].replace('id=\"read_tpc\">', "")
-            var shu = $detector.link(text);
-            var url = shu[shu.length - 2]
+            var links = text.match(/href=\"(\S*?)\"/g)
+            var shu = links[links.length - 1]
+            var url = $detector.link(shu)[0];
             var html = `<html><head><meta charset="UTF-8"><title>${mc}</title><style> body,div{ font-size:42px;} </style> </head><body><div>${text}</body></html>`
             $ui.push({
                 props: {
@@ -142,17 +145,17 @@ function geting(id, mc) {
 }
 
 function geturl(url, dian) {
-    var turl=url.match(/(http.?:\/\/.*?)\//)[1]
+    var turl = url.match(/(http.?:\/\/.*?)\//)[1]
     $http.get({
         url: url,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var url = text.match(/<aclass=\"uk-button\"onclick=\"setpos\(\);\"href=\"(\S*?)\"/)[1]
-            url = turl+url.replace(/amp;/g, "")
-            $clipboard.text = url
+            var curl = text.match(/class=\"uk-button\"onclick=\"setpos\(\);\"href=\"(\S*?)\"/)[1]
+            curl = turl + curl.replace(/amp;/g, "")
+            $clipboard.text = curl
             if (dian == 1) {
-                var canOpen = $app.openURL("thunder://" + url);
+                var canOpen = $app.openURL("thunder://" + $text.base64Encode("AA" + curl + "ZZ"));
                 if (!canOpen) {
                     $ui.alert({
                         message: "请先安装迅雷",
@@ -165,17 +168,71 @@ function geturl(url, dian) {
                         {
                             title: "复制磁力链接",
                             handler: function () {
-                                alert("已复制\n"+url)
+                                alert("已复制\n" + url)
                             }
                         }
                         ]
                     })
                 }
-            }else{
+            } else {
                 alert("已复制磁力链接")
             }
-            
+
         }
     })
 }
 
+
+async function get_updata() {
+    const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
+    if (resp.response.statusCode === 200) {
+        if (resp.data.down.version != "2.0") {
+            $ui.alert({
+                title: "发现新版本 - " + resp.data.down.version,
+                message: resp.data.down.upexplain,
+                actions: [
+                    {
+                        title: "立即更新",
+                        handler: function () {
+                            download(resp.data.down.updata)
+                        }
+                    }, {
+                        title: "取消"
+                    }
+                ]
+
+            });
+
+        }
+    }
+}
+get_updata()
+
+function download(url) {
+    $ui.toast("正在安装中 ...");
+    $http.download({
+        url: url,
+        handler: function (resp) {
+            $addin.save({
+                name: js_name,
+                data: resp.data,
+                handler: function () {
+                    $ui.alert({
+                        title: "安装完成",
+                        message: "\n是否打开？\n" + js_name,
+                        actions: [
+                            {
+                                title: "打开",
+                                handler: function () {
+                                    $app.openExtension(js_name)
+                                }
+                            },
+                            {
+                                title: "不了"
+                            }]
+                    });
+                }
+            })
+        }
+    })
+}
