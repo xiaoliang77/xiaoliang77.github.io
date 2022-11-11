@@ -1,6 +1,6 @@
 /* 音乐下载 1.5
  *  2022年11月11日 修复更新
-
+ *  新增自动更新功能
  *  视频教程: http://t.cn/EGtlxQ5
 
  *  by：iPhone 8、小良
@@ -176,6 +176,7 @@ function csh() {
 function getlist() {
   var page = $cache.get("pg");
   var key = $cache.get("key");
+  $ui.loading(true);
   $http.post({
     url: $text.base64Decode("aHR0cDovL211c2ljLml0em8uY24v"),
     header: {
@@ -190,6 +191,7 @@ function getlist() {
       page: page
     },
     handler: function (resp) {
+      $ui.loading(false);
       var json = resp.data;
       if (json.code === 200) {
         if (json.data.length == 0) {
