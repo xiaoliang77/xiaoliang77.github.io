@@ -22,7 +22,7 @@ async function get_updata() {
                   {
                       title: "立即更新",
                       handler: function () {
-                          download(resp.data.updata)
+                          down(resp.data.updata)
                       }
                   }, {
                       title: "取消"
@@ -35,8 +35,8 @@ async function get_updata() {
   }
 }
 get_updata()
-
-function download(url) {
+csh()
+function down(url) {
   $ui.toast("正在安装中 ...");
   $http.download({
       url: url,
