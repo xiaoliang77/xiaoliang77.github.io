@@ -1,90 +1,74 @@
-/* 音乐下载 1.4
- *  2022年6月1日 修复更新配置文件链接
- *  更新: 因收到法务函告通知，已删除QQ音乐，酷我音乐，酷狗音乐。
+/* 音乐下载 1.5
+ *  2022年11月11日 修复更新
+
  *  视频教程: http://t.cn/EGtlxQ5
 
  *  by：iPhone 8、小良
  *  https://iphone8.vip/
+ *  公众号：小良科技
 */
-var rce = ["netease", "tencent", "xiami", "kugou", "baidu"];
-$cache.set("srce", 0);
-$cache.set("pg", 1);
-var turl = $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "yinyue.json"
-$ui.loading(true);
-$http.get({
-  url: turl,
-  header: {
-    "Referer": turl.replace(/raw/, "blob")
-  },
-  handler: function (resp) {
-    $ui.loading(false);
-    if (resp.data.bb != "1.4") {
-      $ui.alert({
-        title: "温馨提示：",
-        message: resp.data.gxsm,
-        actions: [
-          {
-            title: "访问官网",
-            handler: function () {
-              $app.openURL("https://ae85.cn");
-            }
-          },
-          {
-            title: "关注公众号",
-            handler: function () {
-              $ui.alert({
-                title: "温馨提示",
-                message:
-                  "跳转微信会自动复制公众号ID\n请跳转到微信-搜索-公用号-粘贴-关注",
-                actions: [
-                  {
-                    title: "跳转微信",
-                    handler: function () {
-                      $clipboard.text = "ae85-cn";
-                      $app.openURL("weixin://");
-                    }
-                  },
-                  {
-                    title: "取消"
-                  }
-                ]
-              });
-            }
-          }
-        ]
-      });
-    } else {
-      $cache.set("info", resp.data);
-      tcgg(resp.data.gg);
-      csh();
-      clipboard();
-    }
-  }
-});
 
-function tcgg(gg) {
-  if ($file.exists("gg.txt")) {
-    var file = $file.read("gg.txt").string;
-    if (file != gg) {
-      xrwj(gg);
-    }
-  } else {
-    xrwj(gg);
+$cache.set("pg", 1);
+const js_name = "音乐下载"
+var turl = $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "yinyue.json"
+async function get_updata() {
+  const resp = await $http.get(turl);
+  if(resp.response.statusCode === 200){
+      if (resp.data.bb != "1.5") {
+          $ui.alert({
+              title: "发现新版本 - " + resp.data.bb,
+              message: resp.data.gxsm,
+              actions: [
+                  {
+                      title: "立即更新",
+                      handler: function () {
+                          download(resp.data.updata)
+                      }
+                  }, {
+                      title: "取消"
+                  }
+              ]
+
+          });
+          
+      }
   }
 }
+get_updata()
 
-function xrwj(nr) {
-  $ui.alert(nr);
-  $file.write({
-    data: $data({ string: nr }),
-    path: "gg.txt"
-  });
+function download(url) {
+  $ui.toast("正在安装中 ...");
+  $http.download({
+      url: url,
+      handler: function (resp) {
+          $addin.save({
+              name: js_name,
+              data: resp.data,
+              handler: function () {
+                  $ui.alert({
+                      title: "安装完成",
+                      message: "\n是否打开？\n" + js_name,
+                      actions: [
+                          {
+                              title: "打开",
+                              handler: function () {
+                                  $app.openExtension(js_name)
+                              }
+                          },
+                          {
+                              title: "不了"
+                          }]
+                  });
+              }
+          })
+      }
+  })
 }
 
 function csh() {
   $ui.render({
     props: {
-      title: "音乐下载",
+      title: js_name,
       id: "zjm"
     },
     views: [
@@ -128,25 +112,6 @@ function csh() {
           }
         }
       },
-      // {
-      //   type: "tab",
-      //   props: {
-      //     id: "tab_i",
-      //     items: ["网易云", "QQ音乐", "虾米", "酷狗", "百度"],
-      //     index: 0
-      //   },
-      //   layout: function (make) {
-      //     make.left.right.inset(10);
-      //     make.top.equalTo($("bjk").bottom).offset(10);
-      //     make.height.equalTo(28);
-      //   },
-      //   events: {
-      //     changed: function (sender) {
-      //       $cache.set("srce", sender.index);
-      //       $cache.set("pg", 1);
-      //     }
-      //   }
-      // },
       {
         type: "list",
         props: {
@@ -211,6 +176,52 @@ function csh() {
 function getlist() {
   var page = $cache.get("pg");
   var key = $cache.get("key");
+  $http.post({
+    url: $text.base64Decode("aHR0cDovL211c2ljLml0em8uY24v"),
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "X-Requested-With": "XMLHttpRequest",
+      "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    },
+    body: {
+      input: key,
+      filter: "name",
+      type: "netease",
+      page: page
+    },
+    handler: function (resp) {
+      var json = resp.data;
+      if (json.code === 200) {
+        if (json.data.length == 0) {
+          alert("未找到歌曲")
+          return;
+        }
+        if (page == 1) {
+          var data = []
+        } else {
+          var data = $('list').data
+        }
+        for (i in json.data) {
+          const j = json.data[i];
+          data.push({
+            mc: { text: j.title },
+            gs: { text: j.author },
+            img: j.pic,
+            url: j.url
+          })
+        }
+        $('list').data = data
+        $('list').hidden = false
+      }
+
+    }
+  });
+}
+
+
+function getlist1() {
+  var page = $cache.get("pg");
+  var key = $cache.get("key");
   var source = rce[$cache.get("srce")];
   var urlt = $text.base64Decode($cache.get("info").turl);
   if (!key) {
@@ -220,8 +231,7 @@ function getlist() {
   $ui.loading(true);
 
   $http.get({
-    url:
-      urlt + "/api.php?types=search&count=20&source=" + source + "&pages=" + page + "&name=" +
+    url: urlt + "/api.php?types=search&count=20&source=" + source + "&pages=" + page + "&name=" +
       $text.URLEncode(key),
     handler: resp => {
       $ui.loading(false)
@@ -241,6 +251,7 @@ function getlist() {
         data.push({
           mc: { text: j.name },
           gs: { text: j.artist[0] },
+          img: { src: j.pic },
           id: j.id
         })
       }
@@ -252,156 +263,127 @@ function getlist() {
 }
 var sftc = 0;
 function geturl(data) {
-  var urlt = $text.base64Decode($cache.get("info").turl);
-  var source = rce[$cache.get("srce")];
-
   if (sftc) {
     $audio.stop();
     $("ewmView").remove();
   }
-  $ui.loading(true);
-  $http.get({
-    url: urlt + "/api.php?types=url&source=" + source + "&id=" + data.id,
-    handler: resp => {
-      $ui.loading(false);
-      var jso = resp.data;
-      if(jso.url == ""){
-        alert(data.mc.text + "-"+data.gs.text +"\n此歌曲资源丢失\n请选择其他歌曲！")
-        return;
+  sftc = 1;
+  $("zjm").add({
+    type: "view",
+    bgcolor: $color("#ddd"),
+    props: {
+      id: "ewmView",
+      radius: 7,
+      bgcolor: $color("white"),
+      borderWidth: 1,
+      borderColor: $color("tint")
+    },
+    views: [{
+      type: "button",
+      props: {
+        icon: $icon("225", $color("#f00"), $size(30, 30)),
+        bgcolor: $color("clear")
+      },
+      layout: function (make) {
+        make.right.top.inset(10);
+      },
+      events: {
+        tapped(sender) {
+          $audio.stop();
+          $("ewmView").remove();
+          sftc = 0;
+        }
       }
-      sftc = 1;
-      $("zjm").add({
-        type: "view",
-        bgcolor: $color("#ddd"),
+    },{
+      type: "image",
+      props: {
+        id: "img",
+        src:data.img,
+        radius:5
+      },
+      layout: function(make, view) {
+        make.top.inset(25)
+        make.left.inset(25)
+        make.width.height.equalTo(100)
+      }
+    },
+      {
+        type: "label",
         props: {
-          id: "ewmView",
-          radius: 7,
-          bgcolor: $color("white"),
-          borderWidth: 1,
-          borderColor: $color("tint")
+          id: "t_gname",
+          font: $font("bold", 21),
+          text: data.mc.text
         },
-        views: [
-          {
-            type: "button",
-            props: {
-              icon: $icon("225", $color("#f00"), $size(30, 30)),
-              bgcolor: $color("clear")
-            },
-            layout: function (make) {
-              make.right.top.inset(10);
-            },
-            events: {
-              tapped(sender) {
-                $audio.stop();
-                $("ewmView").remove();
-                sftc = 0;
-              }
-            }
-          },
-          {
-            type: "label",
-            props: {
-              id: "t_gm",
-              text: "歌名：",
-              textColor: $color("#c4c4c4")
-            },
-            layout: function (make, view) {
-              make.top.inset(60);
-              make.left.inset(20);
-              make.width.equalTo(55);
-            }
-          },
-          {
-            type: "label",
-            props: {
-              id: "t_gname",
-              text: data.mc.text
-            },
-            layout: function (make, view) {
-              make.top.inset(60);
-              make.right.inset(20);
-              make.left.equalTo($("t_gm").right);
-            }
-          },
-          {
-            type: "label",
-            props: {
-              id: "t_gs",
-              text: "歌手：",
-              textColor: $color("#c4c4c4")
-            },
-            layout: function (make, view) {
-              make.top.equalTo($("t_gm").bottom).inset(10);
-              make.left.inset(20);
-              make.width.equalTo(55);
-            }
-          },
-          {
-            type: "label",
-            props: {
-              id: "t_gsm",
-              text: data.gs.text
-            },
-            layout: function (make, view) {
-              make.top.equalTo($("t_gm").bottom).inset(10);
-              make.right.inset(20);
-              make.left.equalTo($("t_gs").right);
-            }
-          },
-          {
-            type: "button",
-            props: {
-              title: "试听",
-              id: "sBtn",
-              bgcolor: $color("#409eff")
-            },
-            layout: function (make, view) {
-              make.top.equalTo($("t_gsm").bottom).inset(40);
-              make.left.inset(50);
-              make.width.equalTo(80);
-            },
-            events: {
-              tapped: function (sender) {
-                if (sender.title == "试听") {
-                  $("sBtn").title = "停止";
-                  $audio.play({
-                    url: jso.url
-                  });
-                } else {
-                  $("sBtn").title = "试听";
-                  $audio.stop();
-                }
-              }
-            }
-          },
-          {
-            type: "button",
-            props: {
-              title: "下载",
-              bgcolor: $color("#090")
-            },
-            layout: function (make, view) {
-              make.top.equalTo($("t_gsm").bottom).inset(40);
-              make.right.inset(50);
-              make.width.equalTo(80);
-            },
-            events: {
-              tapped(sender) {
-                download(jso.url, data.mc.text);
-              },
-              longPressed: function () {
-                $clipboard.text = jso.url;
-                alert("复制成功\n\n" + jso.url);
-              }
+        layout: function (make, view) {
+          make.top.inset(35);
+          make.right.inset(20);
+          make.left.equalTo($("img").right).inset(10);
+        }
+      },
+      {
+        type: "label",
+        props: {
+          id: "t_gsm",
+          text: data.gs.text
+        },
+        layout: function (make, view) {
+          make.top.equalTo($("t_gname").bottom).inset(10);
+          make.right.inset(20);
+          make.left.equalTo($("img").right).inset(10);
+        }
+      },
+      {
+        type: "button",
+        props: {
+          title: "试听",
+          id: "sBtn",
+          bgcolor: $color("#409eff")
+        },
+        layout: function (make, view) {
+          make.top.equalTo($("img").bottom).inset(40);
+          make.left.inset(50);
+          make.width.equalTo(80);
+        },
+        events: {
+          tapped: function (sender) {
+            if (sender.title == "试听") {
+              $("sBtn").title = "停止";
+              $audio.play({
+                url: data.url
+              });
+            } else {
+              $("sBtn").title = "试听";
+              $audio.stop();
             }
           }
-        ],
-        layout: function (make, view) {
-          make.top.inset(150);
-          make.left.right.inset(20);
-          make.height.equalTo(220);
         }
-      });
+      },
+      {
+        type: "button",
+        props: {
+          title: "下载",
+          bgcolor: $color("#090")
+        },
+        layout: function (make, view) {
+          make.top.equalTo($("img").bottom).inset(40);
+          make.right.inset(50);
+          make.width.equalTo(80);
+        },
+        events: {
+          tapped(sender) {
+            download(data.url, data.mc.text);
+          },
+          longPressed: function () {
+            $clipboard.text = data.url;
+            alert("复制成功\n\n" + data.url);
+          }
+        }
+      },
+    ],
+    layout: function (make, view) {
+      make.top.inset(150);
+      make.left.right.inset(20);
+      make.height.equalTo(220);
     }
   });
 }
