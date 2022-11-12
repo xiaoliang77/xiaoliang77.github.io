@@ -220,6 +220,49 @@ function getlist() {
   });
 }
 
+
+function getlist1() {
+  var page = $cache.get("pg");
+  var key = $cache.get("key");
+  var source = rce[$cache.get("srce")];
+  var urlt = $text.base64Decode($cache.get("info").turl);
+  if (!key) {
+    alert("请先输入你要搜索的内容");
+    return;
+  }
+  $ui.loading(true);
+
+  $http.get({
+    url: urlt + "/api.php?types=search&count=20&source=" + source + "&pages=" + page + "&name=" +
+      $text.URLEncode(key),
+    handler: resp => {
+      $ui.loading(false)
+      var json = resp.data;
+      if (json.length == 0) {
+        alert("未找到歌曲")
+        return;
+      }
+      if (page == 1) {
+        var data = []
+      } else {
+        var data = $('list').data
+      }
+
+      for (i in json) {
+        var j = json[i]
+        data.push({
+          mc: { text: j.name },
+          gs: { text: j.artist[0] },
+          img: { src: j.pic },
+          id: j.id
+        })
+      }
+      $('list').data = data
+      $('list').hidden = false
+
+    }
+  });
+}
 var sftc = 0;
 function geturl(data) {
   if (sftc) {
@@ -362,50 +405,15 @@ function download(url, gm) {
     }
   });
 }
-clipboard()
-function clipboard() {
+
+
+function clipboard(){
   var text = $clipboard.text;
-  if (text) {
-    $ui.alert({
-      title: "要搜索剪贴板中内容？",
-      message: $clipboard.text,
-      actions: [
-        {
-          title: "取消",
-          handler: function () { }
-        },
-        {
-          title: "搜索",
-          handler: function () {
-            function tob_s(s) {
-              var gm = text.replace(/\n|\s|\r|\./g, "");
-              var key = gm.match(/《(\S*?)》/)[1];
-              $cache.set("srce", s);
-              $("tab_i").index = s;
-              $("bjk").text = key;
-              $cache.set("key", key);
-              getlist();
-            }
-            if (text.indexOf("网易云音乐") !== -1) {
-              tob_s(0);
-            } else if (text.indexOf("QQ音乐") !== -1) {
-              tob_s(1);
-            } else if (text.indexOf("虾米音乐") !== -1) {
-              tob_s(2);
-            } else if (text.indexOf("千千音乐") !== -1) {
-              $cache.set("srce", 4);
-              $("tab_i").index = 4;
-              $("bjk").text = text;
-              $cache.set("key", text);
-              getlist();
-            } else {
-              $("bjk").text = text;
-              $cache.set("key", text);
-              getlist();
-            }
-          }
-        }
-      ]
-    });
-  }
+  $("bjk").text = text;
+  $cache.set("key", text);
+  getlist();
+
 }
+
+clipboard()
+
