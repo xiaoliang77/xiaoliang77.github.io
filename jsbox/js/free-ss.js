@@ -1,7 +1,8 @@
 
 /*
-免费ss 1.5
+免费ssr节点 1.5
 2022-11-14 更新
+科学上网，可配合 Shadowrocket（小火箭）软件使用
 
 by：iPhone 8、小良
 https://iphone8.vip/
