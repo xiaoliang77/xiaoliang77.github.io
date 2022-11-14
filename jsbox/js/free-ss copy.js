@@ -1,7 +1,7 @@
 
 /*
-免费ss 1.5
-2022-11-14 更新
+免费ss 1.4
+2021-2-24 更新
 
 by：iPhone 8、小良
 https://iphone8.vip/
@@ -9,21 +9,21 @@ https://iphone8.vip/
 博客：87xl.cn
 */
 
-const js_name = "免费ssr节点"
+var timer, count = 1;
 $ui.loading(true);
 $http.get({
-    url: $text.base64Decode("aHR0cHM6Ly9pUGhvbmU4LnZpcC9jb25maWcvZnJlZS1zcy5qc29u"),
+    url: $text.base64Decode("aHR0cHM6Ly9naXRlZS5jb20veWFvMDcvc3MvcmF3L21hc3Rlci8=") + "free-ss.json",
     handler: function (resp) {
         $ui.loading(false);
-        if (resp.data.bb != "1.5") {
+        if (resp.data.bb != "3.5") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
                 actions: [
                     {
-                        title: "立即更新",
+                        title: "访问官网",
                         handler: function () {
-                            updownload(resp.data.updata)
+                            $app.openURL(resp.data.gw);
                         }
                     },
                     {
@@ -43,15 +43,13 @@ $http.get({
                                 }]
                             })
                         }
-                    },{
-                        title: "取消"
-                    },
+                    }
                 ]
             });
         } else {
             $cache.set("info", resp.data);
             csh();
-            getdata()
+            // zhur()
         }
     }
 });
@@ -60,7 +58,7 @@ $http.get({
 function csh() {
     $ui.render({
         props: {
-            title: js_name,
+            title: "ss 1.4",
             id: "ssjm"
         },
         views: [{
@@ -226,7 +224,52 @@ var tcjm = {
     }
 }
 
-
+function zhur() {
+    var info = $cache.get("info")
+    var gj = info.gj
+    $http.get({
+        url: $text.base64Decode(info.ssurl),
+        handler: function (resp) {
+            var data = resp.data;
+            var data = $text.base64Decode($text.base64Decode(data));
+            var text = data.replace(/\n|\s|\r/g, "")
+            var shu = text.match(/<trrole=\"row\"class(\S*?)<\/tr>/g);
+            var data = []
+            for (i in shu) {
+                if (i > -1) {
+                    var add = shu[i].match(/<td>(\S*?)<\/td>/g);
+                    for (i in add) {
+                        add[i] = add[i].replace(/<td>|<\/td>/g, "")
+                    }
+                    if (add[0].indexOf("/") == -1) {
+                        add.unshift("10/10/10/10")
+                    }
+                    var f = add[3]
+                    var fy = f.match(/none|table|rc4|salsa20|chacha20|xchacha20|aes-|bf-cfb|camellia-|-cbf|-gcm/)
+                    var s, m
+                    if (fy) {
+                        s = add[3]
+                        m = add[4]
+                    } else {
+                        s = add[4]
+                        m = add[3]
+                    }
+                    var ms = Math.floor(Math.random() * (180 - 2 + 1)) + 2;
+                    data.push({
+                        lt: { src: `${$text.base64Decode(info.img)}${gj[add[6]]}_flag.png` },
+                        mc: { text: add[1] },
+                        rq: { text: add[5] },
+                        ms: { text: ms + "ms" },
+                        url: "ss://" + $text.base64Encode(`${s}:${m}@${add[1]}:${add[2]}`)
+                    })
+                }
+            }
+            $("list").data = data
+            $("list").endFetchingMore()
+            $('jzz').hidden = true
+        }
+    });
+}
 
 function xzmune() {
     var img = $cache.get("img")
@@ -274,10 +317,8 @@ function yjtj() {
 
 
 function getdata() {
-    var info = $cache.get("info")
-    var gj = info.gj
     $http.post({
-        url: $text.base64Decode(info.urlt),
+        url: "https://api-2.quickg.cc/api/v5/nodes/",
         header: {
             "Host": "api-2.quickg.cc",
             "Accept": "application/json",
@@ -293,52 +334,14 @@ function getdata() {
             "Accept-Encoding": "gzip, deflate, br",
             "systemVersion": "15.6.1"
         },
+
         handler: function (resp) {
-            var json = resp.data.data;
-            var data = []
-            for (i in json) {
-                const j = json[i];
-                data.push({
-                    lt: { src: `${$text.base64Decode(info.img)}${gj[j.flag]}_flag.png` },
-                    mc: { text: j.name },
-                    rq: { text: j.obfs },
-                    ms: { text: j.online },
-                    url: "ssr://" + $text.base64Encode(`${j.ip}:${j.port}:${j.protocol}:${j.method}:${j.obfs}:${$text.base64Encode(j.passwd)}/?obfsparam=${$text.base64Encode(j.obfsparam)}&${$text.base64Encode(j.protoparam)}&remarks=${$text.base64Encode(j.name)}`)
-                })
-            }
-            $("list").data = data
-            $("list").endFetchingMore()
-            $('jzz').hidden = true
+            var data = resp.data;
+            console.log(resp);
+            return data
         }
     });
 
 }
 
-function updownload(url) {
-    $ui.toast("正在安装中 ...");
-    $http.download({
-        url: url,
-        handler: function (resp) {
-            $addin.save({
-                name: js_name,
-                data: resp.data,
-                handler: function () {
-                    $ui.alert({
-                        title: "安装完成",
-                        message: "\n是否打开？\n" + js_name,
-                        actions: [
-                            {
-                                title: "打开",
-                                handler: function () {
-                                    $app.openExtension(js_name)
-                                }
-                            },
-                            {
-                                title: "不了"
-                            }]
-                    });
-                }
-            })
-        }
-    })
-}
+getdata()
