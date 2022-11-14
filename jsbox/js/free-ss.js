@@ -94,8 +94,8 @@ function csh() {
                     type: "label",
                     props: {
                         id: "rq",
-                        font: $font(15),
-                        textColor: $color("blue")
+                        font: $font(13),
+                        textColor: $color("#c4c4c4")
                     },
                     layout: function (make) {
                         make.left.equalTo($("mc"));
@@ -303,7 +303,7 @@ function getdata() {
                     mc: { text: j.name },
                     rq: { text: j.obfs },
                     ms: { text: j.online },
-                    url: "ssr://" + $text.base64Encode(`${j.ip}:${j.port}:${j.protocol}:${j.method}:${j.obfs}:${$text.base64Encode(j.passwd)}/?obfsparam=${$text.base64Encode(j.obfsparam)}&${$text.base64Encode(j.protoparam)}&remarks=${$text.base64Encode(j.name)}`)
+                    url: "ssr://" + $text.base64Encode(`${j.ip}:${j.port}:${j.protocol}:${j.method}:${j.obfs}:${$text.base64Encode(j.passwd)}/?obfsparam=${$text.base64Encode(j.obfsparam)}&protoparam=${$text.base64Encode(j.protoparam)}&remarks=${$text.base64Encode(j.name)}`)
                 })
             }
             $("list").data = data
