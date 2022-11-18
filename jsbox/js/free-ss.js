@@ -211,7 +211,8 @@ var tcjm = {
         },
         events: {
             tapped(sender) {
-                $app.openURL($cache.get("url"));
+                $clipboard.text = $cache.get("url");
+                $app.openURL("shadowrocket://");
             },
             longPressed: function (info) {
                 yjtj()
@@ -294,10 +295,10 @@ function xzmune() {
                 case 2:
                     $clipboard.text = url;
                     $ui.toast('复制成功!');
-
                     break
                 case 3:
-                    $app.openURL("shadowrocket://add/" + url);
+                    $clipboard.text = url;
+                    $app.openURL("shadowrocket://");
                     break
                 case 4:
                     yjtj()
@@ -314,5 +315,6 @@ function yjtj() {
     for (i in data) {
         ss = ss + data[i].url
     }
-    $app.openURL("shadowrocket://add/" + ss);
+    $clipboard.text = ss;
+    $app.openURL("shadowrocket://");
 }
