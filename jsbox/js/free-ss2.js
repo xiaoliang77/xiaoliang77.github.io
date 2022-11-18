@@ -1,7 +1,8 @@
 
 /*
-免费ss 1.6
-2022年11月18日 更新
+免费ssr节点 1.5
+2022-11-14 更新
+科学上网，可配合 Shadowrocket（小火箭）软件使用
 
 by：iPhone 8、小良
 https://iphone8.vip/
@@ -9,14 +10,13 @@ https://iphone8.vip/
 博客：87xl.cn
 */
 
-
 const js_name = "免费ssr节点"
 $ui.loading(true);
 $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9pUGhvbmU4LnZpcC9jb25maWcvZnJlZS1zcy5qc29u"),
     handler: function (resp) {
         $ui.loading(false);
-        if (resp.data.bb != "1.6") {
+        if (resp.data.bb != "1.5") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -44,7 +44,7 @@ $http.get({
                                 }]
                             })
                         }
-                    }, {
+                    },{
                         title: "取消"
                     },
                 ]
@@ -52,10 +52,11 @@ $http.get({
         } else {
             $cache.set("info", resp.data);
             csh();
-            getdata(resp.data.urlt)
+            getdata()
         }
     }
 });
+
 
 function csh() {
     $ui.render({
@@ -76,7 +77,7 @@ function csh() {
                     },
                     layout: function (make, view) {
                         make.left.top.bottom.inset(10);
-                        make.width.equalTo(0);
+                        make.width.equalTo(45);
                     }
                 }, {
                     type: "label",
@@ -94,7 +95,7 @@ function csh() {
                     type: "label",
                     props: {
                         id: "rq",
-                        font: $font(15),
+                        font: $font(13),
                         textColor: $color("#c4c4c4")
                     },
                     layout: function (make) {
@@ -226,51 +227,6 @@ var tcjm = {
     }
 }
 
-function getdata(turl) {
-    $http.get({
-        url: $text.base64Decode(turl),
-        handler: function (resp) {
-            var html = resp.data;
-            var json = $text.base64Decode(html);
-            json = JSON.parse(json)
-            var riq = json.msg.split("更新时间: ")[1]
-            json = json.data
-            var data = []
-
-            for (i in json) {
-                var arr = json[i]
-                var ms = Math.floor(Math.random() * (180 - 2 + 1)) + 2;
-                if (arr.indexOf("vmess://") != -1) {
-                    var base = arr.split("vmess://")[1]
-                    var jm = JSON.parse($text.base64Decode(base));
-                    jm.ps = jm.ps.replace(/→|openitsub.com/g, "")
-                    var name = jm.ps
-                    var jb = $text.base64Encode(JSON.stringify(jm));
-                    var url = "vmess://" + jb
-                    data.push({
-                        mc: { text: name },
-                        rq: { text: riq },
-                        ms: { text: ms + "ms" },
-                        url: url
-                    })
-
-                } else {
-                    var name = arr.split("#")[1]
-                    data.push({
-                        mc: { text: name },
-                        rq: { text: riq },
-                        ms: { text: ms + "ms" },
-                        url: arr
-                    })
-                }
-            }
-            $("list").data = data
-            $("list").endFetchingMore()
-            $('jzz').hidden = true
-        }
-    });
-}
-
 
 
 function xzmune() {
@@ -315,4 +271,75 @@ function yjtj() {
         ss = ss + data[i].url
     }
     $app.openURL("shadowrocket://add/" + ss);
+}
+
+
+function getdata() {
+    var info = $cache.get("info")
+    var gj = info.gj
+    $http.post({
+        url: $text.base64Decode(info.urlt),
+        header: {
+            "Host": "api-2.quickg.cc",
+            "Accept": "application/json",
+            "channel": "GW",
+            "appVersion": "2.1.1",
+            "Authorization": "Token 3e4559ad6f94d232e903e0ea378023ed6cecd2d6",
+            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+            "platform": "ios",
+            "imei": "510fae92f96f4decabff098da60a60c9",
+            "Content-Length": "0",
+            "User-Agent": "Telescope/212 CFNetwork/1335.0.3 Darwin/21.6.0",
+            "Connection": "keep-alive",
+            "Accept-Encoding": "gzip, deflate, br",
+            "systemVersion": "15.6.1"
+        },
+        handler: function (resp) {
+            var json = resp.data.data;
+            var data = []
+            for (i in json) {
+                const j = json[i];
+                data.push({
+                    lt: { src: `${$text.base64Decode(info.img)}${gj[j.flag]}_flag.png` },
+                    mc: { text: j.name },
+                    rq: { text: j.obfs },
+                    ms: { text: j.online },
+                    url: "ssr://" + $text.base64Encode(`${j.ip}:${j.port}:${j.protocol}:${j.method}:${j.obfs}:${$text.base64Encode(j.passwd)}/?obfsparam=${$text.base64Encode(j.obfsparam)}&protoparam=${$text.base64Encode(j.protoparam)}&remarks=${$text.base64Encode(j.name)}`)
+                })
+            }
+            $("list").data = data
+            $("list").endFetchingMore()
+            $('jzz').hidden = true
+        }
+    });
+
+}
+
+function updownload(url) {
+    $ui.toast("正在安装中 ...");
+    $http.download({
+        url: url,
+        handler: function (resp) {
+            $addin.save({
+                name: js_name,
+                data: resp.data,
+                handler: function () {
+                    $ui.alert({
+                        title: "安装完成",
+                        message: "\n是否打开？\n" + js_name,
+                        actions: [
+                            {
+                                title: "打开",
+                                handler: function () {
+                                    $app.openExtension(js_name)
+                                }
+                            },
+                            {
+                                title: "不了"
+                            }]
+                    });
+                }
+            })
+        }
+    })
 }
