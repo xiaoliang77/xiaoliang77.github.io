@@ -1,8 +1,9 @@
 /*
-2022年10月29日 更新
+2022年12月6日 更新
 
 账号密码24小时自动更新
 重新运行脚本可获取最新ID
+本脚本获取的ID均已购买 Shadowrocket（小火箭）
 
 重要告警:
 ① 请勿在手机设置中登入 (若造成锁机自行承担后果)
@@ -15,14 +16,14 @@ https://iphone8.vip/
 博客：87xl.cn
 */
 
-
+const js_name = "Apple ID 获取器"
 $ui.loading(true);
 $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcv") + "appleid.json",
     handler: function (resp) {
         $ui.loading(false);
         var info = resp.data;
-        if (info.bb != "1.0.0") {
+        if (info.bb != "1.1.0") {
             $ui.alert({
                 title: "温馨提示：",
                 message: info.gxsm,
@@ -34,28 +35,16 @@ $http.get({
                         }
                     },
                     {
-                        title: "关注公众号",
+                        title: "立即更新",
                         handler: function () {
-                            $ui.alert({
-                                title: "温馨提示",
-                                message: "跳转微信会自动复制公众号ID\n请跳转到微信-搜索-公用号-粘贴-关注",
-                                actions: [{
-                                    title: "跳转微信",
-                                    handler: function () {
-                                        $clipboard.text = "ae85-cn"
-                                        $app.openURL("weixin://")
-                                    }
-                                }, {
-                                    title: "取消"
-                                }]
-                            })
+                            download(info.updata)
                         }
                     }
                 ]
             });
         } else {
             $cache.set("info", info);
-            $ui.alert({ title: info.zyts, actions: [{ title: "知道了" }], message: info.sm})
+            $ui.alert({ title: info.zyts, actions: [{ title: "知道了" }], message: info.sm })
             get_data()
         }
     }
@@ -64,7 +53,7 @@ $http.get({
 
 $ui.render({
     props: {
-        title: "Apple ID 获取器",
+        title: js_name,
     },
     views: [{
         type: "list",
@@ -220,22 +209,23 @@ $ui.render({
 
 async function get_data() {
     var turl = $cache.get("info").turl;
-    var data = []
+    var p_key = $cache.get("info").p_key;
+    var data_j = []
     for (i = 1; i < 7; i++) {
-        const resp = await $http.get($text.base64Decode(turl)  + i + ".html");
-        data.push(cl_hd(resp))
+        const resp = await $http.get($text.base64Decode(turl) + p_key + "&index=" + i);
+        data_j.push(cl_hd(resp,i))
     }
-    $("list").data = await data
+    $("list").data = await data_j;
 }
 
-function cl_hd(params) {
+function cl_hd(params,x) {
     var text = params.data.replace(/\n|\s|\r/g, "")
     var shu = text.match(/class=\"val\">(\S*?)<\/div>/g)
-    var zh = shu[0].match(/value=\"(\S*?)\"/)[1]
-    var mi = shu[1].match(/value=\"(\S*?)\"/)[1]
-    var zt = shu[2].match(/value=\"(\S*?)\"/)[1]
-    var sj = params.data.match(/inputVal\">(.*?)<\/div>/)[1]
-    var x = text.match(/bage00(\S*?)<\/div>/)[1]
+    var zh = shu[0].match(/id_username\">(\S*?)<\/div>/)[1]
+    var mi = shu[1].match(/id_password\">(\S*?)<\/div>/)[1]
+    var zt = shu[2].match(/appleid_span\"(\S*?)<\/span>/)[0]
+    var zt = zt.match(/>(\S*?)<\/span>/)[1]
+    var sj = shu[3].match(/inputVal\">(.*?)<\/div>/)[1]
     var sec = zt == "可用" ? "#0f0" : "#ddd";
     var yc = zt == "可用" ? false : true;
     const data = {
@@ -251,3 +241,31 @@ function cl_hd(params) {
     return data;
 }
 
+function download(url) {
+    $ui.toast("正在安装中 ...");
+    $http.download({
+        url: url,
+        handler: function (resp) {
+            $addin.save({
+                name: js_name,
+                data: resp.data,
+                handler: function () {
+                    $ui.alert({
+                        title: "安装完成",
+                        message: "\n是否打开？\n" + js_name,
+                        actions: [
+                            {
+                                title: "打开",
+                                handler: function () {
+                                    $app.openExtension(js_name)
+                                }
+                            },
+                            {
+                                title: "不了"
+                            }]
+                    });
+                }
+            })
+        }
+    })
+}
