@@ -224,8 +224,9 @@ function cl_hd(params,x) {
     var zh = shu[0].match(/id_username\">(\S*?)<\/div>/)[1]
     var mi = shu[1].match(/id_password\">(\S*?)<\/div>/)[1]
     var zt = shu[2].match(/appleid_span\"(\S*?)<\/span>/)[0]
-    var zt = zt.match(/>(\S*?)<\/span>/)[1]
+    zt = zt.match(/>(\S*?)<\/span>/)[1]
     var sj = shu[3].match(/inputVal\">(.*?)<\/div>/)[1]
+    sj=sj.replace(/(.{10})/, "$1 ")
     var sec = zt == "可用" ? "#0f0" : "#ddd";
     var yc = zt == "可用" ? false : true;
     const data = {
