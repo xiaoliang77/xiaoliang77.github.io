@@ -210,7 +210,7 @@ $ui.render({
 async function get_data() {
     var turl = $cache.get("info").turl;
     var data_j = []
-    for (i = 1; i < 10; i++) {
+    for (i = 1; i < 11; i++) {
         const resp = await $http.get($text.base64Decode(turl) + i + '.html');
         data_j.push(cl_hd(resp,i))
     }
