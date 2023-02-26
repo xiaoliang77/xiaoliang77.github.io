@@ -1,11 +1,11 @@
 {
-    "bb": "1.2.0",
+    "bb": "1.3.0",
     "updata":"https://iphone8.vip/jsbox/js/appleid.js",
     "gxsm": "旧版已无法使用，请立即更新！",
     "zyts": "重要告警\n\n① 请勿在手机设置中登入\n(若造成锁机自行承担后果)\n\n② 请勿开启ID二次认证\n(登入ID时，选择其他选项，不升级)",
     "sm":"\n\n账号密码10分钟自动更新\n重新运行脚本可获取最新ID",
     "gw": "https://iphone8.vip/",
     "dhurl": "",
-    "turl": "aHR0cHM6Ly9kMC5iYWdlYXBwbGUuY29tL2Fzc2V0cy8=",
-    "p_key":"1234"
+    "turl": "aHR0cDovLzUxLjE5NS4yMC40Mi9hc3NldHMv",
+    "p_key":"iphone8.vip"
 }

@@ -1,7 +1,7 @@
 /*
-2023年1月22日 更新 1.2.0
+2023年2月26日 更新
 
-账号密码10分钟自动更新
+账号密码24小时自动更新
 重新运行脚本可获取最新ID
 本脚本获取的ID均已购买 Shadowrocket（小火箭）
 
@@ -12,7 +12,6 @@
 
 by：iPhone 8、小良
 https://iphone8.vip/
-https://ae85.cn
 
 博客：87xl.cn
 */
@@ -24,7 +23,7 @@ $http.get({
     handler: function (resp) {
         $ui.loading(false);
         var info = resp.data;
-        if (info.bb != "1.2.0") {
+        if (info.bb != "1.3.0") {
             $ui.alert({
                 title: "温馨提示：",
                 message: info.gxsm,
@@ -59,7 +58,7 @@ $ui.render({
     views: [{
         type: "list",
         props: {
-            rowHeight: 250,
+            rowHeight: 170,
             style: 0,
             separatorHidden: true,
             bgcolor: $color("#dddddd"),
@@ -74,19 +73,130 @@ $ui.render({
                         radius: 7,
                     },
                     views: [{
-                        type: "web",
+                        type: "label",
                         props: {
-                            id: "vid",
-                            showsProgress: false,
-                            scrollEnabled: false
+                            id: "zbiao",
+                            font: $font("bold", 18),
                         },
-                        layout: $layout.fill
-                    }]
+                        layout: function (make, view) {
+                            make.top.inset(15)
+                            make.left.inset(10)
+                        }
+                    }, {
+                        type: "label",
+                        props: {
+                            id: "zt_t",
+                            font: $font("bold", 55),
+                            textColor: $color("red"),
+                            text: "·",
+                        },
+                        layout: function (make, view) {
+                            make.top.inset(5)
+                            make.size.equalTo(40, 40)
+                            make.left.equalTo($("zbiao").right)
+
+                        }
+                    }, {
+                        type: "label",
+                        props: {
+                            id: "zt_wz",
+                            font: $font(15),
+                            textColor: $color("#0f0")
+                        },
+                        layout: function (make, view) {
+                            make.top.inset(16)
+                            make.left.equalTo($("zt_t").right).inset(-15)
+                        }
+                    }, {
+                        type: "label",
+                        props: {
+                            id: "rq",
+                            font: $font(15),
+                            textColor: $color("red"),
+                            align: $align.center
+                        },
+                        layout: function (make, view) {
+                            make.right.inset(10)
+                            make.top.inset(15)
+                        }
+                    }, {
+                        type: "divider",
+                        props: {
+                            id: "fgx",
+                            bgcolor: $color("#ddd")
+                        },
+                        layout: function (make) {
+                            make.left.right.inset(5)
+                            make.top.equalTo(50)
+                            make.height.equalTo(1)
+                        }
+                    }, {
+                        type: "label",
+                        props: {
+                            id: "zh",
+                            font: $font("bold", 18),
+                        },
+                        layout: function (make, view) {
+                            make.top.equalTo($("fgx").bottom).inset(20)
+                            make.left.inset(10)
+                        }
+                    }, {
+                        type: "button",
+                        props: {
+                            title: "复制",
+                            id: "btn_z"
+                        },
+                        layout: function (make, view) {
+                            make.right.inset(10)
+                            make.top.equalTo($("fgx").bottom).inset(15)
+                            make.width.equalTo(57)
+                            make.height.equalTo(30)
+
+                        },
+                        events: {
+                            tapped: function (sender) {
+                                $clipboard.text = sender.src
+                                $ui.toast("账号 已复制")
+                                $device.taptic(2)
+                            }
+                        }
+                    }, {
+                        type: "label",
+                        props: {
+                            id: "mi",
+                            font: $font("bold", 18),
+                        },
+                        layout: function (make, view) {
+                            make.top.equalTo($("zh").bottom).inset(20)
+                            make.left.inset(10)
+                        }
+                    }, {
+                        type: "button",
+                        props: {
+                            title: "复制",
+                            id: "btn_m"
+                        },
+                        layout: function (make, view) {
+                            make.right.inset(10)
+                            make.top.equalTo($("btn_z").bottom).inset(15)
+                            make.width.equalTo(57)
+                            make.height.equalTo(30)
+
+                        },
+                        events: {
+                            tapped: function (sender) {
+                                $clipboard.text = sender.src
+                                $ui.toast("密码 已复制", 1)
+                                $device.taptic(2)
+                            }
+                        }
+                    },]
                     , layout: function (make) {
                         make.top.bottom.inset(5)
                         make.right.left.inset(10)
                     }
-                },
+                }
+
                 ]
             }
         },
@@ -97,15 +207,40 @@ $ui.render({
 })
 
 
-function get_data() {
+async function get_data() {
     var turl = $cache.get("info").turl;
     var data_j = []
-    for (i = 1; i < 7; i++) {
-        data_j.push({ vid: { url: $text.base64Decode(turl) + i + ".html" } })
+    for (i = 1; i < 10; i++) {
+        const resp = await $http.get($text.base64Decode(turl) + i + '.html');
+        data_j.push(cl_hd(resp,i))
     }
-    $("list").data = data_j;
+    $("list").data = await data_j;
 }
 
+function cl_hd(params,x) {
+    var text = params.data.replace(/\n|\s|\r/g, "")
+    var shu = text.match(/value=\"(\S*?)\"/g)
+    var zh = shu[0].match(/value=\"(\S*?)\"/)[1]
+    var mi = shu[1].match(/value=\"(\S*?)\"/)[1]
+    var zt = "维护中"
+    if (text.indexOf('●可用') !== -1) {
+        zt = "可用"
+    }
+    var sec = zt == "可用" ? "#0f0" : "#ddd";
+    var yc = zt == "可用" ? false : true;
+    var sj = text.match(/<strong>(.*?)<\/strong>/)[1]
+    const data = {
+        zbiao: { text: "ID " + x },
+        zt_t: { textColor: $color(sec) },
+        zt_wz: { text: zt, textColor: $color(sec) },
+        zh: { text: "账号：" + zh },
+        mi: { text: "密码：" + mi },
+        btn_z: { src: zh, hidden: yc },
+        btn_m: { src: mi, hidden: yc },
+        rq: { text: sj},
+    }
+    return data;
+}
 
 function download(url) {
     $ui.toast("正在安装中 ...");
