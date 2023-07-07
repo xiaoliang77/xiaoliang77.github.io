@@ -1,5 +1,5 @@
 /*
-2023年1月16日 更新
+2023年7月7日 更新
 更新无法使用问题
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -8,11 +8,11 @@ https://iphone8.vip/
 https://ae85.cn/
 */
 
-$cache.set("id", "10")
+$cache.set("id", "1")
 $cache.set("pg", 1)
-var urlt = $text.base64Decode("aHR0cHM6Ly9iYnMyMDIzLnNpamlhYWkuY29tLzIwNDgv");
+var urlt = $text.base64Decode("aHR0cHM6Ly96MjI3bS54eXov");
 var js_name = "1024视频"
-var data = [{ "name": "国产", "id": "10" }, { "name": "日韩", "id": "11" }, { "name": "欧美", "id": "12" }, { "name": "另类", "id": "13" }]
+var data = [{ "name": "国产无码", "id": "1" }, { "name": "岛国步兵", "id": "2" }, { "name": "岛国骑兵", "id": "3" }, { "name": "欧美无码", "id": "4" }, { "name": "中字步兵", "id": "5" }, { "name": "中字骑兵", "6": "114" },]
 
 $ui.render({
     props: {
@@ -68,14 +68,14 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "thread.php?fid-78-type-" + id + "-page-" + pg + ".html",
-        header: {
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
-        },
+        url: urlt + "pw/thread1022.php?fid=184&type=" + id + "&page=" + pg,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var shu = text.match(/subjectbreak-all.*?<\/div>/g)
+            if (text.indexOf('普通主题') !== -1) {
+                text = text.split("普通主题")[1]
+            }
+            var shu = text.match(/class=\"tr3t_one\">(\S*?)<\/h3>/g)
             if (pg == 1) {
                 var data = []
             } else {
@@ -83,9 +83,10 @@ function getdata() {
             }
             for (i in shu) {
                 var a = shu[i]
-                if (a.indexOf('state/m/78') !== -1) {
-                    var mc = a.match(/html\">(\S*?)<\/a>/)[1]
-                    var id = a.match(/<ahref=\"(\S*?)\"/)[1]
+                if (a.indexOf('href=') !== -1) {
+                    var txt = a.split("<h3>")[1]
+                    var mc = txt.match(/\">(\S*?)<\/a>/)[1]
+                    var id = a.match(/href=\"(\S*?)\"/)[1]
                     data.push(mc + "\n" + id)
                 }
             }
@@ -100,11 +101,12 @@ getdata()
 function geting(id, mc) {
     $ui.loading(true)
     $http.get({
-        url: urlt + id,
+        url: urlt + "pw/" + id,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var video = text.match(/IFRAMESRC=(\S*?)FRAMEBORDER/)[1]
+            var video = text.match(/\?url=(\S*?)\"/)[1]
+            video = video.replace(/&#46;/g, ".")
             $ui.push({
                 props: {
                     title: mc
@@ -125,7 +127,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.1") {
+        if (resp.data.vdieo.version != "2.2") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
