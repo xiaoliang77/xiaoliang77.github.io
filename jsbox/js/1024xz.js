@@ -1,5 +1,5 @@
 /*
-2023年1月16日 更新
+2023年7月7日 更新
 更换源地址
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -12,7 +12,7 @@ https://ae85.cn/
 $cache.set("id", "5")
 $cache.set("pg", 1)
 var js_name = "1024下载"
-var urlt = $text.base64Decode("aHR0cHM6Ly85azEwMjQuY2Mv")
+var urlt = $text.base64Decode("aHR0cHM6Ly96MjI3bS54eXov")
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 
 $ui.render({
@@ -187,7 +187,7 @@ function geturl(url, dian) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.down.version != "2.1") {
+        if (resp.data.down.version != "2.2") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.down.version,
                 message: resp.data.down.upexplain,
