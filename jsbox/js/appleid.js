@@ -1,5 +1,5 @@
 /*
-2023年2月26日 更新
+2023年7月10日 更新
 
 账号密码24小时自动更新
 重新运行脚本可获取最新ID
@@ -12,10 +12,14 @@
 
 by：iPhone 8、小良
 https://iphone8.vip/
+https://ae85.cn/
 
 博客：87xl.cn
 */
-
+var myHeaders = {
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1",
+    "Accept": "application/json, text/javascript, */*; q=0.01"
+};
 const js_name = "Apple ID 获取器"
 $ui.loading(true);
 $http.get({
@@ -23,7 +27,7 @@ $http.get({
     handler: function (resp) {
         $ui.loading(false);
         var info = resp.data;
-        if (info.bb != "1.3.0") {
+        if (info.bb != "1.4") {
             $ui.alert({
                 title: "温馨提示：",
                 message: info.gxsm,
@@ -209,35 +213,35 @@ $ui.render({
 
 async function get_data() {
     var turl = $cache.get("info").turl;
+    var token = $cache.get("info").token;
     var data_j = []
-    for (i = 1; i < 11; i++) {
-        const resp = await $http.get($text.base64Decode(turl) + i + '.html');
-        data_j.push(cl_hd(resp,i))
+    for (i in token) {
+        const resp = await $http.get({ url: $text.base64Decode(turl) + token[i], header: myHeaders });
+        var s = parseInt(i)+1
+        data_j.push(cl_hd(resp.data, s))
     }
     $("list").data = await data_j;
 }
 
-function cl_hd(params,x) {
-    var text = params.data.replace(/\n|\s|\r/g, "")
-    var shu = text.match(/value=\"(\S*?)\"/g)
-    var zh = shu[0].match(/value=\"(\S*?)\"/)[1]
-    var mi = shu[1].match(/value=\"(\S*?)\"/)[1]
+function cl_hd(params, x) {
+    var zh = params[0].username
+    var mi = params[0].password
     var zt = "维护中"
-    if (text.indexOf('●可用') !== -1) {
+    if (params[0].status == 1) {
         zt = "可用"
     }
     var sec = zt == "可用" ? "#0f0" : "#ddd";
     var yc = zt == "可用" ? false : true;
-    var sj = text.match(/<strong>(.*?)<\/strong>/)[1]
+    var sj = params[0].time
     const data = {
-        zbiao: { text: "ID " + x },
+        zbiao: { text: "ID " + x},
         zt_t: { textColor: $color(sec) },
         zt_wz: { text: zt, textColor: $color(sec) },
         zh: { text: "账号：" + zh },
         mi: { text: "密码：" + mi },
         btn_z: { src: zh, hidden: yc },
         btn_m: { src: mi, hidden: yc },
-        rq: { text: sj},
+        rq: { text: sj },
     }
     return data;
 }
