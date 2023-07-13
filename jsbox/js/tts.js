@@ -1,7 +1,6 @@
 /* 文字转语音
- *  2022年11月12日
+ *  2023年7月13日
  *  可在键盘中运行
- *  演示视频：http://3v.ae85.cn/api/streamja.php?url=https://streamja.com/11MRe
  * 
  *  by：iPhone 8、小良
  *  https://iphone8.vip/
@@ -80,7 +79,7 @@ function download(gm) {
   $ui.toast("正在转换中 ...");
   $ui.loading(true);
   $http.download({
-    url: "https://tts.youdao.com/fanyivoice?le=zh&keyfrom=speaker-target&word=" + name,
+    url: "https://dict.youdao.com/dictvoice?le=zh&audio=" + name,
     handler: function (resp) {
       $ui.loading(false);
       if (resp.response.statusCode == "200") {
