@@ -150,5 +150,16 @@ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="[ip
 firewall-cmd --reload          #刷新防火墙
 ```
 
+> <video id="video" controls="" preload="none" width= "100%" height= "500" poster="https://github.com/yoocl/material/raw/master/img/gz-djdd/0.png">
+      <source id="mp4" src="http://pan.ae85.cn/d/GoogleDrive/%E8%A7%86%E9%A2%91/IMG_1509.mp4" type="video/mp4">
+</video>
 
+[视频地址](http://pan.ae85.cn/d/GoogleDrive/%E8%A7%86%E9%A2%91/IMG_1509.mp4)
+
+
+> <video id="video" controls="" preload="none" width= "100%" height= "500" poster="https://pan.87xl.cn/0:/%E8%A7%86%E9%A2%91/2021-10-29_19-48-41.mp4">
+      <source id="mp4" src="https://pan.87xl.cn/0:/%E8%A7%86%E9%A2%91/2021-10-29_19-48-41.mp4" type="video/mp4">
+</video>
+
+[视频地址](https://pan.87xl.cn/0:/%E8%A7%86%E9%A2%91/2021-10-29_19-48-41.mp4)
 

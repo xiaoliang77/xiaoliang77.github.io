@@ -1,5 +1,5 @@
 /*
-2023年7月7日 更新
+2023年9月24日 更新
 更换源地址
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
@@ -13,9 +13,26 @@ https://ae85.cn/
 $cache.set("id", "193")
 $cache.set("pg", 1)
 var js_name = "1024小说"
-var urlt = $text.base64Decode("aHR0cHM6Ly96MjI3bS54eXov")
+var urlt = $text.base64Decode("aHR0cHM6Ly95ajIzMDZzLmNsaWNrLw==")
 var data = [{ "name": "激情", "id": "193" }, { "name": "家庭", "id": "196" }, { "name": "校园", "id": "195" }, { "name": "武侠", "id": "197" }, { "name": "另类", "id": "199" }, { "name": "人妻", "id": "194" },]
-
+const mrhb = {
+    type: "button",
+    props: {
+      id: "hb_img",
+      radius: 25,
+      src: "https://iphone8.vip/img/hb.jpg",
+    },
+    events: {
+      tapped: function(sender) {
+        $app.openURL("https://ae85-1251930860.cos.ap-chengdu.myqcloud.com/hongbao.html")
+      }
+    },
+    layout: function(make, view) {
+      make.bottom.inset(50)
+      make.width.height.equalTo(50)
+      make.right.inset(15)
+    }
+  }
 $ui.render({
     props: {
         title: js_name
@@ -60,7 +77,7 @@ $ui.render({
             }
         }
 
-    },
+    },mrhb
     ]
 
 })
@@ -119,7 +136,7 @@ function geting(id, mc) {
                         html: html,
                     },
                     layout: $layout.fill
-                }]
+                },mrhb]
             })
         }
     })
@@ -128,7 +145,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.novel.version != "2.2") {
+        if (resp.data.novel.version != "2.3") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.novel.version,
                 message: resp.data.novel.upexplain,

@@ -1,5 +1,5 @@
 /*
-2023年7月7日 更新
+2023年9月24日 更新
 更换源地址
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -12,9 +12,26 @@ https://ae85.cn/
 $cache.set("id", "5")
 $cache.set("pg", 1)
 var js_name = "1024下载"
-var urlt = $text.base64Decode("aHR0cHM6Ly96MjI3bS54eXov")
+var urlt = $text.base64Decode("aHR0cHM6Ly95ajIzMDZzLmNsaWNrLw==")
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
-
+const mrhb = {
+    type: "button",
+    props: {
+      id: "hb_img",
+      radius: 25,
+      src: "https://iphone8.vip/img/hb.jpg",
+    },
+    events: {
+      tapped: function(sender) {
+        $app.openURL("https://ae85-1251930860.cos.ap-chengdu.myqcloud.com/hongbao.html")
+      }
+    },
+    layout: function(make, view) {
+      make.bottom.inset(50)
+      make.width.height.equalTo(50)
+      make.right.inset(15)
+    }
+  }
 $ui.render({
     props: {
         title: js_name
@@ -59,7 +76,7 @@ $ui.render({
             }
         }
 
-    },]
+    },mrhb]
 })
 
 function getdata() {
@@ -139,7 +156,7 @@ function geting(id, mc) {
                         make.width.height.equalTo(60)
                         make.right.inset(15)
                     }
-                },]
+                },mrhb]
             })
         }
     })
@@ -187,7 +204,7 @@ function geturl(url, dian) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.down.version != "2.2") {
+        if (resp.data.down.version != "2.3") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.down.version,
                 message: resp.data.down.upexplain,

@@ -1,5 +1,5 @@
 /*
-2023年7月7日 更新
+2023年9月24日 更新
 更新无法使用问题
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -10,10 +10,27 @@ https://ae85.cn/
 
 $cache.set("id", "1")
 $cache.set("pg", 1)
-var urlt = $text.base64Decode("aHR0cHM6Ly96MjI3bS54eXov");
+var urlt = $text.base64Decode("aHR0cHM6Ly95ajIzMDZzLmNsaWNrLw==");
 var js_name = "1024视频"
 var data = [{ "name": "国产无码", "id": "1" }, { "name": "岛国步兵", "id": "2" }, { "name": "岛国骑兵", "id": "3" }, { "name": "欧美无码", "id": "4" }, { "name": "中字步兵", "id": "5" }, { "name": "中字骑兵", "6": "114" },]
-
+const mrhb = {
+    type: "button",
+    props: {
+      id: "hb_img",
+      radius: 25,
+      src: "https://iphone8.vip/img/hb.jpg",
+    },
+    events: {
+      tapped: function(sender) {
+        $app.openURL("https://ae85-1251930860.cos.ap-chengdu.myqcloud.com/hongbao.html")
+      }
+    },
+    layout: function(make, view) {
+      make.bottom.inset(50)
+      make.width.height.equalTo(50)
+      make.right.inset(15)
+    }
+  }
 $ui.render({
     props: {
         title: js_name
@@ -58,7 +75,7 @@ $ui.render({
             }
         }
 
-    },
+    },mrhb
     ]
 
 })
@@ -117,7 +134,7 @@ function geting(id, mc) {
                         url: video,
                     },
                     layout: $layout.fill
-                }]
+                },mrhb]
             })
         }
     })
@@ -127,7 +144,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.2") {
+        if (resp.data.vdieo.version != "2.3") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
