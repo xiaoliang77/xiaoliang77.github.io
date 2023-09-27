@@ -13,7 +13,7 @@ https://ae85.cn/
 $cache.set("id", "193")
 $cache.set("pg", 1)
 var js_name = "1024小说"
-var urlt = $text.base64Decode("aHR0cHM6Ly95ajIzMDZzLmNsaWNrLw==")
+var urlt = $text.base64Decode("aHR0cHM6Ly85azEwMjQuY29tLw==")
 var data = [{ "name": "激情", "id": "193" }, { "name": "家庭", "id": "196" }, { "name": "校园", "id": "195" }, { "name": "武侠", "id": "197" }, { "name": "另类", "id": "199" }, { "name": "人妻", "id": "194" },]
 const mrhb = {
     type: "button",
@@ -145,7 +145,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.novel.version != "2.3") {
+        if (resp.data.novel.version != "2.4") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.novel.version,
                 message: resp.data.novel.upexplain,

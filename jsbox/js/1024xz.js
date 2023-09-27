@@ -12,7 +12,7 @@ https://ae85.cn/
 $cache.set("id", "5")
 $cache.set("pg", 1)
 var js_name = "1024下载"
-var urlt = $text.base64Decode("aHR0cHM6Ly95ajIzMDZzLmNsaWNrLw==")
+var urlt = $text.base64Decode("aHR0cHM6Ly85azEwMjQuY29tLw==")
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 const mrhb = {
     type: "button",
@@ -204,7 +204,7 @@ function geturl(url, dian) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.down.version != "2.3") {
+        if (resp.data.down.version != "2.4") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.down.version,
                 message: resp.data.down.upexplain,
