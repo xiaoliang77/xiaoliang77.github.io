@@ -1,10 +1,10 @@
 /*
-直播 - 秋名山见 2.1
-2022年8月10日
+直播 - 秋名山见 2.2
+2023年9月28日
 
 更新：配置文件换新域名
 修复：报错无法使用问题
-新增：接入影音宝播放器
+新增：导出平台列表为m3u格式文件（可用AM3U、ntPlayer、nPlayer、等播放器使用）
 
 by：iPhone 8、小良
 https://iphone8.vip/
@@ -53,6 +53,24 @@ var szan = {
         make.right.inset(15)
     }
 }
+var hban = {
+    type: "button",
+    props: {
+        id: "zfbhb_img",
+        radius: 30,
+        src: "https://iphone8.vip/img/hb.jpg",
+    },
+    events: {
+        tapped: function (sender) {
+            $app.openURL($cache.get("info").zfb_hb)
+        }
+    },
+    layout: function (make, view) {
+        make.bottom.equalTo($('hb_img').top).inset(10)
+        make.width.height.equalTo(60)
+        make.right.inset(15)
+    }
+}
 var daocbm = {
     type: "button",
     props: {
@@ -89,17 +107,11 @@ var urls = [{
     name: "nPlayer",
     url: "nplayer-",
     store: "https://itunes.apple.com/cn/app/nplayer-lite/id1078835991?mt=8"
-},
-{
-    name: "影音宝",
-    url: "yybx://play?",
-    store: "https://itunes.apple.com/cn/app/nplayer-lite/id1468401388?mt=8"
-}
-]
+}]
 function zjm() {
     $ui.render({
         props: {
-            title: "直播 - 秋名山见 2.1"
+            title: "直播 - 秋名山见 2.2"
         },
         views: [{
             type: "matrix",
@@ -117,7 +129,7 @@ function zjm() {
                     getlist(obj.id, obj.mc.text)
                 },
             }
-        }, szan]
+        }, szan,hban]
     })
 }
 const urlt = "lz7zHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25mlz7zWcvcW1zemIulz7znNvbg=="
@@ -129,7 +141,7 @@ $http.get({
         if (resp.response.statusCode == "200") {
             var info = resp.data;
             $cache.set("info", info)
-            if (info.version != "2.1") {
+            if (info.version != "2.2") {
                 $ui.alert({
                     title: "温馨提示",
                     message: info.Ucontent,
@@ -319,7 +331,7 @@ function sz() {
                     }]
                 }, {
                     title: "安装播放器",
-                    rows: [" VLC       -  跳转App Store商店下载", "OPlayer -  跳转App Store商店下载", " nPlayer -  跳转App Store商店下载", "影音宝   -  跳转App Store商店下载"]
+                    rows: [" VLC       -  跳转App Store商店下载", "OPlayer -  跳转App Store商店下载", " nPlayer -  跳转App Store商店下载", "AM3U     -  跳转App Store商店下载","ntPlayer -  跳转App Store商店下载"]
                 }, {
                     title: "使用帮助",
                     rows: ["作者官网", "作者博客", "微信公众号：小良科技", "关于脚本"]
@@ -345,8 +357,10 @@ function sz() {
                         $app.openURL(urls[1].store)
                     } else if (data == " nPlayer -  跳转App Store商店下载") {
                         $app.openURL(urls[2].store)
-                    } else if (data == "影音宝   -  跳转App Store商店下载") {
-                        $app.openURL(urls[3].store)
+                    } else if (data == "AM3U     -  跳转App Store商店下载") {
+                        $app.openURL("https://apps.apple.com/cn/app/am3u/id6443454388")
+                    } else if (data == "ntPlayer -  跳转App Store商店下载") {
+                        $app.openURL("https://apps.apple.com/cn/app/ntplayer/id1613758141")
                     } else if (data == "作者官网") {
                         web("https://iphone8.vip/", "iPhone 8、小良")
                     } else if (data == "作者博客") {
