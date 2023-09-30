@@ -1,5 +1,5 @@
 /*
-2023年9月24日 更新
+2023年10月1日 更新
 更换源地址
 适配图片自适应屏幕宽度
 
@@ -14,7 +14,7 @@ https://ae85.cn/
 $cache.set("id", "14")
 $cache.set("pg", 1)
 var js_name = "1024图库"
-var urlt = $text.base64Decode("aHR0cHM6Ly85azEwMjQuY29tLw==")
+var urlt = $text.base64Decode("aHR0cHM6Ly8xMDI0LnZpZGVvY2suc2hvcC8=")
 var data = [{ "name": "写真", "id": "14" }, { "name": "自拍", "id": "15" }, { "name": "露出", "id": "16" }, { "name": "街拍", "id": "49" }, { "name": "丝袜", "id": "21" }, { "name": "欧美", "id": "114" },]
 const mrhb = {
     type: "button",
@@ -152,7 +152,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.mapdepot.version != "2.4") {
+        if (resp.data.mapdepot.version != "2.5") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.mapdepot.version,
                 message: resp.data.mapdepot.upexplain,
