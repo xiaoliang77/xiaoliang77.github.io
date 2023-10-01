@@ -10,7 +10,7 @@ cp -r                   		#拷贝文件夹
 mv                      		#移动         
 rm -rf                  		#强制删除，慎用
 cat                     		#查看文件内容 ，
-vim                     		#编辑文件  :w保存，:q退出，:wq保存并退出，:wq!退出不保存
+vim                     		#编辑文件i 退出编辑Esc  :w保存，:q退出，:wq保存并退出，:wq!退出不保存
 which ls                		#查找命令文件 which后面跟需要查找的命令
 find /etc -iname "hos*" 		#查找文件 find[路径][选项][表达式]，在/etc 下查找名字带有hos的文件 -iname（i忽略大小写）
 tar -cf etc.tar /etc    		#打包压缩 tar[选项][压缩包名称][源文件路径]
@@ -134,6 +134,31 @@ date                            #获取当前时间
 bt default                      #查看宝塔面板信息
 ```
 
+### Linux开启root账号密码登录
+
+```Bash
+1）修改/etc/ssh/sshd_config文件
+  vim /etc/ssh/sshd_config
+
+2）修改如下：允许root账户登录
+  #PermitRootLogin prohibit-password
+  PermitRootLogin yes
+
+ 使用用户名密码作为验证连接
+  PasswordAuthentication yes
+
+
+3）编辑 认证文件authorized_keys
+  vi /root/.ssh/authorized_keys
+
+  删除前面这一堆
+  no-port-forwarding,no-agent-forwarding,no-X11-forwarding,command="echo 'Please login as the user \"centos\" rather than the user \"root\".';echo;sleep 10" ···········
+
+4）重启sshd服务
+  service sshd start
+  service sshd restart 
+
+```
 
 ### 授权数据库连接
 ```Bash
@@ -150,7 +175,7 @@ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="[ip
 firewall-cmd --reload          #刷新防火墙
 ```
 
-> <video id="video" controls="" preload="none" width= "100%" height= "500" poster="https://github.com/yoocl/material/raw/master/img/gz-djdd/0.png">
+> <video id="video" controls="" preload="none" width= "50%" height= "300" poster="https://github.com/yoocl/material/raw/master/img/gz-djdd/0.png">
       <source id="mp4" src="http://pan.ae85.cn/d/GoogleDrive/%E8%A7%86%E9%A2%91/IMG_1509.mp4" type="video/mp4">
 </video>
 
