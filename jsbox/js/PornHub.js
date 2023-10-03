@@ -1,5 +1,8 @@
 /*
 PornHub视频下载
+2023年10月3日 更新
+
+修复无法获取下载链接问题
 
 ·脚本在国内网络是无法直接使用，需要科学上网。
 ·脚本内置浏览访问PornHub官网，并接入下载按钮。
@@ -128,8 +131,9 @@ const downlistview = {
         type: "label",
         props: {
             id: "biaoti",
-            font: $font("bold", 17),
+            font: $font(17),
             lines: 3,
+            textColor: $color("#f40")
         },
         layout: function (make, view) {
             make.left.right.inset(15);
@@ -332,15 +336,19 @@ function getdata(url) {
     $("listview").hidden = true;
     $http.get({
         url: $detector.link(url),
+        header: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.43",
+          },
         handler: function (resp) {
-            
-            var text = resp.data.match(/\[\'videoUrl\'\] = media_.;(.*?)flashvars_/g)
-            var str = text[text.length - 1].match(/\[\'videoUrl\'\] = media_.;(.*?)flashvars_/)[1]
-            var title = resp.data.match(/og:title\" content=\"(.*?)\"/)[1]
-            $('biaoti').text = title
-            var media = str.match(/var (media_.)=/)[1]
-            eval(str);
-            var lurl = eval(media);
+            var title = resp.data.match(/inlineFree\">(.*?)<\/span>/)[1]
+            var text = resp.data.match(/flashvars_[\s\S]*?<\/script>/)[0]
+            text = text.replace(/<\/script>/, "");
+            a = `	var playerObjList = {};\nvar ${text}`
+		    var c = a.match("flashvars_[0-9]{1,}")[0]
+            eval(a)
+		    var d = eval(c).mediaDefinitions        
+            var lurl = d[d.length - 1].videoUrl
+             $('biaoti').text = title
             $http.get({
                 url: lurl,
                 handler: function (resp) {

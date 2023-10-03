@@ -175,6 +175,68 @@ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="[ip
 firewall-cmd --reload          #刷新防火墙
 ```
 
+
+### 宝塔
+bt default			查看宝塔面板信息
+
+屏蔽宝塔强制绑定手机方法  
+<font color=#f40 >sed -i "s|bind_user == 'True'|bind_user == 'XXXX'|" /www/server/panel/BTPanel/static/js/index.js</font>
+
+如果需要恢复……  
+<font color=#f40 >sed -i "s|if (bind_user == 'REMOVED') {|if (bind_user == 'True') {|g" /www/server/panel/BTPanel/static/js/index.js  </font>
+
+删除宝塔强制绑定手机js文件  
+<font color=#f40 >rm -f /www/server/panel/data/bind.pl</font>    
+  
+----
+#### 宝塔降级
+下载地址
+wget https://down.pc6a.com/03.%E5%8D%9A%E5%AE%A2/2022/LinuxPanel-7.7.0.zip
+
+如果链接地址失效了
+请用下面的百度云盘 即可
+
+链接: https://pan.baidu.com/s/1b3uRuiq28GVC7m9yYIlEoA
+提取码: rrwy
+
+2、解压
+
+unzip LinuxPanel-7.7.0.zip
+3、进入升级目录
+
+cd /root/panel
+4、运行降级
+
+bash update.sh
+
+---
+
+### 内网穿透  
+nohup /frp/frpc -c /frp/frpc.ini >/dev/null 2>&1 &  
+nohup /frp/frpc -c /frp/liulifrpc.ini >/dev/null 2>&1 &  
+
+----
+
+### 查询frp进程 
+ps -aux|grep frp| grep -v grep  
+ 
+然后kill -9 进程号
+
+kill -9 3600
+
+----
+
+### Docker删除/停止容器
+```Bash
+docker ps                           #查看所有正在运行容器 
+docker stop containerId             #containerId 是容器的ID 
+docker ps -a                        #查看所有容器 
+docker ps -a -q                     #查看所有容器ID 
+docker stop $(docker ps -a -q)      #stop停止所有容器 
+docker rm $(docker ps -a -q)        #remove删除所有容器
+```
+----
+
 > <video id="video" controls="" preload="none" width= "50%" height= "300" poster="https://github.com/yoocl/material/raw/master/img/gz-djdd/0.png">
       <source id="mp4" src="http://pan.ae85.cn/d/GoogleDrive/%E8%A7%86%E9%A2%91/IMG_1509.mp4" type="video/mp4">
 </video>
