@@ -1,6 +1,9 @@
 /*
-2023年10月1日 更新
+2023年10月7日 更新
 更换源地址
+
+由于种子地址限制问题，无法直接使用脚本下载也不能直接调用迅雷下载，需要跳转到浏览器中下载种子文件然后在使用迅雷打开种子文件下载即可。
+
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone 8、小良
@@ -11,8 +14,11 @@ https://ae85.cn/
 
 $cache.set("id", "5")
 $cache.set("pg", 1)
+var header = {
+    "User-Agent":"User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+  }
 var js_name = "1024下载"
-var urlt = $text.base64Decode("aHR0cHM6Ly8xMDI0LnZpZGVvY2suc2hvcC8=")
+var urlt = $text.base64Decode("aHR0cHM6Ly9kcTIzMDlrLnh5ei8=")
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 const mrhb = {
     type: "button",
@@ -85,6 +91,7 @@ function getdata() {
     $ui.loading(true)
     $http.get({
         url: urlt + "pw/thread.php?fid=" + id + "&page=" + pg,
+        header: header,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
@@ -118,6 +125,7 @@ function geting(id, mc) {
     $ui.loading(true)
     $http.get({
         url: urlt + "pw/" + id,
+        header: header,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.match(/id=\"read_tpc\">.*?<\/div>/)
@@ -163,37 +171,37 @@ function geting(id, mc) {
 }
 
 function geturl(url, dian) {
+    $ui.toast("加载中请稍后···");
     var turl = url.match(/(http.?:\/\/.*?)\//)[1]
     $http.get({
         url: url,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var curl = text.match(/class=\"uk-button\"onclick=\"setpos\(\);\"href=\"(\S*?)\"/)[1]
-            curl = turl + curl.replace(/amp;/g, "")
-            $clipboard.text = curl
+            var curl = text.match(/Download\/[^"]+/)[0]
+            curl = turl + "/" + curl
             if (dian == 1) {
-                var canOpen = $app.openURL("thunder://" + $text.base64Encode("AA" + curl + "ZZ"));
-                if (!canOpen) {
-                    $ui.alert({
-                        message: "请先安装迅雷",
-                        actions: [{
-                            title: "跳转安装",
+                $ui.alert({
+                    title: "脚本无法直接下载种子文件",
+                    message: "\n是否跳转浏览器下载？\n\n或者复制地址到其他下载工具中下载",
+                    actions: [
+                        {
+                            title: "浏览器中下载",
                             handler: function () {
-                                $app.openURL("https://iphone8.vip/yy.html");
+                                $app.openURL(curl);
                             }
                         },
                         {
-                            title: "复制磁力链接",
+                            title: "复制链接",
                             handler: function () {
-                                alert("已复制\n" + url)
+                                $clipboard.text = curl
+                                $ui.toast("已复制链接");
                             }
-                        }
-                        ]
-                    })
-                }
+                        }]
+                });
             } else {
-                alert("已复制磁力链接")
+                $clipboard.text = curl
+                alert("已复制链接")
             }
 
         }
@@ -204,7 +212,7 @@ function geturl(url, dian) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.down.version != "2.5") {
+        if (resp.data.down.version != "2.6") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.down.version,
                 message: resp.data.down.upexplain,
@@ -254,3 +262,5 @@ function download(url) {
         }
     })
 }
+
+

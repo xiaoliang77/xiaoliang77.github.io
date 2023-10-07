@@ -1,5 +1,5 @@
 /*
-2023年10月1日 更新
+2023年10月7日 更新
 更新无法使用问题
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -10,7 +10,10 @@ https://ae85.cn/
 
 $cache.set("id", "1")
 $cache.set("pg", 1)
-var urlt = $text.base64Decode("aHR0cHM6Ly8xMDI0LnZpZGVvY2suc2hvcC8=");
+var header = {
+    "User-Agent":"User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+  }
+var urlt = $text.base64Decode("aHR0cHM6Ly9kcTIzMDlrLnh5ei8=");
 var js_name = "1024视频"
 var data = [{ "name": "国产无码", "id": "1" }, { "name": "岛国步兵", "id": "2" }, { "name": "岛国骑兵", "id": "3" }, { "name": "欧美无码", "id": "4" }, { "name": "中字步兵", "id": "5" }, { "name": "中字骑兵", "6": "114" },]
 const mrhb = {
@@ -86,6 +89,7 @@ function getdata() {
     $ui.loading(true)
     $http.get({
         url: urlt + "pw/thread1022.php?fid=184&type=" + id + "&page=" + pg,
+        header: header,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
@@ -119,6 +123,7 @@ function geting(id, mc) {
     $ui.loading(true)
     $http.get({
         url: urlt + "pw/" + id,
+        header: header,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
@@ -144,7 +149,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.5") {
+        if (resp.data.vdieo.version != "2.6") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
