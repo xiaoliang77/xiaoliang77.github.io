@@ -1,5 +1,5 @@
 /*
-2023年7月8日更新
+2023年10月12日更新
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -14,10 +14,27 @@ var myHeaders = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"
 };
 var urlt = $text.base64Decode("aHR0cHM6Ly95a3l5LmNra3Mudmlw");
-
+const mrhb = {
+    type: "button",
+    props: {
+      id: "hb_img",
+      radius: 25,
+      src: "https://iphone8.vip/img/hb.jpg",
+    },
+    events: {
+      tapped: function(sender) {
+        $app.openURL("alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Frender.alipay.com%2Fp%2Fc%2Falipay-red-qrcode%2Fshared.html%3Fchannel%3Dsearch_pwd%26shareId%3D2088202699097532%26token%3D19614922yglxkd7xgrvnf1fjlb%26campStr%3DkPPFvOxaCL3f85TiKss2wsBZgIjulHjG%26sign%3DqsiVOoa7TuphryWxyBdONXsMTnE3jiIBvWeUs3yV1sw%3D%26chInfo%3DDingtalk%26c_stype%3Dsearch_pwd%26code%3D798679953")
+      }
+    },
+    layout: function(make, view) {
+      make.bottom.inset(50)
+      make.width.height.equalTo(50)
+      make.right.inset(15)
+    }
+  }
 $ui.render({
     props: {
-        title: "无限资源 1.9"
+        title: "无限资源 2.0"
     },
     views: [
         {
@@ -118,7 +135,7 @@ $ui.render({
                 }
 
             }
-        }]
+        },mrhb]
 });
 
 
@@ -153,19 +170,9 @@ function getdata() {
 }
 
 function geturl(url, pm) {
-    $ui.loading(true);
-    $http.get({
-        url: urlt + url,
-        header: myHeaders,
-        handler: function (resp) {
-            $ui.loading(false);
-            var arr = resp.data;
-            var html = arr.replace(/\n|\s|\r/g, "");
-            var playurl = html.match(/<iframewidth="100%"height="100%"src="(.*?)"/)[1];
-            playurl = playurl.substring(playurl.indexOf("url=") + 4);
-            play(playurl, pm)
-        }
-    })
+    var id = url.match(/[0-9]+/g)[0]
+    play(`https://cdn73.com:10073/${id}/hls/index.m3u8`,pm)
+
 }
 
 function play(url, mc) {
@@ -197,7 +204,7 @@ function I(r) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvd3h6eS5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.version != "1.9") {
+        if (resp.data.version != "2.0") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.version,
                 message: resp.data.upexplain,
