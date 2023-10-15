@@ -11,7 +11,7 @@ https://ae85.cn/
 $cache.set("id", "1")
 $cache.set("pg", 1)
 var header = {
-    "User-Agent":"User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+    "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
   }
 var urlt = $text.base64Decode("aHR0cHM6Ly9kcTIzMDlrLnh5ei8=");
 var js_name = "1024视频"

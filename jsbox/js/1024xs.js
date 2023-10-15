@@ -1,5 +1,5 @@
 /*
-2023年10月7日 更新
+2023年10月15日 更新
 更换源地址
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
@@ -13,7 +13,7 @@ https://ae85.cn/
 $cache.set("id", "193")
 $cache.set("pg", 1)
 var header = {
-    "User-Agent":"User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+    "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
   }
 var js_name = "1024小说"
 var urlt = $text.base64Decode("aHR0cHM6Ly9kcTIzMDlrLnh5ei8=")
@@ -150,7 +150,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.novel.version != "2.6") {
+        if (resp.data.novel.version != "2.7") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.novel.version,
                 message: resp.data.novel.upexplain,
