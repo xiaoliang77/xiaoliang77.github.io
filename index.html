@@ -10,7 +10,6 @@
     <meta name="description" content="小良,捷径,规则,脚本,解析,应用,教程,下载,快捷指令,Shortcuts" />
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="./css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="./css/style.css">
     <script src="js/qrcode.min.js"></script>
     <!-- <base target="_blank">  -->
@@ -32,71 +31,8 @@
 </head>
 
 <body>
-    <!-- 导航条 开始 -->
-    <div class="navbar-fixed-top">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">iPhone 8、小良</a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="gz.html">快捷指令-规则</a></li>
-                        <li><a href="jb.html">Jsbox-Pin-脚本</a></li>
-                        <li><a href="yy.html">破解APP应用</a></li>
-                        <li><a href="qt.html">各类实用教程</a></li>
-                        <li><a href="youhou.html">油猴脚本</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">其他 <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="vip/zx.html" target="_blank">VIP在线解析 - 网页版</a></li>
-                                <li><a href="vip/jxdm.html" target="_blank">Safari书签 - 解析代码</a></li>
-                                <li><a href="vip/jxjk.html" target="_blank">Pin软件 - 解析接口</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="vip/s.html" target="_blank">Safari浏览器 - 解析教程</a></li>
-                                <li><a href="vip/sj.html" target="_blank">Pin软件 - vip解析教程</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="vip/cj.html" target="_blank">PC浏览器观看vip视频教程</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="javascript:void(0);" class="gzhsb">微信公众号</a>
-                            <div class="gzh"><img src="img/gzh.jpg" alt="微信搜索：ae85-cn">
-                            </div>
-                        </li>
-                        <li><a href="https://87xl.cn" target="_blank">博客</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">关于作者<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="https://87xl.cn" target="_blank">博客：87xl.cn</a></li>
-                                <li><a href="https://weibo.com/u/6216079977" target="_blank">微博：小良_Ge</a></li>
-                                <li><a href="#">Q Q：84088289</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="https://twitter.com/yoocl_77" target="_blank">Twitter：@yoocl_77</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-    </div>
-
-    <!-- 导航条 结束 -->
-
-    <!-- 正文 开始-->
+    <div id="navbar"></div>
     <div style="margin-top: 50px;"></div>
-
     <div class="container floor-row">
         <div class="container-fluid">
             <div class="leib">
@@ -123,22 +59,12 @@
         </div>
         <div class="row" id="qt"></div>
     </div>
-    <!-- 正文 结束 -->
-
-    <!-- 底部 开始 -->
-    <div class="dibu">
-        <p>iPhone、小良 ©2016~2022</p>
-        <p>本站所有内容均为小良原创作品，未经允许请勿转载！</p>
-    </div>
-    <!-- 底部 结束 -->
- 
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <div id="dibu"></div>
     <script src="js/jquery.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="js/bootstrap.min.js"></script>
+    <script id="csh_td" src="js/csh.js" webtype="0"></script>
     <script src="js/index.js"></script>
 
-    <!-- 弹出开始 -->
     <script>
         // 弹出公众号二维码
         $(".gzhsb").hover(function () {
@@ -160,15 +86,8 @@
             <div class="qrcode" id="qrcode"></div>
         </div>
     </div>
-    <!-- 弹出结束 -->
 
-    <!-- 红包开始 -->
-    <div style="position: fixed; bottom: 60px; right: 20px; z-index: 9999;">
-        <a href="https://ae85-1251930860.cos.ap-chengdu.myqcloud.com/hongbao.html">
-            <img  style="width: 60px; height: 60px; border-radius: 30px; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1), 0 4px 8px 0 rgba(0,0,0,0.1), 0 8px 16px 0 rgba(0,0,0,0.1), 0 16px 32px 0 rgba(0,0,0,0.1);" src="img/hb.jpg" />
-        </a> 
-    </div>
-    <!-- 红包结束 -->
+    <script src="js/hongbao.js"></script>
 </body>
-</html>
 
+</html>

@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSBox & Pin</title>
+    <meta name="keywords" content="jsbox,xteko,javascript,extension,doc,document,documentation">
+    <meta name="description" content="Install JSBox Extension">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="./css/jsx.css">
+    <script>
+        function download() {
+          window.open("../../jb.html", "_blank");
+        }
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9a216def2d06b5f36dee7bfc61f36368";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+
+<body>
+
+    <div style="text-align: center;">
+        <img src="logo1.png" width="220px" style="margin-top: 8px;" onclick="download();">
+    </div>
+    <div id="center-box">
+        <div id="info" style="margin-top: 50px;">
+        <img src="../img/xl.png" width="32px" style="vertical-align: middle;">
+            <span id="name">小良 - 更新器 3.0</span>
+        </div>
+        <div id="button-layout">
+            <div class="button" id="button-top">请在 Safari 打开这个页面</div>
+            <div class="button" id="button-jsbox" onclick="window.location.href='../jsbox/js/gxq.js';">查看源码-手动复制</div>
+            <div class="button" id="button-jsboxx"
+                onclick="window.location.href='jsbox://import?url=https://iphone8.vip/jsbox/js/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.0';">
+                点击安装到 - JSBox</div>
+            <div class="button" id="button-pin"
+                onclick="window.location.href='pin://install?url=https://iphone8.vip/jsbox/js/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.0';">
+                点击 - 安装到 Pin(3.2.2~3.2.3)</div>
+            <div class="button" id="button-jc" onclick="window.location.href='http://t.cn/REsCyf2';">点击 - 观看脚本使用教程</div>
+        </div>
+    </div>
+
+
+    <script>
+        // Install.html?vid=123123&name=哈哈1
+        // vid=文件名(gxq),name=规则名字
+        var vid = getQueryString("vid")
+        var name = getQueryString("name")
+        var img = getQueryString("img")
+        if (vid == "undefined" || name == "undefined") {
+            vid = false
+        }
+        if (vid && name) {
+            var title = name
+            name = encodeURI(name)
+            var html = `
+        <div id="info" style="margin-top: 50px;">
+            <img src="../img/${img}" width="32px" style="vertical-align: middle;">
+            <span id="name">${title}</span>
+        </div>
+        <div id="button-layout">
+            <div class="button" id="button-top">请在 Safari 打开这个页面</div>
+            <div class="button" id="button-jsbox" onclick="window.location.href='../jsbox/js/${vid}';">查看源码-手动复制</div>
+            <div class="button" id="button-jsboxx"
+                onclick="window.location.href='jsbox://import?url=https://iphone8.vip/jsbox/js/${vid}&name=${name}';">
+                点击安装到 - JSBox</div>
+            <div class="button" id="button-pin"
+                onclick="window.location.href='pin://install?url=https://iphone8.vip/jsbox/js/${vid}&name=${name}';">
+                点击 - 安装到 Pin(3.2.2~3.2.3)</div>
+        </div>`
+        document.getElementById('center-box').innerHTML = html
+        }
+
+
+        function getQueryString(name) {
+            const url_string = window.location.href
+            const url = new URL(url_string);
+            return url.searchParams.get(name);
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

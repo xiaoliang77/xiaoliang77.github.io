@@ -6,11 +6,11 @@
     
     #center-box {
       position: absolute;
-      top: 45%;
+      top: 40%;
       left: 15px;
       right: 15px;
       margin-top: -125px;
-      height: 350px;
+      height: 430px;
       background-color: #fff;
       border-radius: 8px;
       -moz-border-radius: 8px;
@@ -36,7 +36,7 @@
     }
 
     #button-layout {
-      height: 220px;
+      height: 300px;
       width: 100%;
       position: absolute;
       bottom: 0;
@@ -71,6 +71,12 @@
 
     #button-jsbox {
       font-weight: bold;
+      background-color: rgb(12, 180, 151);
+      color: #fff;
+    }
+
+    #button-jsboxx {
+      font-weight: bold;
       background-color: rgb(21, 126, 251);
       color: #fff;
     }
@@ -92,13 +98,3 @@
       background-color: rgb(41, 168, 84);
       color: #fff;
     }
-
-
-
-
-
-
-
-
-
-</body></html>
