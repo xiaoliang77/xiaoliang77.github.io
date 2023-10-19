@@ -369,7 +369,7 @@
                 "rq": "更新：2019年11月23日",
                 "sm": "仅供娱乐",
                 "jsurl": "https://iphone8.vip/jb.html",
-                "url": "jsbox://import?url=wxlqscq.box"
+                "url": "wxlqscq.box"
             },
             {
                 "title": "在线福利",
@@ -417,7 +417,7 @@
                 "rq": "发布：2018年12月17日",
                 "sm": "一个可以取代pin软件的小组件脚本\n不支持pin，只支持jsbox",
                 "jsurl": "http://qq.cn.hn/gAW",
-                "url": "jsbox://import?url=Pin-x.box"
+                "url": "Pin-x.box"
             },
             {
                 "title": "JSBox脚本安装器",
