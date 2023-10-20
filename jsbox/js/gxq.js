@@ -1,26 +1,29 @@
 /*
-小良 - 更新器 3.0
- 2022.8.8 修复更新配置文件
+小良 - 更新器 3.1
+ 2023年10月20 修复更新配置文件
  *快速获取安装小良个人作品
 
 by：iPhone 8、小良
 https://iphone8.vip/
+https://ae85.cn/
 
 博客：87xl.cn
 */
 
 const pz = {
-    title: "小良 - 更新器 3.0",
+    title: "小良 - 更新器 3.1",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
-    banqsm: "- 感谢支持 - iPhone8.vip -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2022"
+    banqsm: "- 感谢支持 - iPhone8.vip -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2023",
+    lei: ["首页推荐", "安装脚本", "添加规则", "查看教程", "获取应用"],
+    slide: []
 };
 
 const menu = {
     type: "menu",
     props: {
         id: "Menu",
-        items: ["推荐", "脚本", "规则", "教程", "应用", "解析"]
+        items: ["推荐", "脚本", "规则", "教程", "应用", "关于"]
     },
     layout: function (make) {
         make.left.bottom.right.equalTo(0);
@@ -59,7 +62,7 @@ const vlist = {
     type: "list",
     props: {
         id: "vlist",
-        rowHeight: 200,
+        rowHeight: 210,
         template: [
             {
                 type: "label",
@@ -70,7 +73,7 @@ const vlist = {
                 },
                 layout: function (make, view) {
                     make.left.right.inset(10);
-                    make.top.inset(8);
+                    make.top.inset(10);
                 }
             },
             {
@@ -124,13 +127,13 @@ const vlist = {
                     ]
                 },
                 layout: function (make) {
-                    make.top.equalTo($("lmc").bottom).inset(15);
+                    make.top.equalTo($("lmc").bottom).inset(20);
                     make.left.right.inset(0);
                     make.height.equalTo(155);
                 },
                 events: {
                     didSelect: function (sender, indexPath, data) {
-                        xqym(data.data);
+                        xqym(data.data, data.idx);
                     }
                 }
             }
@@ -150,14 +153,14 @@ const vlist = {
 };
 
 function refetch() {
-    var turl = $text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcv") + "pin.json"
+    var turl = $text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcv") + "data.json"
     $ui.loading(true);
     $http.get({
         url: turl,
         handler: function (resp) {
             $ui.loading(false);
             var data = resp.data;
-            if (data.version != "3.0") {
+            if (data.version != "3.1") {
                 $ui.alert({
                     title: "发现新版本",
                     message: resp.data.hant,
@@ -165,7 +168,7 @@ function refetch() {
                         {
                             title: "立即更新",
                             handler: function () {
-                                azjs(data.bburl);
+                                azjs(data.file, data.name);
                             }
                         },
                         {
@@ -177,8 +180,9 @@ function refetch() {
                     ]
                 });
             } else {
-                csh();
                 $cache.set("stories", resp.data);
+                pz.slide = slide()
+                csh();
                 render();
                 tcgg(resp.data.js.gg);
             }
@@ -208,66 +212,64 @@ function xrwj(nr) {
 
 function zxgetlist(id) {
     var json = $cache.get("stories").data;
-    // json = JSON.parse(json);
     if (id == 1) {
-        listjm("脚本列表", "⁺ 获取 ");
+        listjm("脚本列表", "⁺ 安装 ", id);
         $("Menu").index = 1;
-        getlist(json.jb);
+        getlist(json.jb, id);
     } else if (id == 2) {
-        listjm("规则列表", "⁺ 获取 ");
+        listjm("规则列表", "⁺ 添加 ", id);
         $("Menu").index = 2;
-        getlist(json.gz);
+        getlist(json.gz, id);
     } else if (id == 3) {
-        listjm("教程列表", "⁺ 观看 ");
+        listjm("教程列表", "⁺ 观看 ", id);
         $("Menu").index = 3;
-        getlist(json.jc);
+        getlist(json.jc, id);
     } else if (id == 4) {
-        listjm("应用列表", "⁺ 安装 ");
+        listjm("应用列表", "⁺ 获取 ", id);
         $("Menu").index = 4;
-        getlist(json.yy);
+        getlist(json.yy, id);
     } else if (id == 5) {
-        listjm("解析列表", "⁺ 查看 ");
+        listjm("关于作者", "⁺ 点赞 ", id);
         $("Menu").index = 5;
-        getlist(json.jx);
-    } else if (id == 6) {
-        listjm("关于作者", "⁺ 点赞 ");
-        $("Menu").index = 5;
-        getlist(json.qt);
+        getlist(json.qt, id);
     }
 }
 
 refetch();
 
-var gdggn = [dt(0), dt(1), dt(2), dt(3), dt(4)];
-
-function dt(a) {
-    var data = $cache.get("stories").js.zygd;
+function slide() {
+    var arr = $cache.get("stories").js.zygd;
     var gw = $cache.get("stories").gw
-    var gd = data[a];
-    var tad = {
-        type: "button",
-        props: {
-            src: gw + gd.src
-        },
-        events: {
-            tapped: function (sender) {
-                web(gd.url, gd.name);
+    var data = [];
+    for (i in arr) {
+        var gd = arr[i];
+        data.push({
+            type: "button",
+            props: {
+                src: gw + "img/" + gd.src
+            },
+            events: {
+                tapped: function (sender) {
+                    web(gd.url, gd.name);
+                }
             }
-        }
-    };
-    return tad;
+        })
+    }
+    return data;
 }
 
-function azjs(jsurl) {
+function azjs(jsurl, jsname) {
     var appid = $app.info.bundleID;
     var appbb = $app.info.version;
-    var txt = jsurl.split("&name=");
-    var url = txt[0];
-    var name = decodeURI(txt[1]);
+    var gw = $cache.get("stories").gw;
+    var name = jsname.replace(/🔥/, "")
+    var d_name = encodeURI(name)
+    var url = gw + "jsbox/js/" + jsurl;
+    var pin_url = url + "&name=" + d_name;
     if (appid == "app.cyan.pin") {
         if ((appbb == "3.2.2") | (appbb == "3.2.3")) {
             $ui.toast("正在安装中 ...");
-            $app.openURL(pz.pin + jsurl);
+            $app.openURL(pz.pin + pin_url);
         } else {
             $ui.alert({
                 title: "温馨提示:",
@@ -355,14 +357,12 @@ function azjs(jsurl) {
 
 function render() {
     var json = $cache.get("stories").data;
-    // json = JSON.parse(json);
     $("vlist").data = [
-        clzyli(json.jb, "脚本", "1"),
-        clzyli(json.gz, "规则", "2"),
-        clzyli(json.jc, "教程", "3"),
-        clzyli(json.yy, "应用", "4"),
-        clzyli(json.jx, "解析", "5"),
-        clzyli(json.qt, "关于作者", "6")
+        clzyli(json.jb, "最新js脚本", "1"),
+        clzyli(json.gz, "热门快捷指令规则", "2"),
+        clzyli(json.jc, "各类实用教程", "3"),
+        clzyli(json.yy, "破解App应用", "4"),
+        clzyli(json.qt, "关于作者", "5")
     ];
 }
 
@@ -372,10 +372,11 @@ function clzyli(json, mc, idx) {
     for (i in json) {
         if (i < 4) {
             data.push({
-                img: { src: gw + json[i].image },
+                img: { src: gw + "img/" + json[i].img },
                 pm: { text: json[i].title },
                 rq: { text: json[i].rq },
-                data: json[i]
+                data: json[i],
+                idx: idx
             });
         }
     }
@@ -406,7 +407,7 @@ function csh() {
                         type: "gallery",
                         props: {
                             id: "gall",
-                            items: gdggn,
+                            items: pz.slide,
                             interval: 3
                         },
                         layout: function (make, view) {
@@ -438,20 +439,20 @@ function csh() {
     });
 }
 
-function getlist(json) {
+function getlist(json, lei) {
     var gw = $cache.get("stories").gw
     var data = [];
     for (var idx in json) {
         var story = json[idx];
         data.push({
             lt: {
-                src: gw + story.image
+                src: gw + "img/" + story.img
             },
             mc: {
                 text: story.title
             },
             sm: {
-                text: story.details
+                text: story.sm
             },
             hhq: {
                 data: [{ url: story.url, title: story.title }]
@@ -459,14 +460,15 @@ function getlist(json) {
             rq: {
                 text: story.rq
             },
-            data: story
+            data: story,
+            idx: lei
         });
     }
     $("list").data = data;
     $("list").endRefreshing();
 }
 
-function listjm(bt, ant) {
+function listjm(bt, ant, id) {
     $ui.render({
         props: {
             title: bt
@@ -483,7 +485,7 @@ function listjm(bt, ant) {
                             type: "image",
                             props: {
                                 id: "lt",
-                                radius: 7,
+                                radius: 16,
                                 bgcolor: $color("white")
                             },
                             layout: function (make, view) {
@@ -558,8 +560,8 @@ function listjm(bt, ant) {
                             },
                             events: {
                                 didSelect: function (sender, indexPath, data) {
-                                    if (data.url.indexOf(".js&name=") !== -1) {
-                                        azjs(data.url);
+                                    if (id == 1) {
+                                        azjs(data.url, data.title);
                                     } else {
                                         if (data.url.indexOf("://") == -1) {
                                             installgz(data.url)
@@ -579,7 +581,7 @@ function listjm(bt, ant) {
                 },
                 events: {
                     didSelect: function (sender, indexPath, data) {
-                        xqym(data.data);
+                        xqym(data.data, data.idx);
                     }
                 }
             },
@@ -587,8 +589,12 @@ function listjm(bt, ant) {
     });
 }
 
-function xqym(data) {
+function xqym(data, idx) {
     var gw = $cache.get("stories").gw
+    var an_name = pz.lei[idx]
+    if (idx == 5) {
+        an_name = data.button
+    }
     $ui.push({
         props: {
             title: pz.title
@@ -600,8 +606,8 @@ function xqym(data) {
                 type: "image",
                 props: {
                     id: "icon",
-                    src: gw + data.image,
-                    radius: 7,
+                    src: gw + "img/" + data.img,
+                    radius: 16,
                     bgcolor: $color("white")
                 },
                 layout: function (make, view) {
@@ -656,7 +662,7 @@ function xqym(data) {
                 type: "button",
                 props: {
                     id: "bt1",
-                    title: data.button,
+                    title: an_name,
                     font: $font(16),
                     titleColor: $color("blue"),
                     bgcolor: $color("clear"),
@@ -670,8 +676,8 @@ function xqym(data) {
                 },
                 events: {
                     tapped: function (sender) {
-                        if (data.url.indexOf(".js&name=") !== -1) {
-                            azjs(data.url);
+                        if (idx == 1) {
+                            azjs(data.url, data.title);
                         } else {
                             if (data.url.indexOf("://") == -1) {
                                 installgz(data.url)
@@ -725,7 +731,7 @@ function xqym(data) {
                 type: "text",
                 props: {
                     id: "smbq",
-                    text: data.details,
+                    text: data.sm,
                     editable: false,
                     radius: 7,
                     font: $font("Avenir-Light", 17)

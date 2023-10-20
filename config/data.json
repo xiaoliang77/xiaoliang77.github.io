@@ -3,6 +3,8 @@
     "gw": "https://iphone8.vip/",
     "hant": "域名污染，请更新到最新版本！",
     "bburl": "https://iphone8.vip/jsbox/js/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.1",
+    "name":"小良更新器 3.1",
+    "file":"gxq.js",
     "js": {
         "zygd": [
             {
@@ -740,7 +742,7 @@
                 "rq": "感谢每一位支持过小良的朋友！",
                 "sm": "可以去超市 商店 饭店 等地使用\n也可以找我提现",
                 "jsurl": "http://t.cn/REZykYk",
-                "url": "https://iphone8.vip/fuli/xiaoliang.html",
+                "url": "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Frender.alipay.com%2Fp%2Fc%2Falipay-red-qrcode%2Fshared.html%3Fchannel%3Dsearch_pwd%26shareId%3D2088202699097532%26token%3D19614922yglxkd7xgrvnf1fjlb%26campStr%3DkPPFvOxaCL3f85TiKss2wsBZgIjulHjG%26sign%3DqsiVOoa7TuphryWxyBdONXsMTnE3jiIBvWeUs3yV1sw%3D%26chInfo%3DDingtalk%26c_stype%3Dsearch_pwd%26code%3D798679953",
                 "button": "领取红包"
             },
             {
@@ -754,7 +756,7 @@
             },
             {
                 "title": "小良-微博(小良_Ge)走个关注吧",
-                "img": "pin/wechat_icon.png",
+                "img": "wechat_icon.png",
                 "rq": "有你更精彩",
                 "sm": "有什么问题可以微博私信给我！",
                 "jsurl": "https://weibo.com/u/6216079977",
