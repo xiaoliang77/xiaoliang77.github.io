@@ -487,6 +487,7 @@
                 "img": "jsbox.jpg",
                 "rq": "支持ios14-ios15.4.1",
                 "sm": "需要使用巨魔软件，原理就是还原已解锁账号的备份文件",
+                "jsurl":"",
                 "url": "https://mp.weixin.qq.com/s?__biz=MzI0NDM1MDUwOQ==&mid=2247485111&idx=1&sn=feb0948fd1911f3b0f5b26c23a03fd79&chksm=e95e6df5de29e4e35b0331e2c762c285cbfebf481ed24a120ff900230a5876d38f6f69195b96#rd"
             },
             {
@@ -494,6 +495,7 @@
                 "img": "youhou.png",
                 "rq": "支持ios15以上系统",
                 "sm": "无需越狱，自动Safari浏览器中使用",
+                "jsurl":"",
                 "url": "https://mp.weixin.qq.com/s?__biz=MzI0NDM1MDUwOQ==&mid=2247485045&idx=1&sn=c4b54521faead705bf887f949fa2fcb4&chksm=e95e6d37de29e4215f4664b04d266dabbd019e78878a1ffe3019426299c4a7ab87b21a1188aa#rd"
             },
             {
@@ -501,6 +503,7 @@
                 "img": "Safari.png",
                 "rq": "需要ios13及以上系统",
                 "sm": "无需越狱，支持多文件同时下载，不用任何第三方工具就能轻松简单的下载文件",
+                "jsurl":"",
                 "url": "https://mp.weixin.qq.com/s/LDdYSTNqhcKz2QzNqHbb1g"
             },
             {
@@ -508,6 +511,7 @@
                 "img": "tg_logo.png",
                 "rq": "Safari 浏览器中打开",
                 "sm": "无需科学上网即可使用Telegram",
+                "jsurl":"",
                 "url": "http://api.ae85.cn/telegram.php"
             },
             {
@@ -515,6 +519,7 @@
                 "img": "settings.png",
                 "rq": "Safari 浏览器中打开",
                 "sm": "ios13用户不想系统自动下载更新的可以安装这个描述文件",
+                "jsurl":"",
                 "url": "https://iphone8.vip/ios/iOS13.mobileconfig"
             },
             {
@@ -668,62 +673,6 @@
                 "sm": "有新教程第一时间发这里\n演示视频、视频教程、等",
                 "jsurl": "https://iphone8.vip/img/sph_qr.jpg",
                 "url": "https://iphone8.vip/img/sph_qr.jpg"
-            }
-        ],
-        "jx": [
-            {
-                "title": "最新 - 解析代码-Safari书签",
-                "img": "zxdm.png",
-                "rq": "查看详情",
-                "sm": "最后更新：2017年11月17日",
-                "jsurl": "https://iphone8.vip/vip/jxdm.html",
-                "url": "https://iphone8.vip/vip/jxdm.html",
-                "button": "进入查看"
-            },
-            {
-                "title": "最新 - 解析接口 - Pin动作",
-                "img": "zxjk.png",
-                "rq": "查看详情",
-                "sm": "最后更新：2017年11月17日",
-                "jsurl": "https://iphone8.vip/vip/jxjk.html",
-                "url": "https://iphone8.vip/vip/jxjk.html",
-                "button": "进入查看"
-            },
-            {
-                "title": "VIP视频在线解析 - 网页版",
-                "img": "128.png",
-                "rq": "查看详情",
-                "sm": "支持：ios、os、Android、Windows",
-                "jsurl": "https://iphone8.vip/vip/zx.html",
-                "url": "https://iphone8.vip/vip/zx.html",
-                "button": "在线解析"
-            },
-            {
-                "title": "Safari浏览器-书签解析教程",
-                "img": "Safari.png",
-                "rq": "查看详情",
-                "sm": "免越狱、无需下载任何工具，软件",
-                "jsurl": "https://iphone8.vip/vip/s.html",
-                "url": "https://iphone8.vip/vip/s.html",
-                "button": "查看教程"
-            },
-            {
-                "title": "Pin 软件 - 观看VIP视频教程",
-                "img": "Pin.png",
-                "rq": "查看详情",
-                "sm": "免越狱、需要下载Pin软件\n\n用pin动作就可以了",
-                "jsurl": "https://iphone8.vip/vip/sj.html",
-                "url": "https://iphone8.vip/vip/sj.html",
-                "button": "查看教程"
-            },
-            {
-                "title": "电脑端 - 观看VIP视频教程",
-                "img": "dn.png",
-                "rq": "查看详情",
-                "sm": "支持：UC、谷歌、360、等浏览器",
-                "jsurl": "https://iphone8.vip/vip/cj.html",
-                "url": "https://iphone8.vip/vip/cj.html",
-                "button": "查看教程"
             }
         ],
         "qt": [

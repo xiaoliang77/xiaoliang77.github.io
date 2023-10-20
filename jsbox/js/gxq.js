@@ -562,12 +562,10 @@ function listjm(bt, ant, id) {
                                 didSelect: function (sender, indexPath, data) {
                                     if (id == 1) {
                                         azjs(data.url, data.title);
+                                    } else if (id == 2) {
+                                        installgz(data.url)
                                     } else {
-                                        if (data.url.indexOf("://") == -1) {
-                                            installgz(data.url)
-                                        } else {
-                                            $app.openURL(data.url);
-                                        }
+                                        $app.openURL(data.url);
                                     }
                                 }
                             }
@@ -678,12 +676,10 @@ function xqym(data, idx) {
                     tapped: function (sender) {
                         if (idx == 1) {
                             azjs(data.url, data.title);
+                        } else if (idx == 2) {
+                            installgz(data.url)
                         } else {
-                            if (data.url.indexOf("://") == -1) {
-                                installgz(data.url)
-                            } else {
-                                $app.openURL(data.url);
-                            }
+                            $app.openURL(data.url);
                         }
                     },
                     longPressed: function (sender) {
