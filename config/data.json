@@ -1,7 +1,7 @@
 {
     "version": "3.1",
     "gw": "https://iphone8.vip/",
-    "hant": "域名污染，请更新到最新版本！",
+    "hant": "整合资源以及更换配置文件，请更新到最新版本！",
     "bburl": "https://iphone8.vip/jsbox/js/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.1",
     "name":"小良更新器 3.1",
     "file":"gxq.js",
@@ -23,17 +23,17 @@
                 "name": "巨魔"
             },
             {
-                "src": "AD5.jpg",
-                "url": "http://mp.weixin.qq.com/mp/homepage?__biz=MzI0NDM1MDUwOQ==&hid=1",
-                "name": "公众号 ： ae85-cn"
-            },
-            {
                 "src": "hdp/xcx.png",
                 "url": "https://mp.weixin.qq.com/s/ivUB1qODFcfOYtdn64lk8g",
                 "name": "微信小程序"
+            },
+            {
+                "src": "AD5.jpg",
+                "url": "http://mp.weixin.qq.com/mp/homepage?__biz=MzI0NDM1MDUwOQ==&hid=1",
+                "name": "公众号 ： ae85-cn"
             }
         ],
-        "gg": "欢迎订阅公众号\n小良科技\nID：ae85-cn\n------------\n2023年10月12日\n更新脚本\n🔥无限资源 2.0"
+        "gg": "欢迎订阅公众号\n小良科技\nID：ae85-cn\n------------\n2023年10月20日\n🔥小良-更新器 3.1"
     },
     "workflow": {
         "bb": "3.8",
@@ -68,7 +68,7 @@
                 "url": "c9014337da74421c9666b31107c7b922"
             },
             {
-                "title": "🔥直播-秋名山见 2.2",
+                "title": "直播-秋名山见 2.2",
                 "img": "qmsj.png",
                 "rq": "更新：2023年9月28日",
                 "sm": "破解直播平台聚合，目前平台约有100个，搭配AM3U播放器使用",
@@ -76,7 +76,7 @@
                 "url": "4608e210b0b042faa90cdcc85d58bf95"
             },
             {
-                "title": "🔥Instagram图像视频下载1.7",
+                "title": "Instagram图像视频下载1.7",
                 "img": "Instagram.png",
                 "rq": "更新：2023年7月11日",
                 "sm": "支持：多图一键下载。\n\n使用方法：在Instagram客户端复制分享链接后运行规则会自动保存到相册",
@@ -92,7 +92,7 @@
                 "url": "d22af9587db545d2841be144a53ba110"
             },
             {
-                "title": "🔥网购历史价格查询 1.5",
+                "title": "网购历史价格查询 1.5",
                 "img": "wanggou.png",
                 "rq": "更新：2022年8月11日",
                 "sm": "更新支持领取隐藏优惠券！\n支持：淘宝、天猫、京东、舒宁、亚马逊、等各大网商。\n使用方法：在商城复制商品链接，运行规则\n使用前请观看视频教程",
@@ -214,7 +214,7 @@
                 "url": "PornHub.js"
             },
             {
-                "title": "🔥直播-秋名山见 2.2",
+                "title": "直播-秋名山见 2.2",
                 "img": "qmsj.jpg",
                 "rq": "更新：2023年9月28日",
                 "sm": "破解直播平台聚合，目前平台约有100个。\n\n由于脚本内置播放器无法播放直播媒体流链接，在使用过程中请根据播放链接来设置默认播放器。",
@@ -254,7 +254,7 @@
                 "url": "1024tk.js"
             },
             {
-                "title": "🔥文字转语音",
+                "title": "文字转语音",
                 "img": "tts.png",
                 "rq": "发布：2023年7月13日",
                 "sm": "可在键盘中使用，请看演示视频",

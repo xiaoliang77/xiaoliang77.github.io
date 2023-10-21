@@ -246,16 +246,22 @@ function slide() {
         data.push({
             type: "button",
             props: {
-                src: gw + "img/" + gd.src
+                src: gw + "img/" + gd.src,
+                title: i
             },
             events: {
-                tapped: function (sender) {
-                    web(gd.url, gd.name);
+                tapped(sender) {
+                    get_slide(sender.title)
                 }
             }
         })
     }
     return data;
+}
+
+function get_slide(i) {
+    var arr = $cache.get("stories").js.zygd;
+    web(arr[i].url, arr[i].name);
 }
 
 function azjs(jsurl, jsname) {
@@ -388,6 +394,19 @@ function clzyli(json, mc, idx) {
     return txt;
 }
 
+[{
+    type: "gallery",
+    props: {
+        id: "gall",
+        items: pz.slide,
+        interval: 3
+    },
+    layout: function (make, view) {
+        make.height.equalTo(160);
+        make.width.equalTo(view.super);
+        make.top.left.inset(0);
+    }
+}]
 function csh() {
     $ui.render({
         props: {
