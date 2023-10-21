@@ -1,6 +1,6 @@
 /*
 小良 - 更新器 3.1
- 2023年10月20 修复更新配置文件
+ 2023年10月21 修复更新配置文件
  *快速获取安装小良个人作品
 
 by：iPhone 8、小良
@@ -322,7 +322,7 @@ function azjs(jsurl, jsname) {
                     {
                         title: "观看添加视频教程",
                         handler: function () {
-                            $app.openURL("http://t.cn/RDIca0w");
+                            $app.openURL("https://mp.weixin.qq.com/s/9E86yTg1Nwm7XuZeOqhVLQ");
                         }
                     },
                     {
