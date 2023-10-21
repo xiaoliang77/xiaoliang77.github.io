@@ -16,8 +16,8 @@ function kap_cj(data){
     <div class="kap s105">
         <img src="./img/xl.png">
         <div class="title">
-            <h4>🔥小良 - 更新器 v3.0 Js版</h4>
-            <p class="ri">更新：2023年10月23日</p>
+            <h4>🔥小良 - 更新器 v3.1 Js版</h4>
+            <p class="ri">更新：2023年10月21日</p>
         </div>
         <div class="sm">
             <p>js脚本是运行在pin或jsbox上的程序, 可以方便快捷的更新小良作品</p>
