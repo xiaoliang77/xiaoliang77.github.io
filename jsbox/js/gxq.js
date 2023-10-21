@@ -430,7 +430,7 @@ function csh() {
                             interval: 3
                         },
                         layout: function (make, view) {
-                            make.height.equalTo(160);
+                            make.height.equalTo(166);
                             make.width.equalTo(view.super);
                             make.top.left.inset(0);
                         }
