@@ -291,12 +291,13 @@ function urlConvert(content) {
     } else if (/u.nu\/\w{4}$/i.test(url) === true) {
       lengthen(url);
     } else {
-      $ui.menu({
-        items: ["t.cn", "u.nu"],
-        handler: function(title, idx) {
-          idx == 0 ? tcn(url) : unu(url);
-        }
-      });
+      dwz_xl(url)
+      // $ui.menu({
+      //   items: ["t.cn", "u.nu"],
+      //   handler: function(title, idx) {
+      //     idx == 0 ? tcn(url) : unu(url);
+      //   }
+      // });
     }
   } else $ui.toast("网址输入有误");
 }
@@ -321,6 +322,24 @@ function tcn(url) {
       if (data.urls[0].result == true) {
         var dataManager = require("./data-manager");
         dataManager.copied2Clip(data.urls[0].url_short);
+        $ui.toast("短链接已复制");
+        var module = require("./widget");
+
+        module.init();
+      } else $ui.toast("短链接生成失败");
+    }
+  });
+}
+
+function dwz_xl(url) {
+  $ui.toast("生成中..", 10);
+  $http.get({
+    url: "https://d.87xl.cn/?ac=1&url=" + $text.URLEncode(url),
+    handler: function(resp) {
+      var data = resp.data;
+      if (data.code == 200) {
+        var dataManager = require("./data-manager");
+        dataManager.copied2Clip(data.url);
         $ui.toast("短链接已复制");
         var module = require("./widget");
 
