@@ -34,7 +34,7 @@ const mrhb = {
   }
 $ui.render({
     props: {
-        title: "无限资源 2.0"
+        title: "无限资源 2.1"
     },
     views: [
         {
