@@ -91,6 +91,10 @@ body {
     top: -65px;
     font-size: 15px;
 }
+.sm{
+    height: 45px;
+    overflow: hidden;
+}
 .ma_tac{ 
     background:rgba(0,0,0,0.8); 
     width:100%; 

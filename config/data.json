@@ -48,7 +48,7 @@
                 "img": "Instagram.png",
                 "rq": "更新：2023年11月10日",
                 "sm": "支持：视频、多图一键下载。\n\n使用方法：在Instagram客户端复制分享链接后运行规则会自动保存到相册",
-                "jsurl": "",
+                "jsurl": "https://d.87xl.cn/insdown",
                 "url": "a6d9949da6214212b41dc082cbffcde6"
             },
             {
@@ -80,7 +80,7 @@
                 "img": "twittergz.png",
                 "rq": "更新：2023年10月6日",
                 "sm": "可以选择视频清晰度品质下载，支持分享面板调用",
-                "jsurl": "",
+                "jsurl": "https://d.87xl.cn/ttdown",
                 "url": "6c266ffec3334ffb8aeb90e6dcdd1c23"
             },
             {
@@ -120,7 +120,7 @@
                 "img": "youtube.png",
                 "rq": "发布：2022年3月20日",
                 "sm": "支持：选择视频品质下载（1080p/720p）",
-                "jsurl": "",
+                "jsurl": "https://d.87xl.cn/youtbdown",
                 "url": "1d826257d89c4af7b5894110cd9c0b4f"
             },
             {
@@ -128,7 +128,7 @@
                 "img": "appstore.png",
                 "rq": "更新：2022年3月17日",
                 "sm": "一键更换App Store应用商店地区\n\n重要说明：\n使用规则改了地区之后，只能查看修改后的地区的应用信息，并不能直接下载应用！必须使用对应地区ID账号才可以下载APP。",
-                "jsurl": "",
+                "jsurl": "https://d.87xl.cn/appstore",
                 "url": "c9ab7498f3ed4f26b3f1f7c66d55b880"
             },
             {
@@ -274,7 +274,7 @@
                 "img": "tts.png",
                 "rq": "发布：2023年7月13日",
                 "sm": "可在键盘中使用，请看演示视频",
-                "jsurl": "http://3v.ae85.cn/api/streamja.php?url=https://streamja.com/11MRe",
+                "jsurl": "https://d.87xl.cn/jswzzyy",
                 "url": "tts.js"
             },
             {
@@ -282,7 +282,7 @@
                 "img": "appleid.jpg",
                 "rq": "更新：2023年7月10日",
                 "sm": "ID可下载Shadowrocket(小火箭),\n账号密码24小时自动更新",
-                "jsurl": "https://c1n.cn/appleid",
+                "jsurl": "https://d.87xl.cn/appleID",
                 "url": "appleid.js"
             },
             {
@@ -298,7 +298,7 @@
                 "img": "music.jpg",
                 "rq": "更新：2022年11月11日",
                 "sm": "修复更新，新增自动更新功能",
-                "jsurl": "http://t.cn/EGtlxQ5",
+                "jsurl": "",
                 "url": "music2.js"
             },
             {
@@ -314,7 +314,7 @@
                 "img": "douyin.png",
                 "rq": "更新：2022年8月16日",
                 "sm": "修复更新。\n支持pin软件使用\n不支持视频下载",
-                "jsurl": "https://iphone8.vip/jb.html",
+                "jsurl": "",
                 "url": "douyincn_1.6.js"
             },
             {
@@ -322,7 +322,7 @@
                 "img": "douyin.png",
                 "rq": "更新：2022年8月14日",
                 "sm": "修复更新\n\n左右滑动可切换视频。\n\n支持pin软件",
-                "jsurl": "https://iphone8.vip/jb.html",
+                "jsurl": "",
                 "url": "douyin7.js"
             },
             {
@@ -330,7 +330,7 @@
                 "img": "lsjgcx.jpg",
                 "rq": "更新：2022年8月11日",
                 "sm": "历史价格走势图\n支持：淘宝、京东、亚马逊等",
-                "jsurl": "http://t.cn/Ebed6dC",
+                "jsurl": "",
                 "url": "wglsjg1.5.js"
             },
             {
@@ -338,7 +338,7 @@
                 "img": "dsp.png",
                 "rq": "更新：2022年8月9日",
                 "sm": "更新：配置文件访问不了问题\n\n\n如果不会使用的请查看教程",
-                "jsurl": "http://t.cn/E49YWj6",
+                "jsurl": "",
                 "url": "dspxzq29.js"
             },
             {
@@ -346,7 +346,7 @@
                 "img": "appstore.png",
                 "rq": "更新：2022年3月17日",
                 "sm": "一键更换App Store应用商店地区\n\n重要说明：\n使用脚本改了地区之后，只能查看修改后的地区的应用信息,必须使用对应地区ID账号才可以下载APP",
-                "jsurl": "",
+                "jsurl": "https://d.87xl.cn/appstore",
                 "url": "appstoreqh.js"
             },
             {
@@ -354,7 +354,7 @@
                 "img": "qiandao.jpg",
                 "rq": "更新：2020年6月26日",
                 "sm": "新增自动签到模式\n支持多账号签到\n支持添加BDUSS功能，添加管理账号，切换账号签到。\n\n如果不会使用点击下方的查看教程",
-                "jsurl": "http://t.cn/RrCFKeW",
+                "jsurl": "",
                 "url": "tieba4.js"
             },
             {
@@ -378,7 +378,7 @@
                 "img": "sdgs.png",
                 "rq": "更新：2020年6月3日",
                 "sm": "修复更新",
-                "jsurl": "https://iphone8.vip/jb.html",
+                "jsurl": "",
                 "url": "sdgs1.6.js"
             },
             {
@@ -386,7 +386,7 @@
                 "img": "wxlq.png",
                 "rq": "更新：2019年11月23日",
                 "sm": "仅供娱乐",
-                "jsurl": "https://iphone8.vip/jb.html",
+                "jsurl": "",
                 "url": "wxlqscq.box"
             },
             {
@@ -402,7 +402,7 @@
                 "img": "ignition.png",
                 "rq": "发布：2019年6月12日",
                 "sm": "企业证书App\njs可提取ipa文件包，在线安装，过滤广告，在线搜索等功能。",
-                "jsurl": "https://iphone8.vip/jb.html",
+                "jsurl": "",
                 "url": "ignition.js"
             },
             {
@@ -426,7 +426,7 @@
                 "img": "tv-live.png",
                 "rq": "更新：2019年1月1日",
                 "sm": "国内电视直播",
-                "jsurl": "http://t.cn/Ebm9Ggf",
+                "jsurl": "",
                 "url": "tv-live.js"
             },
             {
