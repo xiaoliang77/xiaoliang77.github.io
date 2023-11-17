@@ -32,22 +32,7 @@ const mrhb = {
       make.right.inset(15)
     }
   }
-  const copy = {
-    type: "button",
-    props: {
-      src: "https://iphone8.vip/img/xl.png",
-    },
-    events: {
-      tapped: function(sender) {
-        console.log(this.url);
-    }
-    },
-    layout: function(make, view) {
-      make.bottom.inset(50)
-      make.width.height.equalTo(50)
-      make.right.inset(15)
-    }
-  }
+
 $ui.render({
     props: {
         title: "无限资源 2.1"
