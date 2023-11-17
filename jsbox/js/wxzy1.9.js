@@ -8,12 +8,12 @@ https://iphone8.vip/
 https://ae85.cn/
 */
 
-var channelList = [
+const channelList = [
     { "name": "国产", "id": "/type/1" }, { "name": "日本", "id": "/type/2" }, { "name": "韩国", "id": "/type/3" }, { "name": "欧美", "id": "/type/4" }, { "name": "三级", "id": "/type/5" }, { "name": "动漫", "id": "/type/6" }];
-var myHeaders = {
+    const myHeaders = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"
 };
-var urlt = $text.base64Decode("aHR0cHM6Ly95a3h5LmN4eGsudmlw");
+const urlt = $text.base64Decode("aHR0cHM6Ly95a3h5LmN4eGsudmlw");
 const mrhb = {
     type: "button",
     props: {
@@ -25,6 +25,22 @@ const mrhb = {
       tapped: function(sender) {
         $app.openURL("alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Frender.alipay.com%2Fp%2Fc%2Falipay-red-qrcode%2Fshared.html%3Fchannel%3Dsearch_pwd%26shareId%3D2088202699097532%26token%3D19614922yglxkd7xgrvnf1fjlb%26campStr%3DkPPFvOxaCL3f85TiKss2wsBZgIjulHjG%26sign%3DqsiVOoa7TuphryWxyBdONXsMTnE3jiIBvWeUs3yV1sw%3D%26chInfo%3DDingtalk%26c_stype%3Dsearch_pwd%26code%3D798679953")
       }
+    },
+    layout: function(make, view) {
+      make.bottom.inset(50)
+      make.width.height.equalTo(50)
+      make.right.inset(15)
+    }
+  }
+  const copy = {
+    type: "button",
+    props: {
+      src: "https://iphone8.vip/img/xl.png",
+    },
+    events: {
+      tapped: function(sender) {
+        console.log(this.url);
+    }
     },
     layout: function(make, view) {
       make.bottom.inset(50)
@@ -187,7 +203,25 @@ function play(url, mc) {
                 url: url,
             },
             layout: $layout.fill
-        }]
+        },
+        {
+            type: "button",
+            props: {
+              src: "https://iphone8.vip/img/xl.png",
+            },
+            events: {
+              tapped: function(sender) {
+                $device.taptic(1);
+                $clipboard.text = url
+                $ui.error("已复制", 0.5);
+            }
+            },
+            layout: function(make, view) {
+              make.bottom.inset(50)
+              make.width.height.equalTo(50)
+              make.right.inset(15)
+            }
+          }]
     })
 }
 
