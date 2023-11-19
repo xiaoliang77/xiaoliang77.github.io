@@ -56,7 +56,7 @@
                 "img": "aly_qiandao.png",
                 "rq": "发布：2023年11月7日",
                 "sm": "可全自动签到，自动领取签到奖励",
-                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/alyqd",
+                "jsurl": "https://v.87xl.cn?url=https%3A%2F%2Fd.87xl.cn%2Falyqd",
                 "url": "a0fb186ea93c485a9fbec232513cca3a"
             },
             {
@@ -64,7 +64,7 @@
                 "img": "aly_token.png",
                 "rq": "发布：2023年11月7日",
                 "sm": "使用快捷指令注入js脚本到Safari浏览器中提取阿里云盘refresh_token，用于阿里云盘签到",
-                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/alyqd",
+                "jsurl": "https://v.87xl.cn?url=https%3A%2F%2Fd.87xl.cn%2Falyqd",
                 "url": "da5842c095c348a9b3b6df454ecc05a5"
             },
             {
