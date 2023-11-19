@@ -115,10 +115,11 @@ function runAction(action) {
   }
 
   if (_hasPrefix(pattern, "delete:")) {
-    $photo.delete({
-      count: 1,
-      handler: function(success) {}
-    });
+    $ui.alert("点击");
+    // $photo.delete({
+    //   count: 1,
+    //   handler: function(success) {}
+    // });
     return;
     //      jsActions.editPhoto()
   }

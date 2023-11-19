@@ -9,7 +9,7 @@ var tabView = {
   type: "tab",
   props: {
     id: "tab",
-    items: [$l10n("CLIPBOARD"), "iCloud", $l10n("ACTION")],
+    items: [$l10n("CLIPBOARD"), "云端", $l10n("ACTION")],
     index: mode == "clip" ? 0 : 1
   },
   layout: function(make, view) {

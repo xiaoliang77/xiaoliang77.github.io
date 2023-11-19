@@ -1,4 +1,4 @@
-$widget.height = 181;
+$widget.height = 200;
 $keyboard.barHidden = true
 var dataManager = require("./data-manager");
 var builder = require("./builder");
