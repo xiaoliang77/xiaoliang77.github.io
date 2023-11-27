@@ -19,7 +19,7 @@
       $(function () {
         $.ajax({
           type: "get",
-          url: "./markdown/tool.md",
+          url: "./markdown/tool-bat.md",
           dataType: "html",
           success: function (res) {
             $("#content").append(marked.parse(res));
