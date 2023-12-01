@@ -10,7 +10,7 @@ function co_sj() {
         color++;
     }
 }
-var data_bj = [{ "title": "Telegram 机器人", "image": "img/tg_logo.png", "rq": "笔记", "details": "bot申请，配置，代码", "url": "telegram" }, { "title": "Linux 系统操作", "image": "img/linux.png", "rq": "笔记", "details": "常用命令", "url": "linux" }, { "title": "VFX视频剪辑", "image": "img/videox.png", "rq": "笔记", "details": "重要知识点", "url": "dosc/vfx-video.html" }, { "title": "Windows 批处理(bat)类", "image": "img/jsdrgz.png", "rq": ".bat文件", "details": "wifi密码，dns缓存", "url": "tool-bat" }, { "title": "Dos命令", "image": "img/dos.png", "rq": "笔记", "details": "常用，hexo", "url": "tool-dos" }]
+var data_bj = [{ "title": "Telegram 机器人", "image": "img/tg_logo.png", "rq": "笔记", "details": "bot申请，配置，代码", "url": "telegram" }, { "title": "Linux 系统操作", "image": "img/linux.png", "rq": "笔记", "details": "常用命令", "url": "linux" }, { "title": "VFX视频剪辑", "image": "img/videox.png", "rq": "笔记", "details": "重要知识点", "url": "dosc/vfx-video.html" }, { "title": "Windows 批处理(bat)类", "image": "img/jsdrgz.png", "rq": ".bat文件", "details": "wifi密码，dns缓存", "url": "tool-bat" }, { "title": "Dos命令", "image": "img/dos.png", "rq": "笔记", "details": "常用，hexo", "url": "tool-dos" },{ "title": "cloudflare-workers", "image": "img/Cloudflare_Logo.png", "rq": "笔记", "details": "云剪贴板，短网址，跨域，谷歌Script反代", "url": "cf-workers" }]
 
 
 function kap_cj(data) {
