@@ -5,30 +5,77 @@
     <meta charset="utf-8" />
     <title>文档</title>
     <script src="../js/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" href="../css/code/atom-one-dark.min.css"> -->
-    <link rel="stylesheet" href="../css/code/an-old-hope.min.css">
+    <link rel="stylesheet" href="../css/code/md.css">
+    <link rel="stylesheet" href="../css/code/atom-one-dark.min.css">
+    <!-- <link rel="stylesheet" href="../css/code/an-old-hope.min.css"> -->
     <script src="../js/highlight.min.js"></script>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../css/bootstrap.min.css"> -->
+
     <style>
         pre {
             padding: 0;
             border: 0;
         }
+        .main {
+            display: flex;
+            overflow: hidden;
+        }
+
+        #meun {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 230px;
+            height: 100vh;
+            overflow: auto;
+            font-size: 14px;
+            padding-top: 20px;
+        }
+
+        .b-left {
+            width: 230px;
+            flex-shrink: 0;
+        }
+
+        .b-fgf {
+            width: 4px;
+            flex-shrink: 0;
+            background: #efefef;
+        }
+
+        .b-content {
+            flex: 1;
+            padding-left: 10px;
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div id="content"></div>
+    <div class="main">
+        <div class="b-left">
+            <div id="meun"></div>
+        </div>
+        <div class="b-fgf"></div>
+        <div class="b-content">
+            <div id="content" class="markdown-body"></div>
+        </div>
     </div>
 
+
     <script src="../js/marked.min.js"></script>
+
     <script>
+        var rendererMD = new marked.Renderer();
         const options = {
+            renderer: rendererMD,
             gfm: true,//允许 GitHub风格
             breaks: true,//允许回车换行
             smartLists: true,//使用比原生markdown更时髦的列表。 旧的列表将可能被作为pedantic的处理内容过滤掉.
-            tables:true, //允许支持表格语法
+            tables: true, //允许支持表格语法
+            pedantic: false,
+            sanitize: false,
+            smartypants: false,
         };
         function getQueryString(name) {
             const url_string = window.location.href
@@ -45,10 +92,35 @@
                 url: "./markdown/" + vid + ".md",
                 dataType: "html",
                 success: function (res) {
-                    $("#content").append(marked.parse(res,options));
+                    $("#content").append(marked.parse(res, options));
                     hljs.initHighlightingOnLoad();
+
+                    setMeunHtml()
                 }
             })
+
+            function setMeunHtml() {
+                var hList = $('h1,h2,h3,h4,h5,h6')
+                var hListDomeString = '';
+                var blankDomMap = {
+                    'H1': 1,
+                    'H2': 2,
+                    'H3': 3,
+                    'H4': 4,
+                    'H5': 5,
+                    'H6': 6,
+                }
+                for (var i = 0; i < hList.length; i++) {
+                    var h = hList[i];
+                    var tagName = h.tagName;
+                    var innerText = h.innerText;
+
+                    hListDomeString += '<div>' +
+                        '<div style="width: ' + 10 * blankDomMap[tagName] + 'px;display: inline-block" ></div>' +
+                        '<a href="#' + h.id + '" style="" >' + innerText + '</a></div>'
+                }
+                $('#meun').html(hListDomeString)
+            }
         })
     </script>
 </body>

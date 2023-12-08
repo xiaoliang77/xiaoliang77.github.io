@@ -1,4 +1,6 @@
-#### github+hexo个人博客
+<!-- @import "https://haogeshuohuanihaohaoting.github.io/static/mdCreateMenu.js" -->
+
+### github+hexo个人博客
 ```bash
 hexo g	#生成静态文件
 hexo s	#启动web本地预览
