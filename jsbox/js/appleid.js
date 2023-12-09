@@ -1,5 +1,5 @@
 /*
-2023年7月10日 更新
+2023年12月9日 更新
 
 账号密码24小时自动更新
 重新运行脚本可获取最新ID
@@ -27,7 +27,7 @@ $http.get({
     handler: function (resp) {
         $ui.loading(false);
         var info = resp.data;
-        if (info.bb != "1.4") {
+        if (info.bb != "1.5") {
             $ui.alert({
                 title: "温馨提示：",
                 message: info.gxsm,
@@ -110,6 +110,16 @@ $ui.render({
                         layout: function (make, view) {
                             make.top.inset(16)
                             make.left.equalTo($("zt_t").right).inset(-15)
+                        }
+                    }, {
+                        type: "label",
+                        props: {
+                            id: "country",
+                            font: $font(15),
+                        },
+                        layout: function (make, view) {
+                            make.top.inset(16)
+                            make.left.equalTo($("zt_wz").right).inset(15)
                         }
                     }, {
                         type: "label",
@@ -211,40 +221,38 @@ $ui.render({
 })
 
 
+
+
 async function get_data() {
     var turl = $cache.get("info").turl;
-    var token = $cache.get("info").token;
+    const resp = await $http.get({ url: $text.base64Decode("turl"), header: myHeaders });
+    const status = ['正在检测', '状态正常', '状态异常', '等待检测'];
+    const arr = resp.data
     var data_j = []
-    for (i in token) {
-        const resp = await $http.get({ url: $text.base64Decode(turl) + token[i], header: myHeaders });
-        var s = parseInt(i)+1
-        data_j.push(cl_hd(resp.data, s))
+    for (i in arr) {
+        const zh = arr[i].username
+        const mi = arr[i].password
+        const zt = status[arr[i].status]
+        const country = arr[i].country
+        const sec = zt == "状态正常" ? "#0f0" : "#ddd";
+        const yc = zt == "状态正常" ? false : true;
+        const sj = arr[i].time
+        const n = parseInt(i) + 1
+        data_j.push({
+            zbiao: { text: "ID " + n },
+            zt_t: { textColor: $color(sec) },
+            zt_wz: { text: zt, textColor: $color(sec) },
+            country: { text: country },
+            zh: { text: "账号：" + zh },
+            mi: { text: "密码：" + mi },
+            btn_z: { src: zh, hidden: yc },
+            btn_m: { src: mi, hidden: yc },
+            rq: { text: sj },
+        })
     }
     $("list").data = await data_j;
 }
 
-function cl_hd(params, x) {
-    var zh = params[0].username
-    var mi = params[0].password
-    var zt = "维护中"
-    if (params[0].status == 1) {
-        zt = "可用"
-    }
-    var sec = zt == "可用" ? "#0f0" : "#ddd";
-    var yc = zt == "可用" ? false : true;
-    var sj = params[0].time
-    const data = {
-        zbiao: { text: "ID " + x},
-        zt_t: { textColor: $color(sec) },
-        zt_wz: { text: zt, textColor: $color(sec) },
-        zh: { text: "账号：" + zh },
-        mi: { text: "密码：" + mi },
-        btn_z: { src: zh, hidden: yc },
-        btn_m: { src: mi, hidden: yc },
-        rq: { text: sj },
-    }
-    return data;
-}
 
 function download(url) {
     $ui.toast("正在安装中 ...");
