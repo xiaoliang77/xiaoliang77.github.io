@@ -225,7 +225,7 @@ $ui.render({
 
 async function get_data() {
     var turl = $cache.get("info").turl;
-    const resp = await $http.get({ url: $text.base64Decode("turl"), header: myHeaders });
+    const resp = await $http.get({ url: $text.base64Decode(turl), header: myHeaders });
     const status = ['正在检测', '状态正常', '状态异常', '等待检测'];
     const arr = resp.data
     var data_j = []
