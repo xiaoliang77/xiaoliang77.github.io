@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple ID</title>
+    <link rel="stylesheet" href="css/layer.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/appleid.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/layer.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div id="app">
+        <div class="loading" v-show="loading">
+            <div id="load">
+                <div>正</div>
+                <div>在</div>
+                <div>加</div>
+                <div>载</div>
+                <div>中</div>
+              </div>
+        </div>
+        <div style="margin-top: 60px;"></div>
+        <div class="container floor-row">
+            <div class="row" id="gz">
+                <div class="col-md-4" v-for="(item,i) in data">
+                    <div class="kap" :class="yss[i]">
+
+                        <div class="card border border-success" style="margin-bottom: 0px">
+                            <div class="card-header bg-transparent border-success">
+                                <h4 class="my-0 text-success">{{item.username}}</h4>
+                            </div>
+
+                            <p style="text-align: center;color: #f56eca ;">每隔30分钟自动解除验证码</p>
+
+
+                            <div class="card-body">
+                                <p class="card-title">账号状态：{{status[item.status]}}&nbsp;&nbsp;&nbsp;
+                                    <a class="card-text">&nbsp;&nbsp;&nbsp;{{item.country}}</a>
+                                </p>
+                                <p class="card-text">检测时间：{{item.time}}</p>
+                                <p class="card-text">检测结果：{{item.msg}}</p>
+                                <button class="btn btn-outline-secondary waves-effect"
+                                    @click="copy(item.username)">复制帐号</button>
+                                <button class="btn btn-outline-secondary waves-effect" style="margin-left: 8px"
+                                    @click="copy(item.password)">复制密码</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <textarea id="copy" style="display: none" readonly="readonly"></textarea>
+
+
+    </div>
+    <div id="dibu"></div>
+
+    <script id="csh_td" src="js/csh.js" webtype="4"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: 'appleid',
+                loading: true,
+                data: [],
+                status_jz: 'loading',
+                error: '',
+                status: ['正在检测', '状态正常', '状态异常', '等待检测'],
+                yss: ['s101', 's102', 's103', 's104', 's105', 's106', 's107', 's108', 's109']
+            },
+            created: function () {
+                this.createcode(); //需要触发的函数
+
+            },
+            methods: {
+                copy(str) {
+                    $('#copy').text(str).show();
+                    var ele = document.getElementById('copy');
+                    ele.select();
+                    document.execCommand('copy', false, null);
+                    $('#copy').hide();
+                    layer.msg('复制成功', { time: 3000, icon: 1 });
+                },
+                createcode() {
+                    var self = this;
+                    $.get('https://appleid.87xl.cn', function (data) {
+                        // console.log(data);
+                        self.data = JSON.parse(data);
+                        self.loading = false;
+                    }).fail(function (err) {
+                        self.error = err;
+                        self.status_jz = 'error';
+                    })
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
