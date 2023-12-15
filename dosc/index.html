@@ -16,6 +16,7 @@
             padding: 0;
             border: 0;
         }
+
         .main {
             display: flex;
             overflow: hidden;
@@ -48,6 +49,13 @@
             padding-left: 10px;
         }
 
+        .me_iten {
+            color: inherit;
+            text-decoration: none;
+        }
+        .me_iten:hover{
+            color: #e3980d;
+        }
     </style>
 </head>
 
@@ -117,7 +125,7 @@
 
                     hListDomeString += '<div>' +
                         '<div style="width: ' + 10 * blankDomMap[tagName] + 'px;display: inline-block" ></div>' +
-                        '<a href="#' + h.id + '" style="" >' + innerText + '</a></div>'
+                        '<a href="#' + h.id + '" style="" class="me_iten">' + innerText + '</a></div>'
                 }
                 $('#meun').html(hListDomeString)
             }

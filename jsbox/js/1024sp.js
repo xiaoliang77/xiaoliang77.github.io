@@ -1,5 +1,5 @@
 /*
-2023年10月7日 更新
+2023年12月15日 更新
 更新无法使用问题
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -8,32 +8,12 @@ https://iphone8.vip/
 https://ae85.cn/
 */
 
-$cache.set("id", "1")
+$cache.set("id", "629")
 $cache.set("pg", 1)
-var header = {
-    "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
-  }
-var urlt = $text.base64Decode("aHR0cHM6Ly9kcTIzMDlrLnh5ei8=");
+var urlt = $text.base64Decode("aHR0cHM6Ly9iYnMubXlsejB2LmNvbS8yMDQ4Lw==");
 var js_name = "1024视频"
-var data = [{ "name": "国产无码", "id": "1" }, { "name": "岛国步兵", "id": "2" }, { "name": "岛国骑兵", "id": "3" }, { "name": "欧美无码", "id": "4" }, { "name": "中字步兵", "id": "5" }, { "name": "中字骑兵", "6": "114" },]
-const mrhb = {
-    type: "button",
-    props: {
-      id: "hb_img",
-      radius: 25,
-      src: "https://iphone8.vip/img/hb.jpg",
-    },
-    events: {
-      tapped: function(sender) {
-        $app.openURL("https://ae85-1251930860.cos.ap-chengdu.myqcloud.com/hongbao.html")
-      }
-    },
-    layout: function(make, view) {
-      make.bottom.inset(50)
-      make.width.height.equalTo(50)
-      make.right.inset(15)
-    }
-  }
+var data = [{"id": "629","name":"网友自拍"},{"id": "528","name":"国产精品"},{"id": "567","name":"国产自拍"},{"id": "566","name":"网红主播"},{"id": "529","name":"日韩精品"},{"id": "535","name":"日韩无码"},{"id": "538","name":"中文字幕"},{"id": "569","name":"中文字幕2"},{"id": "537","name":"欧美精品"},{"id": "542","name":"伦理三级"},{"id": "541","name":"动漫精品"},{"id": "544","name":"自拍偷拍"},{"id": "581","name":"无码杂类"},{"id": "568","name":"日韩杂类"},{"id": "546","name":"杂类合辑"}]
+
 $ui.render({
     props: {
         title: js_name
@@ -78,7 +58,7 @@ $ui.render({
             }
         }
 
-    },mrhb
+    },
     ]
 
 })
@@ -88,26 +68,25 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "pw/thread1022.php?fid=184&type=" + id + "&page=" + pg,
-        header: header,
+        url: urlt + "thread.php?fid=279&type=" + id + "s&page=" + pg,
+        header: {
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
+        },
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            if (text.indexOf('普通主题') !== -1) {
-                text = text.split("普通主题")[1]
-            }
-            var shu = text.match(/class=\"tr3t_one\">(\S*?)<\/h3>/g)
+            var shu = text.match(/subjectbreak-all\"data-url=\"read.*?<\/div>/g)
             if (pg == 1) {
                 var data = []
             } else {
                 var data = $("list").data
             }
+
             for (i in shu) {
                 var a = shu[i]
-                if (a.indexOf('href=') !== -1) {
-                    var txt = a.split("<h3>")[1]
-                    var mc = txt.match(/\">(\S*?)<\/a>/)[1]
-                    var id = a.match(/href=\"(\S*?)\"/)[1]
+                if (i > 3) {
+                    var mc = a.match(/tid=(.*?)">(.*?)<\/a>/)[2]
+                    var id = a.match(/tid=([0-9]+)/)[1]
                     data.push(mc + "\n" + id)
                 }
             }
@@ -122,13 +101,11 @@ getdata()
 function geting(id, mc) {
     $ui.loading(true)
     $http.get({
-        url: urlt + "pw/" + id,
-        header: header,
+        url: urlt + "read.php?tid=" + id,
         handler: function (resp) {
-            $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var video = text.match(/\?url=(\S*?)\"/)[1]
-            video = video.replace(/&#46;/g, ".")
+            var video = text.match(/IFRAMESRC=(\S*?)FRAMEBORDER/)[1]
+            video = video.replace(/&#46;/g, ".").match(/\?url=(\S*?)\.m3u8/)[1] + ".m3u8"
             $ui.push({
                 props: {
                     title: mc
@@ -139,17 +116,17 @@ function geting(id, mc) {
                         url: video,
                     },
                     layout: $layout.fill
-                },mrhb]
+                }]
             })
         }
-    })
+    });
 }
 
 
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.6") {
+        if (resp.data.vdieo.version != "2.8") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,

@@ -1,27 +1,28 @@
 {
   "vdieo": {
-    "version": "错误！脚本已失效~",
+    "version": "2.8",
     "updata": "https://iphone8.vip/jsbox/js/1024sp.js",
-    "upexplain": "由于1024在线视频板块被隐藏，已无法获取数据！",
+    "upexplain": "修复更新：更换源地址",
     "Bulletin": ""
   },
   "mapdepot": {
-    "version": "2.7",
+    "version": "2.8",
     "updata": "https://iphone8.vip/jsbox/js/1024tk.js",
     "upexplain": "修复更新：更换源地址",
     "Bulletin": ""
   },
   "novel": {
-    "version": "2.7",
+    "version": "2.8",
     "updata": "https://iphone8.vip/jsbox/js/1024xs.js",
     "upexplain": "修复更新：更换源地址",
     "Bulletin": ""
   },
   "down": {
-    "version": "2.7",
+    "version": "2.8",
     "updata": "https://iphone8.vip/jsbox/js/1024xz.js",
     "upexplain": "修复更新：更换源地址",
     "Bulletin": ""
   },
-  "authority": "https://iphone8.vip"
+  "authority": "https://iphone8.vip",
+  "turl": "aHR0cHM6Ly9jZG5teGQueHl6Lw=="
 }

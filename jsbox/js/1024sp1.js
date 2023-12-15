@@ -1,23 +1,21 @@
 /*
-2023年12月15日 更新
-更换源地址
-
+2023年10月7日 更新
+更新无法使用问题
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
-by：iPhone 8、小良
+by：iPhone8、小良
 https://iphone8.vip/
 https://ae85.cn/
 */
 
-
-$cache.set("id", "193")
+$cache.set("id", "1")
 $cache.set("pg", 1)
 var header = {
     "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
   }
-var js_name = "1024小说"
-var urlt = $text.base64Decode("aHR0cHM6Ly9jZG5teGQueHl6Lw==")
-var data = [{ "name": "激情", "id": "193" }, { "name": "家庭", "id": "196" }, { "name": "校园", "id": "195" }, { "name": "武侠", "id": "197" }, { "name": "另类", "id": "199" }, { "name": "人妻", "id": "194" },]
+var urlt = $text.base64Decode("aHR0cHM6Ly9kcTIzMDlrLnh5ei8=");
+var js_name = "1024视频"
+var data = [{ "name": "国产无码", "id": "1" }, { "name": "岛国步兵", "id": "2" }, { "name": "岛国骑兵", "id": "3" }, { "name": "欧美无码", "id": "4" }, { "name": "中字步兵", "id": "5" }, { "name": "中字骑兵", "6": "114" },]
 const mrhb = {
     type: "button",
     props: {
@@ -90,7 +88,7 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "pw/thread.php?fid=" + id + "&page=" + pg,
+        url: urlt + "pw/thread1022.php?fid=184&type=" + id + "&page=" + pg,
         header: header,
         handler: function (resp) {
             $ui.loading(false)
@@ -128,9 +126,9 @@ function geting(id, mc) {
         header: header,
         handler: function (resp) {
             $ui.loading(false)
-            var text = resp.data.match(/id=\"read_tpc\">.*?<\/div>/)
-            text = text[0].replace('id=\"read_tpc\">', "")
-            var html = `<html><head><meta charset="UTF-8"><title>${mc}</title><style> body,div{ font-size:42px;} </style> </head><body><div>${text}</body></html>`
+            var text = resp.data.replace(/\n|\s|\r/g, "")
+            var video = text.match(/\?url=(\S*?)\"/)[1]
+            video = video.replace(/&#46;/g, ".")
             $ui.push({
                 props: {
                     title: mc
@@ -138,7 +136,7 @@ function geting(id, mc) {
                 views: [{
                     type: "web",
                     props: {
-                        html: html,
+                        url: video,
                     },
                     layout: $layout.fill
                 },mrhb]
@@ -147,18 +145,19 @@ function geting(id, mc) {
     })
 }
 
+
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
-    if(resp.response.statusCode === 200){
-        if (resp.data.novel.version != "2.8") {
+    if (resp.response.statusCode === 200) {
+        if (resp.data.vdieo.version != "2.6") {
             $ui.alert({
-                title: "发现新版本 - " + resp.data.novel.version,
-                message: resp.data.novel.upexplain,
+                title: "发现新版本 - " + resp.data.vdieo.version,
+                message: resp.data.vdieo.upexplain,
                 actions: [
                     {
                         title: "立即更新",
                         handler: function () {
-                            download(resp.data.novel.updata)
+                            download(resp.data.vdieo.updata)
                         }
                     }, {
                         title: "取消"
@@ -166,7 +165,7 @@ async function get_updata() {
                 ]
 
             });
-            
+
         }
     }
 }
