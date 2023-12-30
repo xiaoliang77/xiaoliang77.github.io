@@ -79,7 +79,7 @@ function download(gm) {
   $ui.toast("正在转换中 ...");
   $ui.loading(true);
   $http.download({
-    url: "https://dict.youdao.com/dictvoice?le=zh&audio=" + name,
+    url: "https://dict.youdao.com/dictvoice?le=zh&product=pc&type=null&audio=" + name,
     handler: function (resp) {
       $ui.loading(false);
       if (resp.response.statusCode == "200") {

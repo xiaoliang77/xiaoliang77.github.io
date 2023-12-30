@@ -1,7 +1,7 @@
 (function () {
     var webtype = $("#csh_td").attr("webtype")
     // webtype 【导航高亮】0=首页，1=规则，2=脚本，3=应用，4=其他
-    var leix = ["", "", "", "", ""]
+    var leix = ["", "", "", "", "",""]
     leix[webtype] = `class="active"`
     var navbar = `<div class="navbar-fixed-top">
         <nav class="navbar navbar-default">
@@ -24,18 +24,16 @@
                         <li ${leix[3]}><a href="yy.html">破解APP应用</a></li>
                         <li ${leix[4]}><a href="qt.html">各类实用教程</a></li>
                         <li><a href="youhou.html">油猴脚本</a></li>
-                        <li class="dropdown">
+                        <li ${leix[5]} class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false">其他 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li><a href="appleid.html">苹果共享ID - 可下载小火箭</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="vip/zx.html" target="_blank">VIP在线解析 - 网页版</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="vip/jxdm.html" target="_blank">Safari书签 - 解析代码</a></li>
-                                <li><a href="vip/jxjk.html" target="_blank">Pin软件 - 解析接口</a></li>
-                                <li role="separator" class="divider"></li>
                                 <li><a href="vip/s.html" target="_blank">Safari浏览器 - 解析教程</a></li>
-                                <li><a href="vip/sj.html" target="_blank">Pin软件 - vip解析教程</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="vip/cj.html" target="_blank">PC浏览器观看vip视频教程</a></li>
                             </ul>
                         </li>
                     </ul>

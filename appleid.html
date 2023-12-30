@@ -24,7 +24,7 @@
                 <div>加</div>
                 <div>载</div>
                 <div>中</div>
-              </div>
+            </div>
         </div>
         <div style="margin-top: 60px;"></div>
         <div class="container floor-row">
@@ -64,7 +64,7 @@
     </div>
     <div id="dibu"></div>
 
-    <script id="csh_td" src="js/csh.js" webtype="4"></script>
+    <script id="csh_td" src="js/csh.js" webtype="5"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
         var app = new Vue({
@@ -105,6 +105,12 @@
             }
         })
 
+        // 弹出公众号二维码
+        $(".gzhsb").hover(function () {
+            $(".gzh").show();
+        }, function () {
+            $(".gzh").hide();
+        });
     </script>
 </body>
 
