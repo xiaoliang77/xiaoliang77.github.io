@@ -225,7 +225,7 @@ async function get_updata() {
     if(resp.response.statusCode === 200){
         if (resp.data.version != "2.2") {
             $ui.alert({
-                title: resp.data.version,
+                title: resp.data.title,
                 message: resp.data.upexplain,
                 actions: [
                     {
