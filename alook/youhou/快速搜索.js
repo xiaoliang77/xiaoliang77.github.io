@@ -19,7 +19,7 @@
     { 'name': '大师兄影视', 'Keyword': 'dsx', 'url': 'https://dsxys.pro/sb/ke7nhZe3c1-.html?wd=' }, 
     { 'name': '555电影', 'Keyword': '555', 'url': 'https://www.555dy.me/vodsearch/-------------.html?wd=' },
     { 'name': '爱奇艺', 'Keyword': 'iqy', 'url': 'https://m.iqiyi.com/search.html?source=input&key=' },
-    { 'name': '捷径音乐下载', 'Keyword': 'yy', 'url': 'shortcuts://run-shortcut?name=%E9%9F%B3%E4%B9%90%E4%B8%8B%E8%BD%BD1.7&input=' },
+    { 'name': '捷径音乐下载', 'Keyword': 'yy', 'url': 'shortcuts://run-shortcut?name=%E9%9F%B3%E4%B9%90%E4%B8%8B%E8%BD%BD%201.7&input=' },
     { 'name': '高德导航', 'Keyword': 'dh', 'url': 'iosamap://poi?sourceApplication=pin&name=' }]
     
     const str = location.search
