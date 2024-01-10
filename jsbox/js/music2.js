@@ -1,6 +1,6 @@
-/* 音乐下载 1.5
- *  2022年11月11日 修复更新
- *  新增自动更新功能
+/* 音乐下载 1.7
+ *  2024年1月10日 修复更新
+ *  修复无法使用问题
  *  视频教程: http://t.cn/EGtlxQ5
 
  *  by：iPhone 8、小良
@@ -13,25 +13,25 @@ const js_name = "音乐下载"
 var turl = $text.base64Decode("aHR0cHM6Ly9hZTg1LmNuL2NvbmZpZy8=") + "yinyue.json"
 async function get_updata() {
   const resp = await $http.get(turl);
-  if(resp.response.statusCode === 200){
-      if (resp.data.bb != "1.5") {
-          $ui.alert({
-              title: "发现新版本 - " + resp.data.bb,
-              message: resp.data.gxsm,
-              actions: [
-                  {
-                      title: "立即更新",
-                      handler: function () {
-                          down(resp.data.updata)
-                      }
-                  }, {
-                      title: "取消"
-                  }
-              ]
+  if (resp.response.statusCode === 200) {
+    if (resp.data.bb != "1.7") {
+      $ui.alert({
+        title: "发现新版本 - " + resp.data.bb,
+        message: resp.data.gxsm,
+        actions: [
+          {
+            title: "立即更新",
+            handler: function () {
+              down(resp.data.updata)
+            }
+          }, {
+            title: "取消"
+          }
+        ]
 
-          });
-          
-      }
+      });
+
+    }
   }
 }
 get_updata()
@@ -39,29 +39,29 @@ csh()
 function down(url) {
   $ui.toast("正在安装中 ...");
   $http.download({
-      url: url,
-      handler: function (resp) {
-          $addin.save({
-              name: js_name,
-              data: resp.data,
-              handler: function () {
-                  $ui.alert({
-                      title: "安装完成",
-                      message: "\n是否打开？\n" + js_name,
-                      actions: [
-                          {
-                              title: "打开",
-                              handler: function () {
-                                  $app.openExtension(js_name)
-                              }
-                          },
-                          {
-                              title: "不了"
-                          }]
-                  });
-              }
-          })
-      }
+    url: url,
+    handler: function (resp) {
+      $addin.save({
+        name: js_name,
+        data: resp.data,
+        handler: function () {
+          $ui.alert({
+            title: "安装完成",
+            message: "\n是否打开？\n" + js_name,
+            actions: [
+              {
+                title: "打开",
+                handler: function () {
+                  $app.openExtension(js_name)
+                }
+              },
+              {
+                title: "不了"
+              }]
+          });
+        }
+      })
+    }
   })
 }
 
@@ -159,13 +159,13 @@ function csh() {
         },
         events: {
           didSelect: function (sender, indexPath, data) {
-            geturl(data);
+            get_audio(data)
           },
           didReachBottom: function (sender) {
-            sender.endFetchingMore();
-            var page = $cache.get("pg") + 1;
-            $cache.set("pg", page);
-            getlist();
+            // sender.endFetchingMore();
+            // var page = $cache.get("pg") + 1;
+            // $cache.set("pg", page);
+            // getlist();
           }
         }
       }
@@ -174,48 +174,41 @@ function csh() {
 }
 
 function getlist() {
-  var page = $cache.get("pg");
+  // var page = $cache.get("pg");
   var key = $cache.get("key");
   $ui.loading(true);
-  $http.post({
-    url: $text.base64Decode("aHR0cDovL211c2ljLml0em8uY24v"),
+  $http.get({
+    url: $text.base64Decode("aHR0cHM6Ly93d3cuZmFuZ3BpLm5ldC9zLw==") + $text.URLEncode(key),
     header: {
-      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      "X-Requested-With": "XMLHttpRequest",
       "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
-    },
-    body: {
-      input: key,
-      filter: "name",
-      type: "netease",
-      page: page
     },
     handler: function (resp) {
       $ui.loading(false);
-      var json = resp.data;
-      if (json.code === 200) {
-        if (json.data.length == 0) {
-          alert("未找到歌曲")
-          return;
+      const html = resp.data;
+      const text = html.replace(/\n|\s|\r/g, "")
+      const list = text.match(/class=\"row\">.*?text-right/g)
+      const arr_list = list.map(function (item) {
+        return {
+          mc: { text: item.match(/_blank\">(.*?)<\/a>/)[1] },
+          gs: { text: item.match(/col-4col-content\">(.*?)<\/div>/)[1] },
+          url: item.match(/\/music\/(.*?)\"/)[1]
         }
-        if (page == 1) {
-          var data = []
-        } else {
-          var data = $('list').data
-        }
-        for (i in json.data) {
-          const j = json.data[i];
-          data.push({
-            mc: { text: j.title },
-            gs: { text: j.author },
-            img: j.pic,
-            url: j.url
-          })
-        }
-        $('list').data = data
-        $('list').hidden = false
-      }
+      })
+      $('list').data = arr_list
+      $('list').hidden = false
 
+    }
+  });
+}
+
+function get_audio(g_data) {
+  $ui.loading(true);
+  $http.get({
+    url: $text.base64Decode("aHR0cHM6Ly93d3cuZmFuZ3BpLm5ldC9hcGkvcGxheV91cmw/anNvbj0xJmlkPQ==") + g_data.url,
+    handler: function(resp) {
+      $ui.loading(false);
+      g_data.url = resp.data.data.url;
+      geturl(g_data)
     }
   });
 }
@@ -253,91 +246,91 @@ function geturl(data) {
           sftc = 0;
         }
       }
-    },{
+    }, {
       type: "image",
       props: {
         id: "img",
-        src:data.img,
-        radius:5
+        src: data.img,
+        radius: 5
       },
-      layout: function(make, view) {
+      layout: function (make, view) {
         make.top.inset(25)
         make.left.inset(25)
         make.width.height.equalTo(100)
       }
     },
-      {
-        type: "label",
-        props: {
-          id: "t_gname",
-          font: $font("bold", 21),
-          text: data.mc.text
-        },
-        layout: function (make, view) {
-          make.top.inset(35);
-          make.right.inset(20);
-          make.left.equalTo($("img").right).inset(10);
-        }
+    {
+      type: "label",
+      props: {
+        id: "t_gname",
+        font: $font("bold", 21),
+        text: data.mc.text
       },
-      {
-        type: "label",
-        props: {
-          id: "t_gsm",
-          text: data.gs.text
-        },
-        layout: function (make, view) {
-          make.top.equalTo($("t_gname").bottom).inset(10);
-          make.right.inset(20);
-          make.left.equalTo($("img").right).inset(10);
-        }
+      layout: function (make, view) {
+        make.top.inset(35);
+        make.right.inset(20);
+        make.left.equalTo($("img").right).inset(10);
+      }
+    },
+    {
+      type: "label",
+      props: {
+        id: "t_gsm",
+        text: data.gs.text
       },
-      {
-        type: "button",
-        props: {
-          title: "试听",
-          id: "sBtn",
-          bgcolor: $color("#409eff")
-        },
-        layout: function (make, view) {
-          make.top.equalTo($("img").bottom).inset(40);
-          make.left.inset(50);
-          make.width.equalTo(80);
-        },
-        events: {
-          tapped: function (sender) {
-            if (sender.title == "试听") {
-              $("sBtn").title = "停止";
-              $audio.play({
-                url: data.url
-              });
-            } else {
-              $("sBtn").title = "试听";
-              $audio.stop();
-            }
+      layout: function (make, view) {
+        make.top.equalTo($("t_gname").bottom).inset(10);
+        make.right.inset(20);
+        make.left.equalTo($("img").right).inset(10);
+      }
+    },
+    {
+      type: "button",
+      props: {
+        title: "试听",
+        id: "sBtn",
+        bgcolor: $color("#409eff")
+      },
+      layout: function (make, view) {
+        make.top.equalTo($("img").bottom).inset(40);
+        make.left.inset(50);
+        make.width.equalTo(80);
+      },
+      events: {
+        tapped: function (sender) {
+          if (sender.title == "试听") {
+            $("sBtn").title = "停止";
+            $audio.play({
+              url: data.url
+            });
+          } else {
+            $("sBtn").title = "试听";
+            $audio.stop();
           }
         }
+      }
+    },
+    {
+      type: "button",
+      props: {
+        title: "下载",
+        bgcolor: $color("#090")
       },
-      {
-        type: "button",
-        props: {
-          title: "下载",
-          bgcolor: $color("#090")
+      layout: function (make, view) {
+        make.top.equalTo($("img").bottom).inset(40);
+        make.right.inset(50);
+        make.width.equalTo(80);
+      },
+      events: {
+        tapped(sender) {
+          download(data.url, data.mc.text);
         },
-        layout: function (make, view) {
-          make.top.equalTo($("img").bottom).inset(40);
-          make.right.inset(50);
-          make.width.equalTo(80);
-        },
-        events: {
-          tapped(sender) {
-            download(data.url, data.mc.text);
-          },
-          longPressed: function () {
-            $clipboard.text = data.url;
-            alert("复制成功\n\n" + data.url);
-          }
+        longPressed: function () {
+          $clipboard.text = data.url;
+          alert("复制成功\n\n" + data.url);
         }
-      },
+      }
+    },
     ],
     layout: function (make, view) {
       make.top.inset(150);
