@@ -1,5 +1,5 @@
 /*
-2023年11月7日更新
+2024年1月11日更新
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -13,7 +13,7 @@ const channelList = [
     const myHeaders = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"
 };
-const urlt = $text.base64Decode("aHR0cHM6Ly95a3h5LmN4eGsudmlw");
+const urlt = $text.base64Decode("aHR0cHM6Ly9od213Lnlra2sudmlw");
 const mrhb = {
     type: "button",
     props: {
@@ -35,7 +35,7 @@ const mrhb = {
 
 $ui.render({
     props: {
-        title: "无限资源 2.1"
+        title: "无限资源 2.2"
     },
     views: [
         {
@@ -223,7 +223,7 @@ function I(r) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvd3h6eS5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.version != "2.1") {
+        if (resp.data.version != "2.2") {
             $ui.alert({
                 title: resp.data.version,
                 message: resp.data.upexplain,
