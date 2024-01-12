@@ -1,6 +1,7 @@
 /*
-2023年12月15日 更新
-更新无法使用问题
+2024年1月12日 更新
+修复列表点击无法跳播放页面问题
+
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone8、小良
@@ -12,7 +13,7 @@ $cache.set("id", "629")
 $cache.set("pg", 1)
 var urlt = $text.base64Decode("aHR0cHM6Ly9iYnMubXlsejB2LmNvbS8yMDQ4Lw==");
 var js_name = "1024视频"
-var data = [{"id": "629","name":"网友自拍"},{"id": "528","name":"国产精品"},{"id": "567","name":"国产自拍"},{"id": "566","name":"网红主播"},{"id": "529","name":"日韩精品"},{"id": "535","name":"日韩无码"},{"id": "538","name":"中文字幕"},{"id": "569","name":"中文字幕2"},{"id": "537","name":"欧美精品"},{"id": "542","name":"伦理三级"},{"id": "541","name":"动漫精品"},{"id": "544","name":"自拍偷拍"},{"id": "581","name":"无码杂类"},{"id": "568","name":"日韩杂类"},{"id": "546","name":"杂类合辑"}]
+var data = [{ "id": "629", "name": "网友自拍" }, { "id": "528", "name": "国产精品" }, { "id": "567", "name": "国产自拍" }, { "id": "566", "name": "网红主播" }, { "id": "529", "name": "日韩精品" }, { "id": "535", "name": "日韩无码" }, { "id": "538", "name": "中文字幕" }, { "id": "569", "name": "中文字幕2" }, { "id": "537", "name": "欧美精品" }, { "id": "542", "name": "伦理三级" }, { "id": "541", "name": "动漫精品" }, { "id": "544", "name": "自拍偷拍" }, { "id": "581", "name": "无码杂类" }, { "id": "568", "name": "日韩杂类" }, { "id": "546", "name": "杂类合辑" }]
 
 $ui.render({
     props: {
@@ -86,7 +87,7 @@ function getdata() {
                 var a = shu[i]
                 if (i > 3) {
                     var mc = a.match(/tid=(.*?)">(.*?)<\/a>/)[2]
-                    var id = a.match(/tid=([0-9]+)/)[1]
+                    var id = a.match(/ahref=\"(.*?)\"/)[1]
                     data.push(mc + "\n" + id)
                 }
             }
@@ -101,11 +102,11 @@ getdata()
 function geting(id, mc) {
     $ui.loading(true)
     $http.get({
-        url: urlt + "read.php?tid=" + id,
+        url: urlt + id,
         handler: function (resp) {
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var video = text.match(/IFRAMESRC=(\S*?)FRAMEBORDER/)[1]
-            video = video.replace(/&#46;/g, ".").match(/\?url=(\S*?)\.m3u8/)[1] + ".m3u8"
+            var video = text.match(/images\/m3u8\/\?url=(\S*?)\"/)[1]
+            video = $text.base64Decode(video);
             $ui.push({
                 props: {
                     title: mc
@@ -126,7 +127,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.8") {
+        if (resp.data.vdieo.version != "2.9") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
