@@ -9,11 +9,11 @@ https://iphone8.vip/
 https://ae85.cn/
 */
 
-$cache.set("id", "629")
+$cache.set("id", "L2xpc3QvaHkvMg")
 $cache.set("pg", 1)
 var urlt = $text.base64Decode("aHR0cHM6Ly9iYnMubXlsejB2LmNvbS8yMDQ4Lw==");
 var js_name = "1024视频"
-var data = [{ "id": "629", "name": "网友自拍" }, { "id": "528", "name": "国产精品" }, { "id": "567", "name": "国产自拍" }, { "id": "566", "name": "网红主播" }, { "id": "529", "name": "日韩精品" }, { "id": "535", "name": "日韩无码" }, { "id": "538", "name": "中文字幕" }, { "id": "569", "name": "中文字幕2" }, { "id": "537", "name": "欧美精品" }, { "id": "542", "name": "伦理三级" }, { "id": "541", "name": "动漫精品" }, { "id": "544", "name": "自拍偷拍" }, { "id": "581", "name": "无码杂类" }, { "id": "568", "name": "日韩杂类" }, { "id": "546", "name": "杂类合辑" }]
+var data = [{ "id": "L2xpc3QvaHkvMg", "name": "乱伦无码" }, { "id": "L2xpc3QvaHkvMTI", "name": "巨乳无码" }, { "id": "L2xpc3QvaHkvMw", "name": "强奸无码" }, { "id": "L2xpc3QvaHkvNA", "name": "人妻无码" }, { "id": "L2xpc3QvaHkvNQ", "name": "制服无码" }]
 
 $ui.render({
     props: {
@@ -69,7 +69,7 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "thread.php?fid=279&type=" + id + "s&page=" + pg,
+        url: urlt + "thread.php?fid=291&goo=" + id + "&page=" + pg,
         header: {
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
         },
