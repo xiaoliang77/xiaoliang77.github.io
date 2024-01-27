@@ -61,7 +61,7 @@
     </div>`
 
     var dibu = `    <div class="dibu">
-    <p>iPhone、小良 ©2016~2023</p>
+    <p>iPhone、小良 ©2016~2024</p>
     <p>本站所有内容均为小良原创作品，未经允许请勿转载！</p>
 </div>`
 
