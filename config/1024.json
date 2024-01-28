@@ -1,8 +1,8 @@
 {
   "vdieo": {
-    "version": "2.9.1",
+    "version": "2.9.2",
     "updata": "https://iphone8.vip/jsbox/js/1024sp.js",
-    "upexplain": "修复更新：列表不显示和无法播放问题",
+    "upexplain": "修复更新：正则匹配源代码内容",
     "Bulletin": ""
   },
   "mapdepot": {

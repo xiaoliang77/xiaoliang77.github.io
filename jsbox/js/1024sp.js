@@ -1,6 +1,6 @@
 /*
-2024年1月18日 更新
-修复列表点击无法跳播放页面问题
+2024年1月28日 更新
+修复正则匹配源代码内容
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -76,7 +76,8 @@ function getdata() {
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var shu = text.match(/subjectbreak-all\"data-url=\"read.*?<\/div>/g)
+            // var shu = text.match(/subjectbreak-all\"data-url=\"read.*?<\/div>/g)
+            var shu = text.match(/align=\"center\"class=\"tr3t_one\">.*?align=\"absmiddle\"/g)
             if (pg == 1) {
                 var data = []
             } else {
@@ -86,7 +87,7 @@ function getdata() {
             for (i in shu) {
                 var a = shu[i]
                 if (i > 3) {
-                    var mc = a.match(/\">(.*?)<\/a>/)[1]
+                    var mc = a.match(/;\">(.*?)<\/a>/)[1]
                     var id = a.match(/ahref=\"(.*?)\"/)[1]
                     data.push(mc + "\n" + id)
                 }
@@ -130,7 +131,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.9.1") {
+        if (resp.data.vdieo.version != "2.9.2") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
