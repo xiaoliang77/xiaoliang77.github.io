@@ -357,11 +357,26 @@ async function handleRequest(request) {
       const object = await R2.put(objectName, request.body, {
           httpMetadata: request.headers,
       })
-      return new Response(JSON.stringify({...object,url:"https://s3.87xl.cn/"+object.key}), {
+      return new Response(JSON.stringify({...object,url:url}), {
           headers: {
               'etag': object.httpEtag,
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
+              "Access-Control-Max-Age": "86400",
+              "Access-Control-Allow-Headers": "authorization,Content-Type"
           }
       })
+  }
+ // 跨域 预检放行  
+  if (request.method === 'OPTIONS') {
+    return new Response(null, {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
+            "Access-Control-Max-Age": "86400",
+            "Access-Control-Allow-Headers": "authorization,Content-Type"
+        }
+    })
   }
   if (request.method === 'DELETE') {
       await R2.delete(url.pathname.slice(1))
@@ -397,4 +412,5 @@ function objectNotFound(objectName) {
       }
   })
 }
+
 ```
