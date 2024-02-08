@@ -2331,7 +2331,7 @@ function sendToy(){
 
 ### 1. 默认插槽
 
-![img](http://49.232.112.44/images/default_slot.png)
+![img](./images/default_slot.png)
 
 ```html
 父组件中：

@@ -157,8 +157,8 @@
                 dataType: "html",
                 success: function (res) {
                     $("#content").append(marked.parse(res, options));
-                    hljs.initHighlightingOnLoad();
-                    // hljs.highlightAll();
+                    // hljs.initHighlightingOnLoad();
+                    hljs.highlightAll();
 
                     setMeunHtml()
                     setClassActive()
@@ -186,7 +186,6 @@
                         '<div style="width: ' + 10 * blankDomMap[tagName] + 'px;display: inline-block" ></div>' +
                         '<a href="#' + h.id + '" style="" >' + innerText + '</a></div>'
                 }
-                console.log(hListDomeString);
                 $('#meun').html(hListDomeString)
                 $('.me_iten:eq(0)').addClass('active'); //默认第一个高亮
             }
