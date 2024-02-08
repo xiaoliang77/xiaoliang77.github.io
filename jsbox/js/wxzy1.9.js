@@ -1,5 +1,6 @@
 /*
-2024年1月11日更新
+2024年2月8日更新
+更新播放源
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -172,7 +173,7 @@ function getdata() {
 
 function geturl(url, pm) {
     var id = url.match(/[0-9]+/g)[0]
-    play(`https://cdn73.com:10073/${id}/index.m3u8`,pm)
+    play(`https://cdn59.com:10059/${id}/index.m3u8`,pm)
 
 }
 
@@ -223,7 +224,7 @@ function I(r) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvd3h6eS5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.version != "2.2") {
+        if (resp.data.version != "2.2.1") {
             $ui.alert({
                 title: resp.data.title,
                 message: resp.data.upexplain,

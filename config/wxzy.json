@@ -1,8 +1,8 @@
 {
     "name":"无限资源 2.2",
     "title":"检测到新版本，请更新",
-    "version": "2.2",
+    "version": "2.2.1",
     "updata": "https://iphone8.vip/jsbox/js/wxzy1.9.js",
-    "upexplain": "修复更新：修复无法使用问题",
+    "upexplain": "修复更新：修改播放源，修复无法播放问题",
     "Bulletin": "暂无公告"
 }
