@@ -1,6 +1,6 @@
 #### 谷歌Script脚本反代
 
-```javascript
+```js
 const host = "script.google.com";
 
 addEventListener('fetch', event => {
