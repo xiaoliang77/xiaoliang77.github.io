@@ -1,4 +1,35 @@
-#### 谷歌Script脚本反代
+## workers 脚手架常用命令
+```bash
+npm install wrangler --save-dev  ##在 Worker 项目中安装 Wrangler
+npx wrangler -v   ##查看版本
+npm install wrangler@latest   ##安装最新版本的 Wrangler
+wrangler init   ## 从各种 Web 框架和模板创建一个新项目.
+wrangler deploy ## 将您的 Worker 部署到 Cloudflare
+wrangler dev    ## 启动本地服务器以开发 Worker
+wrangler login  ## 使用 OAuth 使用您的 Cloudflare 帐户授权 Wrangler
+```
+> 更多可参考：https://developers.cloudflare.com/workers/wrangler/commands/#how-to-run-wrangler-commands
+
+### 使用 hono 框架搭建 worker
+> hono 官方文档：https://hono.dev/top
+#### 1.设置环境
+```bash
+npm create hono@latest my-app #创建一个名称为 my-app 新项目
+cd my-app #进入项目
+npm i #安装依赖
+```
+#### 2.编辑 `src/index.ts`
+```js
+import { Hono } from 'hono'
+const app = new Hono()
+
+app.get('/', (c) => c.text('Hello Cloudflare Workers!'))
+
+export default app
+```
+-----
+
+## 谷歌Script脚本反代
 
 ```js
 const host = "script.google.com";
@@ -22,7 +53,7 @@ async function handleRequest(request) {
 
 ---
 
-#### 云剪贴板项目
+## 云剪贴板项目
 
 ```javascript
 /*
@@ -83,7 +114,7 @@ function queryString(urlStr,key){
 
 ---
 
-#### 短网址项目
+## 短网址项目
 
 ```javascript
 /*
@@ -281,7 +312,7 @@ function end_json(ztai,message,vid='',url='',endtime='',time=''){
 
 ---
 
-#### r2-api 对象存储
+## r2-api 对象存储
 
 ```javascript
 
