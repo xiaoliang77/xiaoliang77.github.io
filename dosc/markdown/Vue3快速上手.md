@@ -1911,9 +1911,45 @@ export const useTalkStore = defineStore('talk',()=>{
   return {talkList,getATalk}
 })
 ```
+## 5.9 pinia数据持久化
+> 通过 Pinia 插件快速实现持久化存储。插件文档：[点击查看](https://www.npmjs.com/package/pinia-plugin-persistedstate)
+### 1.安装
+```bash
+pnpm add pinia-plugin-persistedstate
+or
+npm i  pinia-plugin-persistedstate
+```
+### 2.在main.js中注册
+```js
+// main.js
+import { createApp } from "vue";
+import { createPinia } from 'pinia'
+import persist from 'pinia-plugin-persistedstate' //登入pinia持久化插件
 
+const app = createApp(App)
 
+app.use(createPinia().use(persist)) //在createPinia后use注册
 
+app.mount('#app')
+```
+### 3.模块开启持久化
+```js
+// stores/user.js
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+
+export const useUserStore = defineStore('user', () => {
+  const token = ref('')
+  function setToken(key) {
+    token.value = key
+  }
+
+  return { token, setToken }
+},{
+    // 开启数据持久化
+    persist: true
+})
+```
 # 6. 组件通信
 
 **`Vue3`组件通信和`Vue2`的区别：**
