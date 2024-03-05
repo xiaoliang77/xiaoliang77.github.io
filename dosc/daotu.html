@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>思维导图</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://ae85.cn/favicon.ico">
+    <link rel="stylesheet" href="./daotu/js-css/kityminder.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        #minder-view {
+            position: absolute;
+            border: 1px solid #ccc;
+            left: 10px;
+            top: 10px;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        #minder-container {
+            height: 100vh;
+        }
+    </style>
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="./daotu/js-css/kity.min.js"></script>
+    <script type="text/javascript" src="./daotu/js-css/kityminder.core.min.js"></script>
+</head>
+
+<body>
+    <div id="minder-container"></div>
+    <script type="text/javascript">
+        function getQueryString(name) {
+            const url_string = window.location.href
+            const url = new URL(url_string);
+            return url.searchParams.get(name);
+        }
+        const name = getQueryString("name") ? getQueryString("name") : "导图预览"
+        var vid = getQueryString("vid") ? getQueryString("vid") : "daotu"
+        document.title = name
+        $.get('./daotu/'+vid+'.km', function (json) {
+            var km = new kityminder.Minder({
+                renderTo: '#minder-container',
+            });
+            // console.log(json);
+            km.importJson(JSON.parse(json));
+
+
+            km.disable();
+            km.execCommand('hand');
+        })
+    </script>
+</body>
+
+</html>

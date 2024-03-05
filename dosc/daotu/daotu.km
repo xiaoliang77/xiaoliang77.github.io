@@ -1,0 +1,79 @@
+{
+    "root": {
+        "data": {
+            "id": "czlwf7dk7ds0",
+            "created": 1709650217636,
+            "text": "ae85.cn",
+            "resource": [
+                "官网"
+            ],
+            "hyperlink": "https://ae85.cn",
+            "hyperlinkTitle": ""
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "czlwg5h2a7s0",
+                    "created": 1709650291858,
+                    "text": "导航",
+                    "hyperlink": "https://dh.ae85.cn",
+                    "hyperlinkTitle": "",
+                    "priority": 2,
+                    "layout_mind_offset": {
+                        "x": -36,
+                        "y": -76
+                    }
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "czlwgmr93i80",
+                    "created": 1709650329480,
+                    "text": "Alist-网盘",
+                    "hyperlink": "https://pan.ae85.cn",
+                    "hyperlinkTitle": "",
+                    "priority": 3,
+                    "layout_mind_offset": {
+                        "x": -80,
+                        "y": 102
+                    }
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "czlwhdkb09s0",
+                    "created": 1709650387833,
+                    "text": "google 网盘",
+                    "priority": 4,
+                    "hyperlink": "https://pan.87xl.cn",
+                    "hyperlinkTitle": "",
+                    "layout_mind_offset": {
+                        "x": 54,
+                        "y": 160
+                    }
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "czlwiffwg8w0",
+                    "created": 1709650470284,
+                    "text": "blog",
+                    "priority": 1,
+                    "hyperlink": "https://87xl.cn",
+                    "hyperlinkTitle": "",
+                    "layout_mind_offset": {
+                        "x": 32,
+                        "y": -163
+                    }
+                },
+                "children": []
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
