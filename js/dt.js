@@ -10,7 +10,7 @@ function co_sj() {
         color++;
     }
 }
-var data_bj = [{ "title": "电脑软件记录", "image": "img/web.jpg", "rq": "软件集合", "details": "个人使用", "url": "电脑工具" }, ]
+var data_bj = [{ "title": "电脑软件记录", "image": "img/web.jpg", "rq": "软件集合", "details": "个人使用", "url": "电脑工具" },{ "title": "PS-2024-AIGC", "image": "img/ps.png", "rq": "PS教程", "details": "笔记", "url": "ps-2024-heima课" }, ]
 
 
 function kap_cj(data) {
