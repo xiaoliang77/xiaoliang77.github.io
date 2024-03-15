@@ -63,7 +63,7 @@
                 "img": "yyxz.png",
                 "rq": "更新：2024年1月10日",
                 "sm": "修复不能使用问题。\n可导入音乐播放器",
-                "jsurl": "",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/xtdyyxz",
                 "url": "89d68b3792a241e99fa4a08a4948b0f9"
             },
             {
@@ -127,7 +127,7 @@
                 "img": "youtube.png",
                 "rq": "发布：2022年3月20日",
                 "sm": "支持：选择视频品质下载（1080p/720p）",
-                "jsurl": "https://d.87xl.cn/youtbdown",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/youtbdown",
                 "url": "1d826257d89c4af7b5894110cd9c0b4f"
             },
             {
@@ -135,7 +135,7 @@
                 "img": "appstore.png",
                 "rq": "更新：2022年3月17日",
                 "sm": "一键更换App Store应用商店地区\n\n重要说明：\n使用规则改了地区之后，只能查看修改后的地区的应用信息，并不能直接下载应用！必须使用对应地区ID账号才可以下载APP。",
-                "jsurl": "https://d.87xl.cn/appstore",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/appstore",
                 "url": "c9ab7498f3ed4f26b3f1f7c66d55b880"
             },
             {
@@ -273,7 +273,7 @@
                 "img": "appleid.jpg",
                 "rq": "更新：2023年12月9日",
                 "sm": "ID可下载Shadowrocket(小火箭),\n账号密码24小时自动更新",
-                "jsurl": "https://d.87xl.cn/appleID",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/appleID",
                 "url": "appleid.js"
             },
             {
@@ -305,7 +305,7 @@
                 "img": "tts.png",
                 "rq": "发布：2023年7月13日",
                 "sm": "可在键盘中使用，请看演示视频",
-                "jsurl": "https://d.87xl.cn/jswzzyy",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/jswzzyy",
                 "url": "tts.js"
             },
             {
@@ -353,7 +353,7 @@
                 "img": "appstore.png",
                 "rq": "更新：2022年3月17日",
                 "sm": "一键更换App Store应用商店地区\n\n重要说明：\n使用脚本改了地区之后，只能查看修改后的地区的应用信息,必须使用对应地区ID账号才可以下载APP",
-                "jsurl": "https://d.87xl.cn/appstore",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/appstore",
                 "url": "appstoreqh.js"
             },
             {
