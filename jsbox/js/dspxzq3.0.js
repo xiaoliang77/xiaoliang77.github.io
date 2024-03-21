@@ -333,7 +333,7 @@ async function get_updata() {
     $cache.set("info", resp.data);
     if (resp.data.bb != "3.0") {
       $ui.alert({
-        title: "发现新版本 - " + resp.data.version,
+        title: "发现新版本 - " + resp.data.bb,
         message: resp.data.gxsm,
         actions: [
           {
