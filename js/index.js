@@ -12,12 +12,16 @@ function co_sj() {
 }
 
 $.get('../../config/data.json','',function (data) {
-    // $("#qt").html(kap_cj(data.data.jc));
     $("#gz").html(kap_cj(data.data.gz, 1));
     $("#jb").html(kap_cj(data.data.jb, 2));
     $("#yy").html(kap_cj(data.data.yy, 3));
     $("#qt").html(kap_cj(data.data.jc, 4));
 })
+
+//新版测试
+// $.get('https://s3.iphone8.vip/data/rule/shortcuts.json',function (data) {
+//     $("#gz").html(kap_cj(data, 1));
+// },'json');
 
 function kap_cj(data, lei) {
     var txt1 = "";
@@ -33,7 +37,7 @@ function kap_cj(data, lei) {
         }
         txt1 = txt1 + `<div class="col-md-4" onclick="${an}">
         <div class="kap s${color}">
-            <img src="./img/${arr.img}">
+            <img src="${isImgHttp(arr.img)}">
             <div class="title">
                 <h4>${arr.title}</h4>
                 <p class="ri">${arr.rq}</p>
@@ -47,9 +51,17 @@ function kap_cj(data, lei) {
     return txt1;
 }
 
+const isImgHttp = (url) => {
+    if (!url) {
+        return "./img/shortcuts.png";
+    } else if (url.includes("https://")) {
+        return url;
+    } else {
+        return "./img/" + url;
+    }
+}
 function install(id, lei) {
     // var host = window.location.host;
-    // var gz_url = "https://workflow.is/workflows/" + id;
     var gz_url = "https://www.icloud.com/shortcuts/" + id;
     var url;
 
