@@ -61,8 +61,8 @@
     </div>`
 
     var dibu = `    <div class="dibu">
-    <p>iPhone、小良 ©2016~2024</p>
-    <p>本站所有内容均为小良原创作品，未经允许请勿转载！</p>
+    <p>小 良 科 技 版 权 所 有 ，未 经 授 权 禁 止 转 载</p>
+    <p>Copyright © 2016-2014 by www.iPhone8.vip all rights reserved</p>
 </div>`
 
     $('#navbar').html(navbar)

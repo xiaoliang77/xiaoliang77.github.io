@@ -12,7 +12,7 @@ $cache.set("id", "41")
 $cache.set("pg", 1)
 var header = {
     "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
-    "Cookie":"_safe=vqd37pjm4p5uodq339yzk6b7jdt6oich"
+    "Cookie":"_safe=vqd37pjm4p5uodq339yzk6b7jdt6oich1"
   }
 var urlt = $text.base64Decode("aHR0cHM6Ly8xa2RqNS5hcHAv");
 var js_name = "1024视频"

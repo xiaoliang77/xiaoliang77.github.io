@@ -20,7 +20,19 @@ body {
         left: 50%;
         margin-left: -90px;
     }
+    .row-box{
+        height: 180px;
+    }
+    .row:after {
+        clear: none;
+    }
   }
+
+@media screen and (min-width: 769px) {
+    .row-box{
+        height: 200px;
+    }
+}
   
 .gzh img{
     width: 170px;
@@ -33,6 +45,7 @@ body {
     width: 100%;
     height: 100%;
 }
+
 .floor-row .row img {
     width: 80px;
     height: 80px;
@@ -70,11 +83,10 @@ body {
 }
 .floor-row .kap .title{
     position: relative;
-    top: -82px;
+    top: -86px;
     left: 108px;
     width: 64%;
     height: 68px;
-
 }
 .floor-row .kap .title h4{
     /* color: #f7f7f7; */
@@ -83,17 +95,45 @@ body {
 .floor-row .kap .title .ri{
     font-size: 15px;
     color: #00c;
+    margin-bottom: 3px;
 }
+
+.floor-row .kap .title .author{
+    color: #ff30ffdf;
+}
+
+.floor-row .kap .video_icon{
+    float: right;
+    top: -191px;
+    right: -3px;
+    position: relative;
+}
+/* .floor-row .kap .video_icon svg{
+    width: 35px;
+    height: 35px;
+    fill: #fff;
+} */
+.floor-row .kap .video_icon img{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
 .floor-row .kap .sm{
     margin-left: 15px;
     margin-right: 15px;
     position: relative;
     top: -65px;
     font-size: 15px;
-}
-.sm{
     height: 45px;
     overflow: hidden;
+}
+/* .sm{
+    height: 45px;
+    overflow: hidden;
+} */
+.floor-row .kap .sm p{
+    height: 45px;
 }
 .ma_tac{ 
     background:rgba(0,0,0,0.8); 

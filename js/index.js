@@ -35,13 +35,20 @@ function kap_cj(data, lei) {
         } else {
             var an = `install('${arr.url}',${lei})`
         }
-        txt1 = txt1 + `<div class="col-md-4" onclick="${an}">
+        var viewVideoBox = ``;
+        if (arr.jsurl) {
+            viewVideoBox = `<div class="video_icon" id="${arr.jsurl}" onclick="handleVideoClick(event, this)"><img src="./img/jiaocheng3.png" alt=""></div>`
+        }
+        const author = arr.author ? `<p class="author">作者：${arr.author}</p>` : ``;
+        txt1 = txt1 + `<div class="col-md-4 row-box" onclick="${an}">
         <div class="kap s${color}">
             <img src="${isImgHttp(arr.img)}">
             <div class="title">
                 <h4>${arr.title}</h4>
-                <p class="ri">${arr.rq}</p>
+                <p class="ri">${timestampToTime(arr.rq)}</p>
+                ${author}
             </div>
+            ${viewVideoBox}
             <div class="sm">
                 <p>${arr.sm}</p>
             </div>
@@ -60,8 +67,13 @@ const isImgHttp = (url) => {
         return "./img/" + url;
     }
 }
+// 教程按钮事件处理
+function handleVideoClick(event, divElement) {
+    event.stopPropagation(); // 阻止事件冒泡
+    var url = divElement.id;
+    window.open(url, '_blank');
+}
 function install(id, lei) {
-    // var host = window.location.host;
     var gz_url = "https://www.icloud.com/shortcuts/" + id;
     var url;
 
@@ -86,8 +98,6 @@ function install(id, lei) {
         }
         // window.open(url,'_self');
         window.location.href = url
-
-
     } else {
         $("#qrcode").empty();
         var qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -112,9 +122,6 @@ function install(id, lei) {
     }
 }
 
-function install_gz(id) {
-    window.open()
-}
 
 function isios() {
     var userAgentInfo = navigator.userAgent;
@@ -127,4 +134,14 @@ function isios() {
         }
     }
     return flag;
+}
+
+// 时间戳转日期
+function timestampToTime(timestamp) {
+    const date = new Date(+timestamp);
+    if (date instanceof Date && !isNaN(date.getTime())) {
+        return `更新：${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+    }else{
+        return timestamp;
+    }
 }
