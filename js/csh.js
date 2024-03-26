@@ -62,7 +62,7 @@
 
     var dibu = `    <div class="dibu">
     <p>小 良 科 技 版 权 所 有 ，未 经 授 权 禁 止 转 载</p>
-    <p>Copyright © 2016-2014 by www.iPhone8.vip all rights reserved</p>
+    <p>Copyright © 2016-2024 by www.iPhone8.vip all rights reserved</p>
 </div>`
 
     $('#navbar').html(navbar)
