@@ -70,7 +70,7 @@ $ui.render({
                     type: "image",
                     props: {
                         id: "img",
-                        radius: 3
+                        radius: 3,
                     },
                     layout: function (make, view) {
                         make.centerX.equalTo(view.super);
@@ -117,8 +117,8 @@ function getdata() {
     var type = $cache.get("type");
     const page = $cache.get("pg");
     if (page > 1) {
-       var url = urlt + type + "/" + page + ".html";
-    } else{
+        var url = urlt + type + "/" + page + ".html";
+    } else {
         var url = urlt + type + ".html";
     }
     $ui.loading(true);
@@ -133,14 +133,14 @@ function getdata() {
             var li = html.match(/<aclass=\"vodbox\".*?<\/script>/g);
             if (page > 1) {
                 var data = $("Video").data;
-            } else{
+            } else {
                 var data = [];
             }
             for (i in li) {
                 dli = li[i];
                 data.push({
                     img: {
-                        src: dli.match(/src="(\S*?)"/)[1]
+                        source: { url: dli.match(/src="(\S*?)"/)[1], header: { "Referer": urlt } }
                     },
                     pm: {
                         text: I(dli.match(/l\(\'(\S*?)\'/)[1])
