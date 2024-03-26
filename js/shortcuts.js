@@ -1,6 +1,6 @@
 var color = 100;
 function co_sj() {
-    if (color == 112) {
+    if (color == 122) {
         color = 101;
     } else {
         color++;
