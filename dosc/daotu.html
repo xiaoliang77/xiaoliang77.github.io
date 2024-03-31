@@ -29,6 +29,20 @@
     <script src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="./daotu/js-css/kity.min.js"></script>
     <script type="text/javascript" src="./daotu/js-css/kityminder.core.min.js"></script>
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//matomo.iphone8.vip/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '2']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
 </head>
 
 <body>
@@ -42,7 +56,7 @@
         const name = getQueryString("name") ? getQueryString("name") : "导图预览"
         var vid = getQueryString("vid") ? getQueryString("vid") : "daotu"
         document.title = name
-        $.get('./daotu/'+vid+'.km', function (json) {
+        $.get('./daotu/' + vid + '.km', function (json) {
             var km = new kityminder.Minder({
                 renderTo: '#minder-container',
             });

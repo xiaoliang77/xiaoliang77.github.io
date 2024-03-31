@@ -1,18 +1,19 @@
+<html lang="en">
 
-<html lang="en"><head>
+<head>
   <meta charset="UTF-8">
   <title>JSBox & Pin</title>
   <meta name="keywords" content="jsbox,xteko,javascript,extension,doc,document,documentation">
   <meta name="description" content="Install JSBox Extension">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <!-- <script src="js/jiam/free-ss.js"></script> -->
-   <style>   
-    
+  <style>
     body {
       background-color: #282c34;
       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
     }
-    
+
     #center-box {
       position: absolute;
       top: 40%;
@@ -62,7 +63,7 @@
       border-radius: 8px;
       -moz-border-radius: 8px;
       -webkit-border-radius: 8px;
-      -webkit-user-select: none;        
+      -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
     }
@@ -73,21 +74,21 @@
       border-width: thin;
       border-color: rgb(21, 126, 251);
       color: rgb(21, 126, 251);
-      -webkit-user-select: none;        
+      -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
     }
-	
-	#button-jsboxx,
-	#button-jsbox,
-	#button-pin,
-	#button-pinx,
-	#button-jc{
-	font-weight: bold;
-	color: #fff;
-	}
-	
-	 #button-jsboxx {
+
+    #button-jsboxx,
+    #button-jsbox,
+    #button-pin,
+    #button-pinx,
+    #button-jc {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    #button-jsboxx {
       background-color: rgb(210, 126, 251);
     }
 
@@ -98,46 +99,57 @@
     #button-pin {
       background-color: #f40;
     }
-	
+
     #button-pinx {
       background-color: #666;
     }
+
     #button-jc {
       background-color: rgb(233, 150, 122);
     }
-  </style>  
+  </style>
+  <!-- Matomo -->
   <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?9a216def2d06b5f36dee7bfc61f36368";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+      var u = "//matomo.iphone8.vip/";
+      _paq.push(['setTrackerUrl', u + 'matomo.php']);
+      _paq.push(['setSiteId', '2']);
+      var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+      g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
     })();
-    </script>
-    
+  </script>
+  <!-- End Matomo Code -->
+
 </head>
+
 <body>
-    
-    <div style="text-align: center;">
-      <img src="logo1.png" width="220px" style="margin-top: 8px;" onclick="download();">
+
+  <div style="text-align: center;">
+    <img src="logo1.png" width="220px" style="margin-top: 8px;" onclick="download();">
+  </div>
+  <div id="center-box">
+    <div id="info" style="margin-top: 50px;">
+      <span id="name">免费ssr节点 1.5</span>
+
     </div>
-    <div id="center-box">
-      <div id="info" style="margin-top: 50px;">
-        <span id="name">免费ssr节点 1.5</span>
+    <div id="button-layout">
+      <div class="button" id="button-top">请在 Safari 打开这个页面</div>
+      <div class="button" id="button-jsbox" onclick="window.location.href='./js/free-ss.js';">查看源代码 - 手动复制</div>
+      <div class="button" id="button-jsboxx"
+        onclick="window.location.href='jsbox://import?url=https://iphone8.vip/jsbox/js/free-ss.js&name=%E5%85%8D%E8%B4%B9ssr%E8%8A%82%E7%82%B9';">
+        安装到 - 新版本 JSBox</div>
+      <div class="button" id="button-pin"
+        onclick="window.location.href='pin://install?url=https://iphone8.vip/jsbox/js/free-ss.js&name=%E5%85%8D%E8%B4%B9ssr%E8%8A%82%E7%82%B9';">
+        安装到 - Pin(3.2.2-3.2.3)</div>
 
-      </div>
-      <div id="button-layout">
-        <div class="button" id="button-top">请在 Safari 打开这个页面</div>
-		<div class="button" id="button-jsbox" onclick="window.location.href='./js/free-ss.js';">查看源代码 - 手动复制</div>
-		<div class="button" id="button-jsboxx" onclick="window.location.href='jsbox://import?url=https://iphone8.vip/jsbox/js/free-ss.js&name=%E5%85%8D%E8%B4%B9ssr%E8%8A%82%E7%82%B9';">安装到 - 新版本 JSBox</div>
-    <div class="button" id="button-pin" onclick="window.location.href='pin://install?url=https://iphone8.vip/jsbox/js/free-ss.js&name=%E5%85%8D%E8%B4%B9ssr%E8%8A%82%E7%82%B9';">安装到 - Pin(3.2.2-3.2.3)</div>
-
-<div class="button" id="button-pinx" onclick="window.location.href='http://qq.cn.hn/g43';">点击 - 查看JSBox脚本安装器</div>
-<div class="button" id="button-jc" onclick="window.location.href='https://87xl.cn/free-ss.html';">点击 - 查看脚本介绍</div>
+      <div class="button" id="button-pinx" onclick="window.location.href='http://qq.cn.hn/g43';">点击 - 查看JSBox脚本安装器</div>
+      <div class="button" id="button-jc" onclick="window.location.href='https://87xl.cn/free-ss.html';">点击 - 查看脚本介绍
       </div>
     </div>
-  
+  </div>
 
 
 
@@ -150,4 +162,7 @@
 
 
 
-</body></html>
+
+</body>
+
+</html>

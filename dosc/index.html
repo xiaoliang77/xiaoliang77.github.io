@@ -11,7 +11,20 @@
     <script src="../js/highlight.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script> -->
-
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//matomo.iphone8.vip/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '2']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
     <style>
         pre {
             padding: 0;
@@ -22,21 +35,25 @@
             display: flex;
             overflow: hidden;
         }
-        .title-meun{
+
+        .title-meun {
             position: fixed;
             font-size: 20px;
-            font-weight: bold; 
+            font-weight: bold;
             color: #1bc3fb;
         }
-        .title-meun img{
+
+        .title-meun img {
             width: 25px;
             height: 23px;
             vertical-align: middle;
             margin-right: 10px;
         }
-        .title-meun a{
+
+        .title-meun a {
             margin-left: 50px;
         }
+
         #meun {
             position: fixed;
             top: 40px;
@@ -63,57 +80,63 @@
             flex: 1;
             padding-left: 10px;
         }
-        .me_iten{
+
+        .me_iten {
             font-size: 15px;
             line-height: 28px;
         }
-        .me_iten a{
+
+        .me_iten a {
             color: inherit;
             text-decoration: none;
         }
-        .me_iten:hover{
+
+        .me_iten:hover {
             color: #ff8d0a;
             border-left: 4px solid #1bc3fb;
-            background: rgba(27,195,251,.1);
+            background: rgba(27, 195, 251, .1);
         }
+
         .active {
             color: #ff8d0a;
             border-left: 4px solid #1bc3fb;
-            background: rgba(27,195,251,.1);
+            background: rgba(27, 195, 251, .1);
         }
-        .fa-arrow-up{
+
+        .fa-arrow-up {
             display: none;
             font-size: 30px;
-            position: fixed; 
-            bottom: 20px; 
-            right: 30px; 
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
             z-index: 99;
-            border: none; 
-            background-color: #5559; 
-            color: white; 
-            cursor: pointer; 
+            border: none;
+            background-color: #5559;
+            color: white;
+            cursor: pointer;
             border-radius: 50%;
             width: 50px;
             height: 50px;
         }
-        .fa-arrow-up:hover{
+
+        .fa-arrow-up:hover {
             text-decoration: none;
             -webkit-transform: scale(1.2);
             transform: scale(1.2);
             border-radius: 25%;
             background: #1bc3fb;
             color: #fff;
-            box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 4px 8px 0 rgba(0,0,0,.1), 0 8px 16px 0 rgba(0,0,0,.1), 0 16px 32px 0 rgba(0,0,0,.1);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1), 0 4px 8px 0 rgba(0, 0, 0, .1), 0 8px 16px 0 rgba(0, 0, 0, .1), 0 16px 32px 0 rgba(0, 0, 0, .1);
             transition: all 0.6s ease;
         }
-
     </style>
 </head>
 
 <body>
     <div class="main">
         <div class="b-left">
-            <div class="title-meun"><img src="../img/meun.png" alt="">文档目录<a href="../bj.html"><img src="../img/biji.png" alt=""></a></div>
+            <div class="title-meun"><img src="../img/meun.png" alt="">文档目录<a href="../bj.html"><img
+                        src="../img/biji.png" alt=""></a></div>
             <div id="meun"></div>
         </div>
         <div class="b-fgf"></div>
@@ -138,7 +161,7 @@
             pedantic: false,
             sanitize: false,
             smartypants: false,
-            langPrefix:"hljs language-"
+            langPrefix: "hljs language-"
         };
         function getQueryString(name) {
             const url_string = window.location.href
@@ -195,45 +218,45 @@
                 var mybutton = document.getElementById("backToTopButton");
 
                 //滚动的监听方法
-                $(document).scroll(function (){
+                $(document).scroll(function () {
                     //当前滚动的距离
                     var current = document.documentElement.scrollTop;
                     //页面的总高度
-                    var offsetHeight  = document.documentElement.offsetHeight
+                    var offsetHeight = document.documentElement.offsetHeight
                     //页面的可视高度
                     var clientHeight = document.documentElement.clientHeight
                     //offsetHeight - clientHeight得出的就是滚动条最大滚动的长度。
                     //跟当前滚动距离相比较，相等则直接高亮最后的锚点
-                    if (current == offsetHeight - clientHeight){
+                    if (current == offsetHeight - clientHeight) {
                         $('.me_iten').removeClass('active');
                         $('.me_iten:last').addClass('active');
-                    }else{
+                    } else {
                         //对超过的最后一个元素锚点进行高亮
                         //注意要给予一个默认的高亮节点，也就是第一个
                         var divs = hListids
                         var index = 0;
-                        for (let i = 0; i < divs.length-1; i++) {
-                            if (current >= $("#"+divs[i]).offset().top){
-                                index = i+1;
+                        for (let i = 0; i < divs.length - 1; i++) {
+                            if (current >= $("#" + divs[i]).offset().top) {
+                                index = i + 1;
                             }
                         }
                         $('.me_iten').removeClass('active');
-                        $('.me_iten:eq('+index+')').addClass('active');
+                        $('.me_iten:eq(' + index + ')').addClass('active');
                     }
 
                     // 回到顶部滚动 当用户向下滚动500px时, 显示按钮
-                    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {  
-                        mybutton.style.display = "block";  
-                    } else {  
-                        mybutton.style.display = "none";  
-                    }  
+                    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                        mybutton.style.display = "block";
+                    } else {
+                        mybutton.style.display = "none";
+                    }
                 })
 
             }
         })
 
         // 当用户点击按钮时, 回到页面顶部  
-        function scrollToTop() {  
+        function scrollToTop() {
             document.body.scrollTop = 0; // For Safari  
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera  
         } 
