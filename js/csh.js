@@ -19,10 +19,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li ${leix[0]}><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
-                        <li ${leix[1]}><a href="gz.html">快捷指令-规则</a></li>
-                        <li ${leix[2]}><a href="jb.html">Jsbox-Pin-脚本</a></li>
-                        <li ${leix[3]}><a href="yy.html">破解APP应用</a></li>
-                        <li ${leix[4]}><a href="qt.html">各类实用教程</a></li>
+                        <li ${leix[1]}><a href="gz.html">快捷指令</a></li>
+                        <li ${leix[2]}><a href="jb.html">Js 脚本</a></li>
+                        <li ${leix[3]}><a href="yy.html">破解APP</a></li>
+                        <li ${leix[4]}><a href="qt.html">实用教程</a></li>
                         <li><a href="youhou.html">油猴脚本</a></li>
                         <li ${leix[5]} class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
