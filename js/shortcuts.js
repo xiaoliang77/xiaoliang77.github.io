@@ -7,13 +7,13 @@ function co_sj() {
     }
 }
 
-$.get('../../config/data.json', '', function (data) {
-    $("#gz").html(kap_cj(data.data.gz));
-})
+// $.get('../../config/data.json', '', function (data) {
+//     $("#gz").html(kap_cj(data.data.gz));
+// })
 
-// $.get('https://s3.iphone8.vip/data/rule/shortcuts.json',function (data) {
-//     $("#gz").html(kap_cj(data));
-// },'json');
+$.get('https://s3.iphone8.vip/data/rule/shortcuts.json',function (data) {
+    $("#gz").html(kap_cj(data));
+},'json');
 
 function kap_cj(data) {
     var txt1 = "";
@@ -24,7 +24,7 @@ function kap_cj(data) {
         if (arr.jsurl) {
             viewVideoBox = `<div class="video_icon" id="${arr.jsurl}" onclick="handleVideoClick(event, this)"><img src="./img/jiaocheng3.png" alt=""></div>`
         }
-        const author = arr.author ? `<p class="author">作者：${arr.author}</p>` : ``;
+        const author = arr.author == null || arr.author == '' || arr.author == 'null' ? ``:`<p class="author">作者：${arr.author}</p>`;
         txt1 = txt1 + `<div class="col-md-4 row-box" onclick="install('${arr.url}')">
         <div class="kap s${color}">
             <img src="${isImgHttp(arr.img)}">

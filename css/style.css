@@ -33,7 +33,13 @@ body {
         height: 200px;
     }
 }
-  
+
+#adminBtn a{
+    color: #0055ff;
+}
+#adminBtn a:hover{
+    color: #ff0000;
+}
 .gzh img{
     width: 170px;
     height: 170px;

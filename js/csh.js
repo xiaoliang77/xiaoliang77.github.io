@@ -38,11 +38,11 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                       <li id="adminBtn"><a href="https://admin.ae85.cn" target="_blank">发布快捷指令</a></li>
                         <li><a href="javascript:void(0);" class="gzhsb">微信公众号</a>
                             <div class="gzh"><img src="img/gzh.jpg" alt="微信搜索：ae85-cn">
                             </div>
                         </li>
-                        <li><a href="https://87xl.cn" target="_blank">博客</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false">关于作者<span class="caret"></span></a>

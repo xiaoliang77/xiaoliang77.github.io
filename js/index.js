@@ -12,16 +12,16 @@ function co_sj() {
 }
 
 $.get('../../config/data.json','',function (data) {
-    $("#gz").html(kap_cj(data.data.gz, 1));
+    // $("#gz").html(kap_cj(data.data.gz, 1));
     $("#jb").html(kap_cj(data.data.jb, 2));
     $("#yy").html(kap_cj(data.data.yy, 3));
     $("#qt").html(kap_cj(data.data.jc, 4));
 })
 
 //新版测试
-// $.get('https://s3.iphone8.vip/data/rule/shortcuts.json',function (data) {
-//     $("#gz").html(kap_cj(data, 1));
-// },'json');
+$.get('https://s3.iphone8.vip/data/rule/shortcuts.json',function (data) {
+    $("#gz").html(kap_cj(data, 1));
+},'json');
 
 function kap_cj(data, lei) {
     var txt1 = "";
@@ -39,7 +39,7 @@ function kap_cj(data, lei) {
         if (arr.jsurl) {
             viewVideoBox = `<div class="video_icon" id="${arr.jsurl}" onclick="handleVideoClick(event, this)"><img src="./img/jiaocheng3.png" alt=""></div>`
         }
-        const author = arr.author ? `<p class="author">作者：${arr.author}</p>` : ``;
+        const author = arr.author == null || arr.author == '' || arr.author == 'null' ? ``:`<p class="author">作者：${arr.author}</p>`;
         txt1 = txt1 + `<div class="col-md-4 row-box" onclick="${an}">
         <div class="kap s${color}">
             <img src="${isImgHttp(arr.img)}">
