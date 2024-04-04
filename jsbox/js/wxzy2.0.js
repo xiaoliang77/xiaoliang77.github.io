@@ -1,6 +1,6 @@
 /*
-2024年3月26日更新
-修复域名失修问题
+2024年4月4日更新
+修复无法播放问题
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -169,7 +169,12 @@ function play(url, mc) {
             type: "web",
             props: {
                 id: "bof",
-                url: url,
+                request: {
+                    url: url,
+                    method: "GET",
+                    header: { "Referer": urlt }
+                  }
+                
             },
             layout: $layout.fill
         },
@@ -207,7 +212,7 @@ function I(r) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvd3h6eS5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.version != "2.4") {
+        if (resp.data.version != "2.4.1") {
             $ui.alert({
                 title: resp.data.title,
                 message: resp.data.upexplain,
