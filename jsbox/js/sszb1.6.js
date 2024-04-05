@@ -1,29 +1,29 @@
 /*
-2022年10月29日 修复更新
-更新：修复配置文件，如果报错，请将你的jsbox升级到2.0以上版本。
+2024年4月5日 修复更新
+如果报错，请将你的jsbox升级到2.0以上版本。
 
 by：iPhone 8、小良
+https://ae85.cn/
 https://iphone8.vip/
 
 博客：87xl.cn
 */
 
-var appid = $app.info.bundleID;
-var appbb = $app.info.version;
+const appid = $app.info.bundleID;
 if (appid == "app.cyan.pin") {
     $ui.alert("暂不支持Pin软件运行！");
     return;
 } else {
     $app.minSDKVer = "2.0.0"
 }
-var gw = "https://iphone8.vip/"
+const gw = "https://iphone8.vip/"
 $ui.loading(true);
 $http.get({
     url: $text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcv") + "saishi.json",
     handler: function (resp) {
         $ui.loading(false);
-        var info = resp.data;
-        if (info.bb != "1.6.2") {
+        const info = resp.data;
+        if (info.bb != "1.7") {
             $ui.alert({
                 title: "温馨提示：",
                 message: resp.data.gxsm,
@@ -81,8 +81,7 @@ function xrwj(nr) {
 
 $ui.render({
     props: {
-        title: "赛事直播1.6.2",
-        //bgcolor: $color("gray")
+        title: "赛事直播1.7",
     },
     views: [{
         type: "list",
@@ -160,7 +159,6 @@ $ui.render({
                         props: {
                             id: "zd1",
                             font: $font(15),
-                            //textColor: $color("gray"),
                             align: $align.center
                         },
                         layout: function (make) {
@@ -174,7 +172,6 @@ $ui.render({
                         props: {
                             id: "zd2",
                             font: $font(15),
-                            // textColor: $color("gray"),
                             align: $align.center
                         },
                         layout: function (make) {
@@ -212,7 +209,9 @@ $ui.render({
                         props: {
                             id: "cd",
                             itemHeight: 40,
-                            columns: 4,
+                            square: true,
+                            direction: $scrollDirection.horizontal,
+                            columns: 5,
                             spacing: 5,
                             template: [
                                 {
@@ -239,17 +238,6 @@ $ui.render({
                                     layout: function (make, view) {
                                         make.top.equalTo($("img").bottom).offset(8);
                                         make.right.left.inset(5);
-                                    }
-                                },
-                                {
-                                    type: "image",
-                                    props: {
-                                        id: "ztai",
-                                    },
-                                    layout: function (make, view) {
-                                        make.bottom.equalTo($("img").bottom).offset(8);;
-                                        make.right.left.inset(8);
-                                        make.height.equalTo(15)
                                     }
                                 },
                             ]
@@ -285,7 +273,7 @@ $("list").data = [{
     lt1: { src: gw + "img/xl.png" },
     lt2: { src: gw + "img/xiaoliang.png" },
     sais: { text: "数据加载中···" },
-    rq: { text: "2022-10-29 更新" },
+    rq: { text: "2024-04-05 更新" },
     zd1: { text: "JSBox" },
     zd2: { text: "请稍后" },
     url: "https://iphone8.vip/",
@@ -296,40 +284,39 @@ $("list").data = [{
 function getdata() {
     var turl = $cache.get("info").turl;
     $http.get({
-        url: $text.base64Decode(turl) + "match_all.json",
+        url: $text.base64Decode(turl) + "match_recommend.json",
         header: {
             "User-Agent": "LiveApp/1.0 (iPhone; iOS 13.5; Scale/3.00)",
         },
         handler: function (resp) {
-            var json = resp.data.data;
+            var text = resp.data.replace(/match_recommend\(|\)/g, "")
+            var json = JSON.parse(text).data.matches;
             var data = [];
             for (i in json) {
-                tarr = json[i].data
+                tarr = json[i].anchors
+                var zbdata = []
                 if (!tarr == "") {
                     for (a in tarr) {
-                        var zarr = tarr[a].list
-                        var zbdata = []
-                        for (z in zarr) {
-                            var zb = zarr[z]
-                            zbdata.push({
-                                img: { src: zb.head_pic },
-                                pm: { text: zb.nickname },
-                                ztai: { src: `https://iphone8.vip/jsbox/img/zbzt_${zb.a_status}.png` },
-                                id: zb.room_num
-                            })
-                        }
-                        var ss = tarr[a]
-                        data.push({
-                            lt1: { src: ss.home_logo },
-                            lt2: { src: ss.visiting_logo },
-                            sais: { text: ss.title },
-                            rq: { text: ss.time },
-                            zd1: { text: ss.home_name },
-                            zd2: { text: ss.visiting_name },
-                            cd: { data: zbdata }
+                        var zarr = tarr[a]
+                        zbdata.push({
+                            img: { src: zarr.cutOutIcon },
+                            pm: { text: zarr.nickName },
+                            id: zarr.anchor.roomNum
                         })
                     }
                 }
+                var ss = json[i]
+                data.push({
+                    lt1: { src: ss.hostIcon },
+                    lt2: { src: ss.guestIcon },
+                    sais: { text: ss.subCateName },
+                    rq: { text: timestampToDateString(ss.matchTime) },
+                    zd1: { text: ss.hostName },
+                    zd2: { text: ss.guestName },
+                    cd: { data: zbdata }
+                })
+
+
             }
             $("list").data = data
             $("list").endRefreshing();
@@ -341,13 +328,15 @@ function getdata() {
 function getvideo(id) {
     var turl = $cache.get("info").turl;
     $http.get({
-        url: $text.base64Decode(turl) + "room/" + id + ".json",
+        url: $text.base64Decode(turl) + "room/" + id + "/detail.json",
         header: {
             "User-Agent": "LiveApp/1.0 (iPhone; iOS 13.5; Scale/3.00)",
         },
         handler: function (resp) {
-            var url = resp.data.data.room_info.m3u8_hd;
-            if (url) {
+            var text = resp.data.replace(/detail\(|\)/g, "")
+            var json = JSON.parse(text)
+            var url = json.data.stream.hdM3u8;
+            if (json.data.room.liveStatus == 1) {
                 playvideo(url)
             } else {
                 $ui.alert("主播已离开");
@@ -415,3 +404,23 @@ function playvideo(playurl) {
 
     play(playurl, options);
 }
+
+function timestampToDateString(timestamp) {
+    var date = new Date(timestamp);
+    var now = new Date();
+    if (date.getFullYear() === now.getFullYear() &&
+        date.getMonth() === now.getMonth() &&
+        date.getDate() === now.getDate()) {
+        return "今天 " + padZero(date.getHours()) + ":" + padZero(date.getMinutes());
+    } else {
+        return padZero(date.getMonth() + 1) + '-' +
+            padZero(date.getDate()) + ' ' +
+            padZero(date.getHours()) + ':' +
+            padZero(date.getMinutes());
+    }
+}
+
+function padZero(num) {
+    return ("0" + num).slice(-2);
+}
+
