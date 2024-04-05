@@ -12,6 +12,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/vue.min.js"></script>
     <script src="js/layer.js"></script>
+
     <!-- Matomo -->
     <script>
         var _paq = window._paq = window._paq || [];
@@ -53,11 +54,11 @@
 
                             <p style="text-align: center;color: #f56eca ;">每隔30分钟自动解除验证码</p>
                             <div class="card-body">
-                                <p class="card-title">账号状态：{{status[item.status]}}&nbsp;&nbsp;&nbsp;
+                                <!-- <p class="card-title">账号状态：{{status[item.status]}}&nbsp;&nbsp;&nbsp;
                                     <a class="card-text">&nbsp;&nbsp;&nbsp;{{item.country}}</a>
-                                </p>
+                                </p> -->
                                 <p class="card-text">检测时间：{{item.time}}</p>
-                                <p class="card-text">检测结果：{{item.msg}}</p>
+                                <p class="card-text">检测结果：{{item.status}}</p>
                                 <button class="btn btn-outline-secondary waves-effect"
                                     @click="copy(item.username)">复制帐号</button>
                                 <button class="btn btn-outline-secondary waves-effect" style="margin-left: 8px"
@@ -77,9 +78,8 @@
 
     </div>
     <div id="dibu"></div>
-
     <script id="csh_td" src="js/csh.js" webtype="5"></script>
-    <script src="js/bootstrap.min.js"></script>
+    
     <script>
         var app = new Vue({
             el: '#app',
@@ -126,6 +126,7 @@
             $(".gzh").hide();
         });
     </script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
