@@ -223,6 +223,14 @@
         ],
         "jb": [
             {
+                "title": "Apple ID 获取器",
+                "img": "appleid.jpg",
+                "rq": "更新：2024年4月6日",
+                "sm": "ID可下载Shadowrocket(小火箭),\n账号密码24小时自动更新",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/appleID",
+                "url": "appleid.js"
+            },
+            {
                 "title": "🔥赛事直播 1.7",
                 "img": "sszb.jpg",
                 "rq": "更新：2024年4月5日",
@@ -285,14 +293,6 @@
                 "sm": "修复更新，新增自动更新功能",
                 "jsurl": "",
                 "url": "music2.js"
-            },
-            {
-                "title": "Apple ID 获取器",
-                "img": "appleid.jpg",
-                "rq": "更新：2023年12月9日",
-                "sm": "ID可下载Shadowrocket(小火箭),\n账号密码24小时自动更新",
-                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/appleID",
-                "url": "appleid.js"
             },
             {
                 "title": "抖yin 2.8",
