@@ -7,13 +7,13 @@ function co_sj() {
     }
 }
 
-$.get('../../config/data.json','',function (data) {
-    $("#jb").html(kap_cj(data.data.jb));
-})
+// $.get('../../config/data.json','',function (data) {
+//     $("#jb").html(kap_cj(data.data.jb));
+// })
 
-// $.get('https://s3.iphone8.vip/data/js/jsbox.json',function (data) {
-//     $("#jb").html(kap_cj(data));
-// },'json');
+$.get('https://s3.iphone8.vip/data/js/jsbox.json',function (data) {
+    $("#jb").html(kap_cj(data));
+},'json');
 
 function kap_cj(data){
     var txt1 = `<div class="col-md-4 row-box" onclick="install('')">
@@ -22,7 +22,6 @@ function kap_cj(data){
         <div class="title">
             <h4>🔥小良 - 更新器 v3.1 Js版</h4>
             <p class="ri">更新：2023年10月21日</p>
-            <p class="author">作者：iPhone、小良</p>
         </div>
         <div class="video_icon" id="https://mp.weixin.qq.com/s/UJi4tePycqadcPD22Hprag" onclick="handleVideoClick(event, this)"><img src="./img/jiaocheng3.png" alt=""></div>
         <div class="sm">

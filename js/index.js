@@ -13,15 +13,21 @@ function co_sj() {
 
 $.get('../../config/data.json','',function (data) {
     // $("#gz").html(kap_cj(data.data.gz, 1));
-    $("#jb").html(kap_cj(data.data.jb, 2));
+    // $("#jb").html(kap_cj(data.data.jb, 2));
     $("#yy").html(kap_cj(data.data.yy, 3));
     $("#qt").html(kap_cj(data.data.jc, 4));
 })
 
-//新版测试
+//新版规则
 $.get('https://s3.iphone8.vip/data/rule/shortcuts.json',function (data) {
     $("#gz").html(kap_cj(data, 1));
 },'json');
+
+//新版脚本
+$.get('https://s3.iphone8.vip/data/js/jsbox.json',function (data) {
+    $("#jb").html(kap_cj(data, 2));
+},'json');
+
 
 function kap_cj(data, lei) {
     var txt1 = "";
@@ -60,7 +66,7 @@ function kap_cj(data, lei) {
 
 const isImgHttp = (url) => {
     if (!url) {
-        return "./img/shortcuts.png";
+        return "./img/jzsb.png";
     } else if (url.includes("https://")) {
         return url;
     } else {
