@@ -5,11 +5,12 @@
     <title>JSBox & Pin</title>
     <meta name="keywords" content="jsbox,xteko,javascript,extension,doc,document,documentation">
     <meta name="description" content="Install JSBox Extension">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="./css/jsx.css">
     <script>
         function download() {
-          window.open("../../jb.html", "_blank");
+            window.open("../../jb.html", "_blank");
         }
     </script>
     <!-- Matomo -->
@@ -17,15 +18,15 @@
         var _paq = window._paq = window._paq || [];
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
-        (function() {
-        var u="//matomo.iphone8.vip/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '2']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        (function () {
+            var u = "//matomo.iphone8.vip/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '2']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
         })();
     </script>
-<!-- End Matomo Code -->
+    <!-- End Matomo Code -->
 
 </head>
 
@@ -36,7 +37,7 @@
     </div>
     <div id="center-box">
         <div id="info" style="margin-top: 50px;">
-        <img src="../img/xl.png" width="32px" style="vertical-align: middle;">
+            <img src="../img/xl.png" width="32px" style="vertical-align: middle;">
             <span id="name">小良 - 更新器 3.1</span>
         </div>
         <div id="button-layout">
@@ -48,48 +49,67 @@
             <div class="button" id="button-pin"
                 onclick="window.location.href='pin://install?url=https://iphone8.vip/jsbox/js/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.1';">
                 点击 - 安装到 Pin(3.2.2~3.2.3)</div>
-            <div class="button" id="button-jc" onclick="window.location.href='https://mp.weixin.qq.com/s/9E86yTg1Nwm7XuZeOqhVLQ';">点击 - 观看脚本使用教程</div>
+            <div class="button" id="button-jc"
+                onclick="window.location.href='https://mp.weixin.qq.com/s/9E86yTg1Nwm7XuZeOqhVLQ';">点击 - 观看脚本使用教程</div>
         </div>
     </div>
 
 
     <script>
+        // 判断图片是否是网络图片
+        const isImgHttp = (url) => {
+            if (!url) {
+                return "";
+            } else if (url.includes("https://")) {
+                return `<img src="${url}" width="32px" style="vertical-align: middle;">`
+            } else {
+                return `<img src="../img/${url}" width="32px" style="vertical-align: middle;">`
+            }
+        }
+        // 判断是否是网络js脚本
+        const isJsHttp = (url) => {
+            if (url.includes("https://")) {
+                return url
+            } else {
+                return `https://iphone8.vip/jsbox/js/${url}`
+            }
+        }
         // Install.html?vid=gxq.js&name=小良 - 更新器 3.1&img=xl.png
         // vid=文件名(gxq),name=规则名字,img=图片路径(../img/)
         var vid = getQueryString("vid")
         var name = getQueryString("name")
-        var img = getQueryString("img")
+        var img = isImgHttp(getQueryString("img"))
         if (vid == "undefined" || name == "undefined") {
             vid = false
         }
         if (vid && name) {
-            var title = name
+            const title = name
             name = encodeURI(name)
+            const jsdown = isJsHttp(vid)
             var html = `
         <div id="info" style="margin-top: 50px;">
-            <img src="../img/${img}" width="32px" style="vertical-align: middle;">
+            ${img}
             <span id="name">${title}</span>
         </div>
         <div id="button-layout">
             <div class="button" id="button-top">请在 Safari 打开这个页面</div>
-            <div class="button" id="button-jsbox" onclick="window.location.href='../jsbox/js/${vid}';">查看源码-手动复制</div>
+            <div class="button" id="button-jsbox" onclick="window.location.href='${jsdown}';">查看源码-手动复制</div>
             <div class="button" id="button-jsboxx"
-                onclick="window.location.href='jsbox://import?url=https://iphone8.vip/jsbox/js/${vid}&name=${name}';">
+                onclick="window.location.href='jsbox://import?url=${jsdown}&name=${name}';">
                 点击安装到 - JSBox</div>
             <div class="button" id="button-pin"
-                onclick="window.location.href='pin://install?url=https://iphone8.vip/jsbox/js/${vid}&name=${name}';">
+                onclick="window.location.href='pin://install?url=${jsdown}&name=${name}';">
                 点击 - 安装到 Pin(3.2.2~3.2.3)</div>
         </div>`
-        document.getElementById('center-box').innerHTML = html
+            document.getElementById('center-box').innerHTML = html
         }
 
-
+        // 获取url参数
         function getQueryString(name) {
             const url_string = window.location.href
             const url = new URL(url_string);
             return url.searchParams.get(name);
         }
-
     </script>
 
 
