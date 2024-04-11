@@ -9,7 +9,6 @@ https://ae85.cn/
 
 博客：87xl.cn
 */
-
 const pz = {
     title: "小良 - 更新器 3.2",
     pin: "pin://install?url=",
@@ -209,7 +208,6 @@ function refetch() {
 function tcgg(gg) {
     if ($file.exists("gg.txt")) {
         var file = $file.read("gg.txt").string;
-        $console.info(file);
         if (file != gg) {
             xrwj(gg);
         }
@@ -274,8 +272,6 @@ function zxgetlist(id) {
 refetch();
 
 function slide(arr,gw) {
-    // var arr = $cache.get("stories").js.zygd;
-    // var gw = $cache.get("stories").gw
     var data = [];
     for (i in arr) {
         var gd = arr[i];
