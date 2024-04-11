@@ -16,7 +16,8 @@ const pz = {
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm: "- 感谢支持 - iPhone8.vip -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2024",
     lei: ["首页推荐", "安装脚本", "添加规则", "查看教程", "获取应用"],
-    slide: []
+    slide: [],
+    data:{}
 };
 
 const menu = {
@@ -180,17 +181,25 @@ function refetch() {
                     ]
                 });
             } else {
-                $ui.loading(true);
+                pz.data = res;
                 const t = '?t='+new Date().getTime()
-                const gz = await get_data(res.data_link.gz+t)
-                const jb = await get_data(res.data_link.jb+t)
-                $ui.loading(false);
-                res.data.gz = gz;
-                res.data.jb = jb;
-                $cache.set("stories", res);
-                pz.slide = slide()
-                csh();
-                render();
+                $ui.loading(true);
+                $http.get({
+                    url:res.data_link.gz+t,
+                    handler: function(resp) {
+                        pz.data.data.gz = resp.data;
+                        $http.get({
+                            url: res.data_link.jb+t,
+                            handler: function(resp) {
+                                $ui.loading(false);
+                                pz.data.data.jb = resp.data;
+                                csh();
+                                render();
+                            }
+                        });
+                    }
+                });
+                pz.slide = slide(res.js.zygd,res.gw)
                 tcgg(res.js.gg);
             }
         }
@@ -209,13 +218,8 @@ function tcgg(gg) {
     }
 }
 
-async function get_data(url) {
-    var resp = await $http.get({ url: url });
-    return resp.data;
-}
-
 const isImgHttp = (url) => {
-    const gw = $cache.get("stories").gw
+    const gw = pz.data.gw
     if (!url) {
         return gw + "img/jzsb.png";
     } else if (url.includes("https://")) {
@@ -243,7 +247,7 @@ function xrwj(nr) {
 }
 
 function zxgetlist(id) {
-    var json = $cache.get("stories").data;
+    var json = pz.data.data;
     if (id == 1) {
         listjm("脚本列表", "⁺ 安装 ", id);
         $("Menu").index = 1;
@@ -269,9 +273,9 @@ function zxgetlist(id) {
 
 refetch();
 
-function slide() {
-    var arr = $cache.get("stories").js.zygd;
-    var gw = $cache.get("stories").gw
+function slide(arr,gw) {
+    // var arr = $cache.get("stories").js.zygd;
+    // var gw = $cache.get("stories").gw
     var data = [];
     for (i in arr) {
         var gd = arr[i];
@@ -292,21 +296,20 @@ function slide() {
 }
 
 function get_slide(i) {
-    var arr = $cache.get("stories").js.zygd;
+    var arr = pz.data.js.zygd;
     web(arr[i].url, arr[i].name);
 }
 
 function azjs(jsurl, jsname) {
     const appid = $app.info.bundleID;
     const appbb = $app.info.version;
-    const gw = $cache.get("stories").gw;
+    const gw = pz.data.gw;
     const name = jsname.replace(/🔥/, "")
     const d_name = encodeURI(name)
     var url = gw + "jsbox/js/" + jsurl;
     if (jsurl.includes("https://")) {
         url = jsurl;
     } 
-    
     const pin_url = url + "&name=" + d_name;
     if (appid == "app.cyan.pin") {
         if ((appbb == "3.2.2") | (appbb == "3.2.3")) {
@@ -344,7 +347,6 @@ function azjs(jsurl, jsname) {
                                 url: url,
                                 handler: function (resp) {
                                     $ui.loading(false);
-
                                     if (resp.response.statusCode == "200") {
                                         $clipboard.text = resp.data;
                                         $ui.alert("js脚本代码已复制\n\n新建扩展脚本粘贴即可");
@@ -398,7 +400,7 @@ function azjs(jsurl, jsname) {
 }
 
 function render() {
-    var json = $cache.get("stories").data;
+    var json = pz.data.data;
     $("vlist").data = [
         clzyli(json.jb, "最新js脚本", "1"),
         clzyli(json.gz, "热门快捷指令规则", "2"),
@@ -494,7 +496,6 @@ function csh() {
 }
 
 function getlist(json, lei) {
-    var gw = $cache.get("stories").gw
     var data = [];
     for (var idx in json) {
         var story = json[idx];
