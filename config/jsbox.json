@@ -1,0 +1,347 @@
+{
+    "version": "3.2",
+    "gw": "https://iphone8.vip/",
+    "hant": "更新内容：\n更换配置文件\n整合资源文件\n优化部分功能\n更新到最新版本看看吧！",
+    "bburl": "https://iphone8.vip/jsbox/js/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.2",
+    "name": "小良 - 更新器 3.2",
+    "file": "gxq.js",
+    "data_link": {
+        "gz": "https://s3.iphone8.vip/data/rule/shortcuts.json",
+        "jb": "https://s3.iphone8.vip/data/js/jsbox.json"
+    },
+    "js": {
+        "zygd": [
+            {
+                "src": "hdp/JSBox.png",
+                "url": "https://mp.weixin.qq.com/s/-xMOIKzG2D53O1lesHYusA",
+                "name": "jsbox破解"
+            },
+            {
+                "src": "hdp/Safari_yh.png",
+                "url": "https://iphone8.vip/youhou.html",
+                "name": "Safari - 油猴脚本"
+            },
+            {
+                "src": "hdp/TrollStore.png",
+                "url": "https://mp.weixin.qq.com/s/vLmlBkQfnFgOTEWHOuKC6A",
+                "name": "巨魔"
+            },
+            {
+                "src": "hdp/xcx.png",
+                "url": "https://mp.weixin.qq.com/s/ivUB1qODFcfOYtdn64lk8g",
+                "name": "微信小程序"
+            },
+            {
+                "src": "AD5.jpg",
+                "url": "http://mp.weixin.qq.com/mp/homepage?__biz=MzI0NDM1MDUwOQ==&hid=1",
+                "name": "公众号 ： ae85-cn"
+            }
+        ],
+        "gg": "欢迎订阅公众号\n小良科技\nID：ae85-cn\n------------\n2024年4月11日\n更新脚本\n\n小良 - 更新器 3.2"
+    },
+    "data": {
+        "gz": [],
+        "jb": [],
+        "yy": [
+            {
+                "title": "TrollStore - 巨魔安装教程",
+                "img": "TrollStore.jpg",
+                "rq": "ios14 - ios15",
+                "sm": "无需越狱，无需电脑，APP免签，免续签，永久使用，有了他就可以安装下面这下APP了",
+                "url": "https://mp.weixin.qq.com/s?__biz=MzI0NDM1MDUwOQ==&mid=2247485098&idx=1&sn=c2bde1304ce95c69179a64d6797a88e6&chksm=e95e6de8de29e4fed39995b0e7abd7298206bd2d86f427f7bbda275894d8da5adfe16853b6b8&token=665554799&lang=zh_CN#rd"
+            },
+            {
+                "title": "ipa 文件仓库",
+                "img": "wjwl.png",
+                "rq": "TrollStore 专区",
+                "sm": "仓库内的ipa文件下载后请使用TrollStore 巨魔 安装使用",
+                "url": "https://pan.ae85.cn/TrollStore"
+            },
+            {
+                "title": "AppsManager-应用管理器",
+                "img": "AppsManager.png",
+                "rq": "请使用巨魔app安装",
+                "sm": "管理应用、备份、还原、抹除数据<br>还原订阅账号数据 可免费使用app订阅功能",
+                "url": "https://pan.ae85.cn/d/TrollStore/AppsManager_1.7.0.ipa?sign=KvgggB6g2eOjuJHZF9kV_FXQf-wtrrMp-iXXe-WMkEQ=:0"
+            },
+            {
+                "title": "Shadowrocket - 小火箭",
+                "img": "Shadowrocket.jpg",
+                "rq": "请使用巨魔app安装",
+                "sm": "15.1.1永久签使用Shadowrocket_2_2_16_原始权限_trollstore专用",
+                "url": "https://pan.ae85.cn/d/TrollStore/15.1.1%E6%B0%B8%E4%B9%85%E7%AD%BE%E4%BD%BF%E7%94%A8Shadowrocket_2_2_16_%E5%8E%9F%E5%A7%8B%E6%9D%83%E9%99%90_trollstore%E4%B8%93%E7%94%A8.ipa"
+            },
+            {
+                "title": "手机迅雷",
+                "img": "xunlei.png",
+                "rq": "请使用巨魔app安装",
+                "sm": "下载后使用巨魔安装，请先安装好TrollStore(巨魔)app",
+                "url": "https://pan.ae85.cn/d/TrollStore/%E8%BF%85%E9%9B%B7Crack.ipa"
+            },
+            {
+                "title": "Pin - 剪贴板扩展 (越狱版)",
+                "img": "Pin.png",
+                "rq": "⚡️️ v3.2.2　💾13.8MB",
+                "sm": "需要手机越狱才能安装使用",
+                "url": "https://pan.ae85.cn/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/APP-IOS/Pin%203.2.2.ipa"
+            },
+            {
+                "title": "JSBox - 越狱版",
+                "img": "jsbox.jpg",
+                "rq": "⚡️️ v1.24.0　💾29.8MB",
+                "sm": "需要手机越狱才能安装使用",
+                "url": "https://pan.ae85.cn/d/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/APP-IOS/JSBox%E8%B6%8A%E7%8B%B1%E7%89%88_1.24.0_.ipa"
+            }
+        ],
+        "jc": [
+            {
+                "title": "JSBox-破解，免费解锁高级功能 - 无需越狱",
+                "img": "jsbox.jpg",
+                "rq": "支持ios14-ios15.4.1",
+                "sm": "需要使用巨魔软件，原理就是还原已解锁账号的备份文件",
+                "jsurl": "https://v.87xl.cn?url=https://d.87xl.cn/jsboxPJ",
+                "url": "https://mp.weixin.qq.com/s?__biz=MzI0NDM1MDUwOQ==&mid=2247485111&idx=1&sn=feb0948fd1911f3b0f5b26c23a03fd79&chksm=e95e6df5de29e4e35b0331e2c762c285cbfebf481ed24a120ff900230a5876d38f6f69195b96#rd"
+            },
+            {
+                "title": "ios油猴脚本 - 效率神器、Safari浏览器必备工具",
+                "img": "youhou.png",
+                "rq": "支持ios15以上系统",
+                "sm": "无需越狱，自动Safari浏览器中使用",
+                "jsurl": "",
+                "url": "https://mp.weixin.qq.com/s?__biz=MzI0NDM1MDUwOQ==&mid=2247485045&idx=1&sn=c4b54521faead705bf887f949fa2fcb4&chksm=e95e6d37de29e4215f4664b04d266dabbd019e78878a1ffe3019426299c4a7ab87b21a1188aa#rd"
+            },
+            {
+                "title": "教你用自带浏览器 Safari 下载MP4视频和其他文件",
+                "img": "Safari.png",
+                "rq": "需要ios13及以上系统",
+                "sm": "无需越狱，支持多文件同时下载，不用任何第三方工具就能轻松简单的下载文件",
+                "jsurl": "",
+                "url": "https://mp.weixin.qq.com/s/LDdYSTNqhcKz2QzNqHbb1g"
+            },
+            {
+                "title": "Telegram 直连",
+                "img": "tg_logo.png",
+                "rq": "Safari 浏览器中打开",
+                "sm": "无需科学上网即可使用Telegram",
+                "jsurl": "",
+                "url": "http://api.ae85.cn/telegram.php"
+            },
+            {
+                "title": "屏蔽iOS 13.x系统自动更新",
+                "img": "settings.png",
+                "rq": "Safari 浏览器中打开",
+                "sm": "ios13用户不想系统自动下载更新的可以安装这个描述文件",
+                "jsurl": "",
+                "url": "https://iphone8.vip/ios/iOS13.mobileconfig"
+            },
+            {
+                "title": " 手机获取百度BDUSS教程",
+                "img": "bduss.jpg",
+                "rq": "视频教程",
+                "sm": "手机端利用抓包工具获取BDUSS\n视频操作有点快，多看几遍吧！",
+                "jsurl": "http://t.cn/RrCoaJm",
+                "url": "http://t.cn/Rkb7u8i"
+            },
+            {
+                "title": "TestFlight (app测试)申请和安装",
+                "img": "tf.jpg",
+                "rq": "视频教程",
+                "sm": "教你如何获取小良所分享的脚本\n视频操作有点快，多看几遍吧！",
+                "jsurl": "http://t.cn/Rma7VqB",
+                "url": "http://t.cn/Rma7VqB"
+            },
+            {
+                "title": "Pin-js脚本获取添加方法",
+                "img": "Pin.png",
+                "rq": "视频教程",
+                "sm": "教你如何获取小良所分享的脚本\n视频操作有点快，多看几遍吧！",
+                "jsurl": "http://player.youku.com/embed/XMzQyMDA0NjQwNA==",
+                "url": "http://player.youku.com/embed/XMzQyMDA0NjQwNA=="
+            },
+            {
+                "title": "获取百度云文件真实链接",
+                "img": "baiduyun.jpg",
+                "rq": "视频教程",
+                "sm": "利用Safari浏览器轻松获取，不用越狱,不用三方工具和插件。\n这个百度云下载速度实在不敢恭维",
+                "jsurl": "http://t.cn/RlObGG7",
+                "url": "http://t.cn/RlObGG7"
+            },
+            {
+                "title": "不越狱查找APP的URL Schemes",
+                "img": "urlschemes.jpg",
+                "rq": "视频教程",
+                "sm": "使用Thor抓包工具和Shu文件管理\n懂 URL Schemes 的是「魔法师」。",
+                "jsurl": "http://t.cn/R0nFvcw",
+                "url": "http://t.cn/R0nFvcw"
+            },
+            {
+                "title": "Pin-脚本(Vip视频解析)教程",
+                "img": "Pin.png",
+                "rq": "视频教程",
+                "sm": "添加脚本请前往小良微信朋友圈。脚本用于Pin 3.0以上版本！\n<br>",
+                "jsurl": "http://t.cn/RNTHBSq",
+                "url": "http://t.cn/RNTHBSq"
+            },
+            {
+                "title": "muse去水印规则制作教程",
+                "img": "musespjc.png",
+                "rq": "视频教程",
+                "sm": "试看版，完整版尽在“ iPhone 技术研究中心 ”微信群\n入群加请加小良微信",
+                "jsurl": "http://t.cn/RNpbbIO",
+                "url": "http://t.cn/RNpbbIO"
+            },
+            {
+                "title": "火山去水印-规则制作过程",
+                "img": "hsxspjc.png",
+                "rq": "视频教程",
+                "sm": "试看版，完整版尽在“ iPhone 技术研究中心 ”微信群\n入群加请加小良微信",
+                "jsurl": "http://t.cn/RCgGaRr",
+                "url": "http://t.cn/RCgGaRr"
+            },
+            {
+                "title": "教你怎么做无水印装逼视频",
+                "img": "wsyspjc.jpg",
+                "rq": "视频教程",
+                "sm": "用到的视频编辑软件：Cute CUT Pro 版，Appstore (商店) 收费￥40，可前往 小良-更新器 下载\n",
+                "jsurl": "http://t.cn/RC2ASBq",
+                "url": "http://t.cn/RC2ASBq"
+            },
+            {
+                "title": "音乐下载 - 并导入播放器",
+                "img": "ysyyxz.jpg",
+                "rq": "视频教程",
+                "sm": "有高音质，可以下载收费歌曲，目前搜索资源只取一页，后续加页\n规则就在本站，规则页面，自行添加",
+                "jsurl": "http://t.cn/REZydLa",
+                "url": "http://t.cn/REZydLa"
+            },
+            {
+                "title": "百度云文件下载链接提取",
+                "img": "baiduyun.jpg",
+                "rq": "视频教程",
+                "sm": "可以使用迅雷或其他工具下载，原理：利用workflow 对接百度账号\n这个百度云下载速度实在不敢恭维",
+                "jsurl": "http://m.youku.com/video/id_XMjc3NjQ4ODkyMA==.html?from=singlemessage&isappinstalled=1",
+                "url": "http://m.youku.com/video/id_XMjc3NjQ4ODkyMA==.html?from=singlemessage&isappinstalled=1"
+            },
+            {
+                "title": "万能视频下载 - 视频演示",
+                "img": "spxz.png",
+                "rq": "视频教程",
+                "sm": "可下载QQ空间视频，视频流m3u8格式视频\n手机无需越狱，要APP的微信找我",
+                "jsurl": "http://t.cn/REZy15U",
+                "url": "http://t.cn/REZy15U"
+            },
+            {
+                "title": "视频演示 - 破解酷狗VIP",
+                "img": "kg.png",
+                "rq": "视频教程",
+                "sm": "可下载无损音乐\n，原理和用Flex3打破解补丁一样",
+                "jsurl": "http://t.cn/REZyuYr",
+                "url": "http://t.cn/REZyuYr"
+            },
+            {
+                "title": "利用Pin快速搜索资源",
+                "img": "Pin.png",
+                "rq": "视频教程",
+                "sm": "调用UC搜索接口，以及百度搜索引擎\n<br>",
+                "jsurl": "http://t.cn/REZymUD",
+                "url": "http://t.cn/REZymUD"
+            },
+            {
+                "title": "Pin抓图功能下载视频方法",
+                "img": "Pin.png",
+                "rq": "视频教程",
+                "sm": "除了u3m8格式视频不能抓以外基本都可以抓\n<br>",
+                "jsurl": "http://t.cn/REZyRaI",
+                "url": "http://t.cn/REZyRaI"
+            },
+            {
+                "title": "手机快速下载视频",
+                "img": "wmxz.png",
+                "rq": "视频教程",
+                "sm": "需要下载APP，不用越狱。\n<br>任何视频几乎都可以下",
+                "jsurl": "http://t.cn/REZyQoW",
+                "url": "http://t.cn/REZyQoW"
+            },
+            {
+                "title": "VPN自动开启、关闭",
+                "img": "vpn.jpg",
+                "rq": "视频教程",
+                "sm": "根据APP是否需要翻墙而自动开启VPN，关闭APP后自动关闭VPN。",
+                "jsurl": "http://t.cn/RpuoAci",
+                "url": "http://t.cn/RpuoAci"
+            },
+            {
+                "title": "手机快速查找APP的URL Schemes",
+                "img": "urlschemes.jpg",
+                "rq": "教程",
+                "sm": "本方法需要越狱，安装插件\n懂 URL Schemes 的是「魔法师」。",
+                "jsurl": "http://mp.weixin.qq.com/s/FDLI9455veb3TENW2mlsjQ",
+                "url": "http://mp.weixin.qq.com/s/FDLI9455veb3TENW2mlsjQ"
+            },
+            {
+                "title": "更多视频教程请关注视频号",
+                "img": "mp.jpg",
+                "rq": "https://iphone8.vip/",
+                "sm": "有新教程第一时间发这里\n演示视频、视频教程、等",
+                "jsurl": "https://iphone8.vip/img/sph_qr.jpg",
+                "url": "https://iphone8.vip/img/sph_qr.jpg"
+            }
+        ],
+        "qt": [
+            {
+                "title": "小良博客：87xl.cn",
+                "img": "blog.png",
+                "rq": "收藏下吧！",
+                "sm": "发布一些微信公众号和微博不能发布的内容！\n\n你值得拥有，哈哈！",
+                "jsurl": "https://87xl.cn/",
+                "url": "https://87xl.cn/",
+                "button": "立即访问"
+            },
+            {
+                "title": "支付宝 - 红包、每日可领(活动)",
+                "img": "hb.jpg",
+                "rq": "感谢每一位支持过小良的朋友！",
+                "sm": "可以去超市 商店 饭店 等地使用\n也可以找我提现",
+                "jsurl": "http://t.cn/REZykYk",
+                "url": "alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Frender.alipay.com%2Fp%2Fc%2Falipay-red-qrcode%2Fshared.html%3Fchannel%3Dsearch_pwd%26shareId%3D2088202699097532%26token%3D19614922yglxkd7xgrvnf1fjlb%26campStr%3DkPPFvOxaCL3f85TiKss2wsBZgIjulHjG%26sign%3DqsiVOoa7TuphryWxyBdONXsMTnE3jiIBvWeUs3yV1sw%3D%26chInfo%3DDingtalk%26c_stype%3Dsearch_pwd%26code%3D798679953",
+                "button": "领取红包"
+            },
+            {
+                "title": "捐赠 - 打赏作者 - 谢谢",
+                "img": "zfb.png",
+                "rq": "谢谢打赏！",
+                "sm": "您的支持是我最大的动力！",
+                "jsurl": "https://iphone8.vip/skrwm3.png",
+                "url": "HTTPS://QR.ALIPAY.COM/FKX07038XP8DFXMTZPR64A",
+                "button": "打赏作者"
+            },
+            {
+                "title": "小良-微博(小良_Ge)走个关注吧",
+                "img": "wechat_icon.png",
+                "rq": "有你更精彩",
+                "sm": "有什么问题可以微博私信给我！",
+                "jsurl": "https://weibo.com/u/6216079977",
+                "url": "weibo://userinfo?uid=6216079977",
+                "button": "立即关注"
+            },
+            {
+                "title": "QQ交谈 - QQ很少上：84088289",
+                "img": "qq.png",
+                "rq": "进QQ交流群-点这里",
+                "sm": "有什么问题可以微博私信给我！\n\n也可以扫描下面二维码加入QQ群一起聊天！",
+                "jsurl": "",
+                "url": "http://wpa.qq.com/msgrd?v=3&uin=84088289&site=qq&menu=yes",
+                "button": "QQ交谈"
+            },
+            {
+                "title": "小良个人网站：https://iphone8.vip",
+                "img": "xl.png",
+                "rq": "收藏下吧！",
+                "sm": "一个简单而不一般的网站！\n\n你值得拥有，哈哈！",
+                "jsurl": "",
+                "url": "https://iphone8.vip/",
+                "button": "立即访问"
+            }
+        ]
+    }
+}
