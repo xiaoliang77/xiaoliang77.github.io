@@ -1,6 +1,6 @@
 /*
-小良 - 更新器 3.1
- 2023年10月21 修复更新配置文件
+小良 - 更新器 3.2
+ 2024年4月11 修复更新配置文件
  *快速获取安装小良个人作品
 
 by：iPhone 8、小良
@@ -11,10 +11,10 @@ https://ae85.cn/
 */
 
 const pz = {
-    title: "小良 - 更新器 3.1",
+    title: "小良 - 更新器 3.2",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
-    banqsm: "- 感谢支持 - iPhone8.vip -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2023",
+    banqsm: "- 感谢支持 - iPhone8.vip -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2024",
     lei: ["首页推荐", "安装脚本", "添加规则", "查看教程", "获取应用"],
     slide: []
 };
@@ -153,22 +153,22 @@ const vlist = {
 };
 
 function refetch() {
-    var turl = $text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcv") + "data.json"
+    var turl = $text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcv") + "jsbox.json"
     $ui.loading(true);
     $http.get({
         url: turl,
-        handler: function (resp) {
+        handler: async function (resp) {
             $ui.loading(false);
-            var data = resp.data;
-            if (data.version != "3.1") {
+            var res = resp.data;
+            if ( res.version != "3.2") {
                 $ui.alert({
                     title: "发现新版本",
-                    message: resp.data.hant,
+                    message: res.hant,
                     actions: [
                         {
                             title: "立即更新",
                             handler: function () {
-                                azjs(data.file, data.name);
+                                azjs( res.file,  res.name);
                             }
                         },
                         {
@@ -180,11 +180,18 @@ function refetch() {
                     ]
                 });
             } else {
-                $cache.set("stories", resp.data);
+                $ui.loading(true);
+                const t = '?t='+new Date().getTime()
+                const gz = await get_data(res.data_link.gz+t)
+                const jb = await get_data(res.data_link.jb+t)
+                $ui.loading(false);
+                res.data.gz = gz;
+                res.data.jb = jb;
+                $cache.set("stories", res);
                 pz.slide = slide()
                 csh();
                 render();
-                tcgg(resp.data.js.gg);
+                tcgg(res.js.gg);
             }
         }
     });
@@ -199,6 +206,31 @@ function tcgg(gg) {
         }
     } else {
         xrwj(gg);
+    }
+}
+
+async function get_data(url) {
+    var resp = await $http.get({ url: url });
+    return resp.data;
+}
+
+const isImgHttp = (url) => {
+    const gw = $cache.get("stories").gw
+    if (!url) {
+        return gw + "img/jzsb.png";
+    } else if (url.includes("https://")) {
+        return url;
+    } else {
+        return gw + "img/" + url;
+    }
+}
+
+function timestampToTime(timestamp) {
+    const date = new Date(+timestamp);
+    if (date instanceof Date && !isNaN(date.getTime())) {
+        return `更新：${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+    }else{
+        return timestamp;
     }
 }
 
@@ -265,13 +297,17 @@ function get_slide(i) {
 }
 
 function azjs(jsurl, jsname) {
-    var appid = $app.info.bundleID;
-    var appbb = $app.info.version;
-    var gw = $cache.get("stories").gw;
-    var name = jsname.replace(/🔥/, "")
-    var d_name = encodeURI(name)
+    const appid = $app.info.bundleID;
+    const appbb = $app.info.version;
+    const gw = $cache.get("stories").gw;
+    const name = jsname.replace(/🔥/, "")
+    const d_name = encodeURI(name)
     var url = gw + "jsbox/js/" + jsurl;
-    var pin_url = url + "&name=" + d_name;
+    if (jsurl.includes("https://")) {
+        url = jsurl;
+    } 
+    
+    const pin_url = url + "&name=" + d_name;
     if (appid == "app.cyan.pin") {
         if ((appbb == "3.2.2") | (appbb == "3.2.3")) {
             $ui.toast("正在安装中 ...");
@@ -373,14 +409,13 @@ function render() {
 }
 
 function clzyli(json, mc, idx) {
-    var gw = $cache.get("stories").gw
     var data = [];
     for (i in json) {
         if (i < 4) {
             data.push({
-                img: { src: gw + "img/" + json[i].img },
+                img: { src: isImgHttp(json[i].img) },
                 pm: { text: json[i].title },
-                rq: { text: json[i].rq },
+                rq: { text: timestampToTime(json[i].rq) },
                 data: json[i],
                 idx: idx
             });
@@ -465,7 +500,7 @@ function getlist(json, lei) {
         var story = json[idx];
         data.push({
             lt: {
-                src: gw + "img/" + story.img
+                src: isImgHttp(story.img)
             },
             mc: {
                 text: story.title
@@ -477,7 +512,7 @@ function getlist(json, lei) {
                 data: [{ url: story.url, title: story.title }]
             },
             rq: {
-                text: story.rq
+                text: timestampToTime(story.rq)
             },
             data: story,
             idx: lei
@@ -607,7 +642,6 @@ function listjm(bt, ant, id) {
 }
 
 function xqym(data, idx) {
-    var gw = $cache.get("stories").gw
     var an_name = pz.lei[idx]
     if (idx == 5) {
         an_name = data.button
@@ -623,7 +657,7 @@ function xqym(data, idx) {
                 type: "image",
                 props: {
                     id: "icon",
-                    src: gw + "img/" + data.img,
+                    src: isImgHttp(data.img),
                     radius: 16,
                     bgcolor: $color("white")
                 },
@@ -649,7 +683,7 @@ function xqym(data, idx) {
                 type: "label",
                 props: {
                     id: "biaorq",
-                    text: data.rq,
+                    text: timestampToTime(data.rq),
                     font: $font(15),
                     textColor: $color("blue"),
                     lines: 0
@@ -663,7 +697,7 @@ function xqym(data, idx) {
                 type: "label",
                 props: {
                     id: "biaozz",
-                    text: " iPhone 8、小良 ",
+                    text: data.author,
                     font: $font(15),
                     radius: 7,
                     textColor: $color("#777777"),
