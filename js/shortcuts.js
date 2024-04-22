@@ -47,7 +47,7 @@ function kap_cj(data) {
 // 判断图片是否是网络图片
 const isImgHttp = (url) => {
     if (!url) {
-        return "./img/shortcuts.png";
+        return "./img/img-404.png";
     } else if (url.includes("https://")) {
         return url;
     } else {

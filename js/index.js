@@ -66,7 +66,7 @@ function kap_cj(data, lei) {
 
 const isImgHttp = (url) => {
     if (!url) {
-        return "./img/jzsb.png";
+        return "./img/img-404.png";
     } else if (url.includes("https://")) {
         return url;
     } else {
