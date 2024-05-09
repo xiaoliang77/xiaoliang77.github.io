@@ -1,5 +1,5 @@
 /*
-2024年3月25日 更新
+2024年5月10日 更新
 更换源地址
 适配图片自适应屏幕宽度
 
@@ -17,7 +17,7 @@ var header = {
     "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
   }
 var js_name = "1024图库"
-var urlt = $text.base64Decode("aHR0cHM6Ly9kcHV5MjllLnh5ei8=")
+var urlt = $text.base64Decode("aHR0cHM6Ly9kcDI0MDVzLmxpbmsv")
 var data = [{ "name": "写真", "id": "14" }, { "name": "自拍", "id": "15" }, { "name": "露出", "id": "16" }, { "name": "街拍", "id": "49" }, { "name": "丝袜", "id": "21" }, { "name": "欧美", "id": "114" },]
 const mrhb = {
     type: "button",
