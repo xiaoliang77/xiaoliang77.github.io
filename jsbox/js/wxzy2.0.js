@@ -1,5 +1,5 @@
 /*
-2024年4月29日更新
+2024年6月3日更新
 修复无法播放问题
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
@@ -14,7 +14,7 @@ const channelList = [
 const myHeaders = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"
 };
-const urlt = $text.base64Decode("aHR0cHM6Ly95ZHZpLnN4a2Mudmlw");
+const urlt = $text.base64Decode("aHR0cHM6Ly9iZzVoLnljemsudmlw");
 const mrhb = {
     type: "button",
     props: {
@@ -212,7 +212,7 @@ function I(r) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvd3h6eS5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.version != "2.4.2") {
+        if (resp.data.version != "2.4.3") {
             $ui.alert({
                 title: resp.data.title,
                 message: resp.data.upexplain,
