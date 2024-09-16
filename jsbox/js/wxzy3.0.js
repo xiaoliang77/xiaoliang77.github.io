@@ -1,5 +1,5 @@
 /*
-2024年7月2日更新
+2024年9月17日更新
 修复无法播放问题
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
@@ -14,7 +14,7 @@ const channelList = [
 const myHeaders = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"
 };
-const urlt = $text.base64Decode("aHR0cHM6Ly9icW1uLnNtMjIwLnZpcA==");
+const urlt = $text.base64Decode("aHR0cHM6Ly85ZHF4LnNtMjg3LnZpcA==");
 const mrhb = {
     type: "button",
     props: {
@@ -36,7 +36,7 @@ const mrhb = {
 
 $ui.render({
     props: {
-        title: "无限资源 2.4"
+        title: "无限资源 3.0"
     },
     views: [
         {
@@ -99,7 +99,7 @@ $ui.render({
             },
             events: {
                 didSelect: function (sender, indexPath, data) {
-                    geturl(data.url, data.pm.text)
+                    play(urlt + data.url, data.pm.text)
                 },
                 didReachBottom: function (sender) {
                     sender.endFetchingMore();
@@ -131,8 +131,6 @@ function getdata() {
             var html = arr.replace(/\n|\s|\r/g, "");
             html = html.match(/<divclass=\"main\">.*?<divclass=\"pagebtn\">/g)[0]
             var li = html.match(/<aclass=\"vodbox\".*?<\/script>/g);
-            // console.log(li);
-
             if (page > 1) {
                 var data = $("Video").data;
             } else {
@@ -156,15 +154,7 @@ function getdata() {
     });
 }
 
-function geturl(url, pm) {
-    var id = url.match(/[0-9]+/g)[0]
-    console.log(url);
-
-    play(`https://8838.uk:88/${id}/hls/index.m3u8`, pm, url)
-
-}
-
-function play(url, mc, vid) {
+function play(url, mc) {
     $ui.push({
         props: {
             title: mc
@@ -173,36 +163,17 @@ function play(url, mc, vid) {
             type: "web",
             props: {
                 id: "bof",
-                request: {
-                    url: url,
-                    method: "GET",
-                    header: { "Referer": urlt + vid }
+                url: url,
+                ua: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0",
+                script: function () {
+                    document.querySelector('.ppnav').style.display = 'none';
+                    document.querySelector('.footer').style.display = 'none';
                 }
-
             },
             layout: $layout.fill,
-        },
-        {
-            type: "button",
-            props: {
-                src: "https://iphone8.vip/img/xl.png",
-            },
-            events: {
-                tapped: function (sender) {
-                    $device.taptic(1);
-                    $clipboard.text = url
-                    $ui.error("已复制", 0.5);
-                }
-            },
-            layout: function (make, view) {
-                make.bottom.inset(50)
-                make.width.height.equalTo(50)
-                make.right.inset(15)
-            }
         }]
     })
 }
-
 
 $cache.set("type", channelList[0].id);
 $cache.set("pg", 1);
@@ -217,7 +188,7 @@ function I(r) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvd3h6eS5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.version != "2.4.5") {
+        if (resp.data.version != "3.0") {
             $ui.alert({
                 title: resp.data.title,
                 message: resp.data.upexplain,
