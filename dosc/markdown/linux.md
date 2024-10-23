@@ -250,3 +250,6 @@ docker rm $(docker ps -a -q)        #remove删除所有容器
 
 [视频地址](https://pan.87xl.cn/0:/%E8%A7%86%E9%A2%91/2021-10-29_19-48-41.mp4)
 
+![20241024051726](https://raw.githubusercontent.com/yoocl/material/master/img/picgo/20241024051726.png)
+
+![20241024051945](https://cdn.jsdelivr.net/gh/yoocl/material@master/img/picgo/20241024051945.png)
