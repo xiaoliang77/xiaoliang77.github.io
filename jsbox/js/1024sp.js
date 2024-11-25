@@ -89,7 +89,7 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "forum.php?mod=forumdisplay&fid=" + id + "&page=" + pg + "&mobile=2",
+        url: urlt + "forum-" + id + "-" + pg + ".html",
         header: header,
         handler: function (resp) {
             $ui.loading(false)

@@ -1,5 +1,5 @@
 /*
-2024年6月7日 更新
+2024年11月25日 更新
 更换源地址
 
 由于种子地址限制问题，无法直接使用脚本下载也不能直接调用迅雷下载，需要跳转到浏览器中下载种子文件然后在使用迅雷打开种子文件下载即可。
@@ -212,7 +212,7 @@ function geturl(url, dian) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.down.version != "2.9.5") {
+        if (resp.data.down.version != "2.9.6") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.down.version,
                 message: resp.data.down.upexplain,

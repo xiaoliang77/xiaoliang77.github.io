@@ -1,5 +1,5 @@
 /*
-2024年6月7日 更新
+2024年11月25日 更新
 更换源地址
 适配图片自适应屏幕宽度
 
@@ -157,7 +157,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.mapdepot.version != "2.9.5") {
+        if (resp.data.mapdepot.version != "2.9.6") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.mapdepot.version,
                 message: resp.data.mapdepot.upexplain,

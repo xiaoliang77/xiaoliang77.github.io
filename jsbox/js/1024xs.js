@@ -1,5 +1,5 @@
 /*
-2024年6月7日 更新
+2024年11月25日 更新
 更换源地址
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
@@ -150,7 +150,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.novel.version != "2.9.5") {
+        if (resp.data.novel.version != "2.9.6") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.novel.version,
                 message: resp.data.novel.upexplain,
