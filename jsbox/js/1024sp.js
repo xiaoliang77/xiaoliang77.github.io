@@ -1,5 +1,5 @@
 /*
-2024年3月25日 更新
+2024年11月25日 更新
 更新无法使用问题
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -8,33 +8,32 @@ https://iphone8.vip/
 https://ae85.cn/
 */
 
-$cache.set("id", "41")
+$cache.set("id", "1")
 $cache.set("pg", 1)
 var header = {
-    "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
-    "Cookie":"_safe=vqd37pjm4p5uodq339yzk6b7jdt6oich1"
-  }
-var urlt = $text.base64Decode("aHR0cHM6Ly8xa2RqNS5hcHAv");
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+}
+var urlt = $text.base64Decode("aHR0cHM6Ly9jYS4xNjE5ei54eXo=");
 var js_name = "1024视频"
-var data = [{ "name": "国产无码", "id": "41" }, { "name": "日韩无码", "id": "42" }, { "name": "日韩有码", "id": "43" }, { "name": "欧美风情", "id": "44" }, { "name": "卡通动漫", "id": "45" }, { "name": "剧情三级", "id": "46" },]
+var data = [{ "name": "亞洲無碼", "id": "1" }, { "name": "亞洲有碼", "id": "2" }, { "name": "歐美無碼", "id": "3" }, { "name": "動漫無碼", "id": "4" }, { "name": "動漫有碼", "id": "5" }]
 const mrhb = {
     type: "button",
     props: {
-      id: "hb_img",
-      radius: 25,
-      src: "https://iphone8.vip/img/hb.jpg",
+        id: "hb_img",
+        radius: 25,
+        src: "https://iphone8.vip/img/hb.jpg",
     },
     events: {
-      tapped: function(sender) {
-        $app.openURL("https://ae85-1251930860.cos.ap-chengdu.myqcloud.com/hongbao.html")
-      }
+        tapped: function (sender) {
+            $app.openURL("https://ae85-1251930860.cos.ap-chengdu.myqcloud.com/hongbao.html")
+        }
     },
-    layout: function(make, view) {
-      make.bottom.inset(50)
-      make.width.height.equalTo(50)
-      make.right.inset(15)
+    layout: function (make, view) {
+        make.bottom.inset(50)
+        make.width.height.equalTo(50)
+        make.right.inset(15)
     }
-  }
+}
 $ui.render({
     props: {
         title: js_name
@@ -79,7 +78,7 @@ $ui.render({
             }
         }
 
-    },mrhb
+    }, mrhb
     ]
 
 })
@@ -89,12 +88,17 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "forum-" + id + "-" + pg + ".html",
+        url: urlt + "/thread0806.php?fid=22&search=&type=" + id + "&page=" + pg,
         header: header,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var shu = text.match(/class=\"item_box\">(\S*?)<\/a>/g)
+            if (text.includes("普通主題")) {
+                const startIndex = text.indexOf("普通主題") + 4;
+                const result = text.slice(startIndex).trim();
+                text = result;
+            }
+            var shu = text.match(/<tdclass="tal"id="">.*?<\/td>/g)
             if (pg == 1) {
                 var data = []
             } else {
@@ -103,8 +107,8 @@ function getdata() {
             for (i in shu) {
                 var a = shu[i]
                 if (a.indexOf('href=') !== -1) {
-                    var mc = a.match(/alt=\"(\S*?)\"/)[1]
-                    var id = a.match(/tid=(\S*?)&amp/)[1]
+                    var mc = a.match(/<h3><a[^>]*>(.*?)<\/a><\/h3>/)[1]
+                    var id = a.match(/ahref="(.*?)"/)[1]
                     data.push(mc + "\n" + id)
                 }
             }
@@ -119,22 +123,38 @@ getdata()
 function geting(id, mc) {
     $ui.loading(true)
     $http.get({
-        url: urlt + "play.php?tid=" + id,
+        url: urlt + id,
         header: header,
         handler: function (resp) {
-            $ui.loading(false)
-            var video = resp.data.data.flvurl
-            $ui.push({
-                props: {
-                    title: mc
-                },
-                views: [{
-                    type: "web",
-                    props: {
-                        url: video,
-                    },
-                    layout: $layout.fill
-                },mrhb]
+            const video = resp.data.match(/.src='(.*?)#/)[1]
+            $http.get({
+                url: video,
+                handler: function (resp) {
+                    $ui.loading(false)
+                    const video_src = resp.data.match(/https?:\/\/[^\s]+?\.(mp4|m3u8)/g)
+                    let selectedUrl = "";
+                    if (video_src && video_src.length > 1) {
+                        selectedUrl = video_src[1];
+                    } else if (video_src && video_src.length === 1) {
+                        selectedUrl = video_src[0];
+                    } else {
+                        $ui.alert("视频地址未获取到")
+                        return ;
+                    }
+
+                    $ui.push({
+                        props: {
+                            title: mc
+                        },
+                        views: [{
+                            type: "web",
+                            props: {
+                                url: selectedUrl,
+                            },
+                            layout: $layout.fill
+                        }, mrhb]
+                    })
+                }
             })
         }
     })
@@ -144,7 +164,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.9.3") {
+        if (resp.data.vdieo.version != "2.9.4") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
@@ -194,3 +214,4 @@ function download(url) {
         }
     })
 }
+
