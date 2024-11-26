@@ -2,32 +2,46 @@
 
 const Popup = {
     init: function () {
-        // console.log("Popup.init开始执行");
+        console.log("Popup.init开始执行");
         // 创建遮罩层
         const overlay = document.createElement('div');
         overlay.id = 'overlay';
-        document.body.appendChild(overlay);
+        document.body.appendChild(overlay); // 不再绑定点击事件
 
         // 创建弹窗
         const popup = document.createElement('div');
         popup.id = 'popup';
 
-        const closeButton = document.createElement('button');
-        closeButton.innerHTML = '✖'; // 使用更好看的关闭符号
-        closeButton.className = 'close-button'; // 添加 CSS 类
-
-        closeButton.onclick = Popup.hide; // 设置点击事件
-
-        // 创建标题元素，但不设置内容
+        // 创建标题元素
         const title = document.createElement('h2');
 
         // 创建一个容器来动态填充内容
         const content = document.createElement('div');
         content.id = 'popup-content';
 
-        popup.appendChild(closeButton);
+        // 创建分割线
+        const separator = document.createElement('div');
+        separator.className = 'separator';
+
+        // 创建按钮容器
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'button-container'; // 添加按钮容器类
+
+        // 创建“好的”链接
+        const okButton = document.createElement('a');
+        okButton.innerText = '好的'; // 链接文字
+        okButton.className = 'ok-button'; // 添加 CSS 类
+        okButton.href = '#'; // 添加 href 属性
+        okButton.onclick = (e) => {
+            e.preventDefault(); // 阻止默认行为
+            this.hide(); // 点击链接时关闭弹窗
+        };
+
+        buttonContainer.appendChild(okButton); // 将按钮添加到按钮容器
         popup.appendChild(title);
         popup.appendChild(content);
+        popup.appendChild(separator);
+        popup.appendChild(buttonContainer); // 将按钮容器添加到弹窗
 
         document.body.appendChild(popup);
 
