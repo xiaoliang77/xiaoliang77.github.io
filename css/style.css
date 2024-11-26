@@ -374,6 +374,7 @@ body {
 /* 链接悬停效果 */
 .ok-button:hover {
     color: #0056b3; /* 悬停时稍微变暗 */
+    text-decoration: none;
 }
 
 /* 按钮容器样式 */
