@@ -1,35 +1,25 @@
-//页面弹窗通知提醒功能
+// popup.js
+
 const Popup = {
     init: function () {
         console.log("Popup.init开始执行");
         // 创建遮罩层
         const overlay = document.createElement('div');
         overlay.id = 'overlay';
-        overlay.style.cssText = 'display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 999;';
         document.body.appendChild(overlay);
 
         // 创建弹窗
         const popup = document.createElement('div');
         popup.id = 'popup';
-        popup.style.cssText = 'display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 20px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px; z-index: 1000;';
 
         const closeButton = document.createElement('button');
-        closeButton.innerHTML = 'X';
-        closeButton.style.cssText = 'position: absolute; top: 0px; right: 3px; width: 50px; height: 50px; background: none; border: none; font-size: 26px; font-weight: bold; color: #000; cursor: pointer;';
-        // 添加鼠标悬停事件
-        closeButton.onmouseover = function () {
-            closeButton.style.color = 'red'; // 鼠标悬停时变红色
-        };
+        closeButton.innerHTML = '✖'; // 使用更好看的关闭符号
+        closeButton.className = 'close-button'; // 添加 CSS 类
 
-        // 添加鼠标移出事件
-        closeButton.onmouseout = function () {
-            closeButton.style.color = '#000'; // 鼠标移开时恢复颜色
-        };
         closeButton.onclick = Popup.hide; // 设置点击事件
 
         // 创建标题元素，但不设置内容
         const title = document.createElement('h2');
-        title.style.cssText = 'text-align: center; margin: 0;';
 
         // 创建一个容器来动态填充内容
         const content = document.createElement('div');
