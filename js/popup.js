@@ -14,7 +14,7 @@ const Popup = {
         popup.style.cssText = 'display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 20px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px; z-index: 1000;';
 
         const closeButton = document.createElement('button');
-        closeButton.innerHTML = '&times;';
+        closeButton.innerHTML = 'X';
         closeButton.style.cssText = 'position: absolute; top: 0px; right: 28px; width: 20px; height: 20px; background: none; border: none; font-size: 36px; font-weight: bold; color: #000; cursor: pointer;';
         // 添加鼠标悬停事件
         closeButton.onmouseover = function () {
