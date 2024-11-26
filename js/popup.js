@@ -2,7 +2,7 @@
 
 const Popup = {
     init: function () {
-        console.log("Popup.init开始执行");
+        // console.log("Popup.init开始执行");
         // 创建遮罩层
         const overlay = document.createElement('div');
         overlay.id = 'overlay';

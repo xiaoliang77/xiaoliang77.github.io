@@ -348,8 +348,8 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 30px;
-    height: 30px;
+    width: 40px; /* 增加宽度 */
+    height: 40px; /* 增加高度 */
     background: #f44336;
     border: none;
     color: white;
@@ -358,6 +358,9 @@ body {
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
+    display: flex; /* 使用 Flexbox */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
 }
 
 /* 关闭按钮悬停效果 */
@@ -371,3 +374,5 @@ body {
     text-align: center;
     margin: 0;
 }
+
+/* =========== 提醒弹窗 css ===========*/
