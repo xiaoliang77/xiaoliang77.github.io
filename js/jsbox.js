@@ -20,8 +20,8 @@ function kap_cj(data){
     <div class="kap s105">
         <img src="./img/xl.png">
         <div class="title">
-            <h4>🔥小良 - 更新器 v3.2 Js版</h4>
-            <p class="ri">更新：2024年4月11日</p>
+            <h4>🔥小良 - 更新器 v3.3 Js版</h4>
+            <p class="ri">更新：2024年11月26日</p>
         </div>
         <div class="video_icon" id="https://mp.weixin.qq.com/s/UJi4tePycqadcPD22Hprag" onclick="handleVideoClick(event, this)"><img src="./img/jiaocheng3.png" alt=""></div>
         <div class="sm">
