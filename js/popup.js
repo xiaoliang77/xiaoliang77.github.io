@@ -15,7 +15,7 @@ const Popup = {
 
         const closeButton = document.createElement('button');
         closeButton.innerHTML = 'X';
-        closeButton.style.cssText = 'position: absolute; top: 0px; right: 28px; width: 20px; height: 20px; background: none; border: none; font-size: 36px; font-weight: bold; color: #000; cursor: pointer;';
+        closeButton.style.cssText = 'position: absolute; top: 0px; right: 3px; width: 50px; height: 50px; background: none; border: none; font-size: 26px; font-weight: bold; color: #000; cursor: pointer;';
         // 添加鼠标悬停事件
         closeButton.onmouseover = function () {
             closeButton.style.color = 'red'; // 鼠标悬停时变红色
