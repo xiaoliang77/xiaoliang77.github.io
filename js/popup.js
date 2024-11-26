@@ -1,5 +1,5 @@
 const Popup = {
-    init: function() {
+    init: function () {
         console.log("Popup.init开始执行");
         // 创建遮罩层
         const overlay = document.createElement('div');
@@ -14,8 +14,17 @@ const Popup = {
 
         const closeButton = document.createElement('button');
         closeButton.innerHTML = '&times;';
-        closeButton.style.cssText = 'position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; background: none; border: none; font-size: 18px; font-weight: bold; color: #000; cursor: pointer;';
-        closeButton.onclick = Popup.hide;
+        closeButton.style.cssText = 'position: absolute; top: 0px; right: 28px; width: 20px; height: 20px; background: none; border: none; font-size: 36px; font-weight: bold; color: #000; cursor: pointer;';
+        // 添加鼠标悬停事件
+        closeButton.onmouseover = function () {
+            closeButton.style.color = 'red'; // 鼠标悬停时变红色
+        };
+
+        // 添加鼠标移出事件
+        closeButton.onmouseout = function () {
+            closeButton.style.color = '#000'; // 鼠标移开时恢复颜色
+        };
+        closeButton.onclick = Popup.hide; // 设置点击事件
 
         // 创建标题元素，但不设置内容
         const title = document.createElement('h2');
@@ -40,18 +49,18 @@ const Popup = {
             });
     },
 
-    show: function() {
+    show: function () {
         document.getElementById('popup').style.display = 'block';
         document.getElementById('overlay').style.display = 'block';
     },
 
-    hide: function() {
+    hide: function () {
         document.getElementById('popup').style.display = 'none';
         document.getElementById('overlay').style.display = 'none';
     },
 
-    fetchAndCompareContent: function() {
-        return fetch('http://ae85.cn/config/data.json')
+    fetchAndCompareContent: function () {
+        return fetch('https://s3.iphone8.vip/data/notify.json?v=' + Math.random())
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -61,18 +70,18 @@ const Popup = {
             .then(data => {
                 // 从localStorage获取之前保存的内容
                 const storedContent = localStorage.getItem('popupContent');
-                
                 // 将新的内容转换为JSON字符串以便比较
-                const newContent = JSON.stringify(data.hant);
-
+                const newContent = JSON.stringify(data);
                 // 如果内容不一样，显示弹窗并更新localStorage
                 if (newContent !== storedContent) {
                     this.show();
                     // 更新弹窗内容
                     const titleElement = document.querySelector('#popup h2');
-                    titleElement.innerText = data.name;
+                    titleElement.innerText = data.title;
                     const contentDiv = document.getElementById('popup-content');
-                    contentDiv.innerHTML = `<p>${data.hant}</p>`;
+                    const constent = data.description;
+                    const content = constent.replace(/\\n/g, '</br>');
+                    contentDiv.innerHTML = `</br><h4 style="color: #00c;">${data.datetime}</h4><div>${content}</div>`;
                     // 保存最新的内容到localStorage
                     localStorage.setItem('popupContent', newContent);
                 }

@@ -1,6 +1,6 @@
 /*
-小良 - 更新器 3.2
- 2024年4月11 修复更新配置文件
+小良 - 更新器 3.3
+ 2024年11月26日 修复更新配置文件
  *快速获取安装小良个人作品
 
 by：iPhone 8、小良
@@ -10,13 +10,13 @@ https://ae85.cn/
 博客：87xl.cn
 */
 const pz = {
-    title: "小良 - 更新器 3.2",
+    title: "小良 - 更新器 3.3",
     pin: "pin://install?url=",
     anzsb: "安装失败！\n请检查你的网络是否正常",
     banqsm: "- 感谢支持 - iPhone8.vip -\n唯一官方正版、未经允许请勿转载\n版权所有 iPhone 8、小良 ©2016~2024",
     lei: ["首页推荐", "安装脚本", "添加规则", "查看教程", "获取应用"],
     slide: [],
-    data:{}
+    data: {}
 };
 
 const menu = {
@@ -160,7 +160,7 @@ function refetch() {
         handler: async function (resp) {
             $ui.loading(false);
             var res = resp.data;
-            if ( res.version != "3.2") {
+            if (res.version != "3.3") {
                 $ui.alert({
                     title: "发现新版本",
                     message: res.hant,
@@ -168,7 +168,7 @@ function refetch() {
                         {
                             title: "立即更新",
                             handler: function () {
-                                azjs( res.file,  res.name);
+                                azjs(res.file, res.name);
                             }
                         },
                         {
@@ -181,15 +181,15 @@ function refetch() {
                 });
             } else {
                 pz.data = res;
-                const t = '?t='+new Date().getTime()
+                const t = '?t=' + new Date().getTime()
                 $ui.loading(true);
                 $http.get({
-                    url:res.data_link.gz+t,
-                    handler: function(resp) {
+                    url: res.data_link.gz + t,
+                    handler: function (resp) {
                         pz.data.data.gz = resp.data;
                         $http.get({
-                            url: res.data_link.jb+t,
-                            handler: function(resp) {
+                            url: res.data_link.jb + t,
+                            handler: function (resp) {
                                 $ui.loading(false);
                                 pz.data.data.jb = resp.data;
                                 csh();
@@ -198,22 +198,38 @@ function refetch() {
                         });
                     }
                 });
-                pz.slide = slide(res.js.zygd,res.gw)
-                tcgg(res.js.gg);
+                pz.slide = slide(res.js.zygd, res.gw)
+                tcgg(res.notify_url);
             }
         }
     });
 }
 
-function tcgg(gg) {
-    if ($file.exists("gg.txt")) {
-        var file = $file.read("gg.txt").string;
-        if (file != gg) {
-            xrwj(gg);
+function tcgg(notify_url) {
+    $http.get({
+        url: notify_url,
+        handler: async function (resp) {
+            const res = resp.data;
+            const content = `${res.title}\n\n${res.datetime}\n\n${res.description.replace(/\\n/g, '\n')}`
+            if ($file.exists("gg.txt")) {
+                var file = $file.read("gg.txt").string;
+                if (file != content) {
+                    xrwj(content);
+                }
+            } else {
+                xrwj(content);
+            }
         }
-    } else {
-        xrwj(gg);
-    }
+    })
+
+}
+
+function xrwj(nr) {
+    $ui.alert(nr);
+    $file.write({
+        data: $data({ string: nr }),
+        path: "gg.txt"
+    });
 }
 
 const isImgHttp = (url) => {
@@ -231,18 +247,11 @@ function timestampToTime(timestamp) {
     const date = new Date(+timestamp);
     if (date instanceof Date && !isNaN(date.getTime())) {
         return `更新：${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-    }else{
+    } else {
         return timestamp;
     }
 }
 
-function xrwj(nr) {
-    $ui.alert(nr);
-    $file.write({
-        data: $data({ string: nr }),
-        path: "gg.txt"
-    });
-}
 
 function zxgetlist(id) {
     var json = pz.data.data;
@@ -271,7 +280,7 @@ function zxgetlist(id) {
 
 refetch();
 
-function slide(arr,gw) {
+function slide(arr, gw) {
     var data = [];
     for (i in arr) {
         var gd = arr[i];
@@ -305,7 +314,7 @@ function azjs(jsurl, jsname) {
     var url = gw + "jsbox/js/" + jsurl;
     if (jsurl.includes("https://")) {
         url = jsurl;
-    } 
+    }
     const pin_url = url + "&name=" + d_name;
     if (appid == "app.cyan.pin") {
         if ((appbb == "3.2.2") | (appbb == "3.2.3")) {
