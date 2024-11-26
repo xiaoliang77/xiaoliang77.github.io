@@ -11,7 +11,7 @@ function co_sj() {
     }
 }
 
-$.get('../../config/data.json','',function (data) {
+$.get('../../config/jsbox.json','',function (data) {
     $("#yy").html(kap_cj(data.data.yy));
 })
 

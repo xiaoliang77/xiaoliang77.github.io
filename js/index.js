@@ -11,7 +11,7 @@ function co_sj() {
     }
 }
 
-$.get('../../config/data.json','',function (data) {
+$.get('../../config/jsbox.json','',function (data) {
     // $("#gz").html(kap_cj(data.data.gz, 1));
     // $("#jb").html(kap_cj(data.data.jb, 2));
     $("#yy").html(kap_cj(data.data.yy, 3));
