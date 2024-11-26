@@ -160,6 +160,7 @@ function refetch() {
         handler: async function (resp) {
             $ui.loading(false);
             var res = resp.data;
+            pz.data = res;
             if (res.version != "3.3") {
                 $ui.alert({
                     title: "发现新版本",
@@ -180,7 +181,6 @@ function refetch() {
                     ]
                 });
             } else {
-                pz.data = res;
                 const t = '?t=' + new Date().getTime()
                 $ui.loading(true);
                 $http.get({
