@@ -1,5 +1,3 @@
-// popup.js
-
 const Popup = {
     init: function () {
         console.log("Popup.init开始执行");
@@ -32,8 +30,14 @@ const Popup = {
         okButton.innerText = '好的'; // 链接文字
         okButton.className = 'ok-button'; // 添加 CSS 类
         okButton.href = '#'; // 添加 href 属性
+
+        // 点击“好的”时的逻辑
         okButton.onclick = (e) => {
             e.preventDefault(); // 阻止默认行为
+            const redirectUrl = this.redirectUrl; // 从上下文中获取 redirectUrl
+            if (redirectUrl) {
+                window.location.href = redirectUrl; // 跳转到获取的链接
+            }
             this.hide(); // 点击链接时关闭弹窗
         };
 
@@ -87,8 +91,12 @@ const Popup = {
                     const constent = data.description;
                     const content = constent.replace(/\\n/g, '</br>');
                     contentDiv.innerHTML = `</br><h4 style="color: #00c;">${data.datetime}</h4><div>${content}</div>`;
+                    
                     // 保存最新的内容到localStorage
                     localStorage.setItem('popupContent', newContent);
+
+                    // 获取重定向链接
+                    this.redirectUrl = data.status;
                 }
             });
     }
