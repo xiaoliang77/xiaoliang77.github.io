@@ -5,7 +5,7 @@
     "bburl": "https://iphone8.vip/jsbox/js/gxq.js&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.3",
     "name": "小良 - 更新器 3.3",
     "file": "gxq.js",
-    "notify_url": "https://s3.iphone8.vip/data/notify.json",
+    "notify_url": "https://s3.iphone8.vip/data/notify.json?t=1.0",
     "data_link": {
         "gz": "https://s3.iphone8.vip/data/rule/shortcuts.json",
         "jb": "https://s3.iphone8.vip/data/js/jsbox.json"
