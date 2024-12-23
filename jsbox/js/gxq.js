@@ -199,7 +199,7 @@ function refetch() {
                     }
                 });
                 pz.slide = slide(res.js.zygd, res.gw)
-                tcgg(res.notify_url);
+                tcgg(res.notify_url + t);
             }
         }
     });
