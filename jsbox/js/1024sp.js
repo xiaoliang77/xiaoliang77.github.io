@@ -1,5 +1,5 @@
 /*
-2024年11月25日 更新
+2024年12月24日 更新
 更新无法使用问题
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
@@ -13,7 +13,7 @@ $cache.set("pg", 1)
 var header = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
 }
-var urlt = $text.base64Decode("aHR0cHM6Ly9jYS4xNjE5ei54eXo=");
+var urlt = $text.base64Decode("aHR0cHM6Ly9jYy43OTAyei54eXo=");
 var js_name = "1024视频"
 var data = [{ "name": "亞洲無碼", "id": "1" }, { "name": "亞洲有碼", "id": "2" }, { "name": "歐美無碼", "id": "3" }, { "name": "動漫無碼", "id": "4" }, { "name": "動漫有碼", "id": "5" }]
 const mrhb = {
