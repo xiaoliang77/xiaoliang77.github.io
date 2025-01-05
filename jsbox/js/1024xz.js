@@ -18,7 +18,7 @@ var header = {
     "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
   }
 var js_name = "1024下载"
-var urlt = $text.base64Decode("aHR0cHM6Ly8yMDI1amp5eWotLS13d3cuYTAxMDIzOTMuY2Mv")
+var urlt = $text.base64Decode("aHR0cHM6Ly8wMjg3NjYtLS13d3cuYjAxMDI0MDQuY2Mv")
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 const mrhb = {
     type: "button",
