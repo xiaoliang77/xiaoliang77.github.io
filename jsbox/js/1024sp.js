@@ -1,6 +1,7 @@
 /*
-2024年12月24日 更新
-更新无法使用问题
+2025年1月5日 更新
+更换源地址
+
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
 
 by：iPhone8、小良
@@ -13,7 +14,7 @@ $cache.set("pg", 1)
 var header = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
 }
-var urlt = $text.base64Decode("aHR0cHM6Ly9jYy43OTAyei54eXo=");
+var urlt = $text.base64Decode("aHR0cHM6Ly9jZi45NzM1eS54eXo=");
 var js_name = "1024视频"
 var data = [{ "name": "亞洲無碼", "id": "1" }, { "name": "亞洲有碼", "id": "2" }, { "name": "歐美無碼", "id": "3" }, { "name": "動漫無碼", "id": "4" }, { "name": "動漫有碼", "id": "5" }]
 const mrhb = {
@@ -164,7 +165,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.9.5") {
+        if (resp.data.vdieo.version != "2.9.6") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
