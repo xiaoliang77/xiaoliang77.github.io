@@ -1,0 +1,284 @@
+
+.login {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(118, 118, 118, 0.7);
+  background: #ffffff;
+
+}
+.login .top {
+  position: relative;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(-45deg, #23A6D5, rgba(106, 103, 255), rgba(158, 81, 255), #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  animation: bg 4s infinite linear forwards;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+.login .top .left {
+  float: left;
+  padding: 5px;
+  font-size: 20px;
+  line-height: 30px;
+}
+.login .top .left .icon-QQ {
+  font-size: 26px;
+}
+.login .top .right {
+  float: right;
+  font-size: 18px;
+}
+.login .top .right span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  transition: all 0.5s;
+}
+.login .top .right span:hover {
+  background-color: rgba(209, 182, 253, 0.5);
+}
+.login .top .head {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 5px 10px 0px rgba(118, 118, 118, 0.4);
+  background-image: url(../images/head.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(234, 28, 39);
+}
+.login .top .head .green {
+  position: absolute;
+  right: -10px;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 5px 10px 0px rgba(118, 118, 118, 0.4);
+  background-color: rgba(9, 241, 117);
+}
+@keyframes bg {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+.login .bottom {
+  position: relative;
+  width: 100%;
+  height: 60%;
+}
+.login .bottom form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin-top: 8px;
+}
+.login .bottom form .input .text {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+.login .bottom form .input .text .icon-QQ {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(184, 186, 188);
+}
+.login .bottom form .input .text .icon-xiala {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.login .bottom form .input .password {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+.login .bottom form .input .password .icon-suoding_huaban {
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  font-size: 12px;
+  color: rgba(184, 186, 188);
+}
+.login .bottom form .input .password .icon-jianpan_o {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.login .bottom form .input .textChange {
+  border-bottom: 1px solid rgba(28, 196, 252);
+}
+.login .bottom form .input .textChange .icon-QQ {
+  color: rgba(28, 196, 252);
+}
+.login .bottom form .input .passWordChange {
+  border-bottom: 1px solid rgba(28, 196, 252);
+}
+.login .bottom form .input .passWordChange .icon-suoding_huaban {
+  color: rgba(28, 196, 252);
+}
+.login .bottom form .input input {
+  width: 80%;
+  height: 20px;
+  /* 去掉默认边框样式 */
+  border: 0;
+  outline: none;
+}
+.login .bottom form .check {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px 0;
+  font-size: 10px;
+  color: rgba(166, 166, 166);
+}
+.login .bottom form .check input {
+  float: left;
+  transform: scale(0.8);
+}
+.login .bottom form .check label {
+  position: relative;
+  margin-right: 12px;
+}
+.login .bottom form .check a {
+  color: rgba(166, 166, 166);
+}
+.login .bottom form .check a:hover {
+  color: rgba(166, 190, 177);
+}
+.login .bottom form .loginBtn {
+  width: 100%;
+  height: 28px;
+  border-radius: 3px;
+  background-color: rgba(28, 196, 252);
+  color: #fff;
+  font-size: 12px;
+}
+.login .bottom form .loginBtn:active {
+  background-color: rgba(34, 174, 250);
+}
+.login .bottom .signup {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 5px;
+  font-size: 10px;
+  color: rgba(166, 166, 166);
+}
+.login .bottom .signup:hover {
+  color: rgba(166, 190, 177);
+}
+.login .bottom .icon-ico {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 5px;
+  font-size: 20px;
+  color: rgba(166, 166, 166);
+}
+.login .bottom .icon-ico:hover {
+  color: rgba(34, 174, 250);
+}
+.login .mobile {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  color: #000;
+  text-align: center;
+}
+.login .mobile img {
+  width: 60%;
+}
+.login .mobile p {
+  margin: 10px;
+  font-size: 12px;
+}
+.login .mobile .back {
+  width: 100%;
+  height: 28px;
+  border-radius: 3px;
+  background-color: rgba(28, 196, 252);
+  color: #fff;
+  font-size: 12px;
+  border: 0;
+}
+.login .mobile .back:active {
+  background-color: rgba(34, 174, 250);
+}
+.login .setup {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+}
+.login .setup p {
+  margin: 40px;
+}
+.login .setup .back {
+  width: 100%;
+  height: 28px;
+  border-radius: 3px;
+  background-color: rgba(28, 196, 252);
+  color: #fff;
+  font-size: 12px;
+  border: 0;
+}
+.login .setup .back:active {
+  background-color: rgba(34, 174, 250);
+}
+.message {
+  display: none;
+  position: fixed;
+  right: 10%;
+  top: 10%;
+  width: 300px;
+  height: 600px;
+  background-color: skyblue;
+  text-align: center;
+}
+.message .content {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 80%;
+  height: 20%;
+  transform: translate(-50%, -50%);
+  background-color: oldlace;
+}
+
+form {
+  width: 50%;
+}

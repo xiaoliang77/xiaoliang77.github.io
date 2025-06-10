@@ -1,0 +1,330 @@
+// 登录界面
+.login {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 345px;
+    height: 265px;
+    
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 0px rgba(118, 118, 118, 0.7);
+
+    // 顶部
+    .top {
+        position: relative;
+        width: 100%;
+        height: 40%;
+        background: linear-gradient(-45deg,  #23A6D5, rgba(106, 103, 255), rgba(158, 81, 255), #23A6D5, #23D5AB,);
+        background-size: 400% 400%;
+        animation: bg 4s infinite linear forwards;
+        color: #fff;
+        .left {
+            float: left;
+            padding: 5px;
+            font-size: 20px;
+            line-height: 30px;
+            .icon-QQ {
+                font-size: 26px;
+            }
+        }
+
+        .right {
+            float: right;
+            font-size: 18px;
+            span {
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                line-height: 25px;
+                transition: all .5s;
+            }
+            span:hover {
+                background-color: rgba(209, 182, 253, .5);
+            }
+        }
+
+        .head {
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 5px 10px 0px rgba(118, 118, 118, 0.4);
+            background-image: url(/images/head.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: rgba(234, 28, 39);
+
+            .green {
+                position: absolute;
+                right: -10px;
+                bottom: -8px;
+                transform: translate(-50%, -50%);
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                transform: translate(-50%, -50%);
+                box-shadow: 0px 5px 10px 0px rgba(118, 118, 118, 0.4);
+                background-color: rgba(9, 241, 117);
+            }
+
+        }
+    }
+
+    @keyframes bg {
+        0% {
+            background-position: 0 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0 50%;
+        }
+    }
+
+    // 底部
+    .bottom {
+        position: relative;
+        width: 100%;
+        height: 60%;
+        
+
+
+        form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            
+            text-align: center;
+            margin-top: 8px;
+            .input {
+                .text {
+                    position: relative;
+                    width: 100%;
+                    border-bottom: 1px solid #ccc;
+                    margin-bottom: 5px;
+
+                    .icon-QQ {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        color: rgba(184, 186, 188);
+                    }
+
+                    .icon-xiala {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                    }
+                }
+
+                .password {
+                    position: relative;
+                    width: 100%;
+                    border-bottom: 1px solid #ccc;
+
+                    .icon-suoding_huaban {
+                        position: absolute;
+                        left: 2px;
+                        top: 4px;
+                        font-size: 12px;
+                        color: rgba(184, 186, 188);
+                    }
+
+                    .icon-jianpan_o {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                    }
+                }
+
+                // 要放在后面，不然层叠
+                .textChange {
+                    border-bottom: 1px solid rgba(28, 196, 252);
+                    .icon-QQ {
+                        color: rgba(28, 196, 252);
+                    }
+                }
+                .passWordChange {
+                    border-bottom: 1px solid rgba(28, 196, 252);
+                    .icon-suoding_huaban {
+                        color: rgba(28, 196, 252);
+                    }
+                }
+
+                input {
+                    width: 80%;
+                    height: 20px;
+                    /* 去掉默认边框样式 */
+                    border: 0;
+                    outline: none; 
+                }
+            }
+
+            .check {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin: 5px 0;
+                font-size: 10px;
+                color: rgba(166, 166, 166);
+
+                // 多选框大小
+                input {
+                    // ohhhhhhhhhhh
+                    float: left;
+                    transform: scale(.8);
+                }
+
+                label {
+                    position: relative;
+                    margin-right: 12px;
+                }
+
+                a {
+                    color: rgba(166, 166, 166);
+                }
+
+                a:hover {
+                    color: rgba(166, 190, 177);
+                }
+            }
+
+            // 点击登录
+            .loginBtn {
+                width: 100%;
+                height: 28px;
+                border-radius: 3px;
+                background-color: rgba(28, 196, 252);
+                color: #fff;
+                font-size: 12px;
+            }
+
+            .loginBtn:active {
+                background-color: rgba(34, 174, 250);
+            }
+        }
+
+        .signup {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            margin: 5px;
+            font-size: 10px;
+            color: rgba(166, 166, 166);
+        }
+        .signup:hover {
+            color: rgba(166, 190, 177)
+        }
+
+        .icon-ico {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin: 5px;
+            font-size: 20px;
+            color: rgba(166, 166, 166);
+        }
+        .icon-ico:hover {
+            color: rgba(34, 174, 250);
+        }
+    }
+
+    // 手机登录
+    .mobile {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        width: 50%;
+        color: #000;
+        text-align: center;
+
+        img {
+            width: 60%;
+        }
+
+        p {
+            margin: 10px;
+            font-size: 12px;
+        }
+
+        .back {
+            width: 100%;
+            height: 28px;
+            border-radius: 3px;
+            background-color: rgba(28, 196, 252);
+            color: #fff;
+            font-size: 12px;
+            border: 0;
+        }
+
+        .back:active {
+            background-color: rgba(34, 174, 250);
+        }
+    }
+
+    // 设置
+    .setup {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%,-50%);
+        width: 50%;
+        color: #000;
+        text-align: center;
+        font-size: 16px;
+
+        p {
+            margin: 40px;
+        }
+
+        .back {
+            width: 100%;
+            height: 28px;
+            border-radius: 3px;
+            background-color: rgba(28, 196, 252);
+            color: #fff;
+            font-size: 12px;
+            border: 0;
+        }
+
+        .back:active {
+            background-color: rgba(34, 174, 250);
+        }
+    }
+}
+
+// 信息列表
+.message {
+    display: none;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+    width: 300px;
+    height: 600px;
+    background-color: skyblue;
+    text-align: center;
+
+    .content {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        width: 80%;
+        height: 20%;
+        transform:translate(-50%,-50%);
+        background-color: oldlace;
+    }
+}

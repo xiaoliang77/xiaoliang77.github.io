@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QQ登录</title>
+    <link rel="shortcut icon" href="qq.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/qq.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="iconfont/iconfont.css">
+</head>
+<body>
+    <!-- 登录界面 -->
+    <div>
+        <div class="login">
+            <!-- 顶部 -->
+            <div class="top">
+                <div class="left">
+                    <span class="iconfont icon-QQ"></span>QQ
+                </div>
+                <div class="right">
+                    <span class="iconfont icon-shezhi"></span>
+                    <span class="iconfont icon-jianhao"></span>
+                    <span class="iconfont icon-chenghao"></span>
+                </div>
+                <div class="head">
+                    <div class="green"></div>
+                </div>
+            </div>
+            <!-- 底部 -->
+            <div class="bottom">
+                <!-- 表单 -->
+                <form action="javascript:;">
+                    <p id="loginMessage" style="color: red; text-align: center; font-size: 11px;">　</p>
+                    <div class="input">
+                        <div class="text">
+                            <label for=""><span class="iconfont icon-QQ"></span></label>
+                            <label for=""><span class="iconfont icon-xiala"></span></label>
+                            <input type="text" placeholder="QQ号码/手机/邮箱" name="uname">
+                        </div>
+                        <div class="password">
+                            <label for=""><span class="iconfont icon-suoding_huaban"></span></label>
+                            <label for=""><span class="iconfont icon-jianpan_o"></span></label>
+                            <input type="password" placeholder="密码">                               
+                        </div>
+                    </div>
+                    
+                    <div class="check">
+                        <!-- 点击文字也可以选中 -->
+                        <label><input type="checkbox" >自动登录</label> 
+                        <label><input type="checkbox">记住密码</label> 
+                        <a href="https://accounts.qq.com/find?aquin" target="_blank">找回密码</a>
+                    </div>
+                    
+                    <input type="submit" value="登录" class="loginBtn">
+                </form>
+                
+                <!-- 其他 -->
+                <a href="https://ssl.zc.qq.com/v3/index-chs.html?from=client&regkey=1720F6EE975B2AFF081EC88BCAE91F145C04012178E039924F1CC17DB69AC184&ADUIN=0&ADSESSION=0&ADTAG=CLIENT.QQ.5929_NewAccount_Btn.0&ADPUBNO=27255" class="signup" target="_blank">注册账号</a>
+                <span class="iconfont icon-ico"></span>
+                <!-- 手机登录二维码 -->
+                </div>
+                <div class="mobile">
+                    <img src="./images/erweima.png" alt="">
+                    <p>用QQ手机版扫描二维码安全登录</p> 
+                    <button class="back">返回</button>
+                </div>
+                <!-- 设置 -->
+                <div class="setup">
+                    <p>懒得弄了</p> 
+                    <button class="back">返回</button>
+                </div>
+        </div>
+    </div>
+
+    <!-- 信息列表 -->
+    <div class="message">
+        <div class="content">
+            欢迎<span>QQ</span>
+            <br>
+            请刷新浏览器界面继续欣赏登录界面
+        </div>
+    </div>
+
+    <script src="./js/qq.js"></script>
+</body>
+</html>

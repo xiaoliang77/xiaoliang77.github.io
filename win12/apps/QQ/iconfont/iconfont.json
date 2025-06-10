@@ -1,0 +1,177 @@
+{
+  "id": "3722296",
+  "name": "QQ",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1253",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "201646",
+      "name": "3.1 设置",
+      "font_class": "31shezhi",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "629333",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "629357",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "672036",
+      "name": "下拉",
+      "font_class": "xiala",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "1312062",
+      "name": "信封",
+      "font_class": "xinfeng",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "1441948",
+      "name": "上拉",
+      "font_class": "shangla",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "1619263",
+      "name": "衣服",
+      "font_class": "tubiao-",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "3217825",
+      "name": "锁头",
+      "font_class": "icon-",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "3315134",
+      "name": "小眼睛",
+      "font_class": "xiaoyanjing",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "3868282",
+      "name": "应用管理",
+      "font_class": "yingyongguanli",
+      "unicode": "eb67",
+      "unicode_decimal": 60263
+    },
+    {
+      "icon_id": "4347582",
+      "name": "icon_应用管理",
+      "font_class": "icon_yingyongguanli",
+      "unicode": "eb8f",
+      "unicode_decimal": 60303
+    },
+    {
+      "icon_id": "4598257",
+      "name": "大于号",
+      "font_class": "dayuhao",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "4599465",
+      "name": "乘号",
+      "font_class": "chenghao",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "4936984",
+      "name": "QQ",
+      "font_class": "QQ",
+      "unicode": "e882",
+      "unicode_decimal": 59522
+    },
+    {
+      "icon_id": "5387527",
+      "name": "加号",
+      "font_class": "jiahao",
+      "unicode": "eaf3",
+      "unicode_decimal": 60147
+    },
+    {
+      "icon_id": "5387532",
+      "name": "减号",
+      "font_class": "jianhao",
+      "unicode": "eaf5",
+      "unicode_decimal": 60149
+    },
+    {
+      "icon_id": "5387756",
+      "name": "键盘_o",
+      "font_class": "jianpan_o",
+      "unicode": "eb4b",
+      "unicode_decimal": 60235
+    },
+    {
+      "icon_id": "6364167",
+      "name": "二维码",
+      "font_class": "ico",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "7386564",
+      "name": "添加好友",
+      "font_class": "tianjiahaoyou",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "7434419",
+      "name": "乘号",
+      "font_class": "chenghao1",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "8224835",
+      "name": "上拉",
+      "font_class": "shangla1",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "12752509",
+      "name": "锁定",
+      "font_class": "suoding_huaban",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "18166529",
+      "name": "衣服,服装",
+      "font_class": "clothes-full",
+      "unicode": "e8c7",
+      "unicode_decimal": 59591
+    }
+  ]
+}
