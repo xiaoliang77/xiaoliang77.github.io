@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
-
+    <script>
+        (function() {
+            var isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (!isMobile) {
+                window.location.href = "./win12/desktop.html";
+            }
+        })();
+    </script>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport"
