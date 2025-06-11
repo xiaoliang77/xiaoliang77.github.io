@@ -2965,6 +2965,21 @@ toggletheme() 切换主题
 			<iframe src="../gz.html" frameborder="0" style="width:100%;height:100%;min-height:400px;min-width:300px;" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
 		</div>
 	</div>
+	<!--视频播放-->
+	<div class="window video">
+		<div class="titbar">
+			<img class="icon" src="icon/video.svg">
+			<p>Libre TV</p>
+			<div class="btns">
+				<a class="a wbtg red" onclick="hidewin('video')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('video')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('video')"><i class="bi bi-dash-lg"></i></a>
+			</div>
+		</div>
+		<div class="content" style="height:100%;width:100%;padding:0;overflow:hidden;">
+			<iframe src="https://tv.ae85.cn/" frameborder="0" style="width:100%;height:100%;min-height:400px;min-width:300px;" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+		</div>
+	</div>
 
 	<script defer src="data/tasks.js"></script>
 	<script defer src="scripts/utils.js"></script>

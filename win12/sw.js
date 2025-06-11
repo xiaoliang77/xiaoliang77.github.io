@@ -1,11 +1,22 @@
+// 添加开发环境检测
+const isDev = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
+
 let dymanic = [
   'api.github.com',
   'tjy-gitnub.github.io/win12-theme',
   'win12server.freehk.svipss.top',
   'assets.msn.cn'
 ]
+
+// 在开发环境下，禁用缓存
 this.addEventListener('fetch', function (event) {
-  if (!/^https?:$/.test(new URL(event.request.url).protocol)) return
+  if (!/^https?:$/.test(new URL(event.request.url).protocol)) return;
+
+  // 如果是开发环境，跳过缓存直接获取最新内容
+  if (isDev) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
 
   // **如果请求是来自网易云音乐，则 Service Worker 不处理，直接返回**
   if (event.request.url.includes('music.163.com')) {

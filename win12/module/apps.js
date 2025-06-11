@@ -133,6 +133,11 @@ let apps = {
             showwin('shortcuts');
         },
     },
+    video: {
+        init: () => {
+            showwin('video');
+        },
+    },
     ps: {
         init: () => {
             showwin('ps');

@@ -1738,7 +1738,8 @@ const icon = {
     taskmgr: 'taskmgr.png',
     tetris: 'tetris.svg',
     jsbox: 'jsbox.jpg',
-    shortcuts: 'shortcuts.png'
+    shortcuts: 'shortcuts.png',
+    video: 'video.svg'  // 新增视频播放器图标
 };
 function geticon(name) {
     if (icon[name]) return icon[name];
@@ -2210,6 +2211,12 @@ function setIcon() {
                 icon: 'icon/tetris.svg',
                 text: '俄罗斯方块',
                 onclick: "openapp('tetris');"
+            },
+            {
+                name: 'video',
+                icon: 'icon/video.svg',
+                text: 'LibreTV',
+                onclick: "openapp('video');"
             }
         ];
 
