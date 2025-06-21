@@ -2980,6 +2980,36 @@ toggletheme() 切换主题
 			<iframe src="https://tv.ae85.cn/" frameborder="0" style="width:100%;height:100%;min-height:400px;min-width:300px;" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
 		</div>
 	</div>
+	<!--telegram-->
+	<div class="window telegram">
+		<div class="titbar">
+			<img class="icon" src="icon/telegram.svg">
+			<p>Telegram</p>
+			<div class="btns">
+				<a class="a wbtg red" onclick="hidewin('telegram')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('telegram')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('telegram')"><i class="bi bi-dash-lg"></i></a>
+			</div>
+		</div>
+		<div class="content" style="height:100%;width:100%;padding:0;overflow:hidden;">
+			<iframe src="./apps/TG/tg.html" frameborder="0" style="width:100%;height:100%;min-height:400px;min-width:300px;" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+		</div>
+	</div>
+	<!--weixin-->
+	<div class="window weixin">
+		<div class="titbar">
+			<img class="icon" src="icon/weixin.svg">
+			<p>微信</p>
+			<div class="btns">
+				<a class="a wbtg red" onclick="hidewin('weixin')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('weixin')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('weixin')"><i class="bi bi-dash-lg"></i></a>
+			</div>
+		</div>
+		<div class="content" style="height:100%;width:100%;padding:0;overflow:hidden;">
+			<iframe src="./apps/WX/wx.html" frameborder="0" style="width:100%;height:100%;min-height:400px;min-width:300px;" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+		</div>
+	</div>
 
 	<script defer src="data/tasks.js"></script>
 	<script defer src="scripts/utils.js"></script>

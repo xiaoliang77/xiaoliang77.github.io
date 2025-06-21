@@ -121,6 +121,18 @@ let apps = {
             $('#win-qq').removeClass('foc')
         },
     },
+    telegram: {
+        init: () => {
+            showwin('telegram');
+            $('.telegram').css('max-width', '905px')
+        },
+    },
+    weixin: {
+        init: () => {
+            showwin('weixin');
+            $('.weixin').css('max-width', '950px')
+        },
+    },
     jsbox: {
         init: () => {
             // 调用系统的 showwin 函数来显示窗口

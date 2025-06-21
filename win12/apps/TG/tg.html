@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Arial', sans-serif;
+            background: #f4f4f4;
+            height: 100vh;
+        }
+        .tg-container {
+            display: flex;
+            height: 100vh;
+        }
+        .tg-sidebar {
+            width: 320px;
+            background: #fff;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+        }
+        .tg-sidebar-header {
+            margin-left: 3px;
+            padding: 18px 20px 10px 12px;
+            font-size: 17px;
+            /* font-weight: bold; */
+            color: #2196f3;
+            /* border-bottom: 1px solid #e0e0e0; */
+        }
+        .tg-chat-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .tg-chat-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f2f2f2;
+            transition: background 0.2s;
+        }
+        .tg-chat-item.active, .tg-chat-item.active:hover {
+            background-color: #5d8fc2;
+        }
+        .tg-chat-item:hover {
+            background-color: #5d8fc220;
+        }
+        .active .tg-chat-title, .active .tg-chat-last {
+            color: #ffffff; /* 字体白色 */
+        }
+        .tg-chat-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+            margin-right: 14px;
+            overflow: hidden;
+        }
+        .tg-chat-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .tg-chat-title {
+            /* font-weight: bold; */
+            font-size: 16px;
+            color: #222;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tg-chat-last {
+            font-size: 13px;
+            color: #888;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tg-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #e5ddd5;
+        }
+        .tg-header {
+            background: #fff;
+            padding: 8px 24px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tg-header-avatar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #4fd2b5;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            overflow: hidden;
+        }
+        .tg-header-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tg-header-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0088cc;
+        }
+        .tg-header-desc {
+            font-size: 14px;
+            color: #888;
+            margin-left: 12px;
+        }
+        .tg-chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px 0 24px 0;
+            background: url('./static/tgbj.jpg') repeat;
+            background-size: auto 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .tg-message-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+        .tg-message-row.self {
+            flex-direction: row-reverse;
+        }
+        .tg-message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #fff;
+            margin: 0 10px;
+            overflow: hidden;
+        }
+        .tg-message-bubble {
+            max-width: 420px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            line-height: 1.7;
+            background: #fff;
+            color: #222;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            position: relative;
+            word-break: break-word;
+        }
+        .tg-message-row.self .tg-message-bubble {
+            background: #d2f8c6;
+            color: #222;
+        }
+        .tg-message-meta {
+            font-size: 12px;
+            color: #888;
+            margin-top: 4px;
+            text-align: right;
+        }
+        .tg-message-img {
+            max-width: 220px;
+            max-height: 220px;
+            border-radius: 8px;
+            margin-top: 6px;
+            cursor: pointer;
+            display: block;
+        }
+        .tg-message-video {
+            max-width: 220px;
+            max-height: 220px;
+            border-radius: 8px;
+            margin-top: 6px;
+            display: block;
+        }
+        .tg-message-file {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #222;
+            font-size: 14px;
+        }
+        .tg-message-file i {
+            font-size: 20px;
+            color: #888;
+        }
+        .tg-footer {
+            background: #fff;
+            padding: 12px 18px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        .tg-input {
+            flex: 1;
+            padding: 10px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 15px;
+            outline: none;
+        }
+        .tg-send-btn {
+            background: #0088cc;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 22px;
+            font-size: 15px;
+            margin-left: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .tg-send-btn:hover {
+            background: #007ab8;
+        }
+        @media (max-width: 900px) {
+            .tg-sidebar { width: 80px; }
+            .tg-chat-title, .tg-chat-last, .tg-sidebar-footer,.tg-sidebar-search,.tg-sidebar-header { display: none; }
+            .tg-chat-avatar {
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+                min-height: 44px;
+                max-width: 44px;
+                max-height: 44px;
+                font-size: 20px;
+            }
+            .tg-chat-item {
+                justify-content: center;
+                align-items: center;
+                /* padding: 14px 0; */
+            }
+        }
+        @media (max-width: 600px) {
+            .tg-container { flex-direction: column; }
+            .tg-sidebar { width: 100vw; flex-direction: row; border-right: none; border-bottom: 1px solid #e0e0e0; }
+            .tg-sidebar-header, .tg-chat-list, .tg-sidebar-footer,.tg-sidebar-search { display: none; }
+            .tg-message-bubble {max-width:300px;}
+            .tg-message-row {padding: 0px 3px;}
+        }
+        .tg-message-meta-inline {
+            font-size: 12px;
+            color: #888;
+            margin-top: 2px;
+            display: block;
+            text-align: right;
+            font-style: italic;
+        }
+        .file-preview {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            padding: 10px 16px;
+            margin-bottom: 10px;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+        .file-preview img {
+            max-width: 48px;
+            max-height: 48px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        .file-preview .file-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .file-preview .file-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #222;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .file-preview .file-size {
+            font-size: 12px;
+            color: #888;
+            margin-top: 2px;
+        }
+        .file-preview .remove-file {
+            color: #ff4444;
+            cursor: pointer;
+            padding: 8px;
+            font-size: 22px;
+            border-radius: 50%;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .file-preview .remove-file:hover {
+            background: #ffeaea;
+            color: #d80000;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="tg-container">
+    <div class="tg-sidebar">
+        <div class="tg-sidebar-header">
+            <span>Chats</span>
+            <i class="fas fa-pen-to-square" style="font-size:20px;color:#2196f3;cursor:pointer;float: right;"></i>
+        </div>
+        <div class="tg-sidebar-search" style="padding:12px;background:#fafbfc;">
+            <div style="position:relative;">
+                <i class="fas fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#bbb;font-size:16px;"></i>
+                <input type="text" placeholder="Search (⌘K)" style="width:100%;padding:7px 12px 7px 36px;border-radius:5px;border:1px solid #e0e0e0;font-size:15px;background:#f4f4f4;outline:none;box-sizing:border-box;">
+            </div>
+        </div>
+        <div class="tg-chat-list">
+            <div class="tg-chat-item active" data-id="customer">
+                <div class="tg-chat-avatar" style="background:#fbbd08;">
+                    <img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                </div>
+                <div class="tg-chat-info">
+                    <div class="tg-chat-title">iPhone8、小良</div>
+                    <div class="tg-chat-last">您好，欢迎光临！请问有什么可以帮助您的？</div>
+                </div>
+            </div>
+            <div class="tg-chat-item" data-id="sql">
+                <div class="tg-chat-avatar" style="background:#f2711c;">技</div>
+                <div class="tg-chat-info">
+                    <div class="tg-chat-title">iPhone 技术研究中心</div>
+                    <div class="tg-chat-last">维罗纳：不越狱可以多开微信吗？</div>
+                </div>
+            </div>
+            <div class="tg-chat-item" data-id="dev">
+                <div class="tg-chat-avatar" style="background:#2185d0;">J</div>
+                <div class="tg-chat-info">
+                    <div class="tg-chat-title">Jsbox & Pin 脚本交流群</div>
+                    <div class="tg-chat-last">小明: 请问有脚本推荐吗？</div>
+                </div>
+            </div>
+        </div>
+        <div class="tg-sidebar-footer" style="border-top:1px solid #e0e0e0;background:#fff;">
+            <div style="display:flex;justify-content:space-around;align-items:center;height:63px;">
+                <i class="fas fa-user-circle" style="font-size:28px;color:#aaa;"></i>
+                <i class="fas fa-phone" style="font-size:22px;color:#aaa;"></i>
+                <i class="fas fa-comments" style="font-size:26px;color:#2196f3;"></i>
+                <i class="fas fa-cog" style="font-size:22px;color:#aaa;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="tg-main">
+        <div class="tg-header">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span class="tg-header-avatar" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#4fd2b5;color:#fff;font-size:20px;font-weight:bold;overflow:hidden;"><img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;display:none;"></span>
+                <span class="tg-header-title">iPhone8、小良</span>
+                <span class="tg-header-desc">last seen just now</span>
+            </div>
+            <i class="fas fa-ellipsis-v" style="color:#888;font-size:20px;cursor:pointer;"></i>
+        </div>
+        <div class="tg-chat-body" id="tg-chat-body"></div>
+        <div class="tg-footer">
+            <input class="tg-input" type="text" placeholder="Write a message...">
+            <button class="tg-send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
+<script src="./tg.js"></script>
+<script>
+(function() {
+  // 聊天栏切换逻辑
+  var chatItems = document.querySelectorAll('.tg-chat-item');
+  var chatBody = document.getElementById('tg-chat-body');
+  var input = document.querySelector('.tg-input');
+  var sendBtn = document.querySelector('.tg-send-btn');
+  var attachBtn = document.querySelector('button[type="button"] i.fa-paperclip')?.parentNode;
+  var headerTitle = document.querySelector('.tg-header-title');
+  var headerDesc = document.querySelector('.tg-header-desc');
+  var headerAvatar = document.querySelector('.tg-header-avatar');
+  var headerAvatarImg = headerAvatar.querySelector('img');
+
+  // 聊天内容缓存
+  var chatHistory = {
+    customer: chatBody.innerHTML,
+    sql: null,
+    dev: null
+  };
+
+  // 技术研究中心预设消息
+  var sqlPresetMsg = `<div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#E97C97;'>张</div>
+    <div>
+      <div class='tg-message-bubble'>iOS 18 Beta 2 上了，刚装完，锁屏 widget 支持交互了，感觉有点像安卓那味儿了<span class='tg-message-meta-inline'>08:11</span></div>
+    </div>
+  </div>
+  <div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#f1011c;'>小</div>
+    <div>
+      <div class='tg-message-bubble'>Beta 2 有改内核结构，我这边 frida 部分 hook 点失效了，估计得重编 payload。<span class='tg-message-meta-inline'>08:33</span></div>
+    </div>
+  </div>
+    <div class='tg-message-row'>
+      <div class='tg-message-avatar'>
+        <img src="./static/it.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+    <div>
+      <div class='tg-message-bubble'>话说 A17 Pro 这发热真的稳了？我 Pro Max 上周打原神 40 分钟都没掉帧<span class='tg-message-meta-inline'>08:35</span></div>
+    </div>
+  </div>
+    <div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#6FDBCC;'>Kev</div>
+    <div>
+      <div class='tg-message-bubble'>AirDrop 跨平台测试成功了，Mac 和 iOS 的「隔空投送」终于不那么抽风了。下次拍个教程<span class='tg-message-meta-inline'>08:35</span></div>
+    </div>
+  </div>
+    <div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#f2711c;'>天</div>
+    <div>
+      <div class='tg-message-bubble'>有人知道 iOS 上哪款抓包工具不需要越狱？我想看看某 App 的 HTTPS 请求<span class='tg-message-meta-inline'>08:36</span></div>
+    </div>
+  </div>
+    <div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#f1011c'>小</div>
+    <div>
+      <div class='tg-message-bubble'>用 Stream，装个配置文件就能代理，或者抓 Charles 的信任证书再配合 Burp Suite 也行。<span class='tg-message-meta-inline'>08:37</span></div>
+    </div>
+  </div>
+   <div class='tg-message-row'>
+    <div class='tg-message-avatar'>
+      <img src="./static/it.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+    <div>
+      <div class='tg-message-bubble'>我在写个快捷指令 + API 的脚本，打算让 Siri 控制公司灯光。等下分享给你们试试<span class='tg-message-meta-inline'>08:37</span></div>
+    </div>
+  </div>`;
+
+  // 脚本交流群
+  var devPresetMsg = `
+  <div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#D0BA4D;'>邱</div>
+    <div>
+      <div class='tg-message-bubble'>兄弟，这是什么问题？
+        <img class="tg-message-img" src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif" alt="GIF">
+        <span class='tg-message-meta-inline'>08:01</span></div>
+    </div>
+  </div>
+  <div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#2185d0;'>研</div>
+    <div>
+      <div class='tg-message-bubble'>1024 系列脚本更新:
+        <br />
+        <a href="https://ae85.cn/jb.html" target="_blank">https://ae85.cn/jb.html</a>
+        <span class='tg-message-meta-inline'>10:15</span></div>
+    </div>
+  </div>
+  <div class='tg-message-row'>
+    <div class='tg-message-avatar' style='background:#2185d0;'>研</div>
+    <div>
+      <div class='tg-message-bubble'>最新快捷指令规则
+        <br />
+        <a href="https://ae85.cn/gz.html" target="_blank">https://ae85.cn/gz.html</a>
+        <span class='tg-message-meta-inline'>19:10</span></div>
+    </div>
+  </div>
+  <div class='tg-message-row'>
+    <div class='tg-message-avatar'>
+        <img src="./static/mv.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+    <div>
+      <div class='tg-message-bubble'>👍👍👍
+        <span class='tg-message-meta-inline'>19:13</span></div>
+    </div>
+  </div>`;
+
+  // 初始化群聊内容
+  chatHistory.sql = sqlPresetMsg;
+  chatHistory.dev = devPresetMsg;
+
+  // 获取最后一条消息内容
+  function getLastMsg(html) {
+    var temp = document.createElement('div');
+    temp.innerHTML = html;
+    var bubbles = temp.querySelectorAll('.tg-message-bubble');
+    if (bubbles.length === 0) return '';
+    var last = bubbles[bubbles.length - 1];
+    // 只取纯文本部分
+    var text = last.childNodes[0]?.textContent || last.textContent || '';
+    return text.trim();
+  }
+
+  // 更新左侧聊天列表最后一条消息
+  function updateChatLast() {
+    chatItems.forEach(function(item) {
+      var id = item.getAttribute('data-id');
+      var lastDiv = item.querySelector('.tg-chat-last');
+      if (lastDiv && chatHistory[id]) {
+        lastDiv.textContent = getLastMsg(chatHistory[id]);
+      }
+    });
+  }
+
+  function switchChat(targetId) {
+    chatItems.forEach(function(item) {
+      if (item.getAttribute('data-id') === targetId) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+    // 切换内容
+    chatBody.innerHTML = chatHistory[targetId];
+    // 滚动到最底部
+    setTimeout(function() {
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 0);
+    if (targetId === 'customer') {
+      input.disabled = false;
+      sendBtn.disabled = false;
+      if (attachBtn) attachBtn.disabled = false;
+      input.placeholder = 'Write a message...';
+      if (headerAvatar) {
+        headerAvatar.innerHTML = '<img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;">';
+        headerAvatar.style.background = 'none';
+      }
+      if (headerTitle) headerTitle.textContent = 'iPhone8、小良';
+      if (headerDesc) headerDesc.textContent = 'last seen just now';
+    } else if (targetId === 'sql') {
+      input.disabled = true;
+      sendBtn.disabled = true;
+      if (attachBtn) attachBtn.disabled = true;
+      input.placeholder = '群组禁言中';
+      if (headerAvatar) {
+        headerAvatar.innerHTML = '技';
+        headerAvatar.style.background = '#f2711c';
+      }
+      if (headerTitle) headerTitle.textContent = 'iPhone 技术研究中心';
+      if (headerDesc) headerDesc.textContent = '163 members';
+    } else if (targetId === 'dev') {
+      input.disabled = true;
+      sendBtn.disabled = true;
+      if (attachBtn) attachBtn.disabled = true;
+      input.placeholder = '群组禁言中';
+      if (headerAvatar) {
+        headerAvatar.innerHTML = 'J';
+        headerAvatar.style.background = '#2185d0';
+      }
+      if (headerTitle) headerTitle.textContent = 'Jsbox & Pin 脚本交流群';
+      if (headerDesc) headerDesc.textContent = '1568 members';
+    }
+    updateChatLast();
+  }
+
+  // 监听切换
+  chatItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      // 保存当前窗口内容
+      var currentId = document.querySelector('.tg-chat-item.active').getAttribute('data-id');
+      chatHistory[currentId] = chatBody.innerHTML;
+      var id = this.getAttribute('data-id');
+      switchChat(id);
+    });
+  });
+
+  // 监听客服窗口发消息（只处理customer）
+  var oldSendBtnClick = sendBtn.onclick;
+  sendBtn.onclick = function(e) {
+    if (document.querySelector('.tg-chat-item.active').getAttribute('data-id') === 'customer') {
+      setTimeout(function() {
+        chatHistory.customer = chatBody.innerHTML;
+        updateChatLast();
+      }, 100);
+    }
+    if (typeof oldSendBtnClick === 'function') oldSendBtnClick.apply(this, arguments);
+  };
+
+  // 页面加载时，默认选中客服
+  switchChat(document.querySelector('.tg-chat-item.active').getAttribute('data-id'));
+
+  // 移动上传进度条到附件预览下方
+  var footer = document.querySelector('.tg-footer');
+  var filePreview = document.querySelector('.file-preview');
+  var uploadProgressBar = document.querySelector('.web-chat-upload-progress');
+  if (filePreview && uploadProgressBar && footer) {
+    filePreview.parentNode.insertBefore(uploadProgressBar, footer);
+    uploadProgressBar.style.margin = '0 0 10px 0';
+  }
+})();
+</script>
+</body>
+</html> 

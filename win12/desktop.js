@@ -2189,6 +2189,12 @@ function setIcon() {
                 onclick: "openapp('shortcuts');"
             },
              {
+                name: 'weixin',
+                icon: 'icon/weixin.svg',
+                text: '微信',
+                onclick: "openapp('weixin');"
+            },
+             {
                 name: 'qq',
                 icon: 'icon/qq.svg',
                 text: 'QQ',
@@ -2217,6 +2223,12 @@ function setIcon() {
                 icon: 'icon/video.svg',
                 text: 'LibreTV',
                 onclick: "openapp('video');"
+            },
+            {
+                name: 'telegram',
+                icon: 'icon/telegram.svg',
+                text: 'Telegram',
+                onclick: "openapp('telegram');"
             }
         ];
 
