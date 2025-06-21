@@ -71,7 +71,7 @@ filePreview.style.marginBottom = '10px';
 footer.parentNode.insertBefore(filePreview, footer);
 
 // ===== 新增：收到消息播放提示音 =====
-const msgAudio = new Audio('./static/2.m4a');
+const msgAudio = new Audio('./static/1.m4a');
 
 // 加载历史消息
 function loadHistoryMessages() {
