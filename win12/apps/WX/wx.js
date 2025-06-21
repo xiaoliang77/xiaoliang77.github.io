@@ -62,7 +62,7 @@ filePreview.style.gap = '10px';
 footer.parentNode.insertBefore(filePreview, footer);
 
 // ===== 收到消息播放提示音 =====
-const msgAudio = new Audio('/static/2.m4a');
+const msgAudio = new Audio('./static/2.m4a');
 
 // 加载历史消息 (由 wx.html 中的脚本调用)
 function loadHistoryMessages(contactId) {
