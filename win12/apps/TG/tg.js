@@ -73,7 +73,7 @@ footer.parentNode.insertBefore(filePreview, footer);
 // ===== 新增：收到消息播放提示音 =====
 const msgAudio = new Audio('./static/1.m4a');
 
-// ===== 新增：3秒只能发一条 =====
+// ===== 新增：5秒只能发一条 =====
 let lastSendTime = 0;
 
 // ===== 新增：敏感词用 编码 =====
@@ -289,7 +289,7 @@ function clearFilePreview() {
 // 发送消息
 sendBtn.onclick = async (e) => {
     const now = Date.now();
-    if (now - lastSendTime < 3000) {
+    if (now - lastSendTime < 5000) {
         showMessageBox('消息发送太频繁，请稍后再试。');
         return;
     }
