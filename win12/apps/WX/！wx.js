@@ -1,8 +1,8 @@
-// tg.js - 适配 Telegram 风格聊天界面
-
+// wx.js - 适配微信风格聊天界面 - 核心聊天功能
+    
 // 配置
 const apiUrl = "https://web-chat-api.ae85.cn";
-const welcomeMessage = "您好，欢迎光临！请问有什么可以帮助您的？";
+const welcomeMessage = "您好，请问有什么可以帮助您？";
 
 // 用户ID
 const userId = localStorage.getItem('userId') || 'user_' + Math.random().toString(36).substr(2, 9);
@@ -16,9 +16,11 @@ const ably = new Ably.Realtime({
 });
 
 // DOM 元素
-const chatBody = document.getElementById('tg-chat-body');
-const input = document.querySelector('.tg-input');
-const sendBtn = document.querySelector('.tg-send-btn');
+const chatBody = document.querySelector('.wx-chat-body');
+const input = document.querySelector('.wx-input');
+const sendBtn = document.querySelector('.wx-send-btn');
+const attachBtn = document.getElementById('wx-attach-btn');
+const footer = document.querySelector('.wx-footer');
 
 // 附件上传
 let fileInput = document.createElement('input');
@@ -28,25 +30,12 @@ document.body.appendChild(fileInput);
 
 let currentFile = null;
 
-// 附件按钮（用 paperclip 图标）
-let attachBtn = document.createElement('button');
-attachBtn.type = 'button';
-attachBtn.innerHTML = '<i class="fas fa-paperclip"></i>';
-attachBtn.style.background = 'none';
-attachBtn.style.border = 'none';
-attachBtn.style.fontSize = '20px';
-attachBtn.style.marginRight = '10px';
-attachBtn.style.cursor = 'pointer';
-attachBtn.style.color = '#888'
-attachBtn.title = '上传附件';
-const footer = document.querySelector('.tg-footer');
-footer.insertBefore(attachBtn, input);
-
 // 上传进度条
 let uploadProgressBar = document.createElement('div');
 uploadProgressBar.className = 'web-chat-upload-progress';
 uploadProgressBar.style.display = 'none';
-uploadProgressBar.innerHTML = '<div class="bar" style="width:0%;height:6px;background:#2481cc;border-radius:3px;transition:width 0.2s;"></div><span class="percent" style="font-size:12px;margin-left:8px;"></span>';
+uploadProgressBar.style.padding = '0 24px 10px';
+uploadProgressBar.innerHTML = '<div class="bar" style="width:0%;height:6px;background:#1aad19;border-radius:3px;transition:width 0.2s;"></div><span class="percent" style="font-size:12px;margin-left:8px;"></span>';
 footer.appendChild(uploadProgressBar);
 
 // 取消上传按钮
@@ -67,99 +56,77 @@ uploadProgressBar.appendChild(cancelUploadBtn);
 let filePreview = document.createElement('div');
 filePreview.className = 'file-preview';
 filePreview.style.display = 'none';
-filePreview.style.marginBottom = '10px';
+filePreview.style.padding = '0 24px 10px';
+filePreview.style.alignItems = 'center';
+filePreview.style.gap = '10px';
 footer.parentNode.insertBefore(filePreview, footer);
 
-// ===== 新增：收到消息播放提示音 =====
-const msgAudio = new Audio('./static/1.m4a');
+// ===== 收到消息播放提示音 =====
+const msgAudio = new Audio('./static/2.m4a');
 
-// ===== 新增：3秒只能发一条 =====
-let lastSendTime = 0;
-
-// ===== 新增：敏感词过滤 =====
-const sensitiveWords = [
-    '傻逼', 'sb', 'fuck', 'shit', 'bitch', 'asshole', 'dick', 'pussy',
-    '操你妈', '草泥马', '狗日的', '王八蛋', '混蛋', '贱人', '婊子',
-    '死全家', '去死', '滚蛋', '垃圾', '废物', '白痴', '智障',
-    '艹你', '狗东西'
-];
-
-function containsSensitiveWords(text) {
-    if (!text) return false;
-    const lowerText = text.toLowerCase();
-    return sensitiveWords.some(word => 
-        lowerText.includes(word.toLowerCase()) || 
-        text.includes(word)
-    );
-}
-
-function checkSensitiveContent(text) {
-    if (containsSensitiveWords(text)) {
-        alert('消息包含敏感内容，无法发送。');
-        return false;
-    }
-    return true;
-}
-
-// 加载历史消息
-function loadHistoryMessages() {
-    const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+// 加载历史消息 (由 wx.html 中的脚本调用)
+function loadHistoryMessages(contactId) {
+    if (!contactId) return;
+    chatBody.innerHTML = '';
+    const history = JSON.parse(localStorage.getItem(`chatHistory_${contactId}`) || '[]');
     history.forEach(msg => {
         renderMessage(msg.text, msg.sender, msg.type, msg.file, msg.timestamp);
     });
     if (history.length === 0 && welcomeMessage) {
         renderMessage(welcomeMessage, 'support', 'text', null, new Date().toISOString());
-        saveMessage(welcomeMessage, 'support', 'text', null);
+        saveMessage(contactId, welcomeMessage, 'support', 'text', null);
     }
     chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-// 保存消息
-function saveMessage(text, sender, type = 'text', file = null) {
-    const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
-    const message = {
-        text,
-        sender,
-        type,
-        timestamp: new Date().toISOString()
-    };
+// 保存消息 (由 wx.html 中的脚本调用)
+function saveMessage(contactId, text, sender, type = 'text', file = null) {
+    if (!contactId) return;
+    const history = JSON.parse(localStorage.getItem(`chatHistory_${contactId}`) || '[]');
+    const message = { text, sender, type, timestamp: new Date().toISOString() };
     if (file) {
-        message.file = {
-            name: file.name,
-            type: file.type,
-            size: file.size,
-            filePath: file.filePath || null
-        };
+        message.file = { name: file.name, type: file.type, size: file.size, filePath: file.filePath || null };
     }
     history.push(message);
     if (history.length > 100) history.shift();
-    localStorage.setItem('chatHistory', JSON.stringify(history));
+    localStorage.setItem(`chatHistory_${contactId}`, JSON.stringify(history));
 }
 
 // 渲染消息
 function renderMessage(text, sender, type = 'text', file = null, timestamp = null) {
     const row = document.createElement('div');
-    row.className = 'tg-message-row' + (sender === 'user' ? ' self' : '');
+    row.className = 'wx-message-row' + (sender === 'user' ? ' self' : '');
+
+    const avatarMeta = document.createElement('div');
+    avatarMeta.className = 'wx-message-avatar-meta';
+
     const avatar = document.createElement('div');
-    avatar.className = 'tg-message-avatar';
+    avatar.className = 'wx-message-avatar';
+    const avatarImg = document.createElement('img');
+
     if (sender === 'user') {
-        avatar.textContent = 'W';
-        avatar.style.background = '#f2711c';
+        avatarImg.src = './static/user.png';
     } else {
-        // Y 头像用图片
-        avatar.innerHTML = '<img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
-        avatar.style.background = 'none';
+        const activeContactAvatar = document.querySelector('.wx-chat-item.active')?.dataset.contactAvatar;
+        avatarImg.src = activeContactAvatar || './static/wxtx.jpg';
     }
-    const bubbleWrap = document.createElement('div');
+    avatar.appendChild(avatarImg);
+
+    const timeMeta = document.createElement('div');
+    timeMeta.className = 'wx-message-meta';
+    timeMeta.textContent = formatTime(timestamp);
+
+    avatarMeta.appendChild(avatar);
+    avatarMeta.appendChild(timeMeta);
+
+    const messageContainer = document.createElement('div');
     const bubble = document.createElement('div');
-    bubble.className = 'tg-message-bubble';
-    // 文本
+    bubble.className = 'wx-message-bubble';
+    
     if (text) {
-        const textDiv = document.createElement('div');
-        textDiv.textContent = text;
-        bubble.appendChild(textDiv);
+        bubble.appendChild(document.createTextNode(text));
     }
-    // 附件
+    
     if (file) {
         const mimeType = file.type || '';
         if (mimeType.startsWith('image/')) {
@@ -169,7 +136,8 @@ function renderMessage(text, sender, type = 'text', file = null, timestamp = nul
             } else if (file instanceof Blob || file instanceof File) {
                 img.src = URL.createObjectURL(file);
             }
-            img.className = 'tg-message-img';
+            img.style.maxWidth = '100%';
+            img.style.borderRadius = '4px';
             img.onclick = () => showImagePreview(img.src);
             bubble.appendChild(img);
         } else if (mimeType.startsWith('video/')) {
@@ -179,7 +147,7 @@ function renderMessage(text, sender, type = 'text', file = null, timestamp = nul
             } else if (file instanceof Blob || file instanceof File) {
                 video.src = URL.createObjectURL(file);
             }
-            video.className = 'tg-message-video';
+            video.className = 'wx-message-video';
             video.controls = true;
             bubble.appendChild(video);
         } else {
@@ -190,20 +158,16 @@ function renderMessage(text, sender, type = 'text', file = null, timestamp = nul
             } else if (file instanceof Blob || file instanceof File) {
                 fileLink.href = URL.createObjectURL(file);
             }
-            fileLink.className = 'tg-message-file';
+            fileLink.className = 'wx-message-file';
             fileLink.download = file.name || 'download';
             fileLink.innerHTML = `<i class="fas fa-paperclip"></i> <span>${file.name || '文件'}</span>`;
             bubble.appendChild(fileLink);
         }
     }
-    // 时间
-    const timeSpan = document.createElement('span');
-    timeSpan.className = 'tg-message-meta-inline';
-    timeSpan.textContent = formatTime(timestamp);
-    bubble.appendChild(timeSpan);
-    bubbleWrap.appendChild(bubble);
-    row.appendChild(avatar);
-    row.appendChild(bubbleWrap);
+    
+    messageContainer.appendChild(bubble);
+    row.appendChild(avatarMeta);
+    row.appendChild(messageContainer);
     chatBody.appendChild(row);
     chatBody.scrollTop = chatBody.scrollHeight;
 }
@@ -213,39 +177,37 @@ function formatTime(ts) {
     return date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
 }
 
-// 图片放大预览
 function showImagePreview(src) {
-    let previewMask = document.getElementById('tg-image-preview-mask');
+    let previewMask = document.getElementById('wx-image-preview-mask');
     if (!previewMask) {
         previewMask = document.createElement('div');
-        previewMask.id = 'tg-image-preview-mask';
-        previewMask.style.position = 'fixed';
-        previewMask.style.left = 0;
-        previewMask.style.top = 0;
-        previewMask.style.width = '100vw';
-        previewMask.style.height = '100vh';
-        previewMask.style.background = 'rgba(0,0,0,0.7)';
-        previewMask.style.display = 'flex';
-        previewMask.style.alignItems = 'center';
-        previewMask.style.justifyContent = 'center';
-        previewMask.style.zIndex = 9999;
-        previewMask.onclick = function() { previewMask.style.display = 'none'; };
+        previewMask.id = 'wx-image-preview-mask';
+        Object.assign(previewMask.style, {
+            position: 'fixed', left: 0, top: 0, width: '100vw', height: '100vh',
+            background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', zIndex: 9999
+        });
+        previewMask.onclick = () => { previewMask.style.display = 'none'; };
         document.body.appendChild(previewMask);
     }
     previewMask.innerHTML = '';
     const bigImg = document.createElement('img');
     bigImg.src = src;
-    bigImg.style.maxWidth = '90vw';
-    bigImg.style.maxHeight = '90vh';
-    bigImg.style.borderRadius = '8px';
-    bigImg.style.boxShadow = '0 2px 16px rgba(0,0,0,0.3)';
-    bigImg.onclick = function(e) { e.stopPropagation(); };
+    Object.assign(bigImg.style, {
+        maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px',
+        boxShadow: '0 2px 16px rgba(0,0,0,0.3)'
+    });
+    bigImg.onclick = (e) => e.stopPropagation();
     previewMask.appendChild(bigImg);
     previewMask.style.display = 'flex';
 }
 
 // 选择文件
-attachBtn.onclick = () => fileInput.click();
+attachBtn.onclick = () => {
+    if (input.disabled) return;
+    fileInput.click();
+};
+
 fileInput.onchange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -256,52 +218,35 @@ fileInput.onchange = (e) => {
         } else if (file.type.startsWith('video/')) {
             previewHtml += `<i class="fas fa-video" style="font-size:32px;color:#888;"></i>`;
         } else {
-            previewHtml += `<i class="fas fa-paperclip" style="font-size:32px;color:#888;"></i>`;
+            previewHtml += `<i class="fas fa-file" style="font-size:32px;color:#888;"></i>`;
         }
         previewHtml += `
-            <div class="file-info" style="flex:1;min-width:0;">
-                <div class="file-name" style="font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${file.name}</div>
-                <div class="file-size" style="font-size:12px;color:#999;">${(file.size/1024).toFixed(1)}KB</div>
+            <div style="flex:1;min-width:0;">
+                <div style="font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${file.name}</div>
+                <div style="font-size:12px;color:#999;">${(file.size/1024).toFixed(1)}KB</div>
             </div>
-            <div class="remove-file" style="color:#ff4444;cursor:pointer;padding:4px;"><i class="fas fa-times"></i></div>
-        `;
+            <div class="remove-file" style="color:#ff4444;cursor:pointer;padding:4px;"><i class="fas fa-times"></i></div>`;
         filePreview.innerHTML = previewHtml;
         filePreview.style.display = 'flex';
-        filePreview.querySelector('.remove-file').onclick = function() {
-            currentFile = null;
-            fileInput.value = '';
-            filePreview.style.display = 'none';
-            input.value = '';
-        };
+        filePreview.querySelector('.remove-file').onclick = () => clearFilePreview();
     }
 };
 
-// 清空附件预览
 function clearFilePreview() {
     filePreview.style.display = 'none';
     filePreview.innerHTML = '';
     currentFile = null;
     fileInput.value = '';
-    input.value = '';
 }
 
 // 发送消息
-sendBtn.onclick = async (e) => {
-    const now = Date.now();
-    if (now - lastSendTime < 3000) {
-        alert('消息发送太频繁，请稍后再试。');
-        return;
-    }
-    lastSendTime = now;
-    e.preventDefault();
+async function sendMessage() {
     const text = input.value.trim();
     if (!text && !currentFile) return;
-    
-    // ===== 新增：敏感词检查 =====
-    if (text && !checkSensitiveContent(text)) {
-        return;
-    }
-    
+
+    const activeContactId = document.querySelector('.wx-chat-item.active')?.dataset.contactId;
+    if (activeContactId !== 'contact1') return;
+
     sendBtn.disabled = true;
     try {
         if (currentFile) {
@@ -351,8 +296,16 @@ sendBtn.onclick = async (e) => {
                             filePath: responseData.fileId || null
                         };
                         renderMessage(text, 'user', type, fileObj, new Date().toISOString());
-                        saveMessage(text, 'user', type, fileObj);
+                        saveMessage(activeContactId, text, 'user', type, fileObj);
+                        if (window.updateChatListLastMessage) {
+                            let messageText;
+                            if (type === 'image') messageText = '[图片]';
+                            else if (type === 'video') messageText = '[视频]';
+                            else messageText = '[文件]';
+                            window.updateChatListLastMessage(activeContactId, messageText);
+                        }
                         clearFilePreview();
+                        input.value = '';
                     }
                 } catch (err) {
                     console.error('解析响应失败:', err);
@@ -378,51 +331,50 @@ sendBtn.onclick = async (e) => {
             });
             const responseData = await response.json();
             if (response.ok) {
-                input.value = '';
                 renderMessage(text, 'user', 'text', null, new Date().toISOString());
-                saveMessage(text, 'user', 'text', null);
+                saveMessage(activeContactId, text, 'user', 'text', null);
+                if (window.updateChatListLastMessage) {
+                    window.updateChatListLastMessage(activeContactId, text);
+                }
+                input.value = '';
             } else {
                 console.error('发送消息失败:', responseData.error);
             }
-            sendBtn.disabled = false;
         }
     } catch (error) {
-        uploadProgressBar.style.display = 'none';
-        cancelUploadBtn.style.display = 'none';
-        sendBtn.disabled = false;
-        clearFilePreview();
         console.error('发送消息出错:', error);
+    } finally {
+        sendBtn.disabled = false;
     }
-};
+}
 
-// ===== 新增：回车发送也要加防刷屏 =====
-input.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey && !currentFile) {
-        const now = Date.now();
-        if (now - lastSendTime < 3000) {
-            alert('消息发送太频繁，请稍后再试。');
-            return;
-        }
-        lastSendTime = now;
-        
-        // ===== 新增：敏感词检查 =====
-        const text = input.value.trim();
-        if (text && !checkSensitiveContent(text)) {
-            return;
-        }
-        
+sendBtn.onclick = sendMessage;
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        sendBtn.click();
+        sendMessage();
     }
 });
 
 // Ably 接收客服消息
-ably.connection.on('connected', () => {
-    loadHistoryMessages();
-});
 const channel = ably.channels.get(`chat:${userId}`);
 channel.subscribe('message', (message) => {
-    renderMessage(message.data.text, 'support', message.data.type, message.data.file, new Date().toISOString());
-    saveMessage(message.data.text, 'support', message.data.type, message.data.file);
+    const activeContactId = document.querySelector('.wx-chat-item.active')?.dataset.contactId;
+    saveMessage('contact1', message.data.text, 'support', message.data.type, message.data.file);
+
+    if (window.updateChatListLastMessage) {
+        let lastMessageText = message.data.text;
+        if (message.data.file) {
+            const fileType = message.data.file.type || '';
+            if (fileType.startsWith('image/')) lastMessageText = '[图片]';
+            else if (fileType.startsWith('video/')) lastMessageText = '[视频]';
+            else lastMessageText = '[文件]';
+        }
+        window.updateChatListLastMessage('contact1', lastMessageText);
+    }
+
+    if (activeContactId === 'contact1') {
+        renderMessage(message.data.text, 'support', message.data.type, message.data.file);
+    }
     try { msgAudio.currentTime = 0; msgAudio.play(); } catch(e){}
 }); 

@@ -73,34 +73,6 @@ footer.parentNode.insertBefore(filePreview, footer);
 // ===== 新增：收到消息播放提示音 =====
 const msgAudio = new Audio('./static/1.m4a');
 
-// ===== 新增：3秒只能发一条 =====
-let lastSendTime = 0;
-
-// ===== 新增：敏感词过滤 =====
-const sensitiveWords = [
-    '傻逼', 'sb', 'fuck', 'shit', 'bitch', 'asshole', 'dick', 'pussy',
-    '操你妈', '草泥马', '狗日的', '王八蛋', '混蛋', '贱人', '婊子',
-    '死全家', '去死', '滚蛋', '垃圾', '废物', '白痴', '智障',
-    '艹你', '狗东西'
-];
-
-function containsSensitiveWords(text) {
-    if (!text) return false;
-    const lowerText = text.toLowerCase();
-    return sensitiveWords.some(word => 
-        lowerText.includes(word.toLowerCase()) || 
-        text.includes(word)
-    );
-}
-
-function checkSensitiveContent(text) {
-    if (containsSensitiveWords(text)) {
-        alert('消息包含敏感内容，无法发送。');
-        return false;
-    }
-    return true;
-}
-
 // 加载历史消息
 function loadHistoryMessages() {
     const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
@@ -287,21 +259,9 @@ function clearFilePreview() {
 
 // 发送消息
 sendBtn.onclick = async (e) => {
-    const now = Date.now();
-    if (now - lastSendTime < 3000) {
-        alert('消息发送太频繁，请稍后再试。');
-        return;
-    }
-    lastSendTime = now;
     e.preventDefault();
     const text = input.value.trim();
     if (!text && !currentFile) return;
-    
-    // ===== 新增：敏感词检查 =====
-    if (text && !checkSensitiveContent(text)) {
-        return;
-    }
-    
     sendBtn.disabled = true;
     try {
         if (currentFile) {
@@ -343,6 +303,7 @@ sendBtn.onclick = async (e) => {
                     if (!xhr.status || xhr.status < 200 || xhr.status >= 300) {
                         console.error('发送消息失败:', responseData.error);
                     } else {
+                        // 发送成功后再显示消息
                         const type = currentFile.type.startsWith('image/') ? 'image' : (currentFile.type.startsWith('video/') ? 'video' : 'file');
                         let fileObj = {
                             name: currentFile.name,
@@ -395,22 +356,9 @@ sendBtn.onclick = async (e) => {
     }
 };
 
-// ===== 新增：回车发送也要加防刷屏 =====
+// ===== 新增：支持回车发送消息 =====
 input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey && !currentFile) {
-        const now = Date.now();
-        if (now - lastSendTime < 3000) {
-            alert('消息发送太频繁，请稍后再试。');
-            return;
-        }
-        lastSendTime = now;
-        
-        // ===== 新增：敏感词检查 =====
-        const text = input.value.trim();
-        if (text && !checkSensitiveContent(text)) {
-            return;
-        }
-        
         e.preventDefault();
         sendBtn.click();
     }

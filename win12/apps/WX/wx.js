@@ -64,6 +64,33 @@ footer.parentNode.insertBefore(filePreview, footer);
 // ===== 收到消息播放提示音 =====
 const msgAudio = new Audio('./static/2.m4a');
 
+// ===== 3秒只能发一条 =====
+let lastSendTime = 0;
+
+// ===== 敏感词过滤 =====
+const sensitiveWords = [
+    '傻逼', 'sb', 'fuck', 'shit', 'bitch', 'asshole', 'dick', 'pussy',
+    '操你妈', '草泥马', '狗日的', '王八蛋', '混蛋', '贱人', '婊子',
+    '死全家', '去死', '滚蛋', '垃圾', '废物', '白痴', '智障','傻叉','艹你'
+];
+
+function containsSensitiveWords(text) {
+    if (!text) return false;
+    const lowerText = text.toLowerCase();
+    return sensitiveWords.some(word => 
+        lowerText.includes(word.toLowerCase()) || 
+        text.includes(word)
+    );
+}
+
+function checkSensitiveContent(text) {
+    if (containsSensitiveWords(text)) {
+        alert('消息包含敏感内容，无法发送。');
+        return false;
+    }
+    return true;
+}
+
 // 加载历史消息 (由 wx.html 中的脚本调用)
 function loadHistoryMessages(contactId) {
     if (!contactId) return;
@@ -241,8 +268,19 @@ function clearFilePreview() {
 
 // 发送消息
 async function sendMessage() {
+    const now = Date.now();
+    if (now - lastSendTime < 3000) {
+        alert('消息发送太频繁，请稍后再试。');
+        return;
+    }
+    lastSendTime = now;
     const text = input.value.trim();
     if (!text && !currentFile) return;
+
+    // ===== 新增：敏感词检查 =====
+    if (text && !checkSensitiveContent(text)) {
+        return;
+    }
 
     const activeContactId = document.querySelector('.wx-chat-item.active')?.dataset.contactId;
     if (activeContactId !== 'contact1') return;
