@@ -73,7 +73,7 @@ footer.parentNode.insertBefore(filePreview, footer);
 // ===== 新增：收到消息播放提示音 =====
 const msgAudio = new Audio('./static/1.m4a');
 
-// ===== 新增：5秒只能发一条 =====
+// ===== 新增：发送频率限制 =====
 let lastSendTime = 0;
 
 // ===== 新增：敏感词用 编码 =====
@@ -287,22 +287,16 @@ function clearFilePreview() {
 }
 
 // 发送消息
-sendBtn.onclick = async (e) => {
+async function sendMessage() {
     const now = Date.now();
     if (now - lastSendTime < 5000) {
         showMessageBox('消息发送太频繁，请稍后再试。');
         return;
     }
     lastSendTime = now;
-    e.preventDefault();
     const text = input.value.trim();
     if (!text && !currentFile) return;
-    
-    // ===== 新增：敏感词检查 =====
-    if (text && !checkSensitiveContent(text)) {
-        return;
-    }
-    
+    if (text && !checkSensitiveContent(text)) return;
     sendBtn.disabled = true;
     try {
         if (currentFile) {
@@ -394,7 +388,9 @@ sendBtn.onclick = async (e) => {
         clearFilePreview();
         console.error('发送消息出错:', error);
     }
-};
+}
+
+sendBtn.onclick = sendMessage;
 
 // ===== 全局自定义消息弹窗 =====
 function showMessageBox(message, title = '提示') {
@@ -415,19 +411,8 @@ function showMessageBox(message, title = '提示') {
 input.addEventListener('keydown', function(e) {
     if (window.tgMessageBoxOpen) return;
     if (e.key === 'Enter' && !e.shiftKey && !currentFile) {
-        const now = Date.now();
-        if (now - lastSendTime < 3000) {
-            showMessageBox('消息发送太频繁，请稍后再试。');
-            return;
-        }
-        lastSendTime = now;
-        // ===== 新增：敏感词检查 =====
-        const text = input.value.trim();
-        if (text && !checkSensitiveContent(text)) {
-            return;
-        }
         e.preventDefault();
-        sendBtn.click();
+        sendMessage();
     }
 });
 
