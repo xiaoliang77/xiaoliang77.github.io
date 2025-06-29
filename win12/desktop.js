@@ -810,7 +810,7 @@ const nts = {
         btn: [
             { type: 'main', text: '重新启动', js: 'closenotice(); setTimeout(() => {window.location=`reload.html`;},200);' }
         ]
-    }
+    },
 };
 function shownotice(name) {
     $('#notice>.cnt').html(nts[name].cnt);

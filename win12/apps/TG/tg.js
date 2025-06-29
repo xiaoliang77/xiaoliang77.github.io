@@ -76,13 +76,14 @@ const msgAudio = new Audio('./static/1.m4a');
 // ===== 新增：3秒只能发一条 =====
 let lastSendTime = 0;
 
-// ===== 新增：敏感词过滤 =====
-const sensitiveWords = [
-    '傻逼', 'sb', 'fuck', 'shit', 'bitch', 'asshole', 'dick', 'pussy',
-    '操你妈', '草泥马', '狗日的', '王八蛋', '混蛋', '贱人', '婊子',
-    '死全家', '去死', '滚蛋', '垃圾', '废物', '白痴', '智障',
-    '艹你', '狗东西'
-];
+// ===== 新增：敏感词用 编码 =====
+const sensUnicode = '\u50bb\u903c\u002c\u0073\u0062\u002c\u0061\u0073\u0073\u0068\u006f\u006c\u0065\u002c\u0064\u0069\u0063\u006b\u002c\u0070\u0075\u0073\u0073\u0079\u002c\u8349\u6ce5\u9a6c\u002c\u72d7\u65e5\u7684\u002c\u738b\u516b\u86cb\u002c\u6df7\u86cb\u002c\u8d31\u4eba\u002c\u5a4a\u5b50\u002c\u6b7b\u5168\u5bb6\u002c\u53bb\u6b7b\u002c\u6eda\u86cb\u002c\u5783\u573e\u002c\u5e9f\u7269\u002c\u767d\u75f4\u002c\u667a\u969c\u002c\u8279\u4f60\u002c\u4f60\u5988\u002c\u5c3c\u739b\u002c\u4f60\u5a18\u7684\u002c\u4f60\u4e2b\u7684\u002c\u6b7b\u5988\u002c\u6b7b\u7238\u002c\u6740\u4f60\u002c\u64cd\u4f60\u002c\u808f\u4f60\u002c\u0063\u0061\u006f\u4f60\u002c\u8349\u4f60\u002c\u9760\u4f60\u002c\u72d7\u903c\u002c\u72d7\u0042\u002c\u72d7\u4e1c\u897f\u002c\u72d7\u5a18\u517b\u7684\u002c\u6742\u79cd\u002c\u755c\u751f\u002c\u8d31\u79cd\u002c\u6495\u903c\u002c\u5976\u5b50\u002c\u5976\u5988\u002c\u5976\u5988\u903c\u002c\u5976\u8336\u5a4a\u002c\u8336\u827a\u5a4a\u002c\u7eff\u8336\u5a4a\u002c\u5fc3\u673a\u5a4a\u002c\u5978\u4f60\u002c\u5f3a\u5978\u002c\u65e5\u4f60\u002c\u65e5\u4e86\u72d7\u002c\u5f31\u667a\u002c\u7cbe\u795e\u75c5\u002c\u795e\u7ecf\u75c5\u002c\u8822\u8d27\u002c\u8822\u732a\u002c\u8822\u72d7\u002c\u903c\u6837\u002c\u8d31\u8d27\u002c\u6bcd\u72d7\u002c\u6b7b\u903c\u002c\u70c2\u4eba\u002c\u70c2\u8d27\u002c\u5e9f\u67f4\u002c\u7b28\u86cb\u002c\u5446\u903c\u002c\u641e\u4f60\u002c\u64cd\u7206\u002c\u7206\u83ca\u002c\u5976\u5927\u002c\u5976\u5c0f\u002c\u5c41\u80a1\u5927\u002c\u4f60\u4e2a\u5934\u002c\u4f60\u5168\u5bb6\u002c\u4f60\u7956\u5b97\u002c\u765e\u86e4\u87c6\u002c\u6076\u5fc3\u6b7b\u4e86\u002c\u62c9\u5c4e\u002c\u653e\u5c41\u002c\u6492\u5c3f\u002c\u4f60\u4e11\u002c\u4e11\u516b\u602a\u002c\u5403\u5c4e\u002c\u767d\u83b2\u82b1\u002c\u8868\u5b50\u002c\u9a9a\u8d27\u002c\u9a9a\u903c\u002c\u6deb\u8361\u002c\u6deb\u5a03\u002c\u8089\u4fbf\u5668\u002c\u4eba\u6e23\u002c\u6bd2\u7624\u002c\u0066\u002a\u002a\u006b\u002c\u0066\u0075\u006b\u002c\u0066\u0075\u0071\u002c\u0066\u0063\u006b\u002c\u0066\u0075\u0063\u006b\u002c\u0073\u0068\u0069\u0074\u002c\u0073\u0068\u0078\u0074\u002c\u0073\u0068\u0074\u002c\u0062\u0069\u0074\u0063\u0068\u002c\u0062\u0074\u0063\u0068\u002c\u0062\u0031\u0074\u0063\u0068\u002c\u0062\u0021\u0074\u0063\u0068\u002c\u50bb\u0042\u002c\u6492\u6bd4\u002c\u50bb\u0058\u002c\u5403\u0053\u002c\u0063\u0068\u0069\u0073\u0068\u0069\u002c\u5403\ud83d\udca9\u002c\u8349\u4f60\u9a6c\u002c\u0063\u006e\u006d\u002c\u0063\u006e\u006d\u002c\u0072\u4f60\u002c\u0072\u0069\u4f60\u002c\u64cd\u4f60\u5988\u002c\u0063\u4f60\u006d\u7684\u002c\u0063\u4f60\u5988\u002c\u5783\u573e\u4eba\u002c\u5f31\u667a\u513f\u002c\u4f60\ud83d\udc0e\u002c\u72d7\u6bd4\u002c\u72d7\u5e01\u002c\u6deb\u002c\u6deb\u4e71\u002c\u6deb\u8361\u7684\u8d27\u002c\u9e21\u5df4\u002c\u9e21\u513f\u002c\u004a\u0042\u002c\u006a\u0038\u002c\u0062\u0069\u002c\u0062\u4e86\u72d7\u002c\u006e\u006d\u0073\u006c\u002c\u0064\u0074\u0073\u002c\u7b11\u6b7b\u6211\u4e86\u4f60\u4e2a\u006e\u0074\u002c\u0073\u002e\u0062\u002c\u0073\u002a\u0062\u002c\u0073\u00d7\u0062\u002c\u0077\u0064\u006e\u006d\u0064\u002c\u0064\u0073\u0073\u0071\u002c\u0063\u006e\u006d\u0062'; 
+function fromUnicode(unicodeStr) {
+    return unicodeStr.replace(/\\u[\dA-Fa-f]{4}/g, match => {
+      return String.fromCharCode(parseInt(match.replace('\\u', ''), 16));
+    });
+  }
+const sensitiveWords = fromUnicode(sensUnicode).split(',');
 
 function containsSensitiveWords(text) {
     if (!text) return false;
@@ -95,7 +96,7 @@ function containsSensitiveWords(text) {
 
 function checkSensitiveContent(text) {
     if (containsSensitiveWords(text)) {
-        alert('消息包含敏感内容，无法发送。');
+        showMessageBox('消息包含敏感内容，无法发送。', '请文明用语');
         return false;
     }
     return true;
@@ -289,7 +290,7 @@ function clearFilePreview() {
 sendBtn.onclick = async (e) => {
     const now = Date.now();
     if (now - lastSendTime < 3000) {
-        alert('消息发送太频繁，请稍后再试。');
+        showMessageBox('消息发送太频繁，请稍后再试。');
         return;
     }
     lastSendTime = now;
@@ -395,22 +396,36 @@ sendBtn.onclick = async (e) => {
     }
 };
 
-// ===== 新增：回车发送也要加防刷屏 =====
+// ===== 全局自定义消息弹窗 =====
+function showMessageBox(message, title = '提示') {
+    const box = document.getElementById('tg-message-box-mask');
+    if (!box) return;
+    box.querySelector('.tg-message-box-title').textContent = title;
+    box.querySelector('.tg-message-box-content').textContent = message;
+    box.style.display = 'flex';
+    window.tgMessageBoxOpen = true;
+    const btn = box.querySelector('.tg-message-box-btn');
+    btn.onclick = () => {
+        box.style.display = 'none';
+        window.tgMessageBoxOpen = false;
+    };
+}
+
+// 回车监听优化：弹窗显示时不发送
 input.addEventListener('keydown', function(e) {
+    if (window.tgMessageBoxOpen) return;
     if (e.key === 'Enter' && !e.shiftKey && !currentFile) {
         const now = Date.now();
         if (now - lastSendTime < 3000) {
-            alert('消息发送太频繁，请稍后再试。');
+            showMessageBox('消息发送太频繁，请稍后再试。');
             return;
         }
         lastSendTime = now;
-        
         // ===== 新增：敏感词检查 =====
         const text = input.value.trim();
         if (text && !checkSensitiveContent(text)) {
             return;
         }
-        
         e.preventDefault();
         sendBtn.click();
     }

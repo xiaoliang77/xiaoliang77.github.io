@@ -12,6 +12,7 @@
             font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Arial', sans-serif;
             background: #f4f4f4;
             height: 100vh;
+            min-height: 100vh;
         }
         .tg-container {
             display: flex;
@@ -87,9 +88,11 @@
             text-overflow: ellipsis;
         }
         .tg-main {
-            flex: 1;
+            flex: 1 1 0;
             display: flex;
             flex-direction: column;
+            min-height: 0;
+            height: 100%;
             background: #e5ddd5;
         }
         .tg-header {
@@ -129,7 +132,8 @@
             margin-left: 12px;
         }
         .tg-chat-body {
-            flex: 1;
+            flex: 1 1 0;
+            min-height: 0;
             overflow-y: auto;
             padding: 32px 0 24px 0;
             background: url('./static/tgbj.jpg') repeat;
@@ -140,7 +144,7 @@
         .tg-message-row {
             display: flex;
             align-items: flex-end;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             padding: 0 10px;
         }
         .tg-message-row.self {
@@ -243,7 +247,7 @@
         }
         @media (max-width: 900px) {
             .tg-sidebar { width: 80px; }
-            .tg-chat-title, .tg-chat-last, .tg-sidebar-footer,.tg-sidebar-search,.tg-sidebar-header { display: none; }
+            .tg-chat-title, .tg-chat-last, .tg-sidebar-footer,.tg-sidebar-search,.tg-sidebar-header,.mac-title { display: none; }
             .tg-chat-avatar {
                 margin: 0 auto;
                 display: flex;
@@ -262,11 +266,15 @@
                 align-items: center;
                 /* padding: 14px 0; */
             }
+            .mac-window-bar, .mac-window-container {
+                border-radius: 0;
+                box-shadow: none;
+            }
         }
         @media (max-width: 600px) {
             .tg-container { flex-direction: column; }
             .tg-sidebar { width: 100vw; flex-direction: row; border-right: none; border-bottom: 1px solid #e0e0e0; }
-            .tg-sidebar-header, .tg-chat-list, .tg-sidebar-footer,.tg-sidebar-search { display: none; }
+            .tg-sidebar-header, .tg-chat-list, .tg-sidebar-footer,.tg-sidebar-search,.mac-title { display: none; }
             .tg-message-bubble {max-width:300px;}
             .tg-message-row {padding: 0px 3px;}
         }
@@ -330,72 +338,183 @@
             background: #ffeaea;
             color: #d80000;
         }
-
-
+        @media (min-width: 900px) {
+            .mac-window-outer {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f4f4f4;
+            }
+            .mac-window-container {
+                max-width: 900px;
+                width: 900px;
+                max-height: 90vh;
+                height: 100%;
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 0 2px 24px 0 rgba(0,0,0,0.08);
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+            .mac-window-bar {
+                width: 100%;
+                height: 30px;
+                background: #f8f8f8;
+                border-top-left-radius: 14px;
+                border-top-right-radius: 14px;
+                border-bottom: 1px solid #e0e0e0;
+                display: flex;
+                align-items: center;
+                position: relative;
+                z-index: 10;
+                flex-shrink: 0;
+            }
+            .mac-dots {
+                display: flex;
+                gap: 8px;
+                margin-left: 16px;
+                align-items: center;
+            }
+            .mac-dots span {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #eee;
+                border: 1px solid #ddd;
+            }
+            .mac-title {
+                position: absolute;
+                left: 0; right: 0;
+                text-align: center;
+                font-size: 14px;
+                font-weight: bold;
+                color: #555;
+                letter-spacing: 1px;
+                pointer-events: none;
+            }
+        }
+        #tg-message-box-mask {
+            position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.18); display: flex; align-items: center;
+            justify-content: center; z-index: 99999;
+        }
+        .tg-message-box-modal {
+            background: #fff; border-radius: 16px; box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+            min-width: 320px; max-width: 90vw; padding: 28px 28px 18px 28px;
+            font-size: 16px; color: #222; text-align: left; position: relative;
+            box-sizing: border-box;
+        }
+        .tg-message-box-title {
+            font-size: 22px; font-weight: bold; color: #222; margin-bottom: 12px;
+            letter-spacing: 0.5px; line-height: 1.3;
+        }
+        .tg-message-box-content {
+            font-size: 16px; color: #444; margin-bottom: 24px; line-height: 1.7;
+            word-break: break-all; white-space: pre-line;
+        }
+        .tg-message-box-footer {
+            display: flex; justify-content: flex-end; align-items: center;
+            margin-top: 0; padding: 0;
+        }
+        .tg-message-box-btn {
+            background: #2481cc; color: #fff; border: none; border-radius: 8px;
+            padding: 7px 28px; font-size: 16px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 2px 8px rgba(36,129,204,0.08); transition: background 0.2s;
+            outline: none; margin-left: 12px; margin-right: 0; margin-top: 0; margin-bottom: 0;
+        }
+        .tg-message-box-btn:hover {
+            background: #1866a3;
+        }
     </style>
 </head>
 <body>
-<div class="tg-container">
-    <div class="tg-sidebar">
-        <div class="tg-sidebar-header">
-            <span>Chats</span>
-            <i class="fas fa-pen-to-square" style="font-size:20px;color:#2196f3;cursor:pointer;float: right;"></i>
-        </div>
-        <div class="tg-sidebar-search" style="padding:12px;background:#fafbfc;">
-            <div style="position:relative;">
-                <i class="fas fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#bbb;font-size:16px;"></i>
-                <input type="text" placeholder="Search (⌘K)" style="width:100%;padding:7px 12px 7px 36px;border-radius:5px;border:1px solid #e0e0e0;font-size:15px;background:#f4f4f4;outline:none;box-sizing:border-box;">
+<div class="mac-window-outer">
+  <div class="mac-window-container">
+    <div class="mac-window-bar">
+      <div class="mac-dots">
+        <span style="background:#ff5f56;"></span>
+        <span style="background:#ffbd2e;"></span>
+        <span style="background:#27c93f;"></span>
+      </div>
+      <div class="mac-title">Telegram</div>
+    </div>
+    <div class="tg-container">
+        <div class="tg-sidebar">
+            <div class="tg-sidebar-header">
+                <span>Chats</span>
+                <i class="fas fa-pen-to-square" style="font-size:20px;color:#2196f3;cursor:pointer;float: right;"></i>
+            </div>
+            <div class="tg-sidebar-search" style="padding:12px;background:#fafbfc;">
+                <div style="position:relative;">
+                    <i class="fas fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#bbb;font-size:16px;"></i>
+                    <input type="text" placeholder="Search (⌘K)" style="width:100%;padding:7px 12px 7px 36px;border-radius:5px;border:1px solid #e0e0e0;font-size:15px;background:#f4f4f4;outline:none;box-sizing:border-box;">
+                </div>
+            </div>
+            <div class="tg-chat-list">
+                <div class="tg-chat-item active" data-id="customer">
+                    <div class="tg-chat-avatar" style="background:#fbbd08;">
+                        <img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                    </div>
+                    <div class="tg-chat-info">
+                        <div class="tg-chat-title">iPhone8、小良</div>
+                        <div class="tg-chat-last">您好，欢迎光临！请问有什么可以帮助您的？</div>
+                    </div>
+                </div>
+                <div class="tg-chat-item" data-id="sql">
+                    <div class="tg-chat-avatar" style="background:#f2711c;">技</div>
+                    <div class="tg-chat-info">
+                        <div class="tg-chat-title">iPhone 技术研究中心</div>
+                        <div class="tg-chat-last">维罗纳：不越狱可以多开微信吗？</div>
+                    </div>
+                </div>
+                <div class="tg-chat-item" data-id="dev">
+                    <div class="tg-chat-avatar" style="background:#2185d0;">J</div>
+                    <div class="tg-chat-info">
+                        <div class="tg-chat-title">Jsbox & Pin 脚本交流群</div>
+                        <div class="tg-chat-last">小明: 请问有脚本推荐吗？</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tg-sidebar-footer" style="border-top:1px solid #e0e0e0;background:#fff;">
+                <div style="display:flex;justify-content:space-around;align-items:center;height:63px;">
+                    <i class="fas fa-user-circle" style="font-size:28px;color:#aaa;"></i>
+                    <i class="fas fa-phone" style="font-size:22px;color:#aaa;"></i>
+                    <i class="fas fa-comments" style="font-size:26px;color:#2196f3;"></i>
+                    <i class="fas fa-cog" style="font-size:22px;color:#aaa;"></i>
+                </div>
             </div>
         </div>
-        <div class="tg-chat-list">
-            <div class="tg-chat-item active" data-id="customer">
-                <div class="tg-chat-avatar" style="background:#fbbd08;">
-                    <img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+        <div class="tg-main">
+            <div class="tg-header">
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="tg-header-avatar" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#4fd2b5;color:#fff;font-size:20px;font-weight:bold;overflow:hidden;"><img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;display:none;"></span>
+                    <span class="tg-header-title">iPhone8、小良</span>
+                    <span class="tg-header-desc">last seen just now</span>
                 </div>
-                <div class="tg-chat-info">
-                    <div class="tg-chat-title">iPhone8、小良</div>
-                    <div class="tg-chat-last">您好，欢迎光临！请问有什么可以帮助您的？</div>
-                </div>
+                <i class="fas fa-ellipsis-v" style="color:#888;font-size:20px;cursor:pointer;"></i>
             </div>
-            <div class="tg-chat-item" data-id="sql">
-                <div class="tg-chat-avatar" style="background:#f2711c;">技</div>
-                <div class="tg-chat-info">
-                    <div class="tg-chat-title">iPhone 技术研究中心</div>
-                    <div class="tg-chat-last">维罗纳：不越狱可以多开微信吗？</div>
-                </div>
-            </div>
-            <div class="tg-chat-item" data-id="dev">
-                <div class="tg-chat-avatar" style="background:#2185d0;">J</div>
-                <div class="tg-chat-info">
-                    <div class="tg-chat-title">Jsbox & Pin 脚本交流群</div>
-                    <div class="tg-chat-last">小明: 请问有脚本推荐吗？</div>
-                </div>
-            </div>
-        </div>
-        <div class="tg-sidebar-footer" style="border-top:1px solid #e0e0e0;background:#fff;">
-            <div style="display:flex;justify-content:space-around;align-items:center;height:63px;">
-                <i class="fas fa-user-circle" style="font-size:28px;color:#aaa;"></i>
-                <i class="fas fa-phone" style="font-size:22px;color:#aaa;"></i>
-                <i class="fas fa-comments" style="font-size:26px;color:#2196f3;"></i>
-                <i class="fas fa-cog" style="font-size:22px;color:#aaa;"></i>
+            <div class="tg-chat-body" id="tg-chat-body"></div>
+            <div class="tg-footer">
+                <input class="tg-input" type="text" placeholder="Write a message...">
+                <button class="tg-send-btn"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
-    <div class="tg-main">
-        <div class="tg-header">
-            <div style="display:flex;align-items:center;gap:10px;">
-                <span class="tg-header-avatar" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#4fd2b5;color:#fff;font-size:20px;font-weight:bold;overflow:hidden;"><img src="./static/1.jpg" style="width:100%;height:100%;object-fit:cover;display:none;"></span>
-                <span class="tg-header-title">iPhone8、小良</span>
-                <span class="tg-header-desc">last seen just now</span>
-            </div>
-            <i class="fas fa-ellipsis-v" style="color:#888;font-size:20px;cursor:pointer;"></i>
-        </div>
-        <div class="tg-chat-body" id="tg-chat-body"></div>
-        <div class="tg-footer">
-            <input class="tg-input" type="text" placeholder="Write a message...">
-            <button class="tg-send-btn"><i class="fas fa-paper-plane"></i></button>
-        </div>
+  </div>
+</div>
+
+<!-- 全局自定义消息弹窗 -->
+<div id="tg-message-box-mask" style="display:none;">
+  <div class="tg-message-box-modal">
+    <div class="tg-message-box-title"></div>
+    <div class="tg-message-box-content"></div>
+    <div class="tg-message-box-footer">
+      <button class="tg-message-box-btn">确定</button>
     </div>
+  </div>
 </div>
 
 <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
