@@ -40,11 +40,14 @@ this.addEventListener('fetch', function (event) {
       return res ||
         fetch(event.request)
           .then(responese => {
-            const responeseClone = responese.clone();
-            caches.open('def').then(cache => {
-              console.log('下载数据', responeseClone.url);
-              cache.put(event.request, responeseClone);
-            })
+            // 只缓存GET请求，避免POST请求缓存错误
+            if (event.request.method === 'GET') {
+              const responeseClone = responese.clone();
+              caches.open('def').then(cache => {
+                console.log('下载数据', responeseClone.url);
+                cache.put(event.request, responeseClone);
+              })
+            }
             return responese;
           })
           .catch(err => {

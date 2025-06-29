@@ -91,7 +91,6 @@ if(langcode=='zh-CN'){
         return txt;
     };
 }
-console.log('?')
 
 
 // 函数 lang(txt,id)
