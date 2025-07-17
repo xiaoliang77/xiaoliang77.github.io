@@ -1,5 +1,5 @@
 /*
-2025年1月5日 更新
+2025年7月18日 更新
 更换源地址
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
@@ -16,7 +16,7 @@ var header = {
     "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
   }
 var js_name = "1024图库"
-var urlt = $text.base64Decode("aHR0cHM6Ly9rMDkuYzUwNnE2My5jYy8=")
+var urlt = $text.base64Decode("aHR0cHM6Ly9zZC5iNTA3ajZkLmNjLw==")
 var data = [{ "name": "写真", "id": "14" }, { "name": "自拍", "id": "15" }, { "name": "露出", "id": "16" }, { "name": "街拍", "id": "49" }, { "name": "丝袜", "id": "21" }, { "name": "欧美", "id": "114" },]
 const mrhb = {
     type: "button",
@@ -129,12 +129,14 @@ function geting(id, mc) {
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            var shu = text.match(/<br><imgsrc=\"(\S*?)\"/g)
+            var shu = text.match(/<br\/><imgsrc=\"(\S*?)\"/g)
             var ingz = ""
-            for (i in shu) {
-                var ing = shu[i].replace(/<br><imgsrc=\"/, "")
-                var li = "<img src=\"" + ing + "\">"
-                ingz = ingz + li
+            if (shu) {
+                for (let i = 1; i < shu.length; i++) { // 跳过第一项
+                    var ing = shu[i].replace(/<br\/><imgsrc=\"/, "")
+                    var li = "<img src=\"" + ing + "\">"
+                    ingz = ingz + li
+                }
             }
             var html = `<html><head><meta charset="UTF-8"><title>${mc}</title><style>img{width:100%;margin-top: 5px;}</style></head><body><h1>${mc}<h1>${ingz}</body></html>`
             $ui.push({
@@ -156,7 +158,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if(resp.response.statusCode === 200){
-        if (resp.data.mapdepot.version != "2.9.8") {
+        if (resp.data.mapdepot.version != "2.9.9") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.mapdepot.version,
                 message: resp.data.mapdepot.upexplain,

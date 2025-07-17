@@ -1,5 +1,5 @@
 /*
-2025年1月5日 更新
+2025年7月18日 更新
 更换源地址
 
 脚本仅供代码学习，请勿分享。非法传播照成法律问题与作者无关。
@@ -11,12 +11,14 @@ https://ae85.cn/
 
 $cache.set("id", "1")
 $cache.set("pg", 1)
+
 var header = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
 }
-var urlt = $text.base64Decode("aHR0cHM6Ly85cXgzLnhic2lwcHBhLmNjLw==");
+
+var urlt = $text.base64Decode("aHR0cHM6Ly93d3cuamp1dTMzLmNvbQ==");
 var js_name = "1024视频"
-var data = [{ "name": "亞洲無碼", "id": "1" }, { "name": "亞洲有碼", "id": "2" }, { "name": "歐美無碼", "id": "3" }, { "name": "動漫無碼", "id": "4" }, { "name": "動漫有碼", "id": "5" }]
+var data = [{ "name": "国产自拍", "id": "1" }, { "name": "少妇熟女", "id": "5" }, { "name": "家庭乱伦", "id": "4" }, { "name": "偷拍盗摄", "id": "8" }, { "name": "群P换妻", "id": "6" }]
 const mrhb = {
     type: "button",
     props: {
@@ -89,17 +91,12 @@ function getdata() {
     var pg = $cache.get("pg")
     $ui.loading(true)
     $http.get({
-        url: urlt + "/thread0806.php?fid=22&search=&type=" + id + "&page=" + pg,
+        url: urlt + "/htms/list" + id + "/" + pg + ".htm",
         header: header,
         handler: function (resp) {
             $ui.loading(false)
             var text = resp.data.replace(/\n|\s|\r/g, "")
-            if (text.includes("普通主題")) {
-                const startIndex = text.indexOf("普通主題") + 4;
-                const result = text.slice(startIndex).trim();
-                text = result;
-            }
-            var shu = text.match(/<tdclass="tal"id="">.*?<\/td>/g)
+            var shu = text.match(/video-details>.*?<\/div>/g)
             if (pg == 1) {
                 var data = []
             } else {
@@ -108,7 +105,7 @@ function getdata() {
             for (i in shu) {
                 var a = shu[i]
                 if (a.indexOf('href=') !== -1) {
-                    var mc = a.match(/<h3><a[^>]*>(.*?)<\/a><\/h3>/)[1]
+                    var mc = decodeURIComponent(a.match(/decodeURIComponent\("(.*?)"\.replace/)[1])
                     var id = a.match(/ahref="(.*?)"/)[1]
                     data.push(mc + "\n" + id)
                 }
@@ -127,36 +124,20 @@ function geting(id, mc) {
         url: urlt + id,
         header: header,
         handler: function (resp) {
-            const video = resp.data.match(/.src='(.*?)#/)[1]
-            $http.get({
-                url: video,
-                handler: function (resp) {
-                    $ui.loading(false)
-                    const video_src = resp.data.match(/https?:\/\/[^\s]+?\.(mp4|m3u8)/g)
-                    let selectedUrl = "";
-                    if (video_src && video_src.length > 1) {
-                        selectedUrl = video_src[1];
-                    } else if (video_src && video_src.length === 1) {
-                        selectedUrl = video_src[0];
-                    } else {
-                        $ui.alert("视频地址未获取到")
-                        return ;
-                    }
-
-                    $ui.push({
-                        props: {
-                            title: mc
-                        },
-                        views: [{
-                            type: "web",
-                            props: {
-                                url: selectedUrl,
-                            },
-                            layout: $layout.fill
-                        }, mrhb]
-                    })
-                }
+            const video = resp.data.match(/setm3u8\('(.*?)'/)[1]
+            $ui.push({
+                props: {
+                    title: mc
+                },
+                views: [{
+                    type: "web",
+                    props: {
+                        url: "https://asw.cjswds.com/m3u8-enc/" + video + "index.m3u8",
+                    },
+                    layout: $layout.fill
+                }, mrhb]
             })
+
         }
     })
 }
@@ -165,7 +146,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.9.6") {
+        if (resp.data.vdieo.version != "2.9.9") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,

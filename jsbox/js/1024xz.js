@@ -1,5 +1,5 @@
 /*
-2025年1月5日 更新
+2025年7月18日 更新
 更换源地址
 
 由于种子地址限制问题，无法直接使用脚本下载也不能直接调用迅雷下载，需要跳转到浏览器中下载种子文件然后在使用迅雷打开种子文件下载即可。
@@ -18,7 +18,7 @@ var header = {
     "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
   }
 var js_name = "1024下载"
-var urlt = $text.base64Decode("aHR0cHM6Ly9rMDkuYzUwNnE2My5jYy8=")
+var urlt = $text.base64Decode("aHR0cHM6Ly9zZC5iNTA3ajZkLmNjLw==")
 var data = [{ "name": "亚洲無碼", "id": "5" }, { "name": "日本騎兵", "id": "22" }, { "name": "歐美新片", "id": "7" }, { "name": " 三級寫真", "id": "18" },]
 const mrhb = {
     type: "button",
@@ -212,7 +212,7 @@ function geturl(url, dian) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.down.version != "2.9.8") {
+        if (resp.data.down.version != "2.9.9") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.down.version,
                 message: resp.data.down.upexplain,
