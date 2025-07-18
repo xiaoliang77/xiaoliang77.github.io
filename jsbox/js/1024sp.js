@@ -16,7 +16,7 @@ var header = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
 }
 
-var urlt = $text.base64Decode("aHR0cHM6Ly93d3cuamp1dTMzLmNvbQ==");
+var urlt = $text.base64Decode("aHR0cHM6Ly93d3cuZmZwcDQ0LmNvbQ==");
 var js_name = "1024视频"
 var data = [{ "name": "国产自拍", "id": "1" }, { "name": "少妇熟女", "id": "5" }, { "name": "家庭乱伦", "id": "4" }, { "name": "偷拍盗摄", "id": "8" }, { "name": "群P换妻", "id": "6" }]
 const mrhb = {
