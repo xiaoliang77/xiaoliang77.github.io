@@ -16,7 +16,7 @@ var header = {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
 }
 
-var urlt = $text.base64Decode("aHR0cHM6Ly93d3cuZmZwcDQ0LmNvbQ==");
+var urlt = $text.base64Decode("aHR0cHM6Ly93d3cuYWFnZzc3LmNvbQ==");
 var js_name = "1024视频"
 var data = [{ "name": "国产自拍", "id": "1" }, { "name": "少妇熟女", "id": "5" }, { "name": "家庭乱伦", "id": "4" }, { "name": "偷拍盗摄", "id": "8" }, { "name": "群P换妻", "id": "6" }]
 const mrhb = {
@@ -116,7 +116,7 @@ function getdata() {
     })
 }
 
-getdata()
+
 
 function geting(id, mc) {
     $ui.loading(true)
@@ -146,7 +146,7 @@ function geting(id, mc) {
 async function get_updata() {
     const resp = await $http.get($text.base64Decode("aHR0cHM6Ly9pcGhvbmU4LnZpcC9jb25maWcvMTAyNC5qc29u"));
     if (resp.response.statusCode === 200) {
-        if (resp.data.vdieo.version != "2.9.9") {
+        if (resp.data.vdieo.version != "2.9.10") {
             $ui.alert({
                 title: "发现新版本 - " + resp.data.vdieo.version,
                 message: resp.data.vdieo.upexplain,
@@ -164,8 +164,29 @@ async function get_updata() {
             });
 
         }
+        urlt = $text.base64Decode(resp.data.turl)
+        is_updata_url()
     }
 }
+
+function is_updata_url() {
+    $http.get({
+        url: urlt,
+        header: header,
+        handler: function (resp) {  
+            if (resp.data.indexOf("eval(decodeURIComponent") !== -1) {
+            var url2 = new Array();
+            const chtml = resp.data.match(/eval\(decodeURIComponent\('(.*?)'/)[1]
+            const html = decodeURIComponent(chtml).replace(/\\\//g, "/") 
+            eval(html);
+            const url3temp = url2[url2.length - 1].split(",");
+            urlt = "https://" + url3temp[0];
+            }
+            getdata()
+        }
+    });
+}
+
 get_updata()
 
 function download(url) {
