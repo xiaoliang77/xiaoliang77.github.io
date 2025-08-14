@@ -132,7 +132,7 @@ function geting(id, mc) {
                 views: [{
                     type: "web",
                     props: {
-                        url: "https://asw.cjswds.com/m3u8-enc/" + video + "index.m3u8",
+                        url: "https://gg65.cjswds.com/" + video + "index.m3u8",
                     },
                     layout: $layout.fill
                 }, mrhb]
